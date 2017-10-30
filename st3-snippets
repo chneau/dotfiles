@@ -1,0 +1,16 @@
+<snippet>
+  <content><![CDATA[
+import { Template } from 'meteor/templating'
+
+Template.${1:name}.onCreated ->
+  console.log 'created'
+Template.${1:name}.onRendered ->
+  console.log 'rendered'
+Template.${1:name}.onDestroyed ->
+  console.log 'destoyed'
+Template.${1:name}.events
+Template.${1:name}.helpers
+]]></content>
+  <tabTrigger>template</tabTrigger>
+  <scope>source.coffee</scope>
+</snippet>
