@@ -70,6 +70,7 @@ alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 alias d='docker'
+alias apti='apt install -y'
 
 # almost cool aliases
 alias ipt='sudo /sbin/iptables'
