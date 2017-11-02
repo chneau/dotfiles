@@ -63,6 +63,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias update='sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 alias d='docker'
 alias dprune='docker system prune -f --volumes'
+alias dkill='docker kill $(docker ps -q)'
 alias dprunea='docker system prune -af --volumes'
 alias dtest='docker run --rm -it --name test --hostname test'
 alias dt='docker run --rm -it --hostname test'
