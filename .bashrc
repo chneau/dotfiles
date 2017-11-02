@@ -28,6 +28,8 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+# force anyway ...
+PS1='\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]$'
 unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
