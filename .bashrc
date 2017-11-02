@@ -1,3 +1,7 @@
+#
+# curl -sSL bit.do/chnobash > ~/.bashrc && . ~/.bashrc
+#
+
 case $- in
     *i*) ;;
       *) return;;
