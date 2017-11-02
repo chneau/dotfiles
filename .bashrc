@@ -76,7 +76,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
-alias apti='apt install -y'
+alias apti='sudo apt install -y'
 alias sss='service --status-all'
 
 # self update
