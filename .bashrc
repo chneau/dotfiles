@@ -47,10 +47,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
+alias hs='history | grep $1'
+alias ..='cd ..'
+alias ...='cd ../../'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias update='sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
