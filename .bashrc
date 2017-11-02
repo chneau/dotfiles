@@ -73,6 +73,9 @@ alias d='docker'
 alias apti='apt install -y'
 alias sss='service --status-all'
 
+# self update
+alias updatebashrc='curl -sSL bit.do/chnobash > ~/.bashrc && . ~/.bashrc'
+
 # almost cool aliases
 alias ipt='sudo /sbin/iptables'
 alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
