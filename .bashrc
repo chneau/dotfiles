@@ -56,7 +56,7 @@ alias hs='history | grep $1'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias update='sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && apt-get -y autoremove'
+alias update='sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
