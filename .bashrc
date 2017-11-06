@@ -122,6 +122,10 @@ alias imeteor='curl -sSL install.meteor.com | sh'
 alias idocker='curl -sSL get.docker.com | sh'
 alias isshuttle='sudo apt -y install sshuttle'
 
+
+alias webshare='python -m SimpleHTTPServer'
+
+
 extract () {
    if [ -f $1 ] ; then
        case $1 in
