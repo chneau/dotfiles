@@ -89,6 +89,8 @@ alias dtest='docker run --rm -it --name test --hostname test'
 alias dt='docker run --rm -it --hostname test'
 alias de='docker exec -it'
 
+alias ct='column -t'
+
 alias ports='netstat -tulanp'
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
