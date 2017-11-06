@@ -8,13 +8,11 @@ case $- in
 esac
 
 #use extra globing features. See man bash, search extglob.
-#shopt -s extglob
+shopt -s extglob
 #include .files when globbing.
-#shopt -s dotglob
-#When a glob expands to nothing, make it an empty string instead of the literal characters.
-#shopt -s nullglob
+shopt -s dotglob
 # fix spelling errors for cd, only in interactive shell
-#shopt -s cdspell
+shopt -s cdspell
 
 HISTCONTROL=ignoreboth
 shopt -s histappend
