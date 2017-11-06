@@ -177,7 +177,7 @@ s() { # do sudo, or sudo the last command if no argument given
 }
 
 
-
+alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 
 
 
