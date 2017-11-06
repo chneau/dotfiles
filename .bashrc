@@ -8,10 +8,12 @@ case $- in
 esac
 HISTCONTROL=ignoreboth
 shopt -s histappend
-HISTSIZE=1000
-HISTFILESIZE=2000
+export HISTFILESIZE=20000
+export HISTSIZE=10000
+export HISTIGNORE="&:ls:[bf]g:exit"
 shopt -s checkwinsize
 shopt -s globstar
+shopt -s cmdhist
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -55,6 +57,8 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 alias ll='ls -alFh'
 alias la='ls -A'
+alias lo="ls -o"
+alias lh="ls -lh"
 alias l='ls -CF'
 alias hs='history | grep $1'
 alias ..='cd ..'
@@ -142,7 +146,13 @@ fi
 
 
 
-
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
 
 
 
