@@ -153,7 +153,9 @@ fi
 
 
 
-
+alias u='ls -hltr'
+alias e='du * -cs | sort -nr | head'
+alias g='grep -C5 --color=auto'
 
 
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -176,8 +178,7 @@ s() { # do sudo, or sudo the last command if no argument given
     fi
 }
 
-
-alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
+tail -f"
 
 
 
@@ -191,5 +192,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs 
 
 
