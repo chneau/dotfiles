@@ -5,6 +5,7 @@
 # cd - to go back
 # ctrl + r to search through last commands used
 # escape + . put last args to current
+# take a look here http://www.commandlinefu.com/commands/browse/sort-by-votes
 #
 
 case $- in
