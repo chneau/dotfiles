@@ -8,13 +8,13 @@ case $- in
 esac
 
 #use extra globing features. See man bash, search extglob.
-shopt -s extglob
+#shopt -s extglob
 #include .files when globbing.
-shopt -s dotglob
+#shopt -s dotglob
 #When a glob expands to nothing, make it an empty string instead of the literal characters.
-shopt -s nullglob
+#shopt -s nullglob
 # fix spelling errors for cd, only in interactive shell
-shopt -s cdspell
+#shopt -s cdspell
 
 HISTCONTROL=ignoreboth
 shopt -s histappend
@@ -189,6 +189,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
+# alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 
 
