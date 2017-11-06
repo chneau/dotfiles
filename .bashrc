@@ -91,6 +91,9 @@ alias de='docker exec -it'
 
 alias ct='column -t'
 
+alias mip='curl ifconfig.me/ip'
+alias mh='curl ifconfig.me/host'
+
 alias ports='netstat -tulanp'
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
