@@ -1,6 +1,11 @@
 #
 # curl -sSL bit.do/chnobash > ~/.bashrc && . ~/.bashrc
 #
+# !! to repeat command
+# cd - to go back
+# ctrl + r to search through last commands used
+# escape + . put last args to current
+#
 
 case $- in
     *i*) ;;
