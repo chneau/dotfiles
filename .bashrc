@@ -128,6 +128,7 @@ alias imeteor='curl -sSL install.meteor.com | sh'
 alias idocker='curl -sSL get.docker.com | sh'
 alias isshuttle='sudo apt -y install sshuttle'
 
+alias pstats='powerstat -d 0 -f 1'
 
 alias webshare='python -m SimpleHTTPServer'
 
