@@ -195,6 +195,18 @@ s() { # do sudo, or sudo the last command if no argument given
 
 
 
+google() {
+    search=""
+    echo "Googling: $@"
+    for term in $@; do
+        search="$search%20$term"
+    done
+    2>/dev/null 1>&2 xdg-open "http://www.google.com/search?q=$search" 
+}
+
+
+
+
 
 
 export NVM_DIR="$HOME/.nvm"
