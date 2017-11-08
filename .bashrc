@@ -204,7 +204,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
+dsave() {
+  eval "docker save $1 | 7z -si a $1.tar.7z"
+}
 
 alias u='ls -hltr'
 alias e='du * -cs | sort -nr | head'
