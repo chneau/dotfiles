@@ -247,7 +247,7 @@ google() {
 i() {
   if VERB="$( which apt )" 2> /dev/null; then
     VERB="$VERB -y install "
-  if VERB="$( which apt-get )" 2> /dev/null; then
+  elif VERB="$( which apt-get )" 2> /dev/null; then
     VERB="$VERB -y install "
   elif VERB="$( which apk )" 2> /dev/null; then
     VERB="$VERB add --no-cache "
