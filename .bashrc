@@ -244,6 +244,24 @@ google() {
     2>/dev/null 1>&2 xdg-open "http://www.google.com/search?q=$search" 
 }
 
+i() {
+  if VERB="$( which apt )" 2> /dev/null; then
+    VERB="$VERB -y install "
+  if VERB="$( which apt-get )" 2> /dev/null; then
+    VERB="$VERB -y install "
+  elif VERB="$( which apk )" 2> /dev/null; then
+    VERB="$VERB add --no-cache "
+  elif VERB="$( which yum )" 2> /dev/null; then
+    VERB="$VERB -y "
+  elif VERB="$( which pacman )" 2> /dev/null; then
+    VERB="$VERB -S --noconfirm "
+  else
+    echo "I have no idea what I'm doing." >&2
+    exit 1
+  fi
+  SUSUDO="$( which sudo )" 2> /dev/null
+  eval "$SUSUDO $VERB $@" 2> /dev/null
+}
 
 
 
