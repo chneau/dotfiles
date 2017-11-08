@@ -7,6 +7,15 @@
 # escape + . put last args to current
 # take a look here http://www.commandlinefu.com/commands/browse/sort-by-votes
 #
+# ctrl + shift + v to paste
+# ctrl + d to exit session
+# ctrl z to SIGSTOP
+# fg to get back stopped jobs
+# jobs to list jobs running
+# or use %1 %2 ...
+#
+#
+
 
 case $- in
     *i*) ;;
