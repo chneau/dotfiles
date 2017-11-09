@@ -151,6 +151,8 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias mkdir="mkdir -pv"
 alias exe="chmod u+x "
 
+alias npmu="npm-check-updates -u && npm install"
+
 
 
 
