@@ -97,6 +97,7 @@ alias dprunea='docker system prune -af --volumes'
 alias dtest='docker run --rm -it --name test --hostname test'
 alias dt='docker run --rm -it --hostname test'
 alias de='docker exec -it'
+alias dsi='docker service inspect --pretty'
 
 alias ct='column -t'
 
@@ -158,7 +159,7 @@ alias exe="chmod u+x "
 
 
 
-# 
+#
 # to use a command without alias, use \.
 # eg. \ls for a nornal ls
 #
@@ -177,7 +178,7 @@ function extract {
     do
       if [ -f "$n" ] ; then
           case "${n%,}" in
-            *.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar) 
+            *.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
                          tar xvf "$n"       ;;
             *.lzma)      unlzma ./"$n"      ;;
             *.bz2)       bunzip2 ./"$n"     ;;
@@ -252,7 +253,7 @@ google() {
     for term in $@; do
         search="$search%20$term"
     done
-    2>/dev/null 1>&2 xdg-open "http://www.google.com/search?q=$search" 
+    2>/dev/null 1>&2 xdg-open "http://www.google.com/search?q=$search"
 }
 
 i() {
