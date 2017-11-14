@@ -15,6 +15,10 @@
 # or use %1 %2 ...
 #
 #
+# sshfs maythux@192.168.xx.xx:/home/maythuxServ/Mounted ~/remoteDir
+#
+#
+#
 
 
 case $- in
