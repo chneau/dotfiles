@@ -138,6 +138,8 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias cpuinfo='lscpu'
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
+alais nmr='sudo service network-manager restart'
+
 alias imeteor='curl -sSL install.meteor.com | sh'
 alias idocker='curl -sSL get.docker.com | sh'
 alias isshuttle='sudo apt -y install sshuttle'
