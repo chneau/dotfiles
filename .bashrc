@@ -17,7 +17,7 @@
 #
 # sshfs maythux@192.168.xx.xx:/home/maythuxServ/Mounted ~/remoteDir
 #
-#
+# htpasswd -bc file username password
 #
 
 
