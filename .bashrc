@@ -143,6 +143,10 @@ alias nmr='sudo service network-manager restart'
 alias imeteor='curl -sSL install.meteor.com | sh'
 alias idocker='curl -sSL get.docker.com | sh'
 alias isshuttle='sudo apt -y install sshuttle'
+alias ivirtualbox='sudo apt -y install virtualbox'
+alias ivagrant='sudo apt -y install vagrant'
+
+alias v='vagrant'
 
 alias pstats='powerstat -d 0 -f 1'
 
