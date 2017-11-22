@@ -1,4 +1,5 @@
 #
+# curl -sSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc > ~/.bashrc && . ~/.bashrc
 # curl -sSL bit.do/chnobash > ~/.bashrc && . ~/.bashrc
 #
 # !! to repeat command
