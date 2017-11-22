@@ -145,6 +145,7 @@ alias idocker='curl -sSL get.docker.com | sh'
 alias isshuttle='sudo apt -y install sshuttle'
 alias ivirtualbox='sudo apt -y install virtualbox'
 alias ivagrant='sudo apt -y install vagrant'
+alias invm='curl -sSL https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash'
 
 alias v='vagrant'
 
