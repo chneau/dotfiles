@@ -6,7 +6,7 @@ getStuff(){
   else
     apt-get update -yq && apt-get install -yq curl bash sudo
   fi
-  curl -sSL https://raw.githubusercontent.com/CharlesNo/usefulCommands/master/.bashrc > ~/.bashrc
+  curl -sSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc > ~/.bashrc
   echo 'Please type: '
   echo '. ~/.bashrc'
 }
