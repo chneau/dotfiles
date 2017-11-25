@@ -119,7 +119,7 @@ alias apti='sudo apt install -y'
 alias sss='service --status-all'
 
 # self update
-alias updatebashrc='curl -sSL bit.do/chnobash > ~/.bashrc && . ~/.bashrc'
+alias updatebashrc='curl -sSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc > ~/.bashrc && . ~/.bashrc'
 
 # almost cool aliases
 alias ipt='sudo /sbin/iptables'
