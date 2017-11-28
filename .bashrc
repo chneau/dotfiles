@@ -23,8 +23,16 @@
 # apt install -y network-manager
 # nmtui # = good network manager with console UI
 #
+#auto lo
+#iface lo inet loopback
+#auto enp14s0
+#iface enp14s0 inet dhcp
+#auto wlp13s0
+#iface wlp13s0 inet dhcp
+#wpa-ssid ssid
+#wpa-psk password
 #
-#
+# 
 #
 #
 
@@ -122,6 +130,7 @@ alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 alias apti='sudo apt install -y'
+alias aptr='sudo apt remove --auto-remove -y'
 alias sss='service --status-all'
 
 # self update
