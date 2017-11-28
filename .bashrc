@@ -21,7 +21,7 @@
 # htpasswd -bc file username password
 #
 # apt install -y network-manager
-# mtui # = good network manager with console UI
+# nmtui # = good network manager with console UI
 #
 #
 #
