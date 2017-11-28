@@ -1,2 +1,3 @@
 # usefulCommands
-A list of useful commands for a new droplet
+
+A place where I store some scripts.
