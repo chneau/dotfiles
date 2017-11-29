@@ -1,0 +1,11 @@
+version: '3'
+services:
+  test:
+    image: stenote/nginx-hostname
+    ports:
+      - 80:80
+    deploy:
+      mode: replicated
+      replicas: 25
+      restart_policy:
+        condition: any
