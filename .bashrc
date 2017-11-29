@@ -20,7 +20,21 @@
 #
 # htpasswd -bc file username password
 #
-
+# apt install -y network-manager
+# nmtui # = good network manager with console UI
+#
+#auto lo
+#iface lo inet loopback
+#auto enp14s0
+#iface enp14s0 inet dhcp
+#auto wlp13s0
+#iface wlp13s0 inet dhcp
+#wpa-ssid ssid
+#wpa-psk password
+#
+# 
+#
+#
 
 case $- in
     *i*) ;;
@@ -92,8 +106,8 @@ alias hs='history | grep $1'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias update='sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
-alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt-get -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove'
+alias update='sudo apt-get -y autoremove && sudo apt-get -yf install && sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade'
+alias updateall='sudo apt -y autoremove && sudo apt -yf install && sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade'
 
 
 alias d='docker'
@@ -116,6 +130,7 @@ alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 alias apti='sudo apt install -y'
+alias aptr='sudo apt remove --auto-remove -y'
 alias sss='service --status-all'
 
 # self update
