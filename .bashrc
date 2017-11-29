@@ -165,6 +165,7 @@ alias ivagrant='sudo apt -y install vagrant'
 alias invm='curl -sSL https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash'
 alias iminikube='curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.23.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/'
 alias ik8s='curl -sSL https://get.k8s.io | bash'
+alias k='kubectl'
 
 alias v='vagrant'
 
