@@ -163,7 +163,7 @@ alias isshuttle='sudo apt -y install sshuttle'
 alias ivirtualbox='sudo apt -y install virtualbox'
 alias ivagrant='sudo apt -y install vagrant'
 alias invm='curl -sSL https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash'
-alias ikubernetes='curl -sSL get.k8s.io | sh'
+alias ik8s='curl -sSL https://get.k8s.io | bash'
 
 alias v='vagrant'
 
