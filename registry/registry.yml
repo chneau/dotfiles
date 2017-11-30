@@ -1,0 +1,23 @@
+version: '3'
+services:
+  registry:
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - /containers/registry:/var/lib/registry
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 443:443
+    volumes:
+      - /auth:/auth
+      - /certs:/certs
