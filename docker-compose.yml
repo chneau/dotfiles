@@ -1,7 +1,7 @@
 version: '3'
 services:
   jenkins:
-    image: chneau/jenkinsdid
+    image: chneau/jenkinsdid:alpine
     ports:
       - 8080:8080
       - 50000:50000
