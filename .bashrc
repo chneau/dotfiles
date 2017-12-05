@@ -32,7 +32,7 @@
 #wpa-ssid ssid
 #wpa-psk password
 #
-#
+#nmcli dev show
 #
 #
 
@@ -157,6 +157,7 @@ alias cpuinfo='lscpu'
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
 alias nmr='sudo service network-manager restart'
+
 
 alias imeteor='curl -sSL install.meteor.com | sh'
 alias idocker='curl -sSL get.docker.com | sh'
