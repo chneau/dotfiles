@@ -61,17 +61,3 @@ services:
       placement:
         constraints:
           - node.role == manager
-  watchtower:
-    image: v2tec/watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.docker/config.json:/config.json
-    command: --interval 30
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager
