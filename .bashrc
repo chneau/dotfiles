@@ -117,6 +117,7 @@ alias dprunea='docker system prune -af --volumes'
 alias dtest='docker run --rm -it --name test --hostname test'
 alias dt='docker run --rm -it --hostname test'
 alias de='docker exec -it'
+alias db='docker build -t'
 alias dsi='docker service inspect --pretty'
 
 alias ct='column -t'
