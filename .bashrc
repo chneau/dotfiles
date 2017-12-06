@@ -121,7 +121,7 @@ alias db='docker build -t'
 alias dl='docker logs -f'
 alias dsl='docker service logs -f'
 alias dsi='docker service inspect --pretty'
-alias dsu='docker stack up -t'
+alias dsu='docker stack up -c'
 
 alias ct='column -t'
 
