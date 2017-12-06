@@ -123,6 +123,7 @@ alias dsl='docker service logs -f'
 alias dsi='docker service inspect --pretty'
 alias dsu='docker stack up -c'
 alias dsd='docker stack down'
+alias doh='docker history'
 
 alias ct='column -t'
 
