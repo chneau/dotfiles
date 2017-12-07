@@ -182,7 +182,7 @@ alias webshare='python -m SimpleHTTPServer'
 
 
 alias df="df -Tha --total"
-alias du="du -ach | sort -h"
+alias du="\du -chs *"
 alias free="free -mt"
 alias ps="ps auxf"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
@@ -259,7 +259,7 @@ dsave() {
 }
 
 alias u='ls -hltr'
-alias e='du * -cs | sort -nr | head'
+alias e='\du * -cs | sort -nr | head'
 alias g='grep -C5 --color=auto'
 
 
