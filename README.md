@@ -10,3 +10,7 @@ An interface to connect to a DB and easily create databases / add users - roles
 titpetric/netdata https://hub.docker.com/r/titpetric/netdata/ https://github.com/firehol/netdata
 Get cool stats on your server with alert system 
 
+# To check
+
+https://github.com/Unitech/pm2
+https://github.com/srvrco/getssl
