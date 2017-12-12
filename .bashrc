@@ -164,7 +164,7 @@ alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias nmr='sudo service network-manager restart'
 
 
-alias npmig='npm i -g ungit coffeescript npm-check-updates'
+alias npmig='npm i -g ungit coffeescript npm-check-updates npm'
 alias imeteor='curl -sSL install.meteor.com | sh'
 alias idocker='curl -sSL get.docker.com | sh'
 alias isshuttle='sudo apt -y install sshuttle'
