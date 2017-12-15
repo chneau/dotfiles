@@ -196,7 +196,7 @@ alias npmu="npm-check-updates -au && npm install && npm update"
 
 
 
-
+alias renewip="sudo dhclient -v -r && sudo dhclient -v"
 
 
 
