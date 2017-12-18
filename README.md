@@ -14,3 +14,8 @@ Get cool stats on your server with alert system
 
 https://github.com/Unitech/pm2
 https://github.com/srvrco/getssl
+
+# Kubernetes
+
+https://blog.alexellis.io/kubernetes-in-10-minutes/ as a starter
+but use kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
