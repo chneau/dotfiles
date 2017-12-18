@@ -175,6 +175,25 @@ alias iminikube='curl -Lo minikube https://storage.googleapis.com/minikube/relea
 alias ik8s='curl -sSL https://get.k8s.io | bash'
 alias k='kubectl'
 
+
+
+ikubernetes() {
+  sudo apt-get update
+  sudo apt-get install -y apt-transport-https 
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 
+  echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list 
+  sudo apt-get update 
+  sudo apt-get install -y kubelet kubeadm kubernetes-cni
+}
+
+
+
+
+
+
+
+
+
 alias v='vagrant'
 
 alias pstats='powerstat -d 0 -f 1'
@@ -191,6 +210,10 @@ alias mkdir="mkdir -pv"
 alias exe="chmod u+x "
 
 alias npmu="npm-check-updates -au && npm install && npm update"
+
+
+
+
 
 
 
