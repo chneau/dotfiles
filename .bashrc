@@ -174,7 +174,18 @@ alias invm='curl -sSL https://raw.githubusercontent.com/creationix/nvm/v0.33.6/i
 alias iminikube='curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.23.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/'
 alias ik8s='curl -sSL https://get.k8s.io | bash'
 alias k='kubectl'
+alias kga='kubectl get all --all-namespaces'
+alias ka='sudo kubeadm'
 
+ks() {
+sudo swapoff -a
+sudo kubeadm init
+mkdir -p $HOME/.kube
+sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+kubectl taint nodes --all node-role.kubernetes.io/master-
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+}
 
 
 ik() { 
