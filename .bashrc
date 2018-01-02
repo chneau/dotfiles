@@ -124,6 +124,7 @@ alias dsi='docker service inspect --pretty'
 alias dsu='docker stack up -c'
 alias dsd='docker stack down'
 alias doh='docker history'
+alias drm='docker rmi $(docker images -q --filter "dangling=true")'
 
 alias ct='column -t'
 
@@ -188,13 +189,13 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 }
 
 
-ik() { 
-  sudo apt-get update 
-  sudo apt-get install -y apt-transport-https 
-  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 
-  echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list 
-  sudo apt-get update 
-  sudo apt-get install -y kubelet kubeadm kubernetes-cni 
+ik() {
+  sudo apt-get update
+  sudo apt-get install -y apt-transport-https
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  sudo apt-get update
+  sudo apt-get install -y kubelet kubeadm kubernetes-cni
 }
 
 
