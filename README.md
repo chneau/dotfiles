@@ -26,3 +26,5 @@ Use this for nice logging output :
 
 import "log"
 log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+
+Do not forget that using rand with goroutines is not efficient. Use rand.New with argument rand.Newsource((...date..))
