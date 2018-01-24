@@ -178,6 +178,8 @@ alias k='kubectl'
 alias kga='kubectl get all --all-namespaces'
 alias ka='sudo kubeadm'
 
+alias g='git pull -f; git reset --hard origin/master'
+
 ks() {
 sudo swapoff -a
 sudo kubeadm init
