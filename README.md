@@ -29,7 +29,11 @@ log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 
 Do not forget that using rand with goroutines is not efficient. Use rand.New with argument rand.Newsource((...date..))
 
+CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' .
 
 Using this looks better :
 
 import log "github.com/sirupsen/logrus";
+
+event better:
+logxi
