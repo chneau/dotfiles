@@ -37,3 +37,9 @@ import log "github.com/sirupsen/logrus";
 
 event better:
 logxi
+
+
+# BAN A SPECIFIC IP !
+sudo iptables -A INPUT -s 58.218.198.xxx -j DROP
+
+It's to bloc some IP that try to messup with ssh !
