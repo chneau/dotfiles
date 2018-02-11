@@ -43,3 +43,5 @@ logxi
 sudo iptables -A INPUT -s 58.218.198.xxx -j DROP
 
 It's to bloc some IP that try to messup with ssh !
+
+Commands last and lastlog to show auth stuff.
