@@ -378,4 +378,4 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 
 alias findtext='grep -rnw . -e'
-alias hp='hping3 -c 10000 -d 120 -S -w 64 -p 21 --flood --rand-source'
+alias hp='sudo hping3 --flood'
