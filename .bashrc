@@ -380,3 +380,5 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 alias findtext='grep -rnw . -e'
 alias hp='sudo hping3 --flood'
 alias banip='sudo iptables -A INPUT -j DROP -s '
+
+alias dn='docker run --rm -v `pwd`:`pwd` -w `pwd` node:alpine'
