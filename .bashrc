@@ -382,3 +382,4 @@ alias hp='sudo hping3 --flood'
 alias banip='sudo iptables -A INPUT -j DROP -s '
 
 alias dn='docker run --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 node:alpine'
+alias nload='nload -m -u M'
