@@ -53,7 +53,7 @@ taskkill /im iexplore.exe /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /t REG_SZ /d 127.0.0.1:1080 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 1 /f
 
-start /min cmd /c "C:\Program Files\Internet Explorer\iexplore.exe /min"
+start /min cmd /c "C:\Program Files\Internet Explorer\iexplore.exe"
 timeout 1
 taskkill /im iexplore.exe /f
 ```
