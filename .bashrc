@@ -390,4 +390,4 @@ alias banip='sudo iptables -A INPUT -j DROP -s '
 alias dn='docker run --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 node:alpine'
 alias nload='nload -m -u M'
 
-alias ivpn='wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh'
+alias ivpn='wget https://raw.githubusercontent.com/Angristan/OpenVPN-install/master/openvpn-install.sh -O openvpn-install.sh && bash openvpn-install.sh'
