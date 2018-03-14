@@ -394,3 +394,4 @@ alias ivpn='wget https://raw.githubusercontent.com/Angristan/OpenVPN-install/mas
 
 alias fixgpg='sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com'
 alias goget='go get -t -u -v'
+alias oc='code -a .'
