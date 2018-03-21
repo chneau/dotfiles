@@ -68,3 +68,7 @@ start /min cmd /c "C:\Program Files\Internet Explorer\iexplore.exe"
 timeout 1
 taskkill /im iexplore.exe /f
 ```
+
+# Good vpn server script
+
+https://github.com/Angristan/OpenVPN-install
