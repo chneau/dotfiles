@@ -397,3 +397,5 @@ alias goget='go get -t -u -v'
 alias oc='code -a .'
 
 alias m='make'
+
+alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune'
