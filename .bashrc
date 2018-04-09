@@ -399,3 +399,7 @@ alias oc='code -a .'
 alias m='make'
 
 alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune'
+
+
+alias igotop='go get -u github.com/cjbassi/gotop && go install github.com/cjbassi/gotop'
+
