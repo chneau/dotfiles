@@ -403,3 +403,4 @@ alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune'
 
 alias igotop='go get -u github.com/cjbassi/gotop && go install github.com/cjbassi/gotop'
 
+alias dm='docker run --net=host --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 mongo'
