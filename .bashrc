@@ -405,3 +405,4 @@ alias igotop='go get -u github.com/cjbassi/gotop && go install github.com/cjbass
 
 alias dm='docker run --net=host --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 mongo'
 alias dmm='docker run --net=host --rm -it mrvautin/adminmongo'
+alias igit='git config --global credential.helper "cache --timeout 36000000"; git config --global user.email "charles63500@gmail.com";git config --global user.name "Charles Neau"'
