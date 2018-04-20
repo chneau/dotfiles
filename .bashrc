@@ -195,6 +195,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 }
+alias ks='ks'
 
 
 ik() {
@@ -205,7 +206,7 @@ ik() {
   sudo apt-get update
   sudo apt-get install -y kubelet kubeadm kubernetes-cni
 }
-
+alias ik='ik'
 
 invim() {
   sudo apt-get -y install software-properties-common
@@ -214,7 +215,7 @@ invim() {
   sudo apt-get update
   sudo apt-get -y install neovim
 }
-
+alias invim='invim'
 
 
 
@@ -257,7 +258,7 @@ alias renewip="sudo dhclient -v -r && sudo dhclient -v"
 
 
 
-function extract {
+extract() {
  if [ -z "$1" ]; then
     # display usage if no parameters given
     echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
@@ -292,6 +293,7 @@ function extract {
     done
 fi
 }
+alias extract='extract'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -307,6 +309,7 @@ fi
 dsave() {
   eval "docker save $1 | 7z -si a $1.tar.7z"
 }
+alias dsave='dsave'
 
 alias u='ls -hltr'
 alias e='\du * -cs | sort -nr | head'
@@ -332,6 +335,7 @@ s() { # do sudo, or sudo the last command if no argument given
         sudo "$@"
     fi
 }
+alias s='s'
 
 
 
@@ -345,6 +349,7 @@ google() {
     done
     2>/dev/null 1>&2 xdg-open "http://www.google.com/search?q=$search"
 }
+alias google='google'
 
 i() {
   if VERB="$( which apt )" 2> /dev/null; then
@@ -364,6 +369,7 @@ i() {
   SUSUDO="$( which sudo )" 2> /dev/null
   eval "$SUSUDO $VERB $@" 2> /dev/null
 }
+alias i='i'
 
 
 
@@ -406,3 +412,9 @@ alias igotop='go get -u github.com/cjbassi/gotop && go install github.com/cjbass
 alias dm='docker run --net=host --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 mongo'
 alias dmm='docker run --net=host --rm -it mrvautin/adminmongo'
 alias igit='git config --global credential.helper "cache --timeout 36000000"; git config --global user.email "charles63500@gmail.com";git config --global user.name "Charles Neau"'
+
+goi() {
+    go get -t -u -v "$@"
+    go install "$@"
+}
+alias goi='goi'
