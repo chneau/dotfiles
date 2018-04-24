@@ -72,3 +72,9 @@ taskkill /im iexplore.exe /f
 # Good vpn server script
 
 https://github.com/Angristan/OpenVPN-install
+
+
+# Git clone all
+
+
+GHORG=COMPANYTOREPLACE; curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone
