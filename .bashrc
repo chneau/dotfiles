@@ -418,5 +418,3 @@ goi() {
     go install "$@"
 }
 alias goi='goi'
-
-alias exit='exit 0' # force graceful exit 
