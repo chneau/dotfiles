@@ -424,4 +424,4 @@ igo() {
     sudo apt update
     sudo apt -y install golang-go
 }
-alis igo='igo'
+alias igo='igo'
