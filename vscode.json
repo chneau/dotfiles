@@ -2,11 +2,10 @@
     "git.autofetch": true,
     "git.confirmSync": false,
     "files.autoSave": "afterDelay",
-    "editor.fontSize": 12,
     "editor.renderWhitespace": "all",
     "editor.wordWrap": "on",
     "files.autoSaveDelay": 10,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "git.enableSmartCommit": true,
@@ -14,8 +13,13 @@
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "go.autocompleteUnimportedPackages": true,
+    "go.gopath": "~/go",
     "go.liveErrors": {
         "enabled": true,
         "delay": 500
-    }
+    },
+    "git.promptToSaveFilesBeforeCommit": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true
 }
