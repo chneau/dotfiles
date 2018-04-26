@@ -78,3 +78,8 @@ https://github.com/Angristan/OpenVPN-install
 
 
 GHORG=COMPANYTOREPLACE; curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone
+
+
+# Snap
+
+nice idea but do not use it to install vscode / go. better use .deb file from vscode website and apt for latest go
