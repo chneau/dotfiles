@@ -8,8 +8,14 @@
     "files.autoSaveDelay": 10,
     "window.zoomLevel": 0,
     "editor.formatOnSave": true,
+    "editor.formatOnType": true,
     "git.enableSmartCommit": true,
     "workbench.statusBar.feedback.visible": false,
     "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "go.autocompleteUnimportedPackages": true,
+    "go.liveErrors": {
+        "enabled": true,
+        "delay": 500
+    }
 }
