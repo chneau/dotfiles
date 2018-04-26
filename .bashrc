@@ -6,7 +6,7 @@
 #
 # curl -sSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc > ~/.bashrc && . ~/.bashrc
 # curl -sSL bit.do/chnobash > ~/.bashrc && . ~/.bashrc
-# 
+#
 #
 # !! to repeat command
 # cd - to go back
@@ -418,3 +418,10 @@ goi() {
     go install "$@"
 }
 alias goi='goi'
+
+igo() {
+    sudo add-apt-repository -y ppa:longsleep/golang-backports
+    sudo apt update
+    sudo apt -y install golang-go
+}
+alis igo='igo'
