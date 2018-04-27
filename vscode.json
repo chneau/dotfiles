@@ -20,7 +20,6 @@
     },
     "git.promptToSaveFilesBeforeCommit": true,
     "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
 }
