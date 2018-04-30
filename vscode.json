@@ -21,5 +21,10 @@
     "git.promptToSaveFilesBeforeCommit": true,
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false,
+        "files.trimTrailingWhitespace": false
+    }
 }
