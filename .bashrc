@@ -399,7 +399,7 @@ alias nload='nload -m -u M'
 alias ivpn='wget https://raw.githubusercontent.com/Angristan/OpenVPN-install/master/openvpn-install.sh -O openvpn-install.sh && bash openvpn-install.sh'
 
 alias fixgpg='sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com'
-alias goget='go get -t -u -v'
+alias goget='go get -u -v'
 alias oc='code -a .'
 
 alias m='make'
