@@ -88,3 +88,7 @@ GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | g
 # Snap
 
 nice idea but do not use it to install vscode / go. better use .deb file from vscode website and apt for latest go
+
+# iso/img to usb
+unetbootin for ubuntu  
+rufus for windows  
