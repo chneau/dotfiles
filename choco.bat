@@ -2,6 +2,7 @@
 
 choco feature enable -n allowGlobalConfirmation
 
+choco install git
 choco install visualstudiocode
 choco install golang
 choco install gnuwin32-make.portable
@@ -11,5 +12,10 @@ choco install dws.portable
 choco install googlechrome
 choco install totalcommander
 choco install processhacker
+
+choco install jdk10
+choco install -i eclipse
+
+choco install anaconda3 --params="/AddToPath:1"
 
 cup all
