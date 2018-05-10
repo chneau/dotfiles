@@ -18,4 +18,6 @@ choco install -i eclipse
 
 choco install anaconda3 --params="/AddToPath:1"
 
+choco install adb
+
 cup all
