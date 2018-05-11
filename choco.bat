@@ -20,6 +20,8 @@ choco install anaconda3 --params="/AddToPath:1"
 
 choco install adb
 
+choco install nodejs
+
 REM choco install geforce-game-ready-driver
 
 cup all
