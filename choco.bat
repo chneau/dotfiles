@@ -24,6 +24,9 @@ choco install nodejs
 
 choco install robo3t
 
+choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+choco install rust
+
 REM choco install geforce-game-ready-driver
 
 cup all
