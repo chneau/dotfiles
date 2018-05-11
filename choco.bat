@@ -22,6 +22,8 @@ choco install adb
 
 choco install nodejs
 
+choco install robo3t
+
 REM choco install geforce-game-ready-driver
 
 cup all
