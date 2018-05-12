@@ -21,6 +21,7 @@ choco install anaconda3 --params="/AddToPath:1"
 choco install adb
 
 choco install nodejs
+choco install meteor
 
 choco install robo3t
 
