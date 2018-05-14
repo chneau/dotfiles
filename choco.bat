@@ -28,6 +28,8 @@ choco install robo3t
 choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 choco install rust
 
+choco install sandboxie
+
 REM choco install geforce-game-ready-driver
 
 cup all
