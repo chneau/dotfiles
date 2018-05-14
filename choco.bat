@@ -3,7 +3,7 @@
 choco feature enable -n allowGlobalConfirmation
 
 choco install git
-choco install visualstudiocode
+choco install vscode
 choco install golang
 choco install gnuwin32-make.portable
 choco install docker-for-windows
