@@ -381,6 +381,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export GOPATH=~/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:~/.linuxbrew/bin
 
 # alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 
