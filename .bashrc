@@ -330,9 +330,9 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 s() { # do sudo, or sudo the last command if no argument given
     if [[ $# == 0 ]]; then
-        sudo $(history -p '!!')
+        sudo env "PATH=$PATH" $(history -p '!!')
     else
-        sudo "$@"
+        sudo env "PATH=$PATH" "$@"
     fi
 }
 alias s='s'
@@ -426,3 +426,4 @@ igo() {
     sudo apt -y install golang-go
 }
 alias igo='igo'
+alias sudo='sudo env "PATH=$PATH"'
