@@ -335,7 +335,7 @@ s() { # do sudo, or sudo the last command if no argument given
         sudo env "PATH=$PATH" "$@"
     fi
 }
-alias s='s'
+alias s='s '
 
 
 
@@ -426,4 +426,4 @@ igo() {
     sudo apt -y install golang-go
 }
 alias igo='igo'
-alias sudo='sudo env "PATH=$PATH"'
+alias sudo='sudo env "PATH=$PATH" '
