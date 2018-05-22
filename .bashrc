@@ -1,17 +1,3 @@
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
-shopt -s extglob
-shopt -s dotglob
-shopt -s cdspell
-shopt -s histappend
-shopt -s checkwinsize
-shopt -s globstar
-shopt -s cmdhist
-shopt -s autocd
-
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=20000
 export HISTSIZE=10000
@@ -29,13 +15,23 @@ export GOPATH=~/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:~/.linuxbrew/bin
 
+[[ $- != *i* ]] && return
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 [ -s "/usr/share/bash-completion/bash_completion" ] && \. "/usr/share/bash-completion/bash_completion"
 [ -s "/etc/bash_completion" ] && \. "/etc/bash_completion"
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-
+shopt -s extglob
+shopt -s dotglob
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s globstar
+shopt -s cmdhist
+shopt -s autocd
+shopt -s cdable_vars
+shopt -s cdspell
 
 SELECT="if [ \$? = 0 ]; then echo \"\[\e[32m\]\$?\"; else echo \"\[\e[31m\]\$?\"; fi"
 PS1="\[\e[35m\]\t\[\e[m\] \[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[33m\] \w \`${SELECT}\`\[\e[m\] > "
