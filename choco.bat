@@ -14,6 +14,7 @@ choco install totalcommander
 choco install processhacker
 
 choco install jdk10
+choco install -i maven
 choco install -i eclipse
 
 choco install anaconda3 --params="/AddToPath:1"
