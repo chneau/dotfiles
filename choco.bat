@@ -30,6 +30,8 @@ choco install rust
 
 choco install sandboxie
 
+choco install photofiltre7
+
 REM choco install geforce-game-ready-driver
 
 cup all
