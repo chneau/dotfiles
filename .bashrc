@@ -36,8 +36,8 @@ if hash shopt 2>/dev/null; then
     shopt -s cdspell
 fi
 
-SELECT="if [ \$? = 0 ]; then echo \"\[\e[32m\]\$?\"; else echo \"\[\e[31m\]\$?\"; fi"
-PS1="\[\e[35m\]\t\[\e[m\] \[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[33m\] \w \`${SELECT}\`\[\e[m\] > "
+SELECT="if [ \$? = 0 ]; then echo \"\[\e[32m\]>\"; else echo \"\[\e[31m\]>\"; fi"
+PS1="\[\e[35m\]\t\[\e[m\] \[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[33m\] \w \`${SELECT}\`\[\e[m\] "
 
 
 
