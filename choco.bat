@@ -32,6 +32,8 @@ choco install sandboxie
 
 choco install photofiltre7
 
+choco install mingw
+
 REM choco install geforce-game-ready-driver
 
 cup all
