@@ -22,33 +22,31 @@ but use kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubect
 
 # Golang
 
-Use this for nice logging output :
-
+```go
 import "log"
-log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 
-Do not forget that using rand with goroutines is not efficient. Use rand.New with argument rand.Newsource((...date..))
+func init()  {
+    log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+}
+```
 
+Do not forget that using rand with goroutines is not efficient.  
+Use rand.New with argument rand.Newsource((...date..))
+
+```bash
 CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' .
-
-Using this looks better :
-
-import log "github.com/sirupsen/logrus";
-
-event better:
-logxi
+```
 
 # Ban an IP
 
+```bash
 sudo iptables -A INPUT -s 58.218.198.xxx -j DROP
-
-It's to bloc some IP that try to messup with ssh !
+```
 
 Commands last and lastlog to show auth stuff.
 
-
 # Windows: set proxy on via cmd
-```
+```cmd
 taskkill /im iexplore.exe /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /t REG_SZ /d 127.0.0.1:1080 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 1 /f
@@ -60,7 +58,7 @@ taskkill /im iexplore.exe /f
 
 now set it off
 
-```
+```cmd
 taskkill /im iexplore.exe /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f
 
@@ -77,17 +75,14 @@ https://github.com/Angristan/OpenVPN-install
 # Git clone all
 
 ```bash
-
 GHORG=COMPANYTOREPLACE; curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone
-
+```
+```bash
 GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone  
-
+```
+```bash
 GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\///g" | sed "s/.git//g" | xargs -L1 go get -t -u -v  
 ```
-
-# Snap
-
-nice idea but do not use it to install vscode / go. better use .deb file from vscode website and apt for latest go
 
 # iso/img to usb
 unetbootin for ubuntu  
@@ -122,24 +117,20 @@ rufus for windows
 # apt install -y network-manager
 # nmtui # = good network manager with console UI
 #
-#auto lo
-#iface lo inet loopback
-#auto enp14s0
-#iface enp14s0 inet dhcp
-#auto wlp13s0
-#iface wlp13s0 inet dhcp
-#wpa-ssid ssid
-#wpa-psk password
+# auto lo
+# iface lo inet loopback
+# auto enp14s0
+# iface enp14s0 inet dhcp
+# auto wlp13s0
+# iface wlp13s0 inet dhcp
+# wpa-ssid ssid
+# wpa-psk password
 #
-#nmcli dev show
+# nmcli dev show
 #
-#
-
-
-#use extra globing features. See man bash, search extglob.
-#include .files when globbing.
+# use extra globing features. See man bash, search extglob.
+# include .files when globbing.
 # fix spelling errors for cd, only in interactive shell
-
 #
 # to use a command without alias, use \.
 # eg. \ls for a nornal ls
