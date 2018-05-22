@@ -23,15 +23,18 @@ export PATH=$PATH:~/.linuxbrew/bin
 [ -s "/etc/bash_completion" ] && \. "/etc/bash_completion"
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-shopt -s extglob
-shopt -s dotglob
-shopt -s histappend
-shopt -s checkwinsize
-shopt -s globstar
-shopt -s cmdhist
-shopt -s autocd
-shopt -s cdable_vars
-shopt -s cdspell
+
+if hash shopt 2>/dev/null; then
+    shopt -s extglob
+    shopt -s dotglob
+    shopt -s histappend
+    shopt -s checkwinsize
+    shopt -s globstar
+    shopt -s cmdhist
+    shopt -s autocd
+    shopt -s cdable_vars
+    shopt -s cdspell
+else
 
 SELECT="if [ \$? = 0 ]; then echo \"\[\e[32m\]\$?\"; else echo \"\[\e[31m\]\$?\"; fi"
 PS1="\[\e[35m\]\t\[\e[m\] \[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[33m\] \w \`${SELECT}\`\[\e[m\] > "
