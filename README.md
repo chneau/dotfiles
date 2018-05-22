@@ -92,3 +92,56 @@ nice idea but do not use it to install vscode / go. better use .deb file from vs
 # iso/img to usb
 unetbootin for ubuntu  
 rufus for windows  
+
+# bashrc comments
+
+```bash
+#
+# wget https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -O ~/.bashrc -q; . ~/.bashrc
+#
+# curl -sSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc > ~/.bashrc && . ~/.bashrc
+# curl -sSL bit.do/chnobash > ~/.bashrc && . ~/.bashrc
+#
+# !! to repeat command
+# cd - to go back
+# ctrl + r to search through last commands used
+# escape + . put last args to current
+# take a look here http://www.commandlinefu.com/commands/browse/sort-by-votes
+#
+# ctrl + shift + v to paste
+# ctrl + d to exit session
+# ctrl z to SIGSTOP
+# fg to get back stopped jobs
+# jobs to list jobs running
+# or use %1 %2 ...
+#
+# sshfs maythux@192.168.xx.xx:/home/maythuxServ/Mounted ~/remoteDir
+#
+# htpasswd -bc file username password
+#
+# apt install -y network-manager
+# nmtui # = good network manager with console UI
+#
+#auto lo
+#iface lo inet loopback
+#auto enp14s0
+#iface enp14s0 inet dhcp
+#auto wlp13s0
+#iface wlp13s0 inet dhcp
+#wpa-ssid ssid
+#wpa-psk password
+#
+#nmcli dev show
+#
+#
+
+
+#use extra globing features. See man bash, search extglob.
+#include .files when globbing.
+# fix spelling errors for cd, only in interactive shell
+
+#
+# to use a command without alias, use \.
+# eg. \ls for a nornal ls
+#
+```
