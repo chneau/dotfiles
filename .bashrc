@@ -400,7 +400,6 @@ alias nload='nload -m -u M'
 alias ivpn='wget https://raw.githubusercontent.com/Angristan/OpenVPN-install/master/openvpn-install.sh -O openvpn-install.sh && bash openvpn-install.sh'
 
 alias fixgpg='sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com'
-alias goget='go get -u -v'
 alias oc='code -a .'
 
 alias m='make'
@@ -408,22 +407,16 @@ alias m='make'
 alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune'
 
 
-alias igotop='go get -u github.com/cjbassi/gotop && go install github.com/cjbassi/gotop'
+alias igotop='go get -u github.com/cjbassi/gotop'
 
 alias dm='docker run --net=host --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 mongo'
 alias dmm='docker run --net=host --rm -it mrvautin/adminmongo'
 alias igit='git config --global credential.helper "cache --timeout 36000000"; git config --global user.email "charles63500@gmail.com";git config --global user.name "Charles Neau"'
 
-goi() {
-    go get -t -u -v "$@"
-    go install "$@"
-}
-alias goi='goi'
-
-igo() {
-    sudo add-apt-repository -y ppa:longsleep/golang-backports
-    sudo apt update
-    sudo apt -y install golang-go
-}
-alias igo='igo'
 alias sudo='sudo env "PATH=$PATH" '
+
+alias goget='go get -u -v'
+gocd() {
+    cd "$GOPATH/src/$@"
+}
+alias gocd='gocd '
