@@ -29,13 +29,16 @@ export GOPATH=~/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:~/.linuxbrew/bin
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 [ -s "/usr/share/bash-completion/bash_completion" ] && \. "/usr/share/bash-completion/bash_completion"
 [ -s "/etc/bash_completion" ] && \. "/etc/bash_completion"
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-PS1='\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]$'
+
+
+SELECT="if [ \$? = 0 ]; then echo \"\[\e[32m\]\$?\"; else echo \"\[\e[31m\]\$?\"; fi"
+PS1="\[\e[35m\]\t\[\e[m\] \[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[33m\] \w \`${SELECT}\`\[\e[m\] > "
 
 
 
@@ -70,6 +73,7 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias diskspace="du -S | sort -n -r |more"
 alias ll='ls -alFh'
 alias la='ls -A'
 alias lo="ls -o"
