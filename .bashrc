@@ -15,7 +15,10 @@ export GOPATH=~/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:~/.linuxbrew/bin
 
-[[ $- != *i* ]] && return
+case $- in
+  *i*) ;;
+  *) return;;
+esac
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -270,3 +273,5 @@ gocd() {
     cd "$GOPATH/src/$@"
 }
 alias gocd='gocd '
+
+
