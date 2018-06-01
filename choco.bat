@@ -35,6 +35,8 @@ choco install photofiltre7
 
 choco install mingw
 
+choco install sysinternals
+
 REM choco install geforce-game-ready-driver
 
 cup all
