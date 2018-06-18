@@ -7,6 +7,7 @@ choco install vscode
 choco install golang
 choco install gnuwin32-make.portable
 choco install docker-for-windows
+REM Better override then with the latest version
 choco install openvpn
 
 choco install dws.portable
