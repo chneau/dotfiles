@@ -10,6 +10,8 @@ choco install docker-for-windows
 REM Better override then with the latest version
 choco install openvpn
 
+choco install 7zip
+choco install filezilla
 choco install dws.portable
 choco install googlechrome
 choco install totalcommander
@@ -39,6 +41,14 @@ choco install mingw
 
 choco install sysinternals
 
+choco install nssm
+
+choco install adwcleaner
+
+choco install greenshot
+
+REM choco pin add -n=nvidia-display-driver
+REM choco uninstall nvidia-display-driver -n --skipautouninstaller
 REM choco install geforce-game-ready-driver
 
 cup all
