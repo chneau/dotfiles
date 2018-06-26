@@ -271,5 +271,6 @@ gocd() {
 alias gocd='gocd '
 fio() {
     curl -F "file=@$@" https://file.io/?expires=1d
+    echo ""
 }
 alias fio='fio '
