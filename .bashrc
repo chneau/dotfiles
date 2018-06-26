@@ -269,5 +269,7 @@ gocd() {
     cd "$GOPATH/src/$@"
 }
 alias gocd='gocd '
-
-
+fio() {
+    curl -F "file=@$@" https://file.io/?expires=1d
+}
+alias fio='fio '
