@@ -292,3 +292,7 @@ serveosshconnect() {
     ssh -o ProxyCommand="ssh -W $2:22 serveo.net" $1@$2
 }
 alias soc='serveosshconnect'
+gogetc() {
+    go get -u -v github.com/chneau/$@
+}
+alias gogetc='gogetc'
