@@ -296,3 +296,7 @@ gogetc() {
     go get -u -v github.com/chneau/$@
 }
 alias gogetc='gogetc'
+h() {
+    curl cht.sh/$@
+}
+alias h='h'
