@@ -297,6 +297,6 @@ gogetc() {
 }
 alias gogetc='gogetc'
 h() {
-    curl cht.sh/$@
+    echo -e "$(curl -s cht.sh/$@)"
 }
 alias h='h'
