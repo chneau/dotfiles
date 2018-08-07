@@ -304,3 +304,6 @@ ptree() {
     pstree $(pgrep $@)
 }
 alias ptree='ptree'
+
+alias gog='cd $GOPATH/src/github.com/chneau/'
+alias gob='cd $GOPATH/src/bitbucket.org/chneau/'
