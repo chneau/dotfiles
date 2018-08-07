@@ -300,3 +300,7 @@ h() {
     echo -e "$(curl -s cht.sh/$@)"
 }
 alias h='h'
+ptree() {
+    pstree $(pgrep $@)
+}
+alias ptree='ptree'
