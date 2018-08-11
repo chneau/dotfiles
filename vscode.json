@@ -26,5 +26,8 @@
         "editor.wordWrap": "on",
         "editor.quickSuggestions": false,
         "files.trimTrailingWhitespace": false
-    }
+    },
+    "python.formatting.autopep8Args": [
+        "--max-line-length=200"
+    ]
 }
