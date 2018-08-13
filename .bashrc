@@ -14,6 +14,7 @@ export NVM_DIR=~/.nvm
 export GOPATH=~/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:~/.linuxbrew/bin
+export PATH=~/anaconda3/bin:$PATH
 
 case $- in
   *i*) ;;
