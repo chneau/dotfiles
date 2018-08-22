@@ -88,6 +88,15 @@ GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | g
 unetbootin for ubuntu  
 rufus for windows  
 
+# MongoDB
+
+Starting MongoDB 4, `--master` is no longer supported.  
+To do the same, do `mongod --replSet rs` then connected with a `mongo` and execute `rs.initiate( { _id: "rs", members: [ { _id: 0, host: "localhost:27017" } ] } )`  
+
+To restore from a gzipped file do `mongorestore --gzip  --drop --archive=20180822083000.archive --nsFrom meteor.* --nsTo arrcraib.*`.  
+Don't forget the `=` for the archive, else it won't work.  
+You can use `--nsInclude` is the namespace doesn't change.  
+
 # bashrc comments
 
 ```bash
