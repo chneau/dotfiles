@@ -308,3 +308,4 @@ alias ptree='ptree'
 
 alias gog='cd $GOPATH/src/github.com/chneau/'
 alias gob='cd $GOPATH/src/bitbucket.org/chneau/'
+alias ibrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
