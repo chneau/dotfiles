@@ -265,7 +265,7 @@ alias igotop='go get -u github.com/cjbassi/gotop'
 alias dm='docker run --net=host --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 mongo'
 alias dmm='docker run --net=host --rm -it mrvautin/adminmongo'
 alias igit='git config --global credential.helper "cache --timeout=36000000"; git config --global user.email "charles63500@gmail.com";git config --global user.name "chneau"'
-alias igitw='git config --global credential.helper "store"; git config --global user.email "charles63500@gmail.com";git config --global user.name "chneau"'
+alias igitw='git config --global credential.helper "store"; git config --global user.email "charles63500@gmail.com";git config --global user.name "chneau";git config --global core.askpass ""'
 alias sudo='sudo env "PATH=$PATH" '
 alias goget='go get -u -v'
 gocd() {
