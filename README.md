@@ -147,5 +147,5 @@ You can use `--nsInclude` is the namespace doesn't change.
 ```
 
 # Ubuntu VPN clients
-Cisco quick connect: network-manager-vpnc-gnome  
+Cisco quick connect: network-manager-openconnect-gnome  
 OpenVPN: network-manager-openvpn-gnome  
