@@ -145,3 +145,7 @@ You can use `--nsInclude` is the namespace doesn't change.
 # eg. \ls for a nornal ls
 #
 ```
+
+# Ubuntu VPN clients
+Cisco quick connect: network-manager-vpnc-gnome  
+OpenVPN: network-manager-openvpn-gnome  
