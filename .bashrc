@@ -313,5 +313,6 @@ alias ibrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/ins
 alias icode='curl -sSL https://raw.githubusercontent.com/chneau/util-commands/master/vscode.json > ~/.config/Code/User/settings.json'
 alias dnd='docker run --rm -it --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 titpetric/netdata'
 
-complete -F _docker d
 complete -F _make m
+_completion_loader docker
+complete -F _docker d
