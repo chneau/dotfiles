@@ -312,6 +312,7 @@ alias gob='cd $GOPATH/src/bitbucket.org/chneau/'
 alias ibrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
 alias icode='curl -sSL https://raw.githubusercontent.com/chneau/util-commands/master/vscode.json > ~/.config/Code/User/settings.json'
 alias dnd='docker run --rm -it --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 titpetric/netdata'
+alias dndd='docker run -d --restart always --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 titpetric/netdata'
 
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
