@@ -149,3 +149,10 @@ You can use `--nsInclude` is the namespace doesn't change.
 # Ubuntu VPN clients
 Cisco quick connect: network-manager-openconnect-gnome  
 OpenVPN: network-manager-openvpn-gnome  
+
+# mongo fix rs
+```mongo
+rsconf = rs.conf()
+rsconf.members = [{_id: 0, host: "localhost:27017"}]
+rs.reconfig(rsconf, {force: true})
+```
