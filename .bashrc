@@ -314,6 +314,8 @@ alias icode='curl -sSL https://raw.githubusercontent.com/chneau/util-commands/ma
 alias dnd='docker run --rm -it --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 titpetric/netdata'
 alias dndd='docker run -d --restart always --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 titpetric/netdata'
 
+alias irust='curl https://sh.rustup.rs -sSf | sh'
+
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
     complete -F _make m
