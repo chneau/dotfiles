@@ -316,6 +316,8 @@ alias dndd='docker run -d --restart always --name netdata --hostname netdata --c
 
 alias irust='curl https://sh.rustup.rs -sSf | sh'
 
+alias iptableclean='iptables-save | uniq | iptables-restore'
+
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
     complete -F _make m
