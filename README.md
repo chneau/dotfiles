@@ -1,26 +1,29 @@
+# ok
+
 ```bash
 wget https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -O ~/.bashrc -q; . ~/.bashrc
 ```
 
-# Cool docker images:
+## Cool docker images
 
-mrvautin/adminmongo https://hub.docker.com/r/mrvautin/adminmongo/ https://github.com/mrvautin/adminMongo  
+[mrvautin/adminmongo](https://hub.docker.com/r/mrvautin/adminmongo/)  
 An interface to connect to a DB and easily create databases / add users - roles
 
-titpetric/netdata https://hub.docker.com/r/titpetric/netdata/ https://github.com/firehol/netdata  
+[titpetric/netdata](https://hub.docker.com/r/titpetric/netdata/)  
+[firehol/netdata](https://github.com/firehol/netdata)  
 Get cool stats on your server with alert system
 
-# To check
+## To check
 
-https://github.com/Unitech/pm2
-https://github.com/srvrco/getssl
+[Unitech/pm2](https://github.com/Unitech/pm2)  
+[srvrco/getssl](https://github.com/srvrco/getssl)  
 
-# Kubernetes
+## Kubernetes
 
-https://blog.alexellis.io/kubernetes-in-10-minutes/ as a starter  
-but use kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+[This](https://blog.alexellis.io/kubernetes-in-10-minutes/) as a starter  
+but use `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
 
-# Golang
+## Golang
 
 ```go
 import "log"
@@ -37,7 +40,7 @@ Use rand.New with argument rand.Newsource((...date..))
 CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' .
 ```
 
-# Ban an IP
+## Ban an IP
 
 ```bash
 sudo iptables -A INPUT -s 58.218.198.xxx -j DROP
@@ -45,7 +48,8 @@ sudo iptables -A INPUT -s 58.218.198.xxx -j DROP
 
 Commands last and lastlog to show auth stuff.
 
-# Windows: set proxy on via cmd
+## Windows: set proxy on via cmd
+
 ```cmd
 taskkill /im iexplore.exe /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /t REG_SZ /d 127.0.0.1:1080 /f
@@ -67,28 +71,30 @@ timeout 1
 taskkill /im iexplore.exe /f
 ```
 
-# Good vpn server script
+## Good vpn server script
 
-https://github.com/Angristan/OpenVPN-install
+[OpenVPN](https://github.com/Angristan/OpenVPN-install)
 
-
-# Git clone all
+## Git clone all
 
 ```bash
 GHORG=COMPANYTOREPLACE; curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone
 ```
+
 ```bash
 GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone  
 ```
+
 ```bash
 GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\///g" | sed "s/.git//g" | xargs -L1 go get -t -u -v  
 ```
 
-# iso/img to usb
+## iso/img to usb
+
 unetbootin for ubuntu  
 rufus for windows  
 
-# MongoDB
+## MongoDB
 
 Starting MongoDB 4, `--master` is no longer supported.  
 To do the same, do `mongod --replSet rs` then connected with a `mongo` and execute `rs.initiate( { _id: "rs", members: [ { _id: 0, host: "localhost:27017" } ] } )`  
@@ -97,7 +103,7 @@ To restore from a gzipped file do `mongorestore --gzip  --drop --archive=2018082
 Don't forget the `=` for the archive, else it won't work.  
 You can use `--nsInclude` is the namespace doesn't change.  
 
-# bashrc comments
+## bashrc comments
 
 ```bash
 #
@@ -146,13 +152,34 @@ You can use `--nsInclude` is the namespace doesn't change.
 #
 ```
 
-# Ubuntu VPN clients
+## Ubuntu VPN clients
+
 Cisco quick connect: network-manager-openconnect-gnome  
 OpenVPN: network-manager-openvpn-gnome  
 
-# mongo fix rs
+## mongo fix rs
+
 ```mongo
 rsconf = rs.conf()
 rsconf.members = [{_id: 0, host: "localhost:27017"}]
 rs.reconfig(rsconf, {force: true})
+```
+
+## Go
+
+Full deps:
+
+```bash
+rm -rf vendor
+go get -u ./... # pull latest version
+govendor init
+govendor add +e
+govendor update +v
+```
+
+Mod deps:
+
+```bash
+rm -f go.mod go.sum
+go mod init
 ```
