@@ -183,3 +183,7 @@ Mod deps:
 rm -f go.mod go.sum
 go mod init
 ```
+# vscode extensions
+
+GitLens  
+Paste JSON as Code (ctrl+shift+p and search the command)  
