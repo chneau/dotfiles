@@ -187,3 +187,7 @@ go mod init
 
 GitLens  
 Paste JSON as Code (ctrl+shift+p and search the command)  
+
+# cool multi boot usb
+
+http://www.easy2boot.com/configuring-e2b/  
