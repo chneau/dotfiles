@@ -89,6 +89,12 @@ GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | g
 GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\///g" | sed "s/.git//g" | xargs -L1 go get -t -u -v  
 ```
 
+With [token](https://github.com/settings/tokens)  
+
+```bash
+curl -u username:token https://api.github.com/user
+```
+
 ## iso/img to usb
 
 unetbootin for ubuntu  
