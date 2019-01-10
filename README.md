@@ -189,11 +189,12 @@ Mod deps:
 rm -f go.mod go.sum
 go mod init
 ```
-# vscode extensions
+
+## vscode extensions
 
 GitLens  
 Paste JSON as Code (ctrl+shift+p and search the command)  
 
-# cool multi boot usb
+## cool multi boot usb
 
-http://www.easy2boot.com/configuring-e2b/  
+[easy2boot](http://www.easy2boot.com/configuring-e2b/)  
