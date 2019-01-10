@@ -92,7 +92,10 @@ GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | g
 With [token](https://github.com/settings/tokens)  
 
 ```bash
-curl "https://api.github.com/user/repos?per_page=1000&access_token=TOKEN" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone
+curl "https://api.github.com/user/repos?per_page=1000&access_token=[[TOKEN]]" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -n 1 -P 8 -L1 git clone
+# -n 1 -P 8 
+# taking at most one argument per run command line
+# and run up to eight processes at a time
 ```
 
 ## iso/img to usb
