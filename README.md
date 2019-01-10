@@ -92,9 +92,7 @@ GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | g
 With [token](https://github.com/settings/tokens)  
 
 ```bash
-curl -u username:token https://api.github.com/user
-# OR
-curl "https://api.github.com/user/repos?access_token=TOKEN" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone
+curl "https://api.github.com/user/repos?per_page=1000&access_token=TOKEN" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone
 ```
 
 ## iso/img to usb
