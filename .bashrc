@@ -316,6 +316,8 @@ alias irust='curl https://sh.rustup.rs -sSf | sh'
 
 alias iptableclean='iptables-save | uniq | iptables-restore'
 
+alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
     complete -F _make m
