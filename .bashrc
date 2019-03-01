@@ -75,6 +75,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diskspace="du -S | sort -n -r |more"
 alias ll='ls -alFh'
+alias lld="ls -alFhtr --group-directories-first"
 alias la='ls -A'
 alias lo="ls -o"
 alias lh="ls -lh"
