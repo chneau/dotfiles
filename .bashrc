@@ -319,6 +319,11 @@ alias iptableclean='iptables-save | uniq | iptables-restore'
 
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
 
+# aliases just to remenber something that needs to be deeply digged on my brain
+
+alias gigit='git --depth=1' # just the tip
+alias gotest='go test -cover -count=1'
+
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
     complete -F _make m
