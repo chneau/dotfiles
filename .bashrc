@@ -82,7 +82,7 @@ alias lh="ls -lh"
 alias l='ls -CF'
 alias hs='history | grep $1'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias updateall='sudo apt -y autoremove && sudo apt -yf install && sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade'
+alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove'
 alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -o ~/.bashrc && . ~/.bashrc'
 alias update='updatebashrc; updateall'
 alias d='docker'
