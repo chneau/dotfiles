@@ -326,6 +326,7 @@ alias gotest='go test -cover -count=1' # can add -race
 alias gitc='git clone https://github.com/chneau/'
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
 alias dcode='docker run -p 127.0.0.1:8443:8443 -v "${PWD}:/root/project" codercom/code-server code-server --allow-http --no-auth'
+alias iscc='go get -u github.com/boyter/scc'
 
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
