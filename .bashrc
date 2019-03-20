@@ -323,6 +323,7 @@ alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl
 
 alias gigit='git clone --depth=1' # just the tip
 alias gotest='go test -cover -count=1' # can add -race
+alias gitc='git clone https://github.com/chneau/'
 
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
