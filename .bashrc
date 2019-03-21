@@ -171,7 +171,7 @@ alias ps="ps auxf"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias mkdir="mkdir -pv"
 alias exe="chmod u+x "
-alias npmu="npm-check-updates -au && npm install && npm update"
+alias npmu="ncu -u && npm install && npm update"
 alias renewip="sudo dhclient -v -r && sudo dhclient -v"
 extract() {
     if [ -z "$1" ]; then
