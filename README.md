@@ -1,6 +1,10 @@
 # ok
 
 ```bash
+curl -fsSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -o ~/.bashrc && . ~/.bashrc
+```
+
+```bash
 wget https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -O ~/.bashrc -q; . ~/.bashrc
 ```
 
