@@ -6,49 +6,31 @@ choco install git
 choco install vscode
 choco install golang
 choco install make
-choco install docker-for-windows
-REM Better override then with the latest version
-choco install openvpn
-
-choco install 7zip
-choco install filezilla
 choco install dws.portable
-choco install googlechrome
 choco install totalcommander
 choco install processhacker
+choco install openvpn
 
-choco install jdk10
-choco install -i maven
-choco install -i eclipse
-
-choco install anaconda3 --params="/AddToPath:1"
-
+choco install filezilla
 choco install adb
-
-choco install nodejs
-choco install meteor
-
-choco install robo3t
-
-choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
-choco install rust
-
 choco install sandboxie
-
 choco install photofiltre7
-
-choco install mingw
-
-choco install sysinternals
-
-choco install nssm
-
 choco install adwcleaner
+choco install nodejs
 
-choco install greenshot
-
-REM choco pin add -n=nvidia-display-driver
-REM choco uninstall nvidia-display-driver -n --skipautouninstaller
-REM choco install geforce-game-ready-driver
+REM choco install 7zip
+REM choco install jdk11
+REM choco install -i maven
+REM choco install -i eclipse
+REM choco install mingw
+REM choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+REM choco install rust
+REM choco install sysinternals
+REM choco install nssm
+REM choco install greenshot
+REM choco install meteor
+REM choco install robo3t
+REM REM choco install anaconda3 --params="/AddToPath:1"
+REM REM choco install docker-for-windows
 
 cup all
