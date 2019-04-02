@@ -16,6 +16,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:~/.linuxbrew/bin
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 export PATH=~/anaconda3/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:$PATH
+export PATH=~/.nimble/bin:$PATH
 
 case $- in
   *i*) ;;
