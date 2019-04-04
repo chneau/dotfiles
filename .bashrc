@@ -328,7 +328,7 @@ alias gitc='git clone https://github.com/chneau/'
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
 alias dcode='docker run -p 127.0.0.1:8443:8443 -v "${PWD}:/root/project" codercom/code-server code-server --allow-http --no-auth'
 alias iscc='go get -u github.com/boyter/scc'
-alias openports='nmap -p- portquiz.net | grep -i open'
+alias openports='nmap -p- portquiz.net | grep -i open' # shows outgoing open ports
 
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
