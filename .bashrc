@@ -23,7 +23,7 @@ case $- in
   *) return;;
 esac
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 [ -s "/usr/share/bash-completion/bash_completion" ] && \. "/usr/share/bash-completion/bash_completion"
 [ -s "/etc/bash_completion" ] && \. "/etc/bash_completion"
