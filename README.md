@@ -116,6 +116,18 @@ To restore from a gzipped file do `mongorestore --gzip  --drop --archive=2018082
 Don't forget the `=` for the archive, else it won't work.  
 You can use `--nsInclude` is the namespace doesn't change.  
 
+Setup auth db:
+
+- First `docker run --rm -it --name aisdb --hostname aisdb -p 25555:27017 -v ~/data/ais:/data/db mongo`  
+- Then connect to it with `docker exec -it aisdb mongo` and:  
+
+```js
+use admin
+db.createUser({user: 'username', pwd: 'password', roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]})
+```
+
+- Then restart the first command with `docker run -d --restart always --name aisdb --hostname aisdb -p 25555:27017 -v ~/data/ais:/data/db mongo --auth`  
+
 ## bashrc comments
 
 ```bash
