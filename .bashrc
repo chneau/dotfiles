@@ -330,6 +330,7 @@ alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiai
 alias dcode='docker run -p 127.0.0.1:8443:8443 -v "${PWD}:/root/project" codercom/code-server code-server --allow-http --no-auth'
 alias iscc='go get -u github.com/boyter/scc'
 alias openports='nmap -p- portquiz.net | grep -i open' # shows outgoing open ports
+alias igotty='go get -u -v github.com/yudai/gotty'
 
 alias fixionotify='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
 
