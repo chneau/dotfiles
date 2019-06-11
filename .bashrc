@@ -334,9 +334,47 @@ alias igotty='go get -u -v github.com/yudai/gotty'
 
 alias fixionotify='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
 
+
+# git
+alias gl='git pull'
+alias gp='git push'
+alias gd='git diff'
+alias gc='git commit -v'
+alias gca='git commit . -v'
+alias gcom='git checkout master'
+alias glom='git pull origin master'
+alias gb='git branch -v'
+alias gs='git status -sb'
+alias ga='git add'
+alias gcl='git clone'
+alias grm="git ls-files --deleted | xargs git rm"
+alias undopush="git push -f origin HEAD^:master"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+function gco {
+  if [ $# -eq 0 ]; then
+    git checkout master
+  else
+    git checkout "$@"
+  fi
+}
+
+
 if type -t _completion_loader >/dev/null; then
     _completion_loader make
     complete -F _make m
     _completion_loader docker
     complete -F _docker d
+    # completion with git aliases
+    complete -o bashdefault -o default -o nospace -F _git_add ga
+    complete -o bashdefault -o default -o nospace -F _git_branch gb
+    complete -o bashdefault -o default -o nospace -F _git_checkout gco
+    complete -o bashdefault -o default -o nospace -F _git_clone gcl
+    complete -o bashdefault -o default -o nospace -F _git_diff gd
+    complete -o bashdefault -o default -o nospace -F _git_log glog
+    complete -o bashdefault -o default -o nospace -F _git_commit gc gca
+    complete -o bashdefault -o default -o nospace -F _git_push gp
+    complete -o bashdefault -o default -o nospace -F _git_pull gl
+    bind "set completion-ignore-case on"
+    bind "set bell-style none"
+    bind "set show-all-if-ambiguous on"
 fi
