@@ -8,6 +8,13 @@ curl -fsSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashr
 wget https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -O ~/.bashrc -q; . ~/.bashrc
 ```
 
+## SSH passwordless
+
+```bash
+ssh-keygen -t rsa -b 2048
+ssh-copy-id id@server
+```
+
 ## Cool docker images
 
 [mrvautin/adminmongo](https://hub.docker.com/r/mrvautin/adminmongo/)  
