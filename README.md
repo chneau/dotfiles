@@ -34,6 +34,8 @@ Get cool stats on your server with alert system
 [This](https://blog.alexellis.io/kubernetes-in-10-minutes/) as a starter  
 but use `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
 
+<https://k3s.io/> looks good as well.
+
 ## Golang
 
 ```go
