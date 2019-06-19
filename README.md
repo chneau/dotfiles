@@ -13,6 +13,7 @@ wget https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -O ~
 ```bash
 ssh-keygen -t rsa -b 2048
 ssh-copy-id id@server
+ssh-add # only if an agent is already running
 ```
 
 ## Cool docker images
