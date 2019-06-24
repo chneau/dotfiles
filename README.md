@@ -1,11 +1,15 @@
 # dotfiles
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -o ~/.bashrc && . ~/.bashrc
-```
+# curl
+curl -fsSLo ~/.bashrc git.io/fjwA8; . ~/.bashrc
 
-```bash
-wget https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -O ~/.bashrc -q; . ~/.bashrc
+curl -fsSLo ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc
+
+# wget
+wget -qO ~/.bashrc git.io/fjwA8; . ~/.bashrc
+
+wget -qO ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc
 ```
 
 ## SSH passwordless
@@ -142,9 +146,9 @@ db.createUser({user: 'username', pwd: 'password', roles: [ { role: "userAdminAny
 
 ```bash
 #
-# wget https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -O ~/.bashrc -q; . ~/.bashrc
+# wget https://raw.githubusercontent.com/chneau/dotfiles/master/.bashrc -O ~/.bashrc -q; . ~/.bashrc
 #
-# curl -sSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc > ~/.bashrc && . ~/.bashrc
+# curl -sSL https://raw.githubusercontent.com/chneau/dotfiles/master/.bashrc > ~/.bashrc && . ~/.bashrc
 # curl -sSL bit.do/chnobash > ~/.bashrc && . ~/.bashrc
 #
 # !! to repeat command
