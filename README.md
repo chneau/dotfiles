@@ -242,3 +242,20 @@ ulimit -n
 ulimit -n 120000
 # This setting is per terminal, not system wide
 ```
+
+## Don't leak memory with go http client
+
+```golang
+resp, err := (&http.Client{
+    Timeout: timeout,
+    Transport: &http.Transport{
+        DisableKeepAlives: true,
+        Proxy:             http.ProxyURL(&url.URL{Scheme: "http", Host: proxyHost}),
+        Dial: (&net.Dialer{
+            Timeout:   timeout,
+            KeepAlive: timeout,
+        }).Dial,
+    },
+}).Get(urlGet)
+// Dial needs to have a timeout and keepalive, AND DisableKeepAlives set to true
+```
