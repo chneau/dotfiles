@@ -118,6 +118,7 @@ curl "https://api.github.com/user/repos?per_page=1000&access_token=[[TOKEN]]" | 
 
 ## iso/img to usb
 
+By far the best: <http://www.easy2boot.com/configuring-e2b/>  
 unetbootin for ubuntu  
 rufus for windows  
 
