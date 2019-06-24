@@ -84,7 +84,7 @@ alias l='ls -CF'
 alias hs='history | grep $1'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove'
-alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/usefulCommands/master/.bashrc -o ~/.bashrc && . ~/.bashrc'
+alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles/master/.bashrc -o ~/.bashrc && . ~/.bashrc'
 alias update='updatebashrc; updateall'
 alias d='docker'
 alias dprune='docker system prune -f --volumes'
@@ -311,7 +311,7 @@ ptree() {
 alias ptree='ptree'
 
 alias ibrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
-alias icode='curl -sSL https://raw.githubusercontent.com/chneau/util-commands/master/vscode.json > ~/.config/Code/User/settings.json'
+alias icode='curl -sSL https://raw.githubusercontent.com/chneau/dotfiles/master/vscode.json > ~/.config/Code/User/settings.json'
 alias dnd='docker run --rm -it --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 titpetric/netdata'
 alias dndd='docker run -d --restart always --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 titpetric/netdata'
 
