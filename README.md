@@ -232,3 +232,13 @@ Paste JSON as Code (ctrl+shift+p and search the command)
 ## cool multi boot usb
 
 [easy2boot](http://www.easy2boot.com/configuring-e2b/)  
+
+## When too many open files
+
+```bash
+# Check max of files open per process
+ulimit -n
+# Set the limit higher
+ulimit -n 120000
+# This setting is per terminal, not system wide
+```
