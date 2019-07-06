@@ -15,6 +15,7 @@ export GOPATH=~/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:~/.linuxbrew/bin
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+export PATH=$PATH:/snap/bin
 export PATH=~/anaconda3/bin:$PATH
 export PATH=~/.nimble/bin:$PATH
 
