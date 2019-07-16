@@ -33,5 +33,9 @@
     "python.terminal.activateEnvironment": false,
     "workbench.colorTheme": "Saturated Dark+",
     "gitlens.views.repositories.files.layout": "tree",
-    "code-runner.runInTerminal": true
+    "code-runner.runInTerminal": true,
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--fast"
+    ]
 }
