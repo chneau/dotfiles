@@ -1,41 +1,40 @@
 {
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "files.autoSave": "afterDelay",
-    "editor.renderWhitespace": "all",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "files.autoSave": "afterDelay",
+  "editor.renderWhitespace": "all",
+  "editor.wordWrap": "on",
+  "files.autoSaveDelay": 10,
+  "window.zoomLevel": -1,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "git.enableSmartCommit": true,
+  "workbench.statusBar.feedback.visible": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "go.autocompleteUnimportedPackages": true,
+  "go.gopath": "~/go",
+  "go.liveErrors": {
+    "enabled": true,
+    "delay": 500
+  },
+  "git.promptToSaveFilesBeforeCommit": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "[markdown]": {
     "editor.wordWrap": "on",
-    "files.autoSaveDelay": 10,
-    "window.zoomLevel": -1,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "git.enableSmartCommit": true,
-    "workbench.statusBar.feedback.visible": false,
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "go.autocompleteUnimportedPackages": true,
-    "go.gopath": "~/go",
-    "go.liveErrors": {
-        "enabled": true,
-        "delay": 500
-    },
-    "git.promptToSaveFilesBeforeCommit": true,
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-    "[markdown]": {
-        "editor.wordWrap": "on",
-        "editor.quickSuggestions": false,
-        "files.trimTrailingWhitespace": false
-    },
-    "python.formatting.autopep8Args": [
-        "--max-line-length=200"
-    ],
-    "python.terminal.activateEnvironment": false,
-    "workbench.colorTheme": "Saturated Dark+",
-    "gitlens.views.repositories.files.layout": "tree",
-    "code-runner.runInTerminal": true,
-    "go.lintTool": "golangci-lint",
-    "go.lintFlags": [
-        "--fast"
-    ]
+    "editor.quickSuggestions": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "python.formatting.autopep8Args": ["--max-line-length=200"],
+  "python.terminal.activateEnvironment": false,
+  "workbench.colorTheme": "Saturated Dark+",
+  "gitlens.views.repositories.files.layout": "tree",
+  "code-runner.runInTerminal": true,
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
 }
