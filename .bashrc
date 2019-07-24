@@ -264,7 +264,7 @@ alias ivpn='wget https://raw.githubusercontent.com/Angristan/OpenVPN-install/mas
 alias fixgpg='sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com'
 alias oc='code -a .'
 alias m='make'
-alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune'
+alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git tag -d $(git tag); git fetch --tags'
 alias igotop='go get -u github.com/cjbassi/gotop'
 alias dm='docker run --net=host --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 mongo'
 alias dmm='docker run --net=host --rm -it mrvautin/adminmongo'
