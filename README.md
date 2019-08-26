@@ -259,3 +259,23 @@ resp, err := (&http.Client{
 }).Get(urlGet)
 // Dial needs to have a timeout and keepalive, AND DisableKeepAlives set to true
 ```
+
+## nsupdate
+
+```bash
+root@testmachine1 ~]# nsupdate 
+> update delete testmachine1.domain1.local
+> update add testmachine1.domain1.local 86400 A 10.1.1.1.1
+> send
+> answer
+Outgoing update query:
+;; ->>HEADER<<- opcode: UPDATE, status: NOERROR, id:  61616
+;; flags: qr ; ZONE: 1, PREREQ: 0, UPDATE: 1, ADDITIONAL: 0
+;; ZONE SECTION:
+;domain1.local.                 IN      SOA
+
+;; UPDATE SECTION:
+testmachine1.domain1.local. 86400 IN A    10.1.1.1
+
+> quit
+```
