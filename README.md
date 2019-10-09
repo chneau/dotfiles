@@ -12,6 +12,8 @@ wget -qO ~/.bashrc git.io/fjwA8; . ~/.bashrc
 wget -qO ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc
 ```
 
+free -> <https://github.com/ripienaar/free-for-dev>
+
 ## SSH passwordless
 
 ```bash
