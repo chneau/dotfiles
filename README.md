@@ -307,5 +307,8 @@ testmachine1.domain1.local. 86400 IN A    10.1.1.1
 Stuff to distinguish (<https://projector.tensorflow.org/>):
 
 - Uniform manifold approximation and projection (looks like a one shot thing)
-- t-distributed stochastic neighbor embedding (can be iterated)
-- principal component analysis
+- t-distributed stochastic neighbor embedding (can be iterated) [good explanation](https://nlml.github.io/in-raw-numpy/in-raw-numpy-t-sne/) - [quora answer](https://www.quora.com/How-does-t-SNE-work-in-simple-words)
+- principal component analysis [eli5](https://www.reddit.com/r/explainlikeimfive/comments/17xk21/eli5_principle_component_analysis_pcn/c89rmai/)
+
+other:
+- umap / t-sne <https://josauder.github.io/dreambank_visualized/>
