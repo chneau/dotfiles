@@ -289,6 +289,8 @@ testmachine1.domain1.local. 86400 IN A    10.1.1.1
 
 ## Machine learning HAVE TO KNOW
 
+<https://towardsdatascience.com/10-machine-learning-methods-that-every-data-scientist-should-know-3cc96e0eeee9>
+
 - Regression
 - Classification
 - Clustering
