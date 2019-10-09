@@ -303,3 +303,9 @@ testmachine1.domain1.local. 86400 IN A    10.1.1.1
 - Word Embeddings
 
 <https://www.nltk.org/>
+
+Stuff to distinguish (<https://projector.tensorflow.org/>):
+
+- Uniform manifold approximation and projection (looks like a one shot thing)
+- t-distributed stochastic neighbor embedding (can be iterated)
+- principal component analysis
