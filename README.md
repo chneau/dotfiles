@@ -282,3 +282,7 @@ testmachine1.domain1.local. 86400 IN A    10.1.1.1
 
 > quit
 ```
+
+## code review by google
+
+<https://google.github.io/eng-practices/review/reviewer/>
