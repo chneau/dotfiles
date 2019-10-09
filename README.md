@@ -286,3 +286,16 @@ testmachine1.domain1.local. 86400 IN A    10.1.1.1
 ## code review by google
 
 <https://google.github.io/eng-practices/review/reviewer/>
+
+## Machine learning HAVE TO KNOW
+
+- Regression
+- Classification
+- Clustering
+- Dimensionality Reduction
+- Ensemble Methods
+- Neural Nets and Deep Learning
+- Transfer Learning
+- Reinforcement Learning
+- Natural Language Processing
+- Word Embeddings
