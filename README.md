@@ -312,3 +312,4 @@ Stuff to distinguish (<https://projector.tensorflow.org/>):
 
 other:
 - umap / t-sne <https://josauder.github.io/dreambank_visualized/>
+- very cool visualisation <https://distill.pub/2016/misread-tsne/>
