@@ -19,7 +19,7 @@ choco install adwcleaner
 choco install nodejs
 
 REM choco install 7zip
-REM choco install jdk11
+REM choco install openjdk --version=11.0
 REM choco install -i maven
 REM choco install -i eclipse
 REM choco install mingw
