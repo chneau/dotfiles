@@ -91,6 +91,12 @@ timeout 1
 taskkill /im iexplore.exe /f
 ```
 
+## Windows: not responding to ping
+
+```cmd
+netsh advfirewall firewall add rule name="ping" protocol=ICMPV4 dir=in action=allow
+```
+
 ## Good vpn server script
 
 [OpenVPN](https://github.com/Angristan/OpenVPN-install)
