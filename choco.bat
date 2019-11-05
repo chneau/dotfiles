@@ -10,6 +10,7 @@ choco install dws.portable
 choco install totalcommander
 choco install processhacker
 choco install openvpn
+choco install windirstat
 
 choco install filezilla
 choco install adb
