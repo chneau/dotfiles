@@ -88,6 +88,7 @@ alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt -y upgra
 alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles/master/.bashrc -o ~/.bashrc && . ~/.bashrc'
 alias update='updatebashrc; updateall'
 alias d='docker'
+alias dupdate=$'docker images | grep -v REPOSITORY | awk \'{printf("%s:%s\\n", $1, $2)}\' | xargs -L1 docker pull'
 alias dprune='docker system prune -f --volumes'
 alias dkill='docker kill $(docker ps -q)'
 alias dprunea='docker system prune -af --volumes'
