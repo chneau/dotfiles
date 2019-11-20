@@ -89,6 +89,7 @@ alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles
 alias update='updatebashrc; updateall'
 alias d='docker'
 alias dupdate=$'docker images | grep -v REPOSITORY | awk \'{printf("%s:%s\\n", $1, $2)}\' | xargs -L1 docker pull'
+alias dwatch='docker run -d --restart=always --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower'
 alias dprune='docker system prune -f --volumes'
 alias dkill='docker kill $(docker ps -q)'
 alias dprunea='docker system prune -af --volumes'
