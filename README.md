@@ -353,4 +353,6 @@ sudo umount /media/usb
 # Auto Mount
 sudo nano /etc/fstab
 # add this: UUID=18A9-9943 /media/usb ntfs async,auto,nofail,noatime,users,rw,uid=c,gid=c 0 0
+# or: UUID=3E06129406124CF1 /media/usb ntfs-3g defaults 0 0
+# mount -a to test fstab
 ```
