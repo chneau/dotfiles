@@ -341,6 +341,8 @@ docker run -d --restart=always --name samba --hostname samba -p 139:139 -p 445:4
 lsusb
 # Identify The Devices Unique ID
 ls -l /dev/disk/by-uuid/
+# or
+blkid
 # Create a Mount Point
 sudo mkdir /media/usb
 sudo chown -R c:c /media/usb
@@ -350,5 +352,5 @@ sudo mount /dev/sda1 /media/usb -o uid=c,gid=c
 sudo umount /media/usb
 # Auto Mount
 sudo nano /etc/fstab
-# add this: UUID=18A9-9943 /media/usb vfat auto,nofail,noatime,users,rw,uid=c,gid=c 0 0
+# add this: UUID=18A9-9943 /media/usb ntfs async,auto,nofail,noatime,users,rw,uid=c,gid=c 0 0
 ```
