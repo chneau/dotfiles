@@ -345,8 +345,10 @@ lsblk
 ls -l /dev/disk/by-uuid/
 # or
 blkid
-# check speed
+# check read speed
 sudo hdparm -Tt /dev/sdb1
+# check write speed after mount
+dd if=/dev/zero of=/media/usb/DATA/test bs=8k count=10k; rm -f /media/usb/DATA/test
 # Create a Mount Point
 sudo mkdir /media/usb
 sudo chown -R c:c /media/usb
