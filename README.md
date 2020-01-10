@@ -334,4 +334,21 @@ docker run -d --restart=always --name samba --hostname samba -p 139:139 -p 445:4
 # dperson/samba:armv7hf for orangepi
 ```
 
+## Mount external disk
 
+```bash
+# to check if it is reconised
+lsusb
+# Identify The Devices Unique ID
+ls -l /dev/disk/by-uuid/
+# Create a Mount Point
+sudo mkdir /media/usb
+sudo chown -R c:c /media/usb
+# Manually Mount The Drive
+sudo mount /dev/sda1 /media/usb -o uid=c,gid=c
+# Un-mounting The Drive
+sudo umount /media/usb
+# Auto Mount
+sudo nano /etc/fstab
+# add this: UUID=18A9-9943 /media/usb vfat auto,nofail,noatime,users,rw,uid=c,gid=c 0 0
+```
