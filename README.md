@@ -327,7 +327,10 @@ other:
 
 ```bash
 dt dperson/samba -h
+# for quick testing
 docker run --rm -it -p 139:139 -p 445:445 -v `pwd`/samba:/c dperson/samba -p -r -u "c;c" -s "c;/c;no;no;no;c;none;c"
+# as a service
+docker run -d --restart=always --name samba --hostname samba -p 139:139 -p 445:445 -v `pwd`/samba:/c dperson/samba -p -r -u "c;c" -s "c;/c;no;no;no;c;none;c"
 # dperson/samba:armv7hf for orangepi
 ```
 
