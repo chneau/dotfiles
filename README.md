@@ -322,3 +322,12 @@ other:
 - umap / t-sne <https://josauder.github.io/dreambank_visualized/>
 - very cool visualisation <https://distill.pub/2016/misread-tsne/>
 - tensorflow playground about NN <https://playground.tensorflow.org/>
+
+## Samba server on raspbery pi
+
+```bash
+dt dperson/samba -h
+docker run --rm -it -p 139:139 -p 445:445 -v `pwd`/samba:/c dperson/samba -p -r -u "c;c" -s "c;/c;no;no;no;c;none;c"
+```
+
+
