@@ -339,10 +339,14 @@ docker run -d --restart=always --name samba --hostname samba -p 139:139 -p 445:4
 ```bash
 # to check if it is reconised
 lsusb
+# lit mounted blk
+lsblk
 # Identify The Devices Unique ID
 ls -l /dev/disk/by-uuid/
 # or
 blkid
+# check speed
+sudo hdparm -Tt /dev/sdb1
 # Create a Mount Point
 sudo mkdir /media/usb
 sudo chown -R c:c /media/usb
@@ -352,7 +356,8 @@ sudo mount /dev/sda1 /media/usb -o uid=c,gid=c
 sudo umount /media/usb
 # Auto Mount
 sudo nano /etc/fstab
-# add this: UUID=18A9-9943 /media/usb ntfs async,auto,nofail,noatime,users,rw,uid=c,gid=c 0 0
-# or: UUID=3E06129406124CF1 /media/usb ntfs-3g defaults 0 0
+# add this: UUID=18A9-9943 /media/usb ntfs async,auto,nofail,noatime,users,rw,uid=c,gid=c 0 2
+# or: UUID=3E06129406124CF1 /media/usb ntfs-3g defaults,barrier=0 0 2
+# or: UUID=3E06129406124CF1 /media/usb ntfs-3g rw,auto,user,noatime,async,big_writes 0 2
 # mount -a to test fstab
 ```
