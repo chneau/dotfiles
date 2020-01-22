@@ -1,7 +1,7 @@
 {
   "git.autofetch": true,
   "git.confirmSync": false,
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "onFocusChange",
   "editor.renderWhitespace": "all",
   "editor.wordWrap": "on",
   "files.autoSaveDelay": 10,
@@ -27,13 +27,17 @@
     "editor.quickSuggestions": false,
     "files.trimTrailingWhitespace": false
   },
-  "python.formatting.autopep8Args": ["--max-line-length=200"],
+  "python.formatting.autopep8Args": [
+    "--max-line-length=200"
+  ],
   "python.terminal.activateEnvironment": false,
   "workbench.colorTheme": "Saturated Dark+",
   "gitlens.views.repositories.files.layout": "tree",
   "code-runner.runInTerminal": true,
   "go.lintTool": "golangci-lint",
-  "go.lintFlags": ["--fast"],
+  "go.lintFlags": [
+    "--fast"
+  ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   }
