@@ -379,3 +379,20 @@ docker run --rm -it --name aria2-ui -p 80:80 -v ~/docker/aria2-ui/filebrowser/fi
 
 #quickly access the file manager and change default password admin/admin
 ```
+
+
+## Autossh (access servers behind corporate NAT)
+
+<https://superuser.com/questions/277218/ssh-access-to-office-host-behind-nat-router>
+
+```bash
+# from Corporation to Home
+autossh -N -R 6000:localhost:22 user@monitoring.com
+
+# at home
+ssh remoteuser@localhost -p 6000
+
+# source: https://handyman.dulare.com/ssh-tunneling-with-autossh/
+```
+
+
