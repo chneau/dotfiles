@@ -18,6 +18,9 @@ export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 export PATH=$PATH:/snap/bin
 export PATH=~/anaconda3/bin:$PATH
 export PATH=~/.nimble/bin:$PATH
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/sbin
 
 case $- in
   *i*) ;;
