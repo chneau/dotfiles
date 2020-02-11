@@ -34,7 +34,7 @@ Get cool stats on your server with alert system
 ## To check
 
 [Unitech/pm2](https://github.com/Unitech/pm2)  
-[srvrco/getssl](https://github.com/srvrco/getssl)  
+[srvrco/getssl](https://github.com/srvrco/getssl)
 
 ## Kubernetes
 
@@ -108,14 +108,14 @@ GHORG=COMPANYTOREPLACE; curl "https://api.github.com/orgs/$GHORG/repos?per_page=
 ```
 
 ```bash
-GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone  
+GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -L1 git clone
 ```
 
 ```bash
-GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\///g" | sed "s/.git//g" | xargs -L1 go get -t -u -v  
+GUSER=chneau; curl "https://api.github.com/users/$GUSER/repos?per_page=1000" | grep -o 'git://[^"]*' | sed "s/git:\/\///g" | sed "s/.git//g" | xargs -L1 go get -t -u -v
 ```
 
-With [token](https://github.com/settings/tokens)  
+With [token](https://github.com/settings/tokens)
 
 ```bash
 curl "https://api.github.com/user/repos?per_page=1000&access_token=[[TOKEN]]" | grep -o 'git://[^"]*' | sed "s/git:\/\//https:\/\//g" | xargs -n 1 -P 8 -L1 git clone
@@ -128,21 +128,21 @@ curl "https://api.github.com/user/repos?per_page=1000&access_token=[[TOKEN]]" | 
 
 By far the best: <http://www.easy2boot.com/configuring-e2b/>  
 unetbootin for ubuntu  
-rufus for windows  
+rufus for windows
 
 ## MongoDB
 
 Starting MongoDB 4, `--master` is no longer supported.  
-To do the same, do `mongod --replSet rs` then connected with a `mongo` and execute `rs.initiate( { _id: "rs", members: [ { _id: 0, host: "localhost:27017" } ] } )`  
+To do the same, do `mongod --replSet rs` then connected with a `mongo` and execute `rs.initiate( { _id: "rs", members: [ { _id: 0, host: "localhost:27017" } ] } )`
 
-To restore from a gzipped file do `mongorestore --gzip  --drop --archive=20180822083000.archive --nsFrom meteor.* --nsTo arrcraib.*`.  
+To restore from a gzipped file do `mongorestore --gzip --drop --archive=20180822083000.archive --nsFrom meteor.* --nsTo arrcraib.*`.  
 Don't forget the `=` for the archive, else it won't work.  
-You can use `--nsInclude` is the namespace doesn't change.  
+You can use `--nsInclude` is the namespace doesn't change.
 
 Setup auth db:
 
-- First `docker run --rm -it --name aisdb --hostname aisdb -p 25555:27017 -v ~/data/ais:/data/db mongo`  
-- Then connect to it with `docker exec -it aisdb mongo` and:  
+- First `docker run --rm -it --name aisdb --hostname aisdb -p 25555:27017 -v ~/data/ais:/data/db mongo`
+- Then connect to it with `docker exec -it aisdb mongo` and:
 
 ```js
 use admin
@@ -152,7 +152,7 @@ db.createUser({user: 'username', pwd: 'password', roles: [ "userAdminAnyDatabase
 
 ```
 
-- Then restart the first command with `docker run -d --restart always --name aisdb --hostname aisdb -p 25555:27017 -v ~/data/ais:/data/db mongo --auth`  
+- Then restart the first command with `docker run -d --restart always --name aisdb --hostname aisdb -p 25555:27017 -v ~/data/ais:/data/db mongo --auth`
 
 ## bashrc comments
 
@@ -206,7 +206,7 @@ db.createUser({user: 'username', pwd: 'password', roles: [ "userAdminAnyDatabase
 ## Ubuntu VPN clients
 
 Cisco quick connect: network-manager-openconnect-gnome  
-OpenVPN: network-manager-openvpn-gnome  
+OpenVPN: network-manager-openvpn-gnome
 
 ## mongo fix rs
 
@@ -238,11 +238,11 @@ go mod init
 ## vscode extensions
 
 GitLens  
-Paste JSON as Code (ctrl+shift+p and search the command)  
+Paste JSON as Code (ctrl+shift+p and search the command)
 
 ## cool multi boot usb
 
-[easy2boot](http://www.easy2boot.com/configuring-e2b/)  
+[easy2boot](http://www.easy2boot.com/configuring-e2b/)
 
 ## When too many open files
 
@@ -274,7 +274,7 @@ resp, err := (&http.Client{
 ## nsupdate
 
 ```bash
-root@testmachine1 ~]# nsupdate 
+root@testmachine1 ~]# nsupdate
 > update delete testmachine1.domain1.local
 > update add testmachine1.domain1.local 86400 A 10.1.1.1.1
 > send
@@ -319,6 +319,7 @@ Stuff to distinguish (<https://projector.tensorflow.org/>):
 - principal component analysis [eli5](https://www.reddit.com/r/explainlikeimfive/comments/17xk21/eli5_principle_component_analysis_pcn/c89rmai/)
 
 other:
+
 - umap / t-sne <https://josauder.github.io/dreambank_visualized/>
 - very cool visualisation <https://distill.pub/2016/misread-tsne/>
 - tensorflow playground about NN <https://playground.tensorflow.org/>
@@ -364,7 +365,6 @@ sudo nano /etc/fstab
 # mount -a to test fstab
 ```
 
-
 ## Download Manager
 
 ```bash
@@ -380,7 +380,6 @@ docker run --rm -it --name aria2-ui -p 80:80 -v ~/docker/aria2-ui/filebrowser/fi
 #quickly access the file manager and change default password admin/admin
 ```
 
-
 ## Autossh (access servers behind corporate NAT)
 
 <https://superuser.com/questions/277218/ssh-access-to-office-host-behind-nat-router>
@@ -393,6 +392,9 @@ autossh -N -R 6000:localhost:22 user@monitoring.com
 ssh remoteuser@localhost -p 6000
 
 # source: https://handyman.dulare.com/ssh-tunneling-with-autossh/
+
+# example with docker
+dtest -e SSH_HOSTUSER=USERNAME -e SSH_HOSTNAME=chneau.ddns.net -e SSH_HOSTPORT=22 -e SSH_TUNNEL_REMOTE=2222 -e SSH_TUNNEL_LOCAL=22 -e SSH_TUNNEL_HOST=172.17.0.1 -v ~/.ssh/id_rsa:/id_rsa jnovack/autossh
+# 172.17.0.1 = docker host
+# id_rsa = keys, properly set it up with ssh-copy-id and ssh-keygen
 ```
-
-
