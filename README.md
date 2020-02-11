@@ -400,4 +400,7 @@ dtest -e SSH_HOSTUSER=USERNAME -e SSH_HOSTNAME=remote.ddns.net -e SSH_HOSTPORT=2
 
 # on remote (here remote.ddns.net)
 ssh USERNAME@0 -p2222 # @0 == @::1 == @127.1 == @localhost == @127.0.0.1    --> geek stuff
+
+# ssh through multiple computers example:
+ssh server-one -t ssh user@localhost -t ssh server-two
 ```
