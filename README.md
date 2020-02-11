@@ -394,7 +394,10 @@ ssh remoteuser@localhost -p 6000
 # source: https://handyman.dulare.com/ssh-tunneling-with-autossh/
 
 # example with docker
-dtest -e SSH_HOSTUSER=USERNAME -e SSH_HOSTNAME=chneau.ddns.net -e SSH_HOSTPORT=22 -e SSH_TUNNEL_REMOTE=2222 -e SSH_TUNNEL_LOCAL=22 -e SSH_TUNNEL_HOST=172.17.0.1 -v ~/.ssh/id_rsa:/id_rsa jnovack/autossh
+dtest -e SSH_HOSTUSER=USERNAME -e SSH_HOSTNAME=remote.ddns.net -e SSH_HOSTPORT=22 -e SSH_TUNNEL_REMOTE=2222 -e SSH_TUNNEL_LOCAL=22 -e SSH_TUNNEL_HOST=172.17.0.1 -v ~/.ssh/id_rsa:/id_rsa jnovack/autossh
 # 172.17.0.1 = docker host
 # id_rsa = keys, properly set it up with ssh-copy-id and ssh-keygen
+
+# on remote (here remote.ddns.net)
+ssh USERNAME@0 -p2222 # @0 == @::1 == @127.1 == @localhost == @127.0.0.1    --> geek stuff
 ```
