@@ -404,3 +404,15 @@ ssh USERNAME@0 -p2222 # @0 == @::1 == @127.1 == @localhost == @127.0.0.1    --> 
 # ssh through multiple computers example:
 ssh server-one -t ssh user@localhost -t ssh server-two
 ```
+
+
+## x11vnc
+```bash
+# create a password
+x11vnc -storepasswd
+
+# run server with pwd without exiting at first logout
+x11vnc -usepw -forever
+
+# note: in debian with Gnome on Xorg (to select when loging in !) it works even for the login screen
+```
