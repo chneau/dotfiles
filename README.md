@@ -403,6 +403,20 @@ ssh USERNAME@0 -p2222 # @0 == @::1 == @127.1 == @localhost == @127.0.0.1    --> 
 
 # ssh through multiple computers example:
 ssh server-one -t ssh user@localhost -t ssh server-two
+
+# another example with docker: (for vnc)
+docker run -d --restart=always --name=autovnc --hostname=autovnc -e SSH_HOSTUSER=c -e SSH_HOSTNAME=chneau.ddns.net -e SSH_HOSTPORT=21 -e SSH_TUNNEL_REMOTE=12311 -e SSH_TUNNEL_LOCAL=5900 -e SSH_TUNNEL_HOST=172.17.0.1 -v ~/.ssh/id_rsa:/id_rsa jnovack/autossh
+
+# make a port EXPOSED: https://unix.stackexchange.com/a/10429
+ssh -g -L 12310:localhost:12311 -N c@0 -p21
+# here, we make port 12311 exposed on all interfaces on port 12310
+# -g means allow other clients on my network to connect to port 12310
+# https://unix.stackexchange.com/a/115906 
+# -L from local to remote
+# -R from remote to local (not in example)
+# -N means all I am doing is forwarding ports, don't start a shell.
+
+# why -R 0.0.0.0:[...] wasnt working: https://serverfault.com/a/861911 (because target host need some special configuration)
 ```
 
 
