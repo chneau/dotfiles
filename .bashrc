@@ -13,6 +13,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export NVM_DIR=~/.nvm
 export GOPATH=~/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.linuxbrew/bin
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 export PATH=$PATH:/snap/bin
