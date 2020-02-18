@@ -430,3 +430,18 @@ x11vnc -usepw -forever
 
 # note: in debian with Gnome on Xorg (to select when loging in !) it works even for the login screen
 ```
+
+## youtube-dl
+```bash
+# from file
+-a file.txt
+
+# docker
+# -v 1 directory where to download
+# -v 2 list of dls
+docker run --rm -it -v ~/samba/like-moi:/workdir:rw -v ~/samba/like-moi.txt:/lm.txt:ro mikenye/youtube-dl -a /lm.txt
+
+# docker service (no restart since it's a onetime job)
+docker run --rm -d -v ~/samba/like-moi:/workdir:rw -v ~/samba/like-moi.txt:/lm.txt:ro mikenye/youtube-dl -a /lm.txt
+
+```
