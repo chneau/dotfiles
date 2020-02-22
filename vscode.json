@@ -53,6 +53,10 @@
     "completeUnimported": true,
     "deepCompletion": true
   },
+  "go.formatTool": "goimports",
+  "go.alternateTools": {
+    "goimports": "gofumports", // install with: `cd $(mktemp -d); go mod init tmp; go get mvdan.cc/gofumpt/gofumports`
+  },
   "go.languageServerExperimentalFeatures": {
     "format": false,
     "autoComplete": true,
