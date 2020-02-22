@@ -55,7 +55,7 @@
   },
   "go.formatTool": "goimports",
   "go.alternateTools": {
-    "goimports": "gofumports", // install with: `cd $(mktemp -d); go mod init tmp; go get mvdan.cc/gofumpt/gofumports`
+    "goimports": "gofumports" // install with: `cd $(mktemp -d); go mod init tmp; go get mvdan.cc/gofumpt/gofumports`
   },
   "go.languageServerExperimentalFeatures": {
     "format": false,
