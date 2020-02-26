@@ -277,6 +277,7 @@ alias igit='git config --global credential.helper "cache --timeout=36000000"; gi
 alias igitw='git config --global credential.helper "store"; git config --global user.email "charles63500@gmail.com";git config --global user.name "chneau";git config --global core.askpass "";git config --global credential.modalprompt false'
 alias sudo='sudo env "PATH=$PATH" '
 alias goget='go get -u -v'
+alias vgoget='cd $(mktemp -d); go mod init tmp; go get -u -v'
 alias gols="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 gocd() {
     cd "$GOPATH/src/$@"
