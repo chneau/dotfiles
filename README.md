@@ -445,3 +445,11 @@ docker run --rm -it -v ~/samba/like-moi:/workdir:rw -v ~/samba/like-moi.txt:/lm.
 docker run --rm -d -v ~/samba/like-moi:/workdir:rw -v ~/samba/like-moi.txt:/lm.txt:ro mikenye/youtube-dl -a /lm.txt
 
 ```
+
+## gradle
+
+```bash
+# upgrade gradle to latest
+# (to it twice so it update gradle jar)
+./gradlew wrapper --gradle-version=6.3 --distribution-type=all
+```
