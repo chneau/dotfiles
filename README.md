@@ -453,3 +453,9 @@ docker run --rm -d -v ~/samba/like-moi:/workdir:rw -v ~/samba/like-moi.txt:/lm.t
 # (to it twice so it update gradle jar)
 ./gradlew wrapper --gradle-version=6.3 --distribution-type=all
 ```
+
+## docker update image on swarm
+```bash
+# here is an example with wordpress
+docker pull wordpress:latest && docker service update --image wordpress:latest wordpress_wordpress
+```
