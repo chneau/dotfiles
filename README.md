@@ -471,6 +471,9 @@ f, _ := os.Create("pprof.out")
 defer f.Close()
 _ = pprof.StartCPUProfile(f)
 defer pprof.StopCPUProfile()
+// tip, disable gc temporary so the pprof is clearer
+debug.SetGCPercent(-1)
+defer debug.SetGCPercent(100)
 // for cpu:
 f, err := os.Create("pprof.out")
 checkError(err)
