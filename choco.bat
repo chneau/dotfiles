@@ -10,14 +10,15 @@ choco install dws.portable
 choco install totalcommander
 choco install processhacker
 choco install openvpn
-choco install windirstat
+choco install nodejs
+choco install python3
 
+choco install windirstat
 choco install filezilla
 choco install adb
 choco install sandboxie
 choco install photofiltre7
 choco install adwcleaner
-choco install nodejs
 
 REM choco install 7zip
 REM choco install adoptopenjdk11
