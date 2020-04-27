@@ -335,6 +335,7 @@ docker run -d --restart=always --name samba --hostname samba -e USERID=1000 -e G
 # dperson/samba:armv7hf for orangepi
 # another example
 docker run -d --restart=always --name samba --hostname samba -e USERID=1000 -e GROUPID=1000 -e VETO=yes -p 139:139 -p 445:445 -p 137:137/udp -p 138:138/udp -v `pwd`/samba:/c dperson/samba -p -n -r -u "c;c" -s "c;/c;no;no;no;c;none;c" -W
+docker run -d --restart=always --name samba --hostname samba -e USERID=1000 -e GROUPID=1000 -e VETO=yes -p 139:139 -p 445:445 -p 137:137/udp -p 138:138/udp -v `pwd`/samba:/c dperson/samba -p -n -r -u "c;c" -u "Sarah;c" -s "c;/c;no;no;no;c,Sarah;none;c,Sarah" -W
 ```
 
 ## Mount external disk
@@ -460,4 +461,23 @@ docker run --rm -d -v ~/samba/like-moi:/workdir:rw -v ~/samba/like-moi.txt:/lm.t
 ```bash
 # here is an example with wordpress
 docker pull wordpress:latest && docker service update --image wordpress:latest wordpress_wordpress
+```
+## golang: easy pprof:
+
+```go
+// for cpu:
+f, err := os.Create("pprof.out")
+checkError(err)
+defer f.Close()
+err = pprof.StartCPUProfile(f)
+checkError(err)
+defer pprof.StopCPUProfile()
+// then 
+```
+
+```bash
+# run this to get the svg
+go tool pprof -web trace.out
+# or to get the UI
+go tool pprof -http=:9999 trace.out
 ```
