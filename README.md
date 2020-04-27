@@ -333,6 +333,8 @@ docker run --rm -it -p 139:139 -p 445:445 -v `pwd`/samba:/c dperson/samba -p -r 
 # as a service
 docker run -d --restart=always --name samba --hostname samba -e USERID=1000 -e GROUPID=1000 -p 139:139 -p 445:445 -v `pwd`/samba:/c dperson/samba -p -r -u "c;c" -s "c;/c;no;no;no;c;none;c"
 # dperson/samba:armv7hf for orangepi
+# another example
+docker run -d --restart=always --name samba --hostname samba -e USERID=1000 -e GROUPID=1000 -e VETO=yes -p 139:139 -p 445:445 -p 137:137/udp -p 138:138/udp -v `pwd`/samba:/c dperson/samba -p -n -r -u "c;c" -s "c;/c;no;no;no;c;none;c" -W
 ```
 
 ## Mount external disk
