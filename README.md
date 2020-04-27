@@ -465,6 +465,12 @@ docker pull wordpress:latest && docker service update --image wordpress:latest w
 ## golang: easy pprof:
 
 ```go
+// living the thug life:
+defer func() { _ = exec.Command("go", "tool", "pprof", "-web", "pprof.out").Start() }()
+f, _ := os.Create("pprof.out")
+defer f.Close()
+_ = pprof.StartCPUProfile(f)
+defer pprof.StopCPUProfile()
 // for cpu:
 f, err := os.Create("pprof.out")
 checkError(err)
