@@ -477,7 +477,7 @@ defer pprof.StopCPUProfile()
 
 ```bash
 # run this to get the svg
-go tool pprof -web trace.out
+go tool pprof -web pprof.out
 # or to get the UI
-go tool pprof -http=:9999 trace.out
+go tool pprof -http=:9999 pprof.out
 ```
