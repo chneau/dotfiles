@@ -10,7 +10,7 @@ choco install dws.portable
 choco install totalcommander
 choco install processhacker
 choco install openvpn
-choco install nodejs
+choco install nodejs-lts
 choco install python3
 
 choco install windirstat
