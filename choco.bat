@@ -13,6 +13,8 @@ choco install openvpn
 choco install nodejs-lts
 choco install python3
 
+choco install openjdk11
+
 choco install windirstat
 choco install filezilla
 choco install adb
