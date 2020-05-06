@@ -169,6 +169,7 @@ ik() {
     sudo apt-get update
     sudo apt-get install -y kubelet kubeadm kubernetes-cni
 }
+alias pipup='pip list --format freeze --outdated | sed 's/=.*//g' | xargs -n1 pip install -U'
 alias ik='ik'
 alias v='vagrant'
 alias pstats='powerstat -d 0 -f 1'
