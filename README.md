@@ -490,3 +490,7 @@ go tool pprof -web pprof.out
 # or to get the UI
 go tool pprof -http=:9999 pprof.out
 ```
+
+## python tips and tricks
+
+- https://www.techbeamers.com/essential-python-tips-tricks-programmers/
