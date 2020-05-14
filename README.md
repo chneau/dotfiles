@@ -149,7 +149,8 @@ use admin
 db.createUser({user: 'username', pwd: 'password', roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]})
 // or
 db.createUser({user: 'username', pwd: 'password', roles: [ "userAdminAnyDatabase", "readWriteAnyDatabase" ]}) // db default to current db
-
+// the all mighty
+db.createUser({user: 'username', pwd: 'password', roles: [ "root" ]})
 ```
 
 - Then restart the first command with `docker run -d --restart always --name aisdb --hostname aisdb -p 25555:27017 -v ~/data/ais:/data/db mongo --auth`
