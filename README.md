@@ -504,6 +504,8 @@ go tool pprof -http=:9999 pprof.out
 - Grokking Agorithms
 - Effective Python
 - Clean Code
+- Don't Make Me Think
+- The Design of everyday things
 
 ### Reading (or read but still need experience)
 
