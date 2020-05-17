@@ -497,7 +497,7 @@ go tool pprof -http=:9999 pprof.out
 - https://www.techbeamers.com/essential-python-tips-tricks-programmers/
 
 
-## books
+## books / resources
 
 ### Read
 
@@ -506,15 +506,25 @@ go tool pprof -http=:9999 pprof.out
 - Clean Code
 - Don't Make Me Think
 - The Design of everyday things
+- https://github.com/dwyl/start-here
 
 ### Reading (or read but still need experience)
 
 - The Devops Handbook
 - The Phoenix Project
 - The Site Reliability Workbook
--  I've read so far
+- I've read so far
+- https://github.com/ctjhoa/rust-learning
+- https://github.com/sindresorhus/awesome (about anything)
 
 ### want to read
 
 - Building Secure & Reliable Systems
 - Cracking the coding interview (set under the PC to make the fan more silent...)
+- You Don't Know JS Yet
+- https://github.com/denysdovhan/wtfjs 
+- https://github.com/yeasy/docker_practice
+- https://github.com/tuhdo/os01
+- https://github.com/realpython/python-guide
+- https://github.com/TheAlgorithms
+- https://github.com/daryllxd/lifelong-learning
