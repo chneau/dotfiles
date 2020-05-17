@@ -495,3 +495,23 @@ go tool pprof -http=:9999 pprof.out
 ## python tips and tricks
 
 - https://www.techbeamers.com/essential-python-tips-tricks-programmers/
+
+
+## books
+
+### Read
+
+- Grokking Agorithms
+- Effective Python
+- Clean Code
+
+### Reading (or read but still need experience)
+
+- The Devops Handbook
+- The Phoenix Project
+- The Site Reliability Workbook
+-  I've read so far
+
+### want to read
+
+- Building Secure & Reliable Systems
