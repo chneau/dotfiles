@@ -528,3 +528,7 @@ go tool pprof -http=:9999 pprof.out
 - https://github.com/realpython/python-guide
 - https://github.com/TheAlgorithms
 - https://github.com/daryllxd/lifelong-learning
+
+## disable some windows features
+
+- all here https://github.com/W4RH4WK/Debloat-Windows-10
