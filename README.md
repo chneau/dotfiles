@@ -532,3 +532,7 @@ go tool pprof -http=:9999 pprof.out
 ## disable some windows features
 
 - all here https://github.com/W4RH4WK/Debloat-Windows-10
+- and here is how to disable this cpu sucker of windows defender:
+```powershell
+New-ItemProperty -Path “HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender” -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
+```
