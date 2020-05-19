@@ -346,6 +346,7 @@ alias fixionotify='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.co
 
 
 # git
+alias gitmessage='curl -s http://whatthecommit.com/index.txt'
 alias gl='git pull'
 alias gp='git push'
 alias gd='git diff'
