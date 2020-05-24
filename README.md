@@ -522,6 +522,7 @@ go tool pprof -http=:9999 pprof.out
 - Building Secure & Reliable Systems
 - Cracking the coding interview (set under the PC to make the fan more silent...)
 - You Don't Know JS Yet
+- Accelerate - Building and Scaling High Performing Technology Organisations - Nicole Fergrson
 - https://github.com/denysdovhan/wtfjs 
 - https://github.com/yeasy/docker_practice
 - https://github.com/tuhdo/os01
