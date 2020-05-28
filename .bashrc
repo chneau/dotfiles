@@ -338,6 +338,7 @@ alias gotest='go test -cover -count=1' # can add -race
 alias gitc='git clone https://github.com/chneau/'
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
 alias dcode='docker run -p 127.0.0.1:8443:8443 -v "${PWD}:/root/project" codercom/code-server code-server --allow-http --no-auth'
+alias dpihole='docker run -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ="Europe/London" -v "$(pwd)/pihole/etc/pihole/:/etc/pihole/" -v "$(pwd)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST="pihole" -e PROXY_LOCATION="pihole" -e ServerIP="127.0.0.1" pihole/pihole:latest'
 alias iscc='go get -u github.com/boyter/scc'
 alias openports='nmap -p- portquiz.net | grep -i open' # shows outgoing open ports
 alias igotty='go get -u -v github.com/yudai/gotty'
