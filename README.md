@@ -545,3 +545,12 @@ New-ItemProperty -Path “HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender” 
 # if npm i fails at bcrypt on windows ...
 npm install --global --production windows-build-tools
 ```
+
+## dns with adblock integrated
+
+```go
+"192.168.1.4",     // pihole
+"176.103.130.130", // AdGuard
+"208.67.222.222",  // OpenDNS
+"23.253.163.53",   // Alternate DNS
+```
