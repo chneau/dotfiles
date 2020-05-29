@@ -562,3 +562,8 @@ npm install --global --production windows-build-tools
 # replace `--rm -it` by `-d --restart=always`
 docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_BIND_SERVICE --cap-add=NET_RAW -e=ServerIP=192.168.1.4 -e=TZ=Europe/London -e=INTERFACE=enp14s0 -e=DNS_BOGUS_PRIV=true -e=DNS_FQDN_REQUIRED=true -v ~/docker/pihole/etc/pihole/:/etc/pihole/ -v ~/docker/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/ --dns=127.0.0.1 --dns=1.1.1.1 pihole/pihole:latest
 ```
+
+## language/framework insights
+
+- https://insights.stackoverflow.com/survey/
+- https://githut.info/ 
