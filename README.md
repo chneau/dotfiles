@@ -567,3 +567,7 @@ docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_B
 
 - https://insights.stackoverflow.com/survey/
 - https://githut.info/ 
+
+## simple "random" generator
+
+- https://en.wikipedia.org/wiki/Linear_congruential_generator
