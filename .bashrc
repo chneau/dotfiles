@@ -319,6 +319,17 @@ ptree() {
     pstree $(pgrep $@)
 }
 alias ptree='ptree'
+n() {
+cat << EOF
+# curl
+curl -fsSLo ~/.bashrc git.io/fjwA8; . ~/.bashrc
+curl -fsSLo ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc
+# wget
+wget -qO ~/.bashrc git.io/fjwA8; . ~/.bashrc
+wget -qO ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc
+EOF
+}
+alias n='n'
 
 alias ibrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
 alias icode='curl -sSL https://raw.githubusercontent.com/chneau/dotfiles/master/vscode.json > ~/.config/Code/User/settings.json'
