@@ -333,8 +333,8 @@ alias n='n'
 
 alias ibrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
 alias icode='curl -sSL https://raw.githubusercontent.com/chneau/dotfiles/master/vscode.json > ~/.config/Code/User/settings.json'
-alias dnd='docker run --rm -it --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -p 19999:19999 netdata/netdata'
-alias dndd='docker run -d --restart always --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -p 19999:19999 netdata/netdata'
+alias dnd='docker run --rm -it --security-opt apparmor=unconfined --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -p 19999:19999 netdata/netdata'
+alias dndd='docker run -d --restart always --security-opt apparmor=unconfined --name netdata --hostname netdata --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -p 19999:19999 netdata/netdata'
 
 alias irust='curl https://sh.rustup.rs -sSf | sh'
 
