@@ -219,6 +219,8 @@ rs.reconfig(rsconf, {force: true})
 
 ## Go
 
+https://benhoyt.com/writings/go-intro/
+
 Full deps:
 
 ```bash
