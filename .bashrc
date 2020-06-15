@@ -353,7 +353,7 @@ alias dpihole='docker run -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 
 alias iscc='go get -u github.com/boyter/scc'
 alias openports='nmap -p- portquiz.net | grep -i open' # shows outgoing open ports
 alias igotty='go get -u -v github.com/yudai/gotty'
-
+alias createpwd='PASSWORD=$(base64 < /dev/urandom | head -c12); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum'
 alias fixionotify='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
 
 
