@@ -378,12 +378,13 @@ sudo nano /etc/fstab
 
 mkdir -p ~/docker/aria2-ui/filebrowser/
 touch ~/docker/aria2-ui/filebrowser/filebrowser.db
-docker run -d --restart=always --name aria2-ui -p 80:80 -v ~/docker/aria2-ui/filebrowser/filebrowser.db:/app/filebrowser.db -v ~/samba/:/data -e ENABLE_AUTH=true -e ARIA2_USER=user -e ARIA2_PWD=pwd -e ARIA2_SSL=false wahyd4/aria2-ui
+docker run -d --restart=always --name aria2-ui -p 1080:80 -v ~/docker/aria2-ui/filebrowser/filebrowser.db:/app/filebrowser.db -v ~/samba/:/data -e ENABLE_AUTH=true -e ARIA2_USER=user -e ARIA2_PWD=pwd -e ARIA2_SSL=false wahyd4/aria2-ui
 
 # testing
-docker run --rm -it --name aria2-ui -p 80:80 -v ~/docker/aria2-ui/filebrowser/filebrowser.db:/app/filebrowser.db -v ~/samba/:/data -e ENABLE_AUTH=true -e ARIA2_USER=user -e ARIA2_PWD=pwd -e ARIA2_SSL=false wahyd4/aria2-ui
+docker run --rm -it --name aria2-ui -p 1080:80 -v ~/docker/aria2-ui/filebrowser/filebrowser.db:/app/filebrowser.db -v ~/samba/:/data -e ENABLE_AUTH=true -e ARIA2_USER=user -e ARIA2_PWD=pwd -e ARIA2_SSL=false wahyd4/aria2-ui
 
 #quickly access the file manager and change default password admin/admin
+# access site via ipv4, not the hostname
 ```
 
 ## Autossh (access servers behind corporate NAT)
