@@ -385,6 +385,7 @@ docker run --rm -it --name aria2-ui -p 1080:80 -v ~/docker/aria2-ui/filebrowser/
 
 #quickly access the file manager and change default password admin/admin
 # access site via ipv4, not the hostname
+# NOTICE: if not connected, go on the web page and go to AriaNg Settings and go to the second tab to change the port and reload.
 ```
 
 ## Autossh (access servers behind corporate NAT)
