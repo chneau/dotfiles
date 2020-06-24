@@ -500,6 +500,13 @@ go tool pprof -http=:9999 pprof.out
 
 - https://www.techbeamers.com/essential-python-tips-tricks-programmers/
 
+```bash
+# evil good
+pip install pigar
+pigar --without-referenced-comments -o ">=" # Generate requirements.txt for current directory.
+```
+
+- check the site-packages directory of python to remove bad remaining directories
 
 ## books / resources
 
