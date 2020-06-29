@@ -508,6 +508,11 @@ pigar --without-referenced-comments -o ">=" # Generate requirements.txt for curr
 
 - check the site-packages directory of python to remove bad remaining directories
 
+```bash
+# force pip to be pip3
+python3 -m pip install --upgrade --force pip
+```
+
 ## books / resources
 
 ### Read
