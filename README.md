@@ -587,3 +587,10 @@ docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_B
 ## simple "random" generator
 
 - https://en.wikipedia.org/wiki/Linear_congruential_generator
+
+## the best online tools
+
+- https://explainshell.com/ 
+- https://app.quicktype.io/
+- https://kepler.gl/
+- https://mobisoftinfotech.com/tools/plot-multiple-points-on-map/
