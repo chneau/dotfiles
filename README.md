@@ -560,6 +560,10 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Nam
 ps onedrive | Stop-Process -Force
 start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"
 ```
+- and here is how to disable hibernation (and remove hiberfil.sys)
+```cmd
+powercfg -h off
+```
 
 ## nodejs bcrypt on windows
 
