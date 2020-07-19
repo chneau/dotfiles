@@ -8,28 +8,41 @@ choco install golang
 choco install make
 choco install totalcommander
 choco install processhacker
-choco install openvpn
 choco install nodejs-lts
 choco install python3
-
 choco install openjdk11
-
-choco install windirstat
-choco install filezilla
+choco install googlechrome
 choco install adb
+choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+
+choco install s3browser
 choco install paint.net
+choco install filezilla
+choco install openvpn
+choco install openconnect-gui
+
+choco install autohotkey
+choco install vlc
 choco install adwcleaner
+choco install treesizefree
+choco install nvidia-display-driver
+choco install mousewithoutborders
+choco install cheatengine
+choco install dbeaver
+choco install 7zip
 
 
+choco install rainmeter
+choco install minecraft
+choco install steam
 choco install sandboxie
 choco install dws.portable
 
-REM choco install 7zip
+REM choco install windirstat
 REM choco install adoptopenjdk11
 REM choco install -i maven
 REM choco install -i eclipse
 REM choco install mingw
-REM choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 REM choco install rust
 REM choco install sysinternals
 REM choco install nssm
