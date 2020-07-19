@@ -554,6 +554,11 @@ python3 -m pip install --upgrade --force pip
 ```powershell
 New-ItemProperty -Path “HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender” -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
 ```
+- and here is how to disable onedrive
+```powershell
+ps onedrive | Stop-Process -Force
+start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"
+```
 
 ## nodejs bcrypt on windows
 
