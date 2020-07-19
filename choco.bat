@@ -6,7 +6,6 @@ choco install git
 choco install vscode
 choco install golang
 choco install make
-choco install dws.portable
 choco install totalcommander
 choco install processhacker
 choco install openvpn
@@ -18,9 +17,12 @@ choco install openjdk11
 choco install windirstat
 choco install filezilla
 choco install adb
-choco install sandboxie
-choco install photofiltre7
+choco install paint.net
 choco install adwcleaner
+
+
+choco install sandboxie
+choco install dws.portable
 
 REM choco install 7zip
 REM choco install adoptopenjdk11
