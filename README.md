@@ -564,6 +564,20 @@ start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"
 ```cmd
 powercfg -h off
 ```
+- and here to remove pagefile (not super good if not a lot of ram)
+```powershell
+# Disable automatic pagefile management
+$cs = gwmi Win32_ComputerSystem
+if ($cs.AutomaticManagedPagefile) {
+    $cs.AutomaticManagedPagefile = $False
+    $cs.Put()
+}
+# Disable a *single* pagefile if any
+$pg = gwmi win32_pagefilesetting
+if ($pg) {
+    $pg.Delete()
+}
+```
 
 ## nodejs bcrypt on windows
 
