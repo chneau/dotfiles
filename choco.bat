@@ -18,7 +18,6 @@ choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 choco install s3browser
 choco install paint.net
 choco install filezilla
-choco install openvpn
 choco install openconnect-gui
 
 choco install autohotkey
@@ -37,6 +36,9 @@ choco install minecraft
 choco install steam
 choco install sandboxie
 choco install dws.portable
+choco install openvpn
+
+REM openvpn is not openvpn-connect
 
 REM choco install windirstat
 REM choco install adoptopenjdk11
