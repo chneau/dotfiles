@@ -14,6 +14,7 @@ choco install openjdk11
 choco install googlechrome
 choco install adb
 choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+choco install rust
 
 choco install s3browser
 choco install paint.net
