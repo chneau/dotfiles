@@ -14,7 +14,7 @@ choco install openjdk11
 choco install googlechrome
 choco install adb
 choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
-choco install rust
+choco install rustup.install
 
 choco install s3browser
 choco install paint.net
@@ -41,8 +41,6 @@ choco install openvpn
 
 REM openvpn is not openvpn-connect
 
-REM choco install windirstat
-REM choco install adoptopenjdk11
 REM choco install -i maven
 REM choco install -i eclipse
 REM choco install mingw
