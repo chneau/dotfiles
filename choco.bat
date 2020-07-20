@@ -18,6 +18,7 @@ choco install s3browser
 choco install paint.net
 choco install filezilla
 choco install openconnect-gui
+choco install visualstudio2019buildtools
 
 choco install autohotkey
 choco install vlc
