@@ -631,3 +631,35 @@ For vscode, probably the best working extension ever:
 <script type="text/javascript" src="http://livejs.com/live.js"></script>
 <!-- don't forget to remove for prod -->
 ```
+With a python script like this
+```python
+#!/usr/bin/env python
+
+import http.server
+
+
+class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_my_headers()
+        http.server.SimpleHTTPRequestHandler.end_headers(self)
+
+    def send_my_headers(self):
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+
+    def log_message(self, format, *args):
+        if len(args) > 1 and isinstance(args[0], str) and args[0].startswith("HEAD"):
+            return
+        http.server.SimpleHTTPRequestHandler.log_message(self, format, *args)
+
+
+if __name__ == '__main__':
+    print("http://localhost:8000/")
+    print("http://localhost:8000/map")
+    http.server.test(HandlerClass=MyHTTPRequestHandler)
+
+```
+Where basically:
+- hide HEAD logging (for confort)
+- say to the browser to NOT CACHE anything (else chrome load from cache ~"exponentially")
