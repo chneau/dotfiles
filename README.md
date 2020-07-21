@@ -618,3 +618,8 @@ docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_B
 - https://app.quicktype.io/
 - https://kepler.gl/
 - https://mobisoftinfotech.com/tools/plot-multiple-points-on-map/
+
+## Rust
+
+For vscode, probably the best working extension ever:
+- https://rust-analyzer.github.io/manual.html#installation
