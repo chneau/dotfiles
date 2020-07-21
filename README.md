@@ -623,3 +623,11 @@ docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_B
 
 For vscode, probably the best working extension ever:
 - https://rust-analyzer.github.io/manual.html#installation
+
+## Any web dev
+
+```html
+<!-- the EASY way to autoreload a page being edited -->
+<script type="text/javascript" src="http://livejs.com/live.js"></script>
+<!-- don't forget to remove for prod -->
+```
