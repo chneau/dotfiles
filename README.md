@@ -628,7 +628,7 @@ For vscode, probably the best working extension ever:
 
 ```html
 <!-- the EASY way to autoreload a page being edited -->
-<script type="text/javascript" src="http://livejs.com/live.js"></script>
+<script src="//livejs.com/live.js"></script>
 <!-- don't forget to remove for prod -->
 ```
 With a python script like this
@@ -639,14 +639,18 @@ import http.server
 
 
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
-    def end_headers(self):
-        self.send_my_headers()
-        http.server.SimpleHTTPRequestHandler.end_headers(self)
+    def guess_type(self, path):
+        mimetype = http.server.SimpleHTTPRequestHandler.guess_type(self, path)
+        if mimetype == 'text/plain':  # fix for live.js to work properly
+            if path.endswith('.js'):
+                mimetype = 'text/javascript'
+        return mimetype
 
-    def send_my_headers(self):
-        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, post-check=0, pre-check=0")
         self.send_header("Pragma", "no-cache")
         self.send_header("Expires", "0")
+        http.server.SimpleHTTPRequestHandler.end_headers(self)
 
     def log_message(self, format, *args):
         if len(args) > 1 and isinstance(args[0], str) and args[0].startswith("HEAD"):
@@ -654,11 +658,11 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         http.server.SimpleHTTPRequestHandler.log_message(self, format, *args)
 
 
-if __name__ == '__main__':
-    print("http://localhost:8000/")
-    print("http://localhost:8000/map")
-    http.server.test(HandlerClass=MyHTTPRequestHandler)
-
+if __name__ == "__main__":
+    PORT = 8000
+    print(f"http://localhost:{PORT}/")
+    print(f"http://localhost:{PORT}/map")
+    http.server.test(HandlerClass=MyHTTPRequestHandler, port=PORT)
 ```
 Where basically:
 - hide HEAD logging (for confort)
