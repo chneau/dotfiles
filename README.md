@@ -641,9 +641,9 @@ import http.server
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def guess_type(self, path):
         mimetype = http.server.SimpleHTTPRequestHandler.guess_type(self, path)
-        if mimetype == 'text/plain':  # fix for live.js to work properly
-            if path.endswith('.js'):
-                mimetype = 'text/javascript'
+        if mimetype == "text/plain":  # fix for live.js to work properly
+            if path.endswith(".js"):
+                mimetype = "application/javascript"
         return mimetype
 
     def end_headers(self):
