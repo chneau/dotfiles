@@ -636,6 +636,9 @@ With a python script like this
 #!/usr/bin/env python
 
 import http.server
+import io
+
+from bs4 import BeautifulSoup
 
 
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -652,6 +655,21 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Expires", "0")
         http.server.SimpleHTTPRequestHandler.end_headers(self)
 
+    def send_header(self, keyword, value):
+        if keyword.lower() == 'content-length':  # ignore content-length for the little hack to work
+            return
+        http.server.SimpleHTTPRequestHandler.send_header(self, keyword, value)
+
+    def copyfile(self, source, outputfile):
+        if source.name.lower().endswith(".html"):
+            res = BeautifulSoup(source, features="html.parser")
+            res.head.insert(0, res.new_tag('script', src='//livejs.com/live.js'))
+            source.close()
+            bb = res.encode()
+            new_source = io.BufferedReader(io.BytesIO(bb))
+            source = new_source
+        http.server.SimpleHTTPRequestHandler.copyfile(self, source, outputfile)
+
     def log_message(self, format, *args):
         if len(args) > 1 and isinstance(args[0], str) and args[0].startswith("HEAD"):
             return
@@ -667,3 +685,6 @@ if __name__ == "__main__":
 Where basically:
 - hide HEAD logging (for confort)
 - say to the browser to NOT CACHE anything (else chrome load from cache ~"exponentially")
+- auto inject livejs :)
+
+But. Using https://github.com/lepture/python-livereload is simpler: `pip install livereload`
