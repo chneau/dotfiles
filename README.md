@@ -235,7 +235,9 @@ Mod deps:
 
 ```bash
 rm -f go.mod go.sum
-go mod init
+go mod init # to init
+go mod tidy # remove unused, tidy...
+go get -u ./... # update deps
 ```
 
 ## vscode extensions
