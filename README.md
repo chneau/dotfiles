@@ -695,3 +695,21 @@ But. Using https://github.com/lepture/python-livereload is simpler: `pip install
 
 - just here to mention this awesome project https://github.com/koalaman/shellcheck
 - online version https://www.shellcheck.net/
+
+# vps stuff
+
+- tun missing?
+```bash
+#!/bin/bash
+mkdir /dev/net
+mknod /dev/net/tun c 10 200
+chmod 0666 /dev/net/tun
+# chmod +x /usr/sbin/tunscript.sh
+
+
+# then
+/usr/sbin/tunscript.sh || exit 1
+exit 0
+# to /etc/rc.local
+```
+- [ ] TODO: create an Ansible playbook to automatise this + get the client.ovpn
