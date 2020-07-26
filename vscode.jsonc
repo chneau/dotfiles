@@ -72,5 +72,6 @@
     "diagnostics": true,
     "documentLink": true
   },
-  "java.configuration.checkProjectSettingsExclusions": false
+  "java.configuration.checkProjectSettingsExclusions": false,
+  "debug.allowBreakpointsEverywhere": true
 }
