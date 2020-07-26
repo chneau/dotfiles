@@ -690,3 +690,8 @@ Where basically:
 - auto inject livejs :)
 
 But. Using https://github.com/lepture/python-livereload is simpler: `pip install livereload`
+
+## shell check
+
+- just here to mention this awesome project https://github.com/koalaman/shellcheck
+- online version https://www.shellcheck.net/
