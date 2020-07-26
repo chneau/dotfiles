@@ -294,18 +294,18 @@ alias dk='docker run --rm -it --name=kaggle -p=8080:8080 -v=`pwd`:`pwd` -w=`pwd`
 alias dtf='docker run --rm -it --name=kaggle -p=8080:8080 -v=`pwd`:`pwd` -w=`pwd` tensorflow/tensorflow jupyter notebook --no-browser --notebook-dir=`pwd` --allow-root --port=8080 --ip=\*'
 serveo() {
     while true; do
-        ssh -R 80:localhost:$@ serveo.net
+        ssh -R 80:localhost:$@ ssh.localhost.run
     done
 }
 alias sop='serveo'
 serveossh() {
     while true; do
-        ssh -o ServerAliveInterval=60 -R $@:22:localhost:22 serveo.net
+        ssh -o ServerAliveInterval=60 -R $@:22:localhost:22 ssh.localhost.run
     done
 }
 alias sos='serveossh'
 serveosshconnect() {
-    ssh -o ProxyCommand="ssh -W $2:22 serveo.net" $1@$2
+    ssh -o ProxyCommand="ssh -W $2:22 ssh.localhost.run" $1@$2
 }
 alias soc='serveosshconnect'
 gogetc() {
