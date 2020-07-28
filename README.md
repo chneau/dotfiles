@@ -718,3 +718,4 @@ exit 0
 
 - Investigate `heroku login` cool login process
 - Draw project in c# dotnet core
+- Use Linq when possible ?
