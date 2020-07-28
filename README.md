@@ -713,3 +713,8 @@ exit 0
 # to /etc/rc.local
 ```
 - [ ] TODO: create an Ansible playbook to automatise this + get the client.ovpn
+
+## TODO
+
+- Investigate `heroku login` cool login process
+- Draw project in c# dotnet core
