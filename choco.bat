@@ -37,6 +37,7 @@ choco install steam
 choco install sandboxie
 choco install dws.portable
 choco install openvpn
+choco install androidstudio
 
 REM openvpn is not openvpn-connect
 
