@@ -421,7 +421,7 @@ docker run -d --restart=always --name=autovnc --hostname=autovnc -e SSH_HOSTUSER
 ssh -g -L 12310:localhost:12311 -N c@0 -p21
 # here, we make port 12311 exposed on all interfaces on port 12310
 # -g means allow other clients on my network to connect to port 12310
-# https://unix.stackexchange.com/a/115906 
+# https://unix.stackexchange.com/a/115906
 # -L from local to remote
 # -R from remote to local (not in example)
 # -N means all I am doing is forwarding ports, don't start a shell.
@@ -429,8 +429,8 @@ ssh -g -L 12310:localhost:12311 -N c@0 -p21
 # why -R 0.0.0.0:[...] wasnt working: https://serverfault.com/a/861911 (because target host need some special configuration)
 ```
 
-
 ## x11vnc
+
 ```bash
 # create a password
 x11vnc -storepasswd
@@ -442,6 +442,7 @@ x11vnc -usepw -forever
 ```
 
 ## youtube-dl
+
 ```bash
 # from file
 -a file.txt
@@ -465,10 +466,12 @@ docker run --rm -d -v ~/samba/like-moi:/workdir:rw -v ~/samba/like-moi.txt:/lm.t
 ```
 
 ## docker update image on swarm
+
 ```bash
 # here is an example with wordpress
 docker pull wordpress:latest && docker service update --image wordpress:latest wordpress_wordpress
 ```
+
 ## golang: easy pprof:
 
 ```go
@@ -488,7 +491,7 @@ defer f.Close()
 err = pprof.StartCPUProfile(f)
 checkError(err)
 defer pprof.StopCPUProfile()
-// then 
+// then
 ```
 
 ```bash
@@ -542,7 +545,7 @@ python3 -m pip install --upgrade --force pip
 - Cracking the coding interview (set under the PC to make the fan more silent...)
 - You Don't Know JS Yet
 - Accelerate - Building and Scaling High Performing Technology Organisations - Nicole Fergrson
-- https://github.com/denysdovhan/wtfjs 
+- https://github.com/denysdovhan/wtfjs
 - https://github.com/yeasy/docker_practice
 - https://github.com/tuhdo/os01
 - https://github.com/realpython/python-guide
@@ -553,20 +556,27 @@ python3 -m pip install --upgrade --force pip
 
 - all here https://github.com/W4RH4WK/Debloat-Windows-10
 - and here is how to disable this cpu sucker of windows defender:
+
 ```powershell
 Set-MpPreference -DisableRealtimeMonitoring $true
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
 ```
+
 - and here is how to disable onedrive
+
 ```powershell
 ps onedrive | Stop-Process -Force
 start-process "$env:windir\SysWOW64\OneDriveSetup.exe" "/uninstall"
 ```
+
 - and here is how to disable hibernation (and remove hiberfil.sys)
+
 ```cmd
 powercfg -h off
 ```
+
 - and here to remove pagefile (not super good if not a lot of ram)
+
 ```powershell
 # Disable automatic pagefile management
 $cs = gwmi Win32_ComputerSystem
@@ -608,7 +618,7 @@ docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_B
 ## language/framework insights
 
 - https://insights.stackoverflow.com/survey/
-- https://githut.info/ 
+- https://githut.info/
 
 ## simple "random" generator
 
@@ -616,7 +626,7 @@ docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_B
 
 ## the best online tools
 
-- https://explainshell.com/ 
+- https://explainshell.com/
 - https://app.quicktype.io/
 - https://kepler.gl/
 - https://mobisoftinfotech.com/tools/plot-multiple-points-on-map/
@@ -624,6 +634,7 @@ docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_B
 ## Rust
 
 For vscode, probably the best working extension ever:
+
 - https://rust-analyzer.github.io/manual.html#installation
 
 ## Any web dev
@@ -633,7 +644,9 @@ For vscode, probably the best working extension ever:
 <script src="//livejs.com/live.js"></script>
 <!-- don't forget to remove for prod -->
 ```
+
 With a python script like this
+
 ```python
 #!/usr/bin/env python
 
@@ -684,7 +697,9 @@ if __name__ == "__main__":
     print(f"http://localhost:{PORT}/map")
     http.server.test(HandlerClass=MyHTTPRequestHandler, port=PORT)
 ```
+
 Where basically:
+
 - hide HEAD logging (for confort)
 - say to the browser to NOT CACHE anything (else chrome load from cache ~"exponentially")
 - auto inject livejs :)
@@ -699,6 +714,7 @@ But. Using https://github.com/lepture/python-livereload is simpler: `pip install
 # vps stuff
 
 - tun missing?
+
 ```bash
 #!/bin/bash
 mkdir /dev/net
@@ -712,7 +728,19 @@ chmod 0666 /dev/net/tun
 exit 0
 # to /etc/rc.local
 ```
+
 - [ ] TODO: create an Ansible playbook to automatise this + get the client.ovpn
+
+## WSL
+
+- https://docs.microsoft.com/en-us/windows/wsl/install-win10
+
+```cmd
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+REM restart
+wsl --set-default-version 2
+```
 
 ## TODO
 
