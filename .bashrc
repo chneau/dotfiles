@@ -186,6 +186,7 @@ alias v='vagrant'
 alias vdir='vdir --color=auto'
 alias vgoget='cd $(mktemp -d); go mod init tmp; go get -u -v'
 alias webshare='python -m SimpleHTTPServer'
+alias ymp3='youtube-dl --extract-audio --audio-format mp3'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
 
 serveo() {
