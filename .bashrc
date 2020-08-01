@@ -24,8 +24,8 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/sbin
 
 case $- in
-  *i*) ;;
-  *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
@@ -33,7 +33,6 @@ esac
 [ -s "/usr/share/bash-completion/bash_completion" ] && \. "/usr/share/bash-completion/bash_completion"
 [ -s "/etc/bash_completion" ] && \. "/etc/bash_completion"
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 
 if hash shopt 2>/dev/null; then
     shopt -s extglob
@@ -49,28 +48,6 @@ fi
 
 SELECT="if [ \$? = 0 ]; then echo \"\[\e[32m\]\"; else echo \"\[\e[31m\]\"; fi"
 PS1="\[\e[35m\]\t\`${SELECT}\`\u@\h \[\e[33m\]\w\[\e[m\] "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 alias refresh='clear; exec $0'
 alias ls='ls --color=auto'
@@ -190,32 +167,33 @@ extract() {
         echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
         return 1
     else
-        for n in $@
-            do
-                if [ -f "$n" ] ; then
-                    case "${n%,}" in
-                        *.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
-                                    tar xvf "$n"       ;;
-                        *.lzma)      unlzma ./"$n"      ;;
-                        *.bz2)       bunzip2 ./"$n"     ;;
-                        *.rar)       unrar x -ad ./"$n" ;;
-                        *.gz)        gunzip ./"$n"      ;;
-                        *.zip)       unzip ./"$n"       ;;
-                        *.z)         uncompress ./"$n"  ;;
-                        *.7z|*.arj|*.cab|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.rpm|*.udf|*.wim|*.xar)
-                                    7z x ./"$n"        ;;
-                        *.xz)        unxz ./"$n"        ;;
-                        *.exe)       cabextract ./"$n"  ;;
-                        *)
-                                    echo "extract: '$n' - unknown archive method"
-                                    return 1
-                                    ;;
-                    esac
-                else
-                    echo "'$n' - file does not exist"
+        for n in $@; do
+            if [ -f "$n" ]; then
+                case "${n%,}" in
+                *.tar.bz2 | *.tar.gz | *.tar.xz | *.tbz2 | *.tgz | *.txz | *.tar)
+                    tar xvf "$n"
+                    ;;
+                *.lzma) unlzma ./"$n" ;;
+                *.bz2) bunzip2 ./"$n" ;;
+                *.rar) unrar x -ad ./"$n" ;;
+                *.gz) gunzip ./"$n" ;;
+                *.zip) unzip ./"$n" ;;
+                *.z) uncompress ./"$n" ;;
+                *.7z | *.arj | *.cab | *.chm | *.deb | *.dmg | *.iso | *.lzh | *.msi | *.rpm | *.udf | *.wim | *.xar)
+                    7z x ./"$n"
+                    ;;
+                *.xz) unxz ./"$n" ;;
+                *.exe) cabextract ./"$n" ;;
+                *)
+                    echo "extract: '$n' - unknown archive method"
                     return 1
-                fi
-            done
+                    ;;
+                esac
+            else
+                echo "'$n' - file does not exist"
+                return 1
+            fi
+        done
     fi
 }
 alias extract='extract'
@@ -240,26 +218,26 @@ google() {
     for term in $@; do
         search="$search%20$term"
     done
-    2>/dev/null 1>&2 xdg-open "http://www.google.com/search?q=$search"
+    xdg-open 2>/dev/null 1>&2 "http://www.google.com/search?q=$search"
 }
 alias google='google'
 i() {
-    if VERB="$( which apt )" 2> /dev/null; then
+    if VERB="$(which apt)" 2>/dev/null; then
         VERB="$VERB -y install "
-    elif VERB="$( which apt-get )" 2> /dev/null; then
+    elif VERB="$(which apt-get)" 2>/dev/null; then
         VERB="$VERB -y install "
-    elif VERB="$( which apk )" 2> /dev/null; then
+    elif VERB="$(which apk)" 2>/dev/null; then
         VERB="$VERB add --no-cache "
-    elif VERB="$( which yum )" 2> /dev/null; then
+    elif VERB="$(which yum)" 2>/dev/null; then
         VERB="$VERB -y "
-    elif VERB="$( which pacman )" 2> /dev/null; then
+    elif VERB="$(which pacman)" 2>/dev/null; then
         VERB="$VERB -S --noconfirm "
     else
         echo "I have no idea what I'm doing." >&2
         exit 1
     fi
-    SUSUDO="$( which sudo )" 2> /dev/null
-    eval "$SUSUDO $VERB $@" 2> /dev/null
+    SUSUDO="$(which sudo)" 2>/dev/null
+    eval "$SUSUDO $VERB $@" 2>/dev/null
 }
 alias i='i'
 alias findtext='grep -rnw . -e'
@@ -321,7 +299,7 @@ ptree() {
 }
 alias ptree='ptree'
 n() {
-cat << EOF
+    cat <<EOF
 # curl
 curl -fsSLo ~/.bashrc git.io/fjwA8; . ~/.bashrc
 curl -fsSLo ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc
@@ -345,7 +323,7 @@ alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl
 
 # aliases just to remenber something that needs to be deeply digged on my brain
 
-alias gigit='git clone --depth=1' # just the tip
+alias gigit='git clone --depth=1'      # just the tip
 alias gotest='go test -cover -count=1' # can add -race
 alias gitc='git clone https://github.com/chneau/'
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
@@ -356,7 +334,6 @@ alias openports='nmap -p- portquiz.net | grep -i open' # shows outgoing open por
 alias igotty='go get -u -v github.com/yudai/gotty'
 alias createpwd='PASSWORD=$(base64 < /dev/urandom | head -c12); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum'
 alias fixionotify='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
-
 
 # git
 alias gitmessage='curl -s http://whatthecommit.com/index.txt'
@@ -374,12 +351,12 @@ alias gcl='git clone'
 alias grm="git ls-files --deleted | xargs git rm"
 alias undopush="git push -f origin HEAD^:master"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-function gco {
-  if [ $# -eq 0 ]; then
-    git checkout master
-  else
-    git checkout "$@"
-  fi
+function gco() {
+    if [ $# -eq 0 ]; then
+        git checkout master
+    else
+        git checkout "$@"
+    fi
 }
 function curl_time() {
     curl -so /dev/null -w "\
