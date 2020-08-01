@@ -147,6 +147,7 @@ alias m='make'
 alias meminfo='free -m -l -t'
 alias mh='curl ifconfig.me/host'
 alias mip='curl api.ipify.org && echo ""'
+alias mip2='curl icanhazip.com'
 alias mkdir="mkdir -pv"
 alias n='n'
 alias nginxreload='sudo /usr/local/nginx/sbin/nginx -s reload'
@@ -185,9 +186,12 @@ alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles
 alias v='vagrant'
 alias vdir='vdir --color=auto'
 alias vgoget='cd $(mktemp -d); go mod init tmp; go get -u -v'
+alias weather='weather'
 alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --extract-audio --audio-format mp3'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+
+weather() { curl wttr.in/"$1"; }
 
 serveo() {
     while true; do
