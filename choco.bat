@@ -40,6 +40,8 @@ choco install openvpn
 choco install rustup.install
 choco install androidstudio
 choco install julia
+choco install cygwin
+choco install cyg-get
 
 REM openvpn is not openvpn-connect
 
