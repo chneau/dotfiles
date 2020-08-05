@@ -822,3 +822,20 @@ set_prompt () {
 trap 'timer_start' DEBUG
 PROMPT_COMMAND='set_prompt'
 ```
+
+## Ubuntu server on old laptop
+
+```bash
+sudo nano /etc/systemd/logind.conf
+# #HandleLidSwitch=suspend
+# to
+# HandleLidSwitch=ignore
+sudo systemctl restart systemd-logind
+
+sudo nano /etc/ssh/sshd_config
+# #Port 22
+# to
+# Port 23
+# NOTE: using port 21 for some reason to investigate create loop disconect for ssh connection
+sudo systemctl restart sshd
+```
