@@ -740,6 +740,17 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 REM restart
 wsl --set-default-version 2
+REM install ubuntu from store
+REM check version used
+wsl -l -v
+```
+
+If for some reasons internet doesnt work:
+
+```cmd
+REM create this file %userprofile%\.wslconfig with
+[wsl2]
+swap=0
 ```
 
 ## TODO
