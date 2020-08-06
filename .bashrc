@@ -258,7 +258,7 @@ alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt -y upgra
 alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles/master/.bashrc -o ~/.bashrc && . ~/.bashrc'
 alias v='vagrant'
 alias vdir='vdir --color=auto'
-alias vgoget='cd $(mktemp -d); go mod init tmp; go get -u -v'
+alias vgoget='GO111MODULE=on go get -u -v'
 alias weather='weather'
 alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --extract-audio --audio-format mp3'
