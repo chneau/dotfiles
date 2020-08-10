@@ -6,6 +6,7 @@ export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.linuxbrew/bin
 export PATH=$PATH:~/.dotnet
 export PATH=$PATH:~/.go/bin
+export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/sbin
