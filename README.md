@@ -865,3 +865,11 @@ sudo systemctl restart sshd
 }
 
 ```
+
+
+## python3 and defaults
+
+```bash
+sudo apt install python-is-python3
+sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+```
