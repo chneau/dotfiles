@@ -4,6 +4,7 @@ export HISTSIZE=10000
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.linuxbrew/bin
+export PATH=$PATH:~/.dotnet
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/sbin
@@ -186,6 +187,7 @@ alias hs='history | grep $1'
 alias ibrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
 alias icroc='GO111MODULE=on go get -u -v github.com/schollz/croc/v8'
 alias idocker='curl -sSL get.docker.com | sh'
+alias idotnet="curl -sSL https://dot.net/v1/dotnet-install.sh | bash"
 alias igit='git config --global credential.helper "cache --timeout=36000000"; git config --global user.email "charles63500@gmail.com";git config --global user.name "chneau"; git config --global url.https://github.com/.insteadOf git://github.com/'
 alias igitw='git config --global credential.helper "store"; git config --global user.email "charles63500@gmail.com";git config --global user.name "chneau";git config --global core.askpass "";git config --global credential.modalprompt false'
 alias igotop='go get -v -u github.com/cjbassi/gotop'
