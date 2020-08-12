@@ -850,3 +850,26 @@ sudo nano /etc/ssh/sshd_config
 # NOTE: using port 21 for some reason to investigate create loop disconect for ssh connection
 sudo systemctl restart sshd
 ```
+
+
+## Omnisharp fixes for dotnet core vscode ubuntu
+
+```jsonc
+// on ~/.omnisharp/omnisharp.json
+// dotnet nuget locals all -c
+// resinstalling c# extension
+{
+    "MSBuild": {
+        "UseLegacySdkResolver": true
+    }
+}
+
+```
+
+
+## python3 and defaults
+
+```bash
+sudo apt install python-is-python3
+sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+```
