@@ -5,7 +5,7 @@
   "editor.renderWhitespace": "all",
   "editor.wordWrap": "on",
   "files.autoSaveDelay": 10,
-  "window.zoomLevel": -1.5,
+  "window.zoomLevel": -1,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "git.enableSmartCommit": true,
