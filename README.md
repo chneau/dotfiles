@@ -130,6 +130,15 @@ By far the best: <http://www.easy2boot.com/configuring-e2b/>
 unetbootin for ubuntu  
 rufus for windows
 
+## git bash / meteor trick
+
+want to run a bat file from git bash? create a file with the same name as the bat file without `.bat`:
+
+```bash
+#!/bin/sh
+cmd //c "$0.bat" "$@"
+```
+
 ## MongoDB
 
 Starting MongoDB 4, `--master` is no longer supported.  
