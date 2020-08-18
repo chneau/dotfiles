@@ -566,6 +566,9 @@ python3 -m pip install --upgrade --force pip
 - all here https://github.com/W4RH4WK/Debloat-Windows-10
 - and here is how to disable this cpu sucker of windows defender:
 
+- https://github.com/farag2/Windows-10-Setup-Script
+- https://github.com/Sycnex/Windows10Debloater
+
 ```powershell
 Set-MpPreference -DisableRealtimeMonitoring $true
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
