@@ -569,6 +569,7 @@ python3 -m pip install --upgrade --force pip
 ```powershell
 Set-MpPreference -DisableRealtimeMonitoring $true
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
+# using the disable_windows_defender.bat works better
 ```
 
 - and here is how to disable onedrive
