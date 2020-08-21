@@ -561,6 +561,13 @@ python3 -m pip install --upgrade --force pip
 - https://github.com/TheAlgorithms
 - https://github.com/daryllxd/lifelong-learning
 
+## setting up windows
+
+- removes useless features
+- use scripts to remove useless services
+- use scripts to remove defender
+- verify previous steps after updates...
+
 ## disable some windows features
 
 - all here https://github.com/W4RH4WK/Debloat-Windows-10
@@ -864,7 +871,6 @@ sudo nano /etc/ssh/sshd_config
 sudo systemctl restart sshd
 ```
 
-
 ## Omnisharp fixes for dotnet core vscode ubuntu
 
 ```jsonc
@@ -872,13 +878,11 @@ sudo systemctl restart sshd
 // dotnet nuget locals all -c
 // resinstalling c# extension
 {
-    "MSBuild": {
-        "UseLegacySdkResolver": true
-    }
+  "MSBuild": {
+    "UseLegacySdkResolver": true
+  }
 }
-
 ```
-
 
 ## python3 and defaults
 
