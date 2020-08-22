@@ -564,6 +564,7 @@ python3 -m pip install --upgrade --force pip
 ## setting up windows
 
 - removes useless features
+- disable backgroud apps
 - use scripts to remove useless services
 - use scripts to remove defender
 - verify previous steps after updates...
