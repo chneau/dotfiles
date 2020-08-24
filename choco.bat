@@ -13,8 +13,6 @@ choco install python3
 choco install openjdk11
 choco install googlechrome
 choco install adb
-choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
-choco install s3browser
 choco install paint.net
 choco install filezilla
 choco install openconnect-gui
@@ -31,6 +29,8 @@ choco install dbeaver
 choco install 7zip
 
 
+choco install s3browser
+choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 choco install rainmeter
 choco install minecraft
 choco install steam
