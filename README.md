@@ -549,6 +549,8 @@ python3 -m pip install --upgrade --force pip
 
 ### want to read
 
+- Cloud Native Transformation
+- Team Topologies by Matthew Skelton and Manuel Pais
 - The Unicorn Project
 - Building Secure & Reliable Systems
 - Cracking the coding interview (set under the PC to make the fan more silent...)
