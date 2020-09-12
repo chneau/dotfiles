@@ -195,6 +195,7 @@ alias igitw='git config --global credential.helper "store"; git config --global 
 alias igo='curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer'
 alias igotop='go get -v -u github.com/cjbassi/gotop'
 alias igotty='go get -u -v github.com/yudai/gotty'
+alias ihey='vgoget github.com/rakyll/hey'
 alias ik3s='curl -sfL https://get.k3s.io | sh -'
 alias ik8s='curl -sSL https://get.k8s.io | bash'
 alias ilivereload='pip install livereload'
