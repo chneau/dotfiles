@@ -43,6 +43,33 @@ but use `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubec
 
 <https://k3s.io/> looks good as well.
 
+- https://kubernetes.io/docs/reference/kubectl/
+- https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+- https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/
+
+```bash
+# output a Deployment and a Service for you without having to even think about indenting any yaml.
+kubectl run nginx -n web --port 80 --image nginx:latest --env FOO=bar --requests 'cpu=100m,memory=256Mi' --limits 'cpu=200m,memory=512Mi' -l app=web --expose --dry-run=client -oyaml
+
+# without namespace
+kubectl run nginx --port 80 --image nginx:latest --env FOO=bar --requests 'cpu=100m,memory=256Mi' --limits 'cpu=200m,memory=512Mi' -l app=web --expose --dry-run=client -oyaml
+
+# nice to understand what's up
+kubectl get all -owide --show-labels
+
+# restart deployments
+kubectl rollout restart deploy
+
+# deployments hitory
+kubectl rollout history deploy
+
+# undo once
+kubectl rollout undo deploy
+
+# describing
+kubectl describe deploy
+```
+
 ## Golang
 
 ```go
