@@ -198,7 +198,7 @@ alias igotop='go get -v -u github.com/cjbassi/gotop'
 alias igotty='go get -u -v github.com/yudai/gotty'
 alias ihey='vgoget github.com/rakyll/hey'
 alias ik3s='curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -'
-alias ik3sup='curl -sLS https://get.k3sup.dev | sudo sh' # yep ...
+alias ik3sup='vgoget github.com/alexellis/k3sup'
 alias ik8s='curl -sSL https://get.k8s.io | bash'
 alias ikind='vgoget sigs.k8s.io/kind'
 alias ilivereload='pip install livereload'
