@@ -1,7 +1,0 @@
-// Place your key bindings in this file to overwrite the defaults
-[
-    {
-        "key": "ctrl+oem_8",
-        "command": "workbench.action.terminal.toggleTerminal"
-    }
-]
