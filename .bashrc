@@ -181,6 +181,7 @@ alias gp='git push'
 alias gpglist='gpg --list-secret-keys --keyid-format LONG'
 alias gpgnew='gpg --default-new-key-algo rsa4096 --gen-key'
 alias gpgexport='gpg --armor --export' # +key
+alias gpggit='git config --global user.signingkey' # +key
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias grep='grep --color=auto'
 alias grm='git ls-files --deleted | xargs git rm'
