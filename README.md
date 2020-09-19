@@ -597,6 +597,7 @@ python3 -m pip install --upgrade --force pip
 - use scripts to remove useless services
 - use scripts to remove defender
 - verify previous steps after updates...
+- add wget by running `C:\tools\cygwin\cygwinsetup.exe` after `choco install cygwin`
 
 ## disable some windows features
 
