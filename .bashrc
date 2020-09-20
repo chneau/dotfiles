@@ -287,7 +287,7 @@ alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --extract-audio --audio-format mp3'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
 
-weather() { curl wttr.in/"$1"; }
+weather() { curl -s wttr.in/"$1"; }
 
 serveo() {
     while true; do
