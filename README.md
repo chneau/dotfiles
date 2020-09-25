@@ -645,6 +645,17 @@ if ($pg) {
 }
 ```
 
+## windows service tips
+
+```powershell
+# set a service to use its own svchost.exe
+sc config eventlog type= own
+# clear logs
+wevtutil el | Foreach-Object {wevtutil cl "$_"}
+
+## ^ this was useful when eventlog was reading 8mb/s for no apparent reasons
+```
+
 ## nodejs bcrypt on windows
 
 ```bash
