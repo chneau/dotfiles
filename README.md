@@ -498,7 +498,10 @@ docker run --rm -d -v ~/samba/like-moi:/workdir:rw -v ~/samba/like-moi.txt:/lm.t
 ```bash
 # upgrade gradle to latest
 # (to it twice so it update gradle jar)
-./gradlew wrapper --gradle-version=6.3 --distribution-type=all
+./gradlew wrapper --gradle-version=6.6.1 --distribution-type=all
+./gradlew wrapper --gradle-version=6.6.1 --distribution-type=bin
+# gradle-1.12-all.zip file will have binaries, sources, and documentation. gradle-1.12-bin.zip will have only binaries(That should be enough as you don't need any samples/docs)
+# src: https://stackoverflow.com/a/25456329
 ```
 
 ## docker update image on swarm
