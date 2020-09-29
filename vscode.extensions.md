@@ -1,8 +1,14 @@
 # extensions
 
-- chneau.saturated-dark-plus
-- coenraads.bracket-pair-colorizer
-- esbenp.prettier-vscode
+```bash
+# generic extensions
+code --install-extension chneau.saturated-dark-plus
+code --install-extension coenraads.bracket-pair-colorizer-2
+code --install-extension eamodio.gitlens
+code --install-extension esbenp.prettier-vscode
+code --install-extension mechatroner.rainbow-csv
+code --install-extension visualstudioexptteam.vscodeintellicode
+```
 
 ## how to get this list ?
 
