@@ -1,3 +1,0 @@
-chneau.saturated-dark-plus
-coenraads.bracket-pair-colorizer
-esbenp.prettier-vscode
