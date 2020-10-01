@@ -22,6 +22,18 @@ ssh-copy-id id@server
 ssh-add # only if an agent is already running
 ```
 
+## Visual Studio
+
+Steps to add Git Bash:
+
+- Click `Tools -> Options -> Environment -> Terminal`
+- Click `Add`
+  - Name: `Git Bash`
+  - Shell location: `C:\Program Files\Git\bin\bash.exe`
+  - Arguments: `--login -i`
+- Click `Set as Default`
+- Press [Ctrl]+[`] while on the code or click `View -> Terminal`
+
 ## Cool docker images
 
 [mrvautin/adminmongo](https://hub.docker.com/r/mrvautin/adminmongo/)  
