@@ -136,6 +136,10 @@ taskkill /im iexplore.exe /f
 netsh advfirewall firewall add rule name="ping" protocol=ICMPV4 dir=in action=allow
 ```
 
+## Windows: Sound manager
+
+- good to remove all the useless / unused outputs from the sound manager to easily switch between eg. headphones and speakers with only 2 choices left
+
 ## Good vpn server script
 
 [OpenVPN](https://github.com/Angristan/OpenVPN-install)
