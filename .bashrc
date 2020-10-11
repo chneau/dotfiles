@@ -192,14 +192,14 @@ alias h='h'
 alias hp='sudo hping3 --flood'
 alias hs='history | grep $1'
 alias ibrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
-alias icroc='GO111MODULE=on go get -u -v github.com/schollz/croc/v8'
+alias icroc='GO111MODULE=on goget github.com/schollz/croc/v8'
 alias idocker='curl -sSL get.docker.com | sh'
 alias idotnet='curl -sSL https://dot.net/v1/dotnet-install.sh | bash'
 alias ifluxctl='sudo snap install fluxctl --classic'
 alias igit='git config --global user.email "charles63500@gmail.com"; git config --global user.name "chneau"; git config --global url.ssh://git@github.com/.insteadOf https://github.com/; git config --global core.autocrlf true'
 alias igo='curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer'
-alias igotop='go get -v -u github.com/cjbassi/gotop'
-alias igotty='go get -u -v github.com/yudai/gotty'
+alias igotop='goget github.com/xxxserxxx/gotop'
+alias igotty='goget github.com/yudai/gotty'
 alias ihey='vgoget github.com/rakyll/hey'
 alias ik3s='curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -'
 alias ik3sup='vgoget github.com/alexellis/k3sup'
@@ -218,7 +218,7 @@ alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
 alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
 alias irio='curl -sfL https://get.rio.io | sh -'
 alias irust='curl https://sh.rustup.rs -sSf | sh'
-alias iscc='go get -u github.com/boyter/scc'
+alias iscc='goget github.com/boyter/scc'
 alias isshuttle='sudo apt -y install sshuttle'
 alias ivagrant='sudo apt -y install vagrant'
 alias ivirtualbox='sudo apt -y install virtualbox'
@@ -284,7 +284,7 @@ alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt -y upgra
 alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles/master/.bashrc -o ~/.bashrc && . ~/.bashrc'
 alias va='vagrant'
 alias vdir='vdir --color=auto'
-alias vgoget='GO111MODULE=on go get -u -v'
+alias vgoget='GO111MODULE=on goget'
 alias weather='weather'
 alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --extract-audio --audio-format mp3'
@@ -298,7 +298,7 @@ serveo() {
     done
 }
 gogetc() {
-    go get -u -v github.com/chneau/$@
+    goget github.com/chneau/$@
 }
 h() {
     echo -e "$(curl -s cht.sh/$@)"
