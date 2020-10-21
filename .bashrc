@@ -200,6 +200,7 @@ alias igit='git config --global user.email "charles63500@gmail.com"; git config 
 alias igo='curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer'
 alias igotop='goget github.com/xxxserxxx/gotop'
 alias igotty='goget github.com/yudai/gotty'
+alias igradle='echo "org.gradle.console=plain" > ~/.gradle/gradle.properties'
 alias ihey='vgoget github.com/rakyll/hey'
 alias ik3s='curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -'
 alias ik3sup='vgoget github.com/alexellis/k3sup'
