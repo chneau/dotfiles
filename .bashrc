@@ -179,7 +179,7 @@ alias gogetc='gogetc'
 alias gols="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 alias gotest='go test -cover -count=1'
 alias gp='git push'
-alias gpgexport='gpg --armor --export' # +key
+alias gpgexport='gpg --armor --export'             # +key
 alias gpggit='git config --global user.signingkey' # +key
 alias gpglist='gpg --list-secret-keys --keyid-format LONG'
 alias gpgnew='gpg --default-new-key-algo rsa4096 --gen-key'
