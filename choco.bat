@@ -41,6 +41,7 @@ choco install openvpn
 choco install rustup.install
 choco install androidstudio
 choco install julia
+choco install r.project --params "'/AddToPath'"
 
 REM openvpn is not openvpn-connect
 
