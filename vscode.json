@@ -24,6 +24,7 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.promptToSaveFilesBeforeCommit": "always",
+  "go.useLanguageServer": true,
   "java.configuration.checkProjectSettingsExclusions": false,
   "python.dataScience.alwaysTrustNotebooks": true,
   "python.formatting.autopep8Args": ["--max-line-length=200"],
