@@ -951,3 +951,19 @@ sudo systemctl restart sshd
 sudo apt install python-is-python3
 sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 ```
+
+## systemctl
+
+```bash
+# find a service:
+systemctl | grep -i docker
+
+# status of a service:
+systemctl status docker.service
+
+# Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+# first enabled might means it will start on reboot
+
+# to enable a service
+systemctl enable docker.service
+```
