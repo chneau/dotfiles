@@ -281,6 +281,7 @@ alias sop='serveo'
 alias sss='service --status-all'
 alias sudo='sudo env "PATH=$PATH" '
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
+alias toix="curl -F 'f:1=<-' ix.io"
 alias u='ls -hltr'
 alias update='updatebashrc; updateall'
 alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove'
