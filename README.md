@@ -966,4 +966,6 @@ systemctl status docker.service
 
 # to enable a service
 systemctl enable docker.service
+
+# more here https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
 ```
