@@ -834,6 +834,14 @@ REM create this file %userprofile%\.wslconfig with
 swap=0
 ```
 
+To uninstall Ubuntu:
+
+```cmd
+wsl --unregister Ubuntu
+
+REM to install Ubuntu again, type in ubuntu, it will install it back as fresh
+```
+
 ## TODO
 
 - Investigate `heroku login` cool login process
@@ -968,4 +976,18 @@ systemctl status docker.service
 systemctl enable docker.service
 
 # more here https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+```
+
+## no password sudoer
+
+```bash
+# type this to edit the right file
+sudo visudo
+
+# add NOPASSWD: before ALL like this follow
+%sudo   ALL=(ALL:ALL) NOPASSWD: ALL
+# example above allow allow people within sudo group to not type password
+
+# for a specific user add this line
+user   ALL=(ALL:ALL) NOPASSWD: ALL
 ```
