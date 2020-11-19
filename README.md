@@ -147,6 +147,7 @@ ipconfig /flushdns
 ipconfig /release
 netcfg -d
 nbtstat –RR
+<!-- then restart windows -->
 ```
 
 from https://superuser.com/a/1326842
