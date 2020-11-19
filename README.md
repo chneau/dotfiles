@@ -146,7 +146,20 @@ netsh advfirewall firewall add rule name="ping" protocol=ICMPV4 dir=in action=al
 ipconfig /flushdns
 ipconfig /release
 netcfg -d
-nbtstat –R
+nbtstat –RR
+```
+
+from https://superuser.com/a/1326842
+
+```txt
+Standard name resolution process in Windows is in the following order:
+
+Check against local computer's name
+HOSTS file
+DNS, local cache
+DNS, DNS servers in the order of precedence
+WINS servers
+NetBIOS over TCP/IP (NetBT) broadcast
 ```
 
 ## Windows: General networking
