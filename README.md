@@ -143,7 +143,21 @@ netsh advfirewall firewall add rule name="ping" protocol=ICMPV4 dir=in action=al
 ## Windows: Reset network
 
 ```cmd
+ipconfig /flushdns
+ipconfig /release
 netcfg -d
+nbtstat –R
+```
+
+## Windows: General networking
+
+```bash
+# nslookup hostname or nslookup ip, works good
+nslookup
+
+# looks to be windows only?
+# route print hostname or route print ip, works good
+route print
 ```
 
 Very useful if computer is not accessible, or can't access other computers by hostname.
