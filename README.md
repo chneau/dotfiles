@@ -140,6 +140,14 @@ netsh advfirewall firewall add rule name="ping" protocol=ICMPV4 dir=in action=al
 
 - good to remove all the useless / unused outputs from the sound manager to easily switch between eg. headphones and speakers with only 2 choices left
 
+## Windows: Reset network
+
+```cmd
+netcfg -d
+```
+
+Very useful if computer is not accessible, or can't access other computers by hostname.
+
 ## Good vpn server script
 
 [OpenVPN](https://github.com/Angristan/OpenVPN-install)
