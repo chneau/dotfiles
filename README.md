@@ -753,6 +753,7 @@ docker run --rm -it --name=pihole --net=host --cap-add=NET_ADMIN --cap-add=NET_B
 For vscode, probably the best working extension ever:
 
 - https://rust-analyzer.github.io/manual.html#installation
+- For Windows... install these https://github.com/rust-lang/rustup/issues/1003#issuecomment-289733784
 
 ## Any web dev
 
