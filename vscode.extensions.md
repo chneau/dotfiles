@@ -9,6 +9,7 @@ code --install-extension eamodio.gitlens
 code --install-extension esbenp.prettier-vscode
 code --install-extension foxundermoon.shell-format
 code --install-extension mechatroner.rainbow-csv
+code --install-extension ms-vscode.vscode-typescript-next
 code --install-extension visualstudioexptteam.vscodeintellicode
 ```
 
