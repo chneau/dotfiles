@@ -43,6 +43,10 @@ choco install androidstudio
 choco install julia
 choco install r.project --params "'/AddToPath'"
 
+REM Twitch
+choco install chatterino
+choco install streamlink
+
 REM openvpn is not openvpn-connect
 
 REM curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
