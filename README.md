@@ -977,6 +977,13 @@ sudo nano /etc/ssh/sshd_config
 sudo systemctl restart sshd
 ```
 
+## dotnet
+
+```bash
+# generate new https certificate for port 5001 dev purpose
+dotnet dev-certs https --trust
+```
+
 ## Omnisharp fixes for dotnet core vscode ubuntu
 
 ```jsonc
