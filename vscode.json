@@ -33,6 +33,7 @@
   "python.languageServer": "Pylance",
   "telemetry.enableTelemetry": false,
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "terminal.integrated.showExitAlert": false,
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Saturated Dark+",
   "workbench.editor.highlightModifiedTabs": true
