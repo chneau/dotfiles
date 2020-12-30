@@ -26,6 +26,7 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.promptToSaveFilesBeforeCommit": "always",
+  "go.gopath": "~/go",
   "go.useLanguageServer": true,
   "java.configuration.checkProjectSettingsExclusions": false,
   "python.dataScience.alwaysTrustNotebooks": true,
