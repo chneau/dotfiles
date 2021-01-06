@@ -33,6 +33,7 @@
   "python.formatting.autopep8Args": ["--max-line-length=200"],
   "python.languageServer": "Pylance",
   "telemetry.enableTelemetry": false,
+  "terminal.integrated.scrollback": 10000,
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
   "terminal.integrated.showExitAlert": false,
   "window.zoomLevel": -1,
