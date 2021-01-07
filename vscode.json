@@ -29,6 +29,7 @@
   "go.gopath": "~/go",
   "go.useLanguageServer": true,
   "java.configuration.checkProjectSettingsExclusions": false,
+  "prettier.printWidth": 99999,
   "python.dataScience.alwaysTrustNotebooks": true,
   "python.formatting.autopep8Args": ["--max-line-length=200"],
   "python.languageServer": "Pylance",
