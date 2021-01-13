@@ -293,7 +293,7 @@ alias vdir='vdir --color=auto'
 alias vgoget='GO111MODULE=on goget'
 alias weather='weather'
 alias webshare='python -m SimpleHTTPServer'
-alias ymp3='youtube-dl --continue --ignore-errors --no-overwrites --extract-audio --audio-format mp3'
+alias ymp3='youtube-dl --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
 
 weather() { curl -s wttr.in/"$1"; }
