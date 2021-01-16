@@ -27,6 +27,7 @@
   "git.enableSmartCommit": true,
   "git.promptToSaveFilesBeforeCommit": "always",
   "go.gopath": "~/go",
+  "go.lintTool": "golangci-lint",
   "go.useLanguageServer": true,
   "java.configuration.checkProjectSettingsExclusions": false,
   "prettier.printWidth": 99999,
