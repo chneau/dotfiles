@@ -137,6 +137,7 @@ alias dprune='docker system prune -f --volumes'
 alias dprunea='docker system prune -af --volumes'
 alias drm='docker rmi $(docker images -q --filter "dangling=true")'
 alias ds='docker stats'
+alias dsave='dsave'
 alias dsd='docker stack down'
 alias dsi='docker service inspect --pretty'
 alias dsl='docker service logs -f'
@@ -297,6 +298,10 @@ alias weather='weather'
 alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+
+dsave() {
+    docker save "$1" | gzip >"$1.tgz"
+}
 
 dotnetupdateall() {
     regex='PackageReference Include="([^"]*)" Version="([^"]*)"'
