@@ -22,6 +22,12 @@ ssh-copy-id id@server
 ssh-add # only if an agent is already running
 ```
 
+## The best awesomes:
+
+- https://github.com/chubin/awesome-console-services
+- https://github.com/public-apis/public-apis
+- and of course the awesome of awesome https://awesomelists.top/
+
 ## Visual Studio
 
 Steps to add Git Bash:
