@@ -30,15 +30,15 @@ if hash shopt 2>/dev/null; then
     shopt -s cdspell
 fi
 
-function timer_now() {
+timer_now() {
     date +%s%N
 }
 
-function timer_start() {
+timer_start() {
     timer_start=${timer_start:-$(timer_now)}
 }
 
-function timer_stop() {
+timer_stop() {
     local delta_us=$((($(timer_now) - $timer_start) / 1000))
     local us=$((delta_us % 1000))
     local ms=$(((delta_us / 1000) % 1000))
@@ -137,7 +137,7 @@ alias dprune='docker system prune -f --volumes'
 alias dprunea='docker system prune -af --volumes'
 alias drm='docker rmi $(docker images -q --filter "dangling=true")'
 alias ds='docker stats'
-alias dsave='dsave'
+alias dsave='f(){ docker save "$1" | gzip >"$1.tgz" && echo "$1.tgz created";  unset -f f; }; f'
 alias dsd='docker stack down'
 alias dsi='docker service inspect --pretty'
 alias dsl='docker service logs -f'
@@ -154,7 +154,7 @@ alias exe='chmod u+x '
 alias extract='extract'
 alias fgrep='fgrep --color=auto'
 alias findtext='grep -rnw . -e'
-alias fio='fio '
+alias fio='f(){ curl -F "file=@$@" https://file.io/?expires=1d && echo;  unset -f f; }; f'
 alias firewall=iptlist
 alias fixgpg='sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com'
 alias fixionotify='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
@@ -177,7 +177,7 @@ alias gl='git pull'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias glom='git pull origin master'
 alias goget='go get -u -v'
-alias gogetc='gogetc'
+alias gogetc='f(){ goget github.com/chneau/$@; unset -f f; }; f'
 alias gols="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 alias gotest='go test -cover -count=1'
 alias gp='git push'
@@ -191,7 +191,7 @@ alias grephere='grep -rnw . -e'
 alias grm='git ls-files --deleted | xargs git rm'
 alias gs='git status -sb'
 alias gundopush='git push -f origin HEAD^:master'
-alias h='h'
+alias h='f(){ echo -e "$(curl -s cht.sh/$@)"; unset -f f; }; f'
 alias hp='sudo hping3 --flood'
 alias hs='history | grep $1'
 alias iact='curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash'
@@ -256,7 +256,7 @@ alias mh='curl ifconfig.me/host'
 alias mip='curl api.ipify.org && echo'
 alias mip2='curl icanhazip.com'
 alias mkdir='mkdir -pv'
-alias n='n'
+alias n='printf "\ncurl -fsSLo ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc\n\nwget -qO ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc\n\n"'
 alias nginxreload='sudo /usr/local/nginx/sbin/nginx -s reload'
 alias nginxtest='sudo /usr/local/nginx/sbin/nginx -t'
 alias nload='nload -m -u M'
@@ -284,7 +284,7 @@ alias renewip='sudo dhclient -v -r && sudo dhclient -v'
 alias root='\sudo \su'
 alias s='strace -fqc'
 alias screen='screen -q'
-alias sop='serveo'
+alias serveo='f(){ while true; do ssh -o "StrictHostKeyChecking no" -R 80:localhost:$1 localhost.run; done; unset -f f; }; f'
 alias sss='service --status-all'
 alias sudo='sudo env "PATH=$PATH" '
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
@@ -298,7 +298,7 @@ alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles
 alias va='vagrant'
 alias vdir='vdir --color=auto'
 alias vgoget='GO111MODULE=on goget'
-alias weather='weather'
+alias weather='f(){ curl -s wttr.in/"$1"; unset -f f; }; f'
 alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
@@ -326,10 +326,6 @@ transfer() {
     echo
 }
 
-dsave() {
-    docker save "$1" | gzip >"$1.tgz"
-}
-
 dotnetupdateall() {
     regex='PackageReference Include="([^"]*)" Version="([^"]*)"'
     find . -name "*.*proj" | while read proj; do
@@ -345,29 +341,6 @@ dotnetupdateall() {
     done
 }
 
-weather() { curl -s wttr.in/"$1"; }
-
-serveo() {
-    while true; do
-        ssh -R 80:localhost:$@ ssh.localhost.run
-    done
-}
-gogetc() {
-    goget github.com/chneau/$@
-}
-h() {
-    echo -e "$(curl -s cht.sh/$@)"
-}
-n() {
-    cat <<EOF
-# curl
-curl -fsSLo ~/.bashrc git.io/fjwA8; . ~/.bashrc
-curl -fsSLo ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc
-# wget
-wget -qO ~/.bashrc git.io/fjwA8; . ~/.bashrc
-wget -qO ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~/.bashrc
-EOF
-}
 curlt() {
     curl -so /dev/null -w "\
    namelookup:  %{time_namelookup}s\n\
@@ -378,10 +351,6 @@ curlt() {
 starttransfer:  %{time_starttransfer}s\n\
 -------------------------\n\
         total:  %{time_total}s\n" "$@"
-}
-fio() {
-    curl -F "file=@$@" https://file.io/?expires=1d
-    echo ""
 }
 extract() {
     if [ -z "$1" ]; then
