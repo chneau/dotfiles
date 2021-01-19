@@ -288,6 +288,7 @@ alias sss='service --status-all'
 alias sudo='sudo env "PATH=$PATH" '
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
 alias toix="curl -F 'f:1=<-' ix.io"
+alias transfer='transfer'
 alias u='ls -hltr'
 alias update='updatebashrc; updateall'
 alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove'
@@ -299,6 +300,29 @@ alias weather='weather'
 alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+
+transfer() {
+    if [ $# -eq 0 ]; then
+        echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>" >&2
+        return 1
+    fi
+    if tty -s; then
+        file="$1"
+        file_name=$(basename "$file")
+        if [ ! -e "$file" ]; then
+            echo "$file: No such file or directory" >&2
+            return 1
+        fi
+        if [ -d "$file" ]; then
+            file_name="$file_name.zip" ,
+            (cd "$file" && zip -r -q - .) | curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null,
+        else cat "$file" | curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null; fi
+    else
+        file_name=$1
+        curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null
+    fi
+    echo
+}
 
 dsave() {
     docker save "$1" | gzip >"$1.tgz"
