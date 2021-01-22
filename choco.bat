@@ -15,9 +15,6 @@ choco install openjdk11
 choco install adb
 choco install paint.net
 choco install filezilla
-choco install openconnect-gui
-choco install cygwin
-choco install autohotkey
 choco install vlc
 REM choco install sandboxie
 REM replaced by https://github.com/sandboxie-plus/Sandboxie/releases
@@ -28,6 +25,9 @@ choco install treesizefree
 choco install cheatengine
 choco install 7zip
 choco install microsoft-teams
+choco install openconnect-gui
+choco install cygwin
+choco install autohotkey
 
 REM choco install nvidia-display-driver
 REM this choco is a pain
