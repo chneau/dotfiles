@@ -12,7 +12,6 @@ choco install processhacker
 choco install nodejs-lts
 choco install python3
 choco install openjdk11
-choco install googlechrome
 choco install adb
 choco install paint.net
 choco install filezilla
@@ -46,6 +45,7 @@ choco install androidstudio
 choco install julia
 choco install r.project --params "'/AddToPath'"
 choco install visualstudio2019buildtools
+choco install googlechrome
 
 REM Twitch
 choco install chatterino
