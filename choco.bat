@@ -18,24 +18,26 @@ choco install filezilla
 choco install openconnect-gui
 choco install visualstudio2019buildtools
 choco install cygwin
-
 choco install autohotkey
 choco install vlc
+REM choco install sandboxie
+REM replaced by https://github.com/sandboxie-plus/Sandboxie/releases
+
+choco install mousewithoutborders
 choco install adwcleaner
 choco install treesizefree
-choco install nvidia-display-driver
-choco install mousewithoutborders
 choco install cheatengine
-choco install dbeaver
 choco install 7zip
 
+REM choco install nvidia-display-driver
+REM this choco is a pain
 
+choco install dbeaver
 choco install s3browser
 choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 choco install rainmeter
 choco install minecraft
 choco install steam
-choco install sandboxie
 choco install dws.portable
 choco install openvpn
 choco install rustup.install
