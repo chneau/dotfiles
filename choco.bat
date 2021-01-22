@@ -5,6 +5,7 @@ choco feature enable -n allowGlobalConfirmation
 choco install git
 choco install vscode
 choco install golang
+choco install dotnet-sdk
 choco install make
 choco install totalcommander
 choco install processhacker
@@ -16,7 +17,6 @@ choco install adb
 choco install paint.net
 choco install filezilla
 choco install openconnect-gui
-choco install visualstudio2019buildtools
 choco install cygwin
 choco install autohotkey
 choco install vlc
@@ -28,6 +28,7 @@ choco install adwcleaner
 choco install treesizefree
 choco install cheatengine
 choco install 7zip
+choco install microsoft-teams
 
 REM choco install nvidia-display-driver
 REM this choco is a pain
@@ -44,6 +45,7 @@ choco install rustup.install
 choco install androidstudio
 choco install julia
 choco install r.project --params "'/AddToPath'"
+choco install visualstudio2019buildtools
 
 REM Twitch
 choco install chatterino
