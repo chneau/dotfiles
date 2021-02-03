@@ -290,6 +290,7 @@ alias sudo='sudo env "PATH=$PATH" '
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
 alias toix="curl -F 'f:1=<-' ix.io"
 alias toqrcode='curl -F-=\<- qrenco.de'
+alias traefikauth='f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\$/\\$\\$/g; unset -f f; }; f'
 alias transfer='transfer'
 alias u='ls -hltr'
 alias update='updatebashrc; updateall'
