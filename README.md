@@ -27,8 +27,8 @@ free -> <https://github.com/ripienaar/free-for-dev>
 | ${var%pattern}                | Remove from shortest rear (end) pattern                          |
 | ${var%%pattern}               | Remove from longest rear (end) pattern                           |
 | ${var:num1:num2}              | Substring                                                        |
-| ${var#pattern}                | Remove from shortest front pattern                               |
-| ${var##pattern}               | Remove from longest front pattern                                |
+| ${var#pattern}                | Remove from shortest (front) pattern                             |
+| ${var##pattern}               | Remove from longest (front) pattern                              |
 | ${var/pattern/string}         | Find and replace (only replace first occurrence)                 |
 | ${var//pattern/string}        | Find and replace all occurrences                                 |
 | ${!prefix\*}                  | Expands to the names of variables whose names begin with prefix. |
