@@ -157,6 +157,7 @@ alias fgrep='fgrep --color=auto'
 alias findtext='grep -rnw . -e'
 alias fio='f(){ curl -F "file=@$@" https://file.io/?expires=1d && echo;  unset -f f; }; f'
 alias firewall=iptlist
+alias fixgitbashbatfiles="fixgitbashbatfiles"
 alias fixgpg='sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com'
 alias fixionotify='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
 alias free='free -mt'
@@ -304,6 +305,14 @@ alias weather='f(){ curl -s wttr.in/"$1"; unset -f f; }; f'
 alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+
+fixgitbashbatfiles() {
+    for var in *.bat; do
+        echo '#!/bin/sh
+cmd //c "$0.bat" "$@"' >${var%.bat}
+        echo "Created ${var%.bat}"
+    done
+}
 
 transfer() {
     if [ $# -eq 0 ]; then
