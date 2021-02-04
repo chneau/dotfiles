@@ -178,7 +178,7 @@ alias gitrmtag='git push -d origin'
 alias gl='git pull'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias glom='git pull origin master'
-alias goget='go get -u -v'
+alias goget='f(){ go get -u -v ${1#*://}; unset -f f; }; f'
 alias gogetc='f(){ goget github.com/chneau/$@; unset -f f; }; f'
 alias gols="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 alias gotest='go test -cover -count=1'
