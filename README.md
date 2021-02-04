@@ -14,6 +14,33 @@ wget -qO ~/.bashrc raw.githubusercontent.com/chneau/dotfiles/master/.bashrc; . ~
 
 free -> <https://github.com/ripienaar/free-for-dev>
 
+## Bash variable manipulation
+
+> source https://www.cyberciti.biz/tips/bash-shell-parameter-substitution-2.html
+
+| Command                       | Description                                                      |
+| ----------------------------- | ---------------------------------------------------------------- |
+| ${parameter:-defaultValue}    | Get default shell variables value                                |
+| ${parameter:=defaultValue}    | Set default shell variables value                                |
+| ${parameter:?"Error Message"} | Display an error message if parameter is not set                 |
+| ${#var}                       | Find the length of the string                                    |
+| ${var%pattern}                | Remove from shortest rear (end) pattern                          |
+| ${var%%pattern}               | Remove from longest rear (end) pattern                           |
+| ${var:num1:num2}              | Substring                                                        |
+| ${var#pattern}                | Remove from shortest front pattern                               |
+| ${var##pattern}               | Remove from longest front pattern                                |
+| ${var/pattern/string}         | Find and replace (only replace first occurrence)                 |
+| ${var//pattern/string}        | Find and replace all occurrences                                 |
+| ${!prefix\*}                  | Expands to the names of variables whose names begin with prefix. |
+| ${var,}                       | Convert first character to lowercase.                            |
+| ${var,pattern}                |                                                                  |
+| ${var,,}                      | Convert all characters to lowercase.                             |
+| ${var,,pattern}               |                                                                  |
+| ${var^}                       | Convert first character to uppercase.                            |
+| ${var^pattern}                |                                                                  |
+| ${var^^}                      | Convert all character to uppercase..                             |
+| ${var^^pattern}               |                                                                  |
+
 ## SSH passwordless
 
 ```bash
