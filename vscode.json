@@ -13,6 +13,7 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  "editor.minimap.showSlider": "always",
   "editor.renderWhitespace": "boundary",
   "editor.wordWrap": "on",
   "explorer.confirmDelete": false,
