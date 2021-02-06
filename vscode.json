@@ -40,5 +40,8 @@
   "terminal.integrated.showExitAlert": false,
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Saturated Dark+",
-  "workbench.editor.highlightModifiedTabs": true
+  "workbench.editor.decorations.badges": true,
+  "workbench.editor.decorations.colors": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.wrapTabs": true
 }
