@@ -53,5 +53,6 @@
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.wrapTabs": true
+  "workbench.editor.wrapTabs": true,
+  "workbench.tree.renderIndentGuides": "always"
 }
