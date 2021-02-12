@@ -6,6 +6,7 @@
   "[markdown]": { "files.trimTrailingWhitespace": false },
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "csharp.referencesCodeLens.enabled": false,
   "csharp.semanticHighlighting.enabled": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.accessibilitySupport": "off",
@@ -53,6 +54,5 @@
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.wrapTabs": true,
   "workbench.tree.renderIndentGuides": "always"
 }
