@@ -183,6 +183,7 @@ alias goget='f(){ go get -u -v ${1#*://}; unset -f f; }; f'
 alias gogetc='f(){ goget github.com/chneau/$@; unset -f f; }; f'
 alias gols="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 alias gotest='go test -cover -count=1'
+alias goup='rm -f go.mod go.sum && go mod init && go mod tidy'
 alias gp='git push'
 alias gpgexport='gpg --armor --export'             # +key
 alias gpggit='git config --global user.signingkey' # +key
