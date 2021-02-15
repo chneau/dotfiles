@@ -13,6 +13,7 @@ code --install-extension mechatroner.rainbow-csv
 code --install-extension visualstudioexptteam.vscodeintellicode
 # language specific extensions
 code --install-extension golang.go
+code --install-extension jawandarajbir.react-vscode-extension-pack
 code --install-extension jpoissonnier.vscode-styled-components
 code --install-extension ms-dotnettools.csharp
 code --install-extension ms-python.python
