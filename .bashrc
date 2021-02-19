@@ -173,6 +173,7 @@ alias gg='git pull -f; git reset --hard origin/master'
 alias gigit='git clone --depth=1'
 alias gitc='git clone https://github.com/chneau/'
 alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags'
+alias gitget='gitget'
 alias gitmessage='curl -s http://whatthecommit.com/index.txt'
 alias gitrmtag='git push -d origin'
 alias gl='git pull'
@@ -366,6 +367,27 @@ starttransfer:  %{time_starttransfer}s\n\
 -------------------------\n\
         total:  %{time_total}s\n" "$@"
 }
+
+gitget() {
+    git_url=$1
+    repo_name=${git_url#*://}
+    clone_dir=~/go/src/$repo_name
+
+    if ! [[ "$1" =~ ^.*:// ]]; then
+        git_url=https://$git_url
+    fi
+
+    if ! git ls-remote $git_url >/dev/null 2>&1; then
+        echo Repository $git_url not found !
+        exit 1
+    fi
+
+    echo Cloning $repo_name into $clone_dir
+    rm -rf $clone_dir
+    mkdir -p $clone_dir >/dev/null
+    git clone --quiet $git_url $clone_dir
+}
+
 extract() {
     if [ -z "$1" ]; then
         echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
@@ -401,6 +423,7 @@ extract() {
         done
     fi
 }
+
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
