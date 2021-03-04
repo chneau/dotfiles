@@ -20,6 +20,7 @@
   "editor.hover.delay": 100,
   "editor.linkedEditing": true,
   "editor.minimap.showSlider": "always",
+  "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "boundary",
   "editor.semanticHighlighting.enabled": true,
   "editor.wordWrap": "on",
