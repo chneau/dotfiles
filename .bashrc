@@ -277,6 +277,7 @@ alias oc='code -a .'
 alias openports='nmap -p- portquiz.net | grep -i open'
 alias path='echo -e ${PATH//:/\\n}'
 alias pipup='pip list --format freeze --outdated | sed 's/=.*//g' | xargs -n1 pip install -U'
+alias poefilterup='poefilterup'
 alias ports='netstat -tulanp'
 alias ps='ps auxf'
 alias pscpu='ps auxf | sort -nr -k 3'
@@ -423,6 +424,19 @@ extract() {
             fi
         done
     fi
+}
+
+poefilterup() {
+    cd ~/Documents/My\ Games/Path\ of\ Exile/
+    (curl -so "NeverSink's filter - 0-SOFT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%200-SOFT.filter" &)
+    (curl -so "NeverSink's filter - 1-REGULAR.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%201-REGULAR.filter" &)
+    (curl -so "NeverSink's filter - 2-SEMI-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%202-SEMI-STRICT.filter" &)
+    (curl -so "NeverSink's filter - 3-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%203-STRICT.filter" &)
+    (curl -so "NeverSink's filter - 4-VERY-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%204-VERY-STRICT.filter" &)
+    (curl -so "NeverSink's filter - 5-UBER-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%205-UBER-STRICT.filter" &)
+    (curl -so "NeverSink's filter - 6-UBER-PLUS-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%206-UBER-PLUS-STRICT.filter" &)
+    cd -
+    wait
 }
 
 if ! shopt -oq posix; then
