@@ -1068,3 +1068,10 @@ sudo visudo
 # for a specific user add this line
 user   ALL=(ALL:ALL) NOPASSWD: ALL
 ```
+
+## Sandboxie
+
+```bash
+# use this setting to change the path of the sandbox
+FileRootPath=D:\example\
+```
