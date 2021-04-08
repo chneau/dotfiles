@@ -164,6 +164,7 @@ alias free='free -mt'
 alias g='grep -C5 --color=auto'
 alias ga='git add'
 alias gb='git branch -v'
+alias grb="git for-each-ref --sort='committerdate:iso8601' --format='%(committerdate:relative)|%(refname:short)|%(committername)' refs/remotes/ | column -s '|' -t"
 alias gc='git commit -v'
 alias gca='git commit . -v'
 alias gcl='git clone'
