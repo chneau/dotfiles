@@ -168,6 +168,7 @@ alias grb="git for-each-ref --sort='committerdate:iso8601' --format='%(committer
 alias gc='git commit -v'
 alias gca='git commit . -v'
 alias gcl='git clone'
+alias gco='git checkout'
 alias gcom='git checkout master'
 alias gd='git diff'
 alias gg='git pull -f; git reset --hard origin/master'
