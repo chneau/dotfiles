@@ -132,7 +132,7 @@ alias dnd='docker run --rm -it --no-healthcheck --security-opt apparmor=unconfin
 alias dndd='docker run -d --restart always --no-healthcheck --security-opt apparmor=unconfined --name netdata --hostname netdata --cap-add SYS_PTRACE -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -p 19999:19999 netdata/netdata'
 alias doh='docker history'
 alias dotnethttps='dotnet dev-certs https --clean && dotnet dev-certs https --trust'
-alias dotnetup='dotnetupdateall'
+alias dotnetup='dotnetup'
 alias dpihole='docker run -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ="Europe/London" -v "$(pwd)/pihole/etc/pihole/:/etc/pihole/" -v "$(pwd)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST="pihole" -e PROXY_LOCATION="pihole" -e ServerIP="127.0.0.1" pihole/pihole:latest'
 alias dprune='docker system prune -f --volumes'
 alias dprunea='docker system prune -af --volumes'
@@ -164,7 +164,6 @@ alias free='free -mt'
 alias g='grep -C5 --color=auto'
 alias ga='git add'
 alias gb='git branch -v'
-alias grb="git for-each-ref --sort='committerdate:iso8601' --format='%(committerdate:relative)|%(refname:short)|%(committername)' refs/remotes/ | column -s '|' -t"
 alias gc='git commit -v'
 alias gca='git commit . -v'
 alias gcl='git clone'
@@ -193,6 +192,7 @@ alias gpggit='git config --global user.signingkey' # +key
 alias gpglist='gpg --list-secret-keys --keyid-format LONG'
 alias gpgnew='gpg --default-new-key-algo rsa4096 --gen-key'
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+alias grb="git for-each-ref --sort='committerdate:iso8601' --format='%(committerdate:relative)|%(refname:short)|%(committername)' refs/remotes/ | column -s '|' -t"
 alias grep='grep --color=auto'
 alias grephere='grep -rnw . -e'
 alias grm='git ls-files --deleted | xargs git rm'
@@ -303,6 +303,7 @@ alias toqrcode='curl -F-=\<- qrenco.de'
 alias traefikauth='f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\$/\\$\\$/g; unset -f f; }; f'
 alias transfer='transfer'
 alias u='ls -hltr'
+alias up='updatebashrc; updateall'
 alias update='updatebashrc; updateall'
 alias updateall='sudo apt -yf install && sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove'
 alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles/master/.bashrc -o ~/.bashrc && . ~/.bashrc'
@@ -345,7 +346,7 @@ transfer() {
     echo
 }
 
-dotnetupdateall() {
+dotnetup() {
     regex='PackageReference Include="([^"]*)" Version="([^"]*)"'
     find . -name "*.*proj" | while read proj; do
         while read line; do
