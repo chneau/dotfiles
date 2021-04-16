@@ -438,8 +438,9 @@ poefilterup() {
     (curl -so "NeverSink's filter - 4-VERY-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%204-VERY-STRICT.filter" &)
     (curl -so "NeverSink's filter - 5-UBER-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%205-UBER-STRICT.filter" &)
     (curl -so "NeverSink's filter - 6-UBER-PLUS-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%206-UBER-PLUS-STRICT.filter" &)
-    cd -
+    cd - >/dev/null
     wait
+    echo "Downloaded filters from master branch"
 }
 
 if ! shopt -oq posix; then
