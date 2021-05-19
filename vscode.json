@@ -28,6 +28,7 @@
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
   "files.autoSave": "onWindowChange",
+  "files.exclude": { "**/*.cshtml__virtual.html": true, "**/obj/": true, "**/bin/": true, "**/*.razor__bg__virtual.cs": true },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
