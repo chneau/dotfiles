@@ -98,6 +98,9 @@ set_prompt() {
     # Print the working directory and prompt marker in blue, and reset
     # the text color to the default.
     PS1+="$Blue\\w \\\$$Reset "
+
+    # windows git bash work around
+    history -a
 }
 
 trap 'timer_start' DEBUG
