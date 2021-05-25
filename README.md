@@ -1075,3 +1075,23 @@ user   ALL=(ALL:ALL) NOPASSWD: ALL
 # use this setting to change the path of the sandbox
 FileRootPath=D:\example\
 ```
+
+## nvidia on linux
+
+```bash
+# sources: https://askubuntu.com/a/271625
+# nvidiafb is a frame buffer
+
+# check what is nvidiafb
+modinfo nvidiafb | grep description
+
+# check if nvidia is installed
+dpkg -l | grep -i nvidia
+
+# check if nouveau is running
+lsmod | grep nouveau
+# can do the same with nvidia
+
+# another useful command to check which driver is in use
+lspci -nnk | grep -iA2 vga
+```
