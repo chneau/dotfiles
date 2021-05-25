@@ -1094,4 +1094,7 @@ lsmod | grep nouveau
 
 # another useful command to check which driver is in use
 lspci -nnk | grep -iA2 vga
+
+# alternative
+sudo lshw -class video
 ```
