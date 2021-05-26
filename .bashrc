@@ -1,6 +1,7 @@
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=20000
 export HISTSIZE=10000
+export DOCKER_BUILDKIT=1
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.linuxbrew/bin
