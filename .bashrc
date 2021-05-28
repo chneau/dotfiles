@@ -339,7 +339,7 @@ cmd //c "$0.bat" "$@"' >${var%.bat}
 
 transfer() {
     if [ $# -eq 0 ]; then
-        echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>" >&2
+        printf "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>\n" >&2
         return 1
     fi
     if tty -s; then
