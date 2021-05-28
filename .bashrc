@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# shellcheck disable=SC2142
+# shellcheck disable=SC2142,SC2154
 
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=20000
@@ -329,10 +329,11 @@ alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
 
+# shellcheck disable=SC2016
 fixgitbashbatfiles() {
     for var in *.bat; do
         echo '#!/bin/sh
-cmd //c "$0.bat" "$@"' >${var%.bat}
+cmd //c "$0.bat" "$@"' >"${var%.bat}"
         echo "Created ${var%.bat}"
     done
 }
@@ -352,7 +353,7 @@ transfer() {
         if [ -d "$file" ]; then
             file_name="$file_name.zip" ,
             (cd "$file" && zip -r -q - .) | curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null,
-        else cat "$file" | curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null; fi
+        else curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" <"$file" | tee /dev/null; fi
     else
         file_name=$1
         curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null
@@ -360,6 +361,7 @@ transfer() {
     echo
 }
 
+# shellcheck disable=SC2094
 dotnetup() {
     regex='PackageReference Include="([^"]*)" Version="([^"]*)"'
     find . -name "*.*proj" | while read -r proj; do
@@ -413,7 +415,7 @@ extract() {
         echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
         return 1
     else
-        for n in $@; do
+        for n in "$@"; do
             if [ -f "$n" ]; then
                 case "${n%,}" in
                 *.tar.bz2 | *.tar.gz | *.tar.xz | *.tbz2 | *.tgz | *.txz | *.tar)
