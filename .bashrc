@@ -118,6 +118,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias apti='sudo apt install -y'
 alias aptr='sudo apt remove --auto-remove -y'
 alias banip='sudo iptables -A INPUT -j DROP -s '
+alias completeall='completeall'
 alias cpuinfo='lscpu'
 alias createpwd='PASSWORD=$(base64 < /dev/urandom | head -c32); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum'
 alias ct='column -t'
@@ -328,6 +329,13 @@ alias weather='f(){ curl -s wttr.in/"$1"; unset -f f; }; f'
 alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+
+completeall() {
+    eval "$(curl -sSL https://raw.githubusercontent.com/scop/bash-completion/master/bash_completion)"
+    eval "$(curl -sSL https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias)"
+    # shellcheck disable=SC2046
+    complete -F _complete_alias $(alias | perl -lne 'print "$1" if /^alias ([^=]*)=/')
+}
 
 fixgitbashbatfiles() {
     for var in *.bat; do
