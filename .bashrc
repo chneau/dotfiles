@@ -42,7 +42,7 @@ if hash shopt 2>/dev/null; then
     }
 
     timer_stop() {
-        local delta_us=$((($(timer_now) - $timer_start) / 1000))
+        local delta_us=$((($(timer_now) - timer_start) / 1000))
         local us=$((delta_us % 1000))
         local ms=$(((delta_us / 1000) % 1000))
         local s=$(((delta_us / 1000000) % 60))
