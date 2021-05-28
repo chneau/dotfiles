@@ -1,6 +1,7 @@
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=20000
 export HISTSIZE=10000
+export DOCKER_BUILDKIT=1
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.linuxbrew/bin
@@ -163,7 +164,9 @@ alias fio='f(){ curl -F "file=@$@" https://file.io/?expires=1d && echo;  unset -
 alias firewall=iptlist
 alias fixgitbashbatfiles="fixgitbashbatfiles"
 alias fixgpg='sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com'
-alias fixionotify='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
+alias fixionotify='fixionotifywatches; fixionotifyinstances'
+alias fixionotifyinstances='grep -Fxq "fs.inotify.max_user_instances=524288" /etc/sysctl.conf || echo fs.inotify.max_user_instances=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
+alias fixionotifywatches='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
 alias fixsshperm='chown `id -u` ~/; chown `id -u` ~/.ssh; chmod go-w ~/; chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys; chmod 600 ~/.ssh/id_rsa; chmod 644 ~/.ssh/id_rsa.pub'
 alias free='free -mt'
 alias g='grep -C5 --color=auto'
