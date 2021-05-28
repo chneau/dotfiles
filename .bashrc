@@ -329,11 +329,10 @@ alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
 
-# shellcheck disable=SC2016
 fixgitbashbatfiles() {
     for var in *.bat; do
-        echo '#!/bin/sh
-cmd //c "$0.bat" "$@"' >"${var%.bat}"
+        # shellcheck disable=SC2016
+        printf '#!/bin/sh\ncmd //c "$0.bat" "$@"\n' >"${var%.bat}"
         echo "Created ${var%.bat}"
     done
 }
