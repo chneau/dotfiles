@@ -334,7 +334,10 @@ completeall() {
     eval "$(curl -sSL https://raw.githubusercontent.com/scop/bash-completion/master/bash_completion)"
     eval "$(curl -sSL https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias)"
     # shellcheck disable=SC2046
-    complete -F _complete_alias $(alias | perl -lne 'print "$1" if /^alias ([^=]*)=/')
+    complete -F _complete_alias $(alias | while read -r line; do
+        line="${line%%=*}"
+        echo "${line:6}"
+    done)
 }
 
 fixgitbashbatfiles() {
