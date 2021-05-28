@@ -360,10 +360,10 @@ transfer() {
     echo
 }
 
-# shellcheck disable=SC2094
 dotnetup() {
     regex='PackageReference Include="([^"]*)" Version="([^"]*)"'
     find . -name "*.*proj" | while read -r proj; do
+        # shellcheck disable=SC2094
         while read -r line; do
             if [[ $line =~ $regex ]]; then
                 name="${BASH_REMATCH[1]}"
