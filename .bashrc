@@ -396,15 +396,15 @@ gitget() {
         git_url=https://$git_url
     fi
 
-    if ! git ls-remote $git_url >/dev/null 2>&1; then
-        echo Repository $git_url not found !
+    if ! git ls-remote "$git_url" >/dev/null 2>&1; then
+        echo Repository "$git_url" not found !
         exit 1
     fi
 
-    echo Cloning $repo_name into $clone_dir
-    rm -rf $clone_dir
-    mkdir -p $clone_dir >/dev/null
-    git clone --quiet $git_url $clone_dir
+    echo Cloning "$repo_name" into "$clone_dir"
+    rm -rf "$clone_dir"
+    mkdir -p "$clone_dir" >/dev/null
+    git clone --quiet "$git_url" "$clone_dir"
 }
 
 extract() {
