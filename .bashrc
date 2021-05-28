@@ -444,7 +444,7 @@ extract() {
 }
 
 poefilterup() {
-    cd ~/Documents/My\ Games/Path\ of\ Exile/
+    cd ~/Documents/My\ Games/Path\ of\ Exile/ || return
     (curl -so "NeverSink's filter - 0-SOFT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%200-SOFT.filter" &)
     (curl -so "NeverSink's filter - 1-REGULAR.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%201-REGULAR.filter" &)
     (curl -so "NeverSink's filter - 2-SEMI-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%202-SEMI-STRICT.filter" &)
@@ -452,11 +452,12 @@ poefilterup() {
     (curl -so "NeverSink's filter - 4-VERY-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%204-VERY-STRICT.filter" &)
     (curl -so "NeverSink's filter - 5-UBER-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%205-UBER-STRICT.filter" &)
     (curl -so "NeverSink's filter - 6-UBER-PLUS-STRICT.filter" "https://raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter/master/NeverSink's%20filter%20-%206-UBER-PLUS-STRICT.filter" &)
-    cd - >/dev/null
+    cd - >/dev/null || return
     wait
     echo "Downloaded filters from master branch"
 }
 
+# shellcheck disable=SC1091
 if hash shopt 2>/dev/null; then
     if ! shopt -oq posix; then
         if [ -f /usr/share/bash-completion/bash_completion ]; then
