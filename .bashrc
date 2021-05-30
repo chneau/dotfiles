@@ -114,6 +114,7 @@ else
     PS1="\[\e[35m\]\t\`${SELECT}\`\u@\h \[\e[33m\]\w\[\e[m\] "
 fi
 
+alias a='ansible'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias apti='sudo apt install -y'
 alias aptr='sudo apt remove --auto-remove -y'
@@ -314,6 +315,7 @@ alias sshgenkey='mkdir -p .ssh && ssh-keygen -t rsa -f .ssh/id_rsa -q -N ""'
 alias sshkillagents='ssh-add -D; ssh-agent -k'
 alias sss='service --status-all'
 alias sudo='sudo env "PATH=$PATH" '
+alias t='terraform'
 alias theia='docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
 alias toix="curl -F 'f:1=<-' ix.io"
 alias toqrcode='curl -F-=\<- qrenco.de'
