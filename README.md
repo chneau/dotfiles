@@ -1098,3 +1098,18 @@ lspci -nnk | grep -iA2 vga
 # alternative
 sudo lshw -class video
 ```
+
+## bash trap
+
+```bash
+# example of trap to kill listed sub process
+
+rabbitmq-server &
+PIDS[0]=$!
+npm start &
+PIDS[1]=$!
+sleep 1000 &
+PIDS[2]=$!
+trap "kill ${PIDS[*]} ; trap - SIGINT" SIGINT
+wait
+```
