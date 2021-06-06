@@ -64,6 +64,5 @@
   "workbench.editor.decorations.colors": true,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editorAssociations": [{ "viewType": "jupyter.notebook.ipynb", "filenamePattern": "*.ipynb" }],
-  "workbench.tree.renderIndentGuides": "always",
-  "yaml.schemas": { "kubernetes": ["*.yml", "*.yaml"] }
+  "workbench.tree.renderIndentGuides": "always"
 }
