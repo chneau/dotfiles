@@ -130,6 +130,10 @@ Use rand.New with argument rand.Newsource((...date..))
 
 ```bash
 CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' .
+CGO_ENABLED=0 go build -trimpath -ldflags '-s -w -extldflags "-static"' -o app
+
+# go mod download -x
+go mod graph | awk '{if ($1 !~ "@") print $2}' | xargs go get
 ```
 
 ## Ban an IP
