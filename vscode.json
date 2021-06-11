@@ -52,6 +52,7 @@
   "python.languageServer": "Pylance",
   "razor.format.enable": false,
   "search.quickOpen.includeSymbols": true,
+  "security.workspace.trust.enabled": false,
   "telemetry.enableTelemetry": false,
   "terminal.external.windowsExec": "C:\\Program Files\\Git\\git-bash.exe",
   "terminal.integrated.defaultProfile.windows": "Git Bash",
