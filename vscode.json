@@ -23,6 +23,7 @@
   "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "boundary",
   "editor.semanticHighlighting.enabled": true,
+  "editor.suggest.preview": true,
   "editor.suggestSelection": "first",
   "editor.wordWrap": "on",
   "explorer.confirmDelete": false,
