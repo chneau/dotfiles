@@ -336,7 +336,11 @@ alias webshare='python -m SimpleHTTPServer'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
 
+# shellcheck disable=SC1090
 completeall() {
+    if command -v kubectl &>/dev/null; then
+        source <(kubectl completion bash)
+    fi
     eval "$(curl -sSL https://raw.githubusercontent.com/scop/bash-completion/master/bash_completion)"
     eval "$(curl -sSL https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias)"
     # shellcheck disable=SC2046
