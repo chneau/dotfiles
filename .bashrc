@@ -7,6 +7,7 @@ export HISTSIZE=10000
 export DOCKER_BUILDKIT=1
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.arkade/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.linuxbrew/bin
 export PATH=$PATH:~/.dotnet
@@ -264,6 +265,7 @@ alias kd='kubectl delete -f'
 alias ke='kubectl exec -ti '
 alias kga='kubectl get all -owide --show-labels'
 alias killalljobs='kill `jobs -p`'
+alias kk='kubectl krew'
 alias kl='kubectl logs -f --tail=40'
 alias kpf='kubectl port-forward'
 alias krestart='kubectl rollout restart deploy'
