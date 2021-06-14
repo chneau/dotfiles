@@ -261,12 +261,14 @@ alias ivpnangristan='wget https://raw.githubusercontent.com/Angristan/OpenVPN-in
 alias ivpnnyr='wget https://raw.githubusercontent.com/Nyr/openvpn-install/master/openvpn-install.sh -O openvpn-nyr-install.sh && bash openvpn-nyr-install.sh'
 alias k='kubectl'
 alias ka='kubectl apply -f'
+alias kctx="kubectx"
 alias kd='kubectl delete -f'
 alias ke='kubectl exec -ti '
 alias kga='kubectl get all -owide --show-labels'
 alias killalljobs='kill `jobs -p`'
 alias kk='kubectl krew'
 alias kl='kubectl logs -f --tail=40'
+alias kns="kubens"
 alias kpf='kubectl port-forward'
 alias krestart='kubectl rollout restart deploy'
 alias kw='kubectl get po -w'
