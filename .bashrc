@@ -264,9 +264,10 @@ alias ka='kubectl apply -f'
 alias kctx="kubectx"
 alias kd='kubectl delete -f'
 alias ke='kubectl exec -ti '
-alias kga='kubectl get all -owide --show-labels'
+alias kg='kubectl get'
+alias kga='kubectl get all'
 alias killalljobs='kill `jobs -p`'
-alias kk='kubectl krew'
+alias kk='kubectl kustomize'
 alias kl='kubectl logs -f --tail=40'
 alias kns="kubens"
 alias kpf='kubectl port-forward'
