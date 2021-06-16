@@ -274,6 +274,8 @@ alias kl='kubectl logs -f --tail=40'
 alias kns="kubens"
 alias kpf='kubectl port-forward'
 alias krestart='kubectl rollout restart deploy'
+alias ktn='kubectl top nodes'
+alias ktp='kubectl top pods'
 alias kw='kubectl get po -w'
 alias l='ls -CF'
 alias la='ls -A'
