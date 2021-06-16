@@ -262,6 +262,7 @@ alias ivpnnyr='wget https://raw.githubusercontent.com/Nyr/openvpn-install/master
 alias k='kubectl'
 alias ka='kubectl apply -f'
 alias kak='kubectl apply -k'
+alias kar='kubectl api-resources'
 alias kctx="kubectx"
 alias kd='kubectl delete -f'
 alias kdk='kubectl delete -k'
