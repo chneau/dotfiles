@@ -5,6 +5,7 @@ export HISTCONTROL=ignoreboth
 export HISTFILESIZE=20000
 export HISTSIZE=10000
 export DOCKER_BUILDKIT=1
+export NODE_OPTIONS=--max_old_space_size=4096
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.arkade/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
