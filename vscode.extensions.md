@@ -9,6 +9,7 @@ code --install-extension dakara.transformer
 code --install-extension eamodio.gitlens
 code --install-extension esbenp.prettier-vscode
 code --install-extension foxundermoon.shell-format
+code --install-extension iocave.customize-ui
 code --install-extension mechatroner.rainbow-csv
 code --install-extension redhat.vscode-yaml
 code --install-extension visualstudioexptteam.vscodeintellicode

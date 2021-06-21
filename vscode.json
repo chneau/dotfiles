@@ -11,6 +11,7 @@
   "[yaml]": { "editor.defaultFormatter": "redhat.vscode-yaml" },
   "csharp.semanticHighlighting.enabled": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
+  "customizeUI.stylesheet": { ".quick-input-widget": "width: 90% !important; left: calc(10% + 200px);" },
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": { "source.organizeImports": true },
   "editor.detectIndentation": true,
