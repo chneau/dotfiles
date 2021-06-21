@@ -244,6 +244,7 @@ alias imeteor='curl -sSL install.meteor.com | sh'
 alias imicro='curl https://getmic.ro | bash'
 alias iminikube='curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.23.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/'
 alias invm='curl -sSL https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash'
+alias ioctant='go get github.com/vmware-tanzu/octant/cmd/octant@latest' # does not work on windows
 alias iombash='bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"'
 alias iomzsh='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 alias ipt='sudo /sbin/iptables'
