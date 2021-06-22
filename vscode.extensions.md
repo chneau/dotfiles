@@ -14,6 +14,7 @@ code --install-extension mechatroner.rainbow-csv
 code --install-extension redhat.vscode-yaml
 code --install-extension visualstudioexptteam.vscodeintellicode
 # language specific extensions
+code --install-extension dsznajder.es7-react-js-snippets
 code --install-extension golang.go
 code --install-extension hashicorp.terraform
 code --install-extension jawandarajbir.react-vscode-extension-pack
