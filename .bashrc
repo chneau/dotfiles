@@ -221,6 +221,7 @@ alias iact='curl https://raw.githubusercontent.com/nektos/act/master/install.sh 
 alias iarkade='curl -sLS https://dl.get-arkade.dev | sudo sh'
 alias ibrew='bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
 alias icroc='goget github.com/schollz/croc/v9@latest'
+alias idatree='goget github.com/datreeio/datree@latest'
 alias idocker='curl -sSL get.docker.com | sh'
 alias idotnet='curl -sSL https://dot.net/v1/dotnet-install.sh | bash'
 alias ifluxctl='sudo snap install fluxctl --classic'
