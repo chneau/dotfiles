@@ -270,6 +270,7 @@ alias ka='kubectl apply -f'
 alias kak='kubectl apply -k'
 alias kar='kubectl api-resources'
 alias kclean='kubectl delete $(kubectl get all | grep replicaset.apps | grep "0         0         0" | cut -d" " -f 1)'
+alias kconf='kubectl config view --raw'
 alias kctx="kubectx"
 alias kd='kubectl delete -f'
 alias kdes='kubectl describe'
