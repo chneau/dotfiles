@@ -274,6 +274,7 @@ alias kconf='kubectl config view --raw'
 alias kctx="kubectx"
 alias kd='kubectl delete -f'
 alias kdes='kubectl describe'
+alias kdestroy='kubectl delete --grace-period=0 --force'
 alias kdk='kubectl delete -k'
 alias ke='kubectl exec -ti '
 alias kg='kubectl get'
