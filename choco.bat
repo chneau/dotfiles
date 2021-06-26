@@ -6,12 +6,13 @@ choco install git
 choco install vscode
 choco install golang
 choco install dotnet-sdk
+choco install kotlinc
+choco install python
+choco install openjdk
+choco install nodejs
 choco install make
 choco install totalcommander
 choco install processhacker
-choco install nodejs-lts
-choco install python3
-choco install openjdk11
 choco install adb
 choco install paint.net
 choco install filezilla
