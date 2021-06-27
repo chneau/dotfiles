@@ -2,6 +2,8 @@
 
 choco feature enable -n allowGlobalConfirmation
 
+REM --ignore-dependencies = -i
+
 choco install git
 choco install vscode
 choco install golang
