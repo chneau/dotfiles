@@ -190,7 +190,7 @@ alias genpwd='PASSWORD=$(base64 < /dev/urandom | head -c32); echo "$PASSWORD"; e
 alias genuuid="python -c 'import uuid; print(uuid.uuid4())'"
 alias gg='git pull -f; git reset --hard origin/master'
 alias gigit='git clone --depth=1'
-alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags'
+alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags; GIT_ASK_YESNO=false git clean -ffdx'
 alias gitget='gitget'
 alias gitmessage='curl -s http://whatthecommit.com/index.txt'
 alias gitrmtag='git push -d origin'
