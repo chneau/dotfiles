@@ -25,6 +25,7 @@ code --install-extension ms-python.vscode-pylance
 code --install-extension ms-toolsai.jupyter
 code --install-extension ms-vscode.js-debug-nightly
 code --install-extension ms-vscode.vscode-typescript-next
+code --install-extension prisma.prisma
 code --install-extension redhat.java
 code --install-extension rust-lang.rust
 code --install-extension steoates.autoimport
