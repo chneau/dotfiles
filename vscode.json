@@ -55,6 +55,7 @@
   "python.formatting.autopep8Args": ["--max-line-length=200"],
   "python.languageServer": "Pylance",
   "razor.format.enable": false,
+  "redhat.telemetry.enabled": false,
   "search.quickOpen.includeSymbols": true,
   "security.workspace.trust.enabled": false,
   "telemetry.enableTelemetry": false,
@@ -68,6 +69,6 @@
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editorAssociations": [{ "viewType": "jupyter.notebook.ipynb", "filenamePattern": "*.ipynb" }],
+  "workbench.editorAssociations": { "*.ipynb": "jupyter.notebook.ipynb" },
   "workbench.tree.renderIndentGuides": "always"
 }
