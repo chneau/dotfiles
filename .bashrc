@@ -143,6 +143,7 @@ alias dmm='docker run --net=host --rm -it mrvautin/adminmongo'
 alias dn='docker run --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 node:alpine'
 alias dnd='docker run --rm -it --no-healthcheck --security-opt apparmor=unconfined --name netdata --hostname netdata --cap-add SYS_PTRACE -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -p 19999:19999 netdata/netdata'
 alias dndd='docker run -d --restart always --no-healthcheck --security-opt apparmor=unconfined --name netdata --hostname netdata --cap-add SYS_PTRACE -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -p 19999:19999 netdata/netdata'
+alias dockertags='dockertags'
 alias doh='docker history'
 alias dotnethttps='dotnet dev-certs https --clean && dotnet dev-certs https --trust'
 alias dotnetup='dotnetup'
@@ -501,6 +502,31 @@ poefilterup() {
     cd - >/dev/null || return
     wait
     echo "Downloaded filters from master branch"
+}
+
+dockertags() {
+    if [ $# -lt 1 ]; then
+        cat <<HELP
+dockertags  --  list all tags for a Docker image on a remote registry.
+
+EXAMPLE:
+    - list all tags for ubuntu:
+       dockertags ubuntu
+
+    - list all php tags containing apache:
+       dockertags php apache
+
+HELP
+    fi
+
+    image="$1"
+    tags=$(curl -s https://registry.hub.docker.com/v1/repositories/"${image}"/tags | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' | tr '}' '\n' | awk -F: '{print $3}')
+
+    if [ -n "$2" ]; then
+        tags=$(echo "${tags}" | grep "$2")
+    fi
+
+    echo "${tags}"
 }
 
 # shellcheck disable=SC1091
