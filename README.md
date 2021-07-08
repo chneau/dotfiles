@@ -1148,3 +1148,18 @@ PIDS[2]=$!
 trap "kill ${PIDS[*]} ; trap - SIGINT" SIGINT
 wait
 ```
+
+## docker macvlan stuff
+
+```bash
+# use `ip a` or `ifconfig` to find your local network
+docker network create -d macvlan --subnet=192.168.1.3/24 --gateway=192.168.1.1 -o parent=enp14s0 macvlan
+
+# check this is set up
+docker network ls
+
+# run a docker with a local ip
+docker run --rm -it --net=macvlan --hostname=whoami --ip=192.168.1.111 containous/whoami
+
+# pro tip, be sure the container is using port 80 is testing with a browser
+```
