@@ -1152,6 +1152,9 @@ wait
 ## docker macvlan stuff
 
 ```bash
+# first, you can check if this is available on your system
+lsmod | grep macvlan
+
 # use `ip a` or `ifconfig` to find your local network
 docker network create -d macvlan --subnet=192.168.1.3/24 --gateway=192.168.1.1 -o parent=enp14s0 macvlan
 
