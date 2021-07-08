@@ -1159,7 +1159,7 @@ docker network create -d macvlan --subnet=192.168.1.3/24 --gateway=192.168.1.1 -
 docker network ls
 
 # run a docker with a local ip
-docker run --rm -it --net=macvlan --hostname=whoami --ip=192.168.1.111 containous/whoami
+docker run --rm -it --net=macvlan --ip=192.168.1.111 containous/whoami
 
 # pro tip, be sure the container is using port 80 is testing with a browser
 ```
