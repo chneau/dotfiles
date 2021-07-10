@@ -8,6 +8,7 @@ code --install-extension coenraads.bracket-pair-colorizer-2
 code --install-extension dakara.transformer
 code --install-extension eamodio.gitlens
 code --install-extension esbenp.prettier-vscode
+code --install-extension formulahendry.auto-rename-tag
 code --install-extension foxundermoon.shell-format
 code --install-extension iocave.customize-ui
 code --install-extension mechatroner.rainbow-csv
