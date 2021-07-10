@@ -931,11 +931,11 @@ REM check version used
 wsl -l -v
 ```
 
-If for some reasons internet doesnt work:
+If for some reasons internet doesnt work: create this file `~/.wslconfig` (on windows) with
 
 ```cmd
-REM create this file %userprofile%\.wslconfig with
 [wsl2]
+memory=4GB
 swap=0
 ```
 
