@@ -1183,4 +1183,12 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 
 # more here https://docs.microsoft.com/en-us/ef/core/cli/dotnet
+
+# if startup project is different than project holding the data layer:
+# cd StartupProject
+dotnet add package Microsoft.EntityFrameworkCore.Design # in startup project
+# cd ../DataLayerProject
+# from data layer project
+dotnet ef --startup-project ../StartupProject/ migrations add InitialCreate
+# https://stackoverflow.com/a/38725569
 ```
