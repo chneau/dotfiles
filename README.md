@@ -1191,4 +1191,8 @@ dotnet add package Microsoft.EntityFrameworkCore.Design # in startup project
 # from data layer project
 dotnet ef --startup-project ../StartupProject/ migrations add InitialCreate
 # https://stackoverflow.com/a/38725569
+
+# in code
+# instead of Database.EnsureCreated()
+# use Database.Migrate()
 ```
