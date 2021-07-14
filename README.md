@@ -1166,3 +1166,21 @@ docker run --rm -it --net=macvlan --ip=192.168.1.111 containous/whoami
 
 # pro tip, be sure the container is using port 80 is testing with a browser
 ```
+
+## dotnet ef (EntityFramework) migrations
+
+```bash
+# add dependency
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+# install dotnet ef cli
+dotnet tool install --global dotnet-ef
+
+# create init migration
+dotnet ef migrations add InitialCreate
+
+# now you can create/update the DB from command line
+dotnet ef database update
+
+# more here https://docs.microsoft.com/en-us/ef/core/cli/dotnet
+```
