@@ -11,6 +11,7 @@ code --install-extension esbenp.prettier-vscode
 code --install-extension formulahendry.auto-rename-tag
 code --install-extension foxundermoon.shell-format
 code --install-extension iocave.customize-ui
+code --install-extension maptz.camelcasenavigation
 code --install-extension mechatroner.rainbow-csv
 code --install-extension redhat.vscode-yaml
 code --install-extension visualstudioexptteam.vscodeintellicode
