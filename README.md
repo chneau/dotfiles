@@ -1195,4 +1195,7 @@ dotnet ef --startup-project ../StartupProject/ migrations add InitialCreate
 # in code
 # instead of Database.EnsureCreated()
 # use Database.Migrate()
+
+# can configure where the migrations are stored with options.MigrationsHistoryTable()
+# https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/history-table
 ```
