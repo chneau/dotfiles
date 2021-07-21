@@ -317,7 +317,7 @@ alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
 alias nowtime=now
 alias npmig='npm i -g ungit npm-check-updates nodemon prettier create-react-app typesync'
-alias npmup='ncu --upgrade --target=patch && npm install --silent && ncu'
+alias npmup='ncu --upgrade --target=minor && npm install --silent && ncu'
 alias nud='nvm use default'
 alias oc='code -a .'
 alias openports='nmap -p- portquiz.net | grep -i open'
