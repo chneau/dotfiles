@@ -295,7 +295,7 @@ alias kk='kubectl kustomize'
 alias kl='kubectl logs -f --tail=40'
 alias kns="kubens"
 alias kpf='kubectl port-forward'
-alias krestart='kubectl rollout restart deploy'
+alias krr='kubectl rollout restart'
 alias ktn='kubectl top nodes'
 alias ktp='kubectl top pods'
 alias kw='kubectl get po -w'
