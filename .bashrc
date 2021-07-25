@@ -7,15 +7,21 @@ export HISTSIZE=10000
 export DOCKER_BUILDKIT=1
 export NODE_OPTIONS=--max_old_space_size=4096
 export KUBECTL_EXTERNAL_DIFF='diff --color -u -N -I generation'
+
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
+
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.arkade/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:~/.linuxbrew/bin
 export PATH=$PATH:~/.dotnet
 export PATH=$PATH:~/.go/bin
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/sbin
