@@ -31,6 +31,7 @@ choco install microsoft-teams
 choco install openconnect-gui
 choco install cygwin
 choco install autohotkey
+choco install crystaldiskmark 
 
 REM choco install nvidia-display-driver
 REM this choco is a pain
