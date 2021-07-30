@@ -1091,6 +1091,12 @@ systemctl | grep -i docker
 # status of a service:
 systemctl status docker.service
 
+# status of all
+systemctl status
+
+# getting rid of auto sleep
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
 # Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
 # first enabled might means it will start on reboot
 
