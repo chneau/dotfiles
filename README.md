@@ -1053,6 +1053,16 @@ sudo nano /etc/ssh/sshd_config
 # Port 23
 # NOTE: using port 21 for some reason to investigate create loop disconect for ssh connection
 sudo systemctl restart sshd
+
+# remove auto sleep
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+# remove GUI in case it was installed
+sudo systemctl set-default multi-user
+gnome-session-quit
+sudo service gdm3 stop
+sudo systemctl disable gdm3
+sudo reboot
 ```
 
 ## dotnet
