@@ -21,7 +21,6 @@ choco install filezilla
 choco install vlc
 REM https://github.com/sandboxie-plus/Sandboxie/releases
 REM https://github.com/openhoangnc/taskbar-stats/releases
-REM http://www.photofiltre-studio.com/download.htm
 
 choco install mousewithoutborders
 choco install adwcleaner
@@ -32,7 +31,7 @@ choco install microsoft-teams
 choco install openconnect-gui
 choco install cygwin
 choco install autohotkey
-choco install crystaldiskmark
+choco install crystaldiskmark 
 
 REM choco install nvidia-display-driver
 REM this choco is a pain
