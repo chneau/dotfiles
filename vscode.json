@@ -2,6 +2,7 @@
   "[aspnetcorerazor]": { "editor.formatOnSave": false },
   "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[markdown]": { "files.trimTrailingWhitespace": false, "editor.defaultFormatter": "esbenp.prettier-vscode" },
