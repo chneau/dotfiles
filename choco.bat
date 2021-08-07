@@ -31,12 +31,13 @@ choco install microsoft-teams
 choco install openconnect-gui
 choco install cygwin
 choco install autohotkey
-choco install crystaldiskmark 
+choco install crystaldiskmark
 
 REM choco install nvidia-display-driver
 REM this choco is a pain
 
 choco install dbeaver
+choco install pgadmin4
 choco install s3browser
 choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 choco install rainmeter
