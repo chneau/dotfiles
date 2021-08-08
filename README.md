@@ -1225,3 +1225,11 @@ dotnet ef --startup-project ../StartupProject/ migrations add InitialCreate
 # can configure where the migrations are stored with options.MigrationsHistoryTable()
 # https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/history-table
 ```
+
+## react
+
+```bash
+# don't use create-react-app
+# use vite or something like this (nextjs, etc...)
+npm init vite@latest
+```
