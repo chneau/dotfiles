@@ -831,6 +831,12 @@ For vscode, probably the best working extension ever:
 
 - https://rust-analyzer.github.io/manual.html#installation
 - For Windows... install these https://github.com/rust-lang/rustup/issues/1003#issuecomment-289733784
+- `cargo install cargo-edit`
+  - cargo add
+  - cargo rm
+  - cargo upgrade
+- `cargo install cargo-watch`
+  - cargo watch
 
 ## Any web dev
 
