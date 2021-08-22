@@ -130,6 +130,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias apti='sudo apt install -y'
 alias aptr='sudo apt remove --auto-remove -y'
 alias banip='sudo iptables -A INPUT -j DROP -s '
+alias cleanos='rm -rf bleachbit && git clone --depth=1 https://github.com/bleachbit/bleachbit && python3 bleachbit/bleachbit.py --list | grep -v system.free_disk_space | grep -v system.memory | grep -v deepscan | xargs sudo python3 bleachbit/bleachbit.py --clean && rm -rf bleachbit'
 alias completeall='completeall'
 alias cpuinfo='lscpu'
 alias crictlprune='crictl images -q | xargs -n 1 crictl rmi' # crictl rmi --prune
