@@ -189,6 +189,7 @@ alias fixionotifyinstances='grep -Fxq "fs.inotify.max_user_instances=524288" /et
 alias fixionotifywatches='grep -Fxq "fs.inotify.max_user_watches=524288" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
 alias fixsleep='sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target'
 alias fixsshperm='chown `id -u` ~/; chown `id -u` ~/.ssh; chmod go-w ~/; chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys; chmod 600 ~/.ssh/id_rsa; chmod 600 ~/.ssh/config; chmod 644 ~/.ssh/id_rsa.pub'
+alias fixtz='timedatectl set-timezone Europe/London'
 alias free='free -mt'
 alias freecache='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias g='grep -C5 --color=auto'
