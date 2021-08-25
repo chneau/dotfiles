@@ -1239,3 +1239,7 @@ dotnet ef --startup-project ../StartupProject/ migrations add InitialCreate
 # use vite or something like this (nextjs, etc...)
 npm init vite@latest
 ```
+
+## windows tips
+
+- emoji available with `windows + .`
