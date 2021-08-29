@@ -365,6 +365,7 @@ alias traefikauth='f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\$/\\$\\$/g; unse
 alias transfer='transfer'
 alias u='ls -hltr'
 alias up='updatebashrc; updateall'
+alias upb='updatebashrc'
 alias update='updatebashrc; updateall'
 alias updateall='sudo apt update && sudo apt -y full-upgrade --auto-remove --purge'
 alias updatebashrc='curl -fsSL https://raw.githubusercontent.com/chneau/dotfiles/master/.bashrc -o ~/.bashrc && . ~/.bashrc'
