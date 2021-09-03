@@ -16,6 +16,7 @@
   "customizeUI.stylesheet": { ".quick-input-widget": "width: 90% !important; left: calc(10% + 200px);" },
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.accessibilitySupport": "off",
+  "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": { "source.organizeImports": true, "source.addMissingImports": true },
   "editor.detectIndentation": true,
   "editor.foldingImportsByDefault": true,
