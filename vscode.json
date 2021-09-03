@@ -51,7 +51,6 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "jupyter.askForKernelRestart": false,
   "omnisharp.disableMSBuildDiagnosticWarning": true,
-  "omnisharp.enableImportCompletion": true,
   "omnisharp.enableRoslynAnalyzers": true,
   "prettier.printWidth": 99999,
   "python.formatting.autopep8Args": ["--max-line-length=200"],
