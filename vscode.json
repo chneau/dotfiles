@@ -19,7 +19,6 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": { "source.organizeImports": true, "source.addMissingImports": true },
   "editor.detectIndentation": true,
-  "editor.foldingImportsByDefault": true,
   "editor.formatOnSave": true,
   "editor.hover.delay": 100,
   "editor.inlineSuggest.enabled": true,
