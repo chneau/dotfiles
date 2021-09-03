@@ -41,7 +41,6 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
-  "git.promptToSaveFilesBeforeCommit": "always",
   "github.copilot.enable": { "*": true },
   "go.gopath": "~/go",
   "go.lintTool": "golangci-lint",
