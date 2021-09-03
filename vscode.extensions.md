@@ -27,7 +27,6 @@ code --install-extension ms-vscode.vscode-typescript-next
 code --install-extension prisma.prisma
 code --install-extension redhat.java
 code --install-extension rust-lang.rust
-code --install-extension steoates.autoimport
 code --install-extension timonwong.shellcheck
 ```
 
