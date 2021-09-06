@@ -19,8 +19,7 @@ choco install adb
 choco install paint.net
 choco install filezilla
 choco install vlc
-REM https://github.com/sandboxie-plus/Sandboxie/releases
-REM https://github.com/openhoangnc/taskbar-stats/releases
+REM https://www.moo0.com/?top=https://www.moo0.com/software/SystemMonitor/
 
 choco install mousewithoutborders
 choco install adwcleaner
