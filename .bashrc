@@ -241,6 +241,7 @@ alias ibrew='bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/in
 alias icroc='goget github.com/schollz/croc/v9@latest'
 alias idatree='goget github.com/datreeio/datree@latest'
 alias idocker='curl -sSL get.docker.com | sh'
+alias idockercompose='pip install docker-compose'
 alias idotnet='curl -sSL https://dot.net/v1/dotnet-install.sh | bash'
 alias ifluxctl='sudo snap install fluxctl --classic'
 alias igit='git config --global user.email "charles63500@gmail.com"; git config --global user.name "chneau"; git config --global url.ssh://git@github.com/.insteadOf https://github.com/; git config --global core.autocrlf true; git config --global core.safecrlf false; git config --global merge.ff false; git config --global pull.ff true; git config --global core.whitespace blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol'
