@@ -45,18 +45,18 @@ free -> <https://github.com/ripienaar/free-for-dev>
 
 ```bash
 ssh-keygen -t rsa -b 2048
-ssh-copy-id id@server
-ssh-add # only if an agent is already running
+ssh-copy-id user@server.com -p23
 
 # pro tip:
 # use .ssh/config to define host aliases
 # it looks like this:
-Host oo
-  HostName oo
-  User c
+Host server
+  HostName server.com
+  User user
   Port 23
-# and allows you to login to oo without specifying port or username
-ssh oo
+# and allows you to login to server without specifying port or username
+
+ssh server
 ```
 
 ## The best awesomes:
