@@ -289,6 +289,7 @@ alias ivpnangristan='wget https://raw.githubusercontent.com/Angristan/OpenVPN-in
 alias ivpnnyr='wget https://raw.githubusercontent.com/Nyr/openvpn-install/master/openvpn-install.sh -O openvpn-nyr-install.sh && bash openvpn-nyr-install.sh'
 alias jctl='journalctl -n 200 -f'
 alias k='kubectl'
+alias k3sconfig='cat /etc/rancher/k3s/k3s.yaml'
 alias ka='kubectl apply -f'
 alias kak='kubectl apply -k'
 alias kar='kubectl api-resources'
