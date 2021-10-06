@@ -8,40 +8,36 @@ choco install git
 choco install vscode
 choco install golang
 choco install dotnet-sdk
-choco install kotlinc
 choco install python
 choco install openjdk
 choco install nodejs
-choco install make
 choco install totalcommander
 choco install processhacker
-choco install adb
-choco install paint.net
-choco install filezilla
-choco install vlc
+choco install googlechrome
+choco install microsoft-teams
 REM https://www.moo0.com/?top=https://www.moo0.com/software/SystemMonitor/
 
 choco install mousewithoutborders
 choco install adwcleaner
-choco install treesizefree
-choco install cheatengine
-choco install 7zip
-choco install microsoft-teams
-choco install openconnect-gui
-choco install cygwin
 choco install autohotkey
-choco install crystaldiskmark
+choco install steam
 
 REM choco install nvidia-display-driver
 REM this choco is a pain
 
+choco install paint.net
+choco install filezilla
+choco install vlc
+choco install 7zip
+choco install cygwin
+choco install crystaldiskmark
+choco install openconnect-gui
+choco install treesizefree
 choco install dbeaver
 choco install pgadmin4
 choco install s3browser
 choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
-choco install rainmeter
 choco install minecraft
-choco install steam
 choco install dws.portable
 choco install openvpn
 choco install rustup.install
@@ -49,7 +45,10 @@ choco install androidstudio
 choco install julia
 choco install r.project --params "'/AddToPath'"
 choco install visualstudio2019buildtools
-choco install googlechrome
+choco install kotlinc
+choco install adb
+choco install make
+choco install cheatengine
 
 REM Twitch
 choco install chatterino
