@@ -479,6 +479,8 @@ gitget() {
     rm -rf "$clone_dir"
     mkdir -p "$clone_dir" >/dev/null
     git clone --quiet "$git_url" "$clone_dir"
+
+    gocd "$git_url"
 }
 
 extract() {
