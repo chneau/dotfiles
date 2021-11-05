@@ -211,6 +211,7 @@ alias gigit='git clone --depth=1'
 alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags; GIT_ASK_YESNO=false git clean -ffdx'
 alias gitget='gitget'
 alias gitmessage='curl -s http://whatthecommit.com/index.txt'
+alias gitnewfresh='git checkout --orphan'
 alias gitrmtag='git push -d origin'
 alias gl='git pull'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
