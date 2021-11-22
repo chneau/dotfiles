@@ -38,6 +38,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": { "**/.git/objects/**": true, "**/.git/subtree-cache/**": true, "**/node_modules/*/**": true, "**/.hg/store/**": true, "**/*.cshtml__virtual.html": true, "**/obj/**": true, "**/bin/**": true, "**/*.razor__bg__virtual.cs": true, "**/node_modules/**": true, "**/.meteor/local/**": true },
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
