@@ -346,6 +346,7 @@ alias nud='nvm use default'
 alias oc='code -a .'
 alias openports='nmap -p- portquiz.net | grep -i open'
 alias path='echo -e ${PATH//:/\\n}'
+alias pipi="pip install --upgrade --user"
 alias pipup="pip list --format freeze --outdated | sed 's/=.*//g' | xargs -n1 pip install -U"
 alias poefilterup='poefilterup'
 alias ports='netstat -tulanp'
