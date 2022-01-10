@@ -204,7 +204,7 @@ alias gcl='git clone'
 alias gco='git checkout'
 alias gcom='git checkout master'
 alias gd='git diff'
-alias genpwd='PASSWORD=$(base64 < /dev/urandom | head -c32); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum'
+alias genpwd='PASSWORD=$(base64 < /dev/urandom | head -c32); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum; echo -n "$PASSWORD" | sha256sum | head -c 16; echo'
 alias genuuid="python -c 'import uuid; print(uuid.uuid4())'"
 alias gg='git pull -f; git reset --hard origin/master'
 alias gigit='git clone --depth=1'
