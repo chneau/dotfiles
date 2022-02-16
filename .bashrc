@@ -302,6 +302,7 @@ alias kclean='kubectl delete $(kubectl get all | grep replicaset.apps | grep "0 
 alias kconf='kubectl config view --raw'
 alias kctx='kubectx'
 alias kd='kubectl diff -f'
+alias kdebug='kubectl run -i --tty --rm debug --image=alpine --restart=Never -- sh'
 alias kdecode='kubectl get secret loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo'
 alias kdes='kubectl describe'
 alias kdestroy='kubectl delete --grace-period=0 --force'
