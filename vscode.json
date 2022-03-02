@@ -34,7 +34,7 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
-  "files.exclude": { "**/*.cshtml__virtual.html": true, "**/obj/": true, "**/bin/": true, "**/*.razor__bg__virtual.cs": true, "**/node_modules/": true, "**/.meteor/local/": true },
+  "files.exclude": { "**/*.cshtml__virtual.html": true, "**/obj/": true, "**/bin/": true, "**/*.razor__bg__virtual.cs": true, "**/node_modules/": true, "**/.meteor/local/": true, "**/__pycache__/": true },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
