@@ -8,7 +8,7 @@ choco install git
 choco install vscode
 choco install golang
 choco install dotnet-sdk
-choco install python
+choco install python3 --params "/NoLockdown"
 choco install openjdk
 choco install nodejs
 choco install totalcommander
