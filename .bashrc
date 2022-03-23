@@ -303,7 +303,7 @@ alias kconf='kubectl config view --raw'
 alias kctx='kubectx'
 alias kd='kubectl diff -f'
 alias kdebug='kubectl run -i --tty --rm debug --image=alpine --restart=Never -- sh'
-alias kdecode='kubectl get secret loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo'
+alias kdecode="f(){ kubectl get secret \"\$1\" --template='{{range \$k,\$v := .data}}{{printf \"%s: \" \$k}}{{if not \$v}}{{\$v}}{{else}}{{\$v | base64decode}}{{end}}{{\"\\n\"}}{{end}}'; unset -f f; }; f"
 alias kdes='kubectl describe'
 alias kdestroy='kubectl delete --grace-period=0 --force'
 alias kdk='kubectl diff -k'
