@@ -47,7 +47,7 @@
   "go.lintTool": "golangci-lint",
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
-  "java.configuration.checkProjectSettingsExclusions": false,
+  "java.import.generatesMetadataFilesAtProjectRoot": false,
   "java.project.importOnFirstTimeStartup": "automatic",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "jupyter.askForKernelRestart": false,
@@ -71,6 +71,6 @@
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editorAssociations": { "*.ipynb": "jupyter.notebook.ipynb" },
+  "workbench.editorAssociations": { "*.ipynb": "jupyter-notebook" },
   "workbench.tree.renderIndentGuides": "always"
 }
