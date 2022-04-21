@@ -181,6 +181,7 @@ alias e='\du * -cs | sort -nr | head'
 alias egrep='egrep --color=auto'
 alias exe='chmod u+x '
 alias extract='extract'
+alias fail2banstatus='sudo fail2ban-client status sshd'
 alias ff='freecache; free'
 alias fgrep='fgrep --color=auto'
 alias findtext='grep -rnw . -e'
@@ -249,6 +250,7 @@ alias idocker='curl -sSL get.docker.com | sh'
 alias idockercompose='pip install docker-compose'
 alias idotnet='curl -sSL https://dot.net/v1/dotnet-install.sh | bash -s -- --channel 6.0'
 alias idotnetpreview='curl -L https://aka.ms/install-dotnet-preview -o install-dotnet-preview.sh && sudo bash install-dotnet-preview.sh'
+alias ifail2ban='ifail2ban'
 alias ifluxctl='sudo snap install fluxctl --classic'
 alias ifnm='curl -fsSL https://fnm.vercel.app/install | bash'
 alias igit='git config --global user.email "charles63500@gmail.com"; git config --global user.name "chneau"; git config --global url.ssh://git@github.com/.insteadOf https://github.com/; git config --global core.autocrlf true; git config --global core.safecrlf false; git config --global merge.ff false; git config --global pull.ff true; git config --global core.whitespace blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol'
@@ -418,6 +420,26 @@ fixgitbashbatfiles() {
         printf '#!/bin/sh\ncmd //c "$0.bat" "$@"\n' >"${var%.bat}"
         echo "Created ${var%.bat}"
     done
+}
+
+ifail2ban() {
+    sudo apt-get install fail2ban
+    sudo systemctl enable fail2ban.service
+    echo "Creating /etc/fail2ban/jail.local with default values"
+    {
+        echo "[sshd]"
+        echo "enabled = true"
+        echo "port = ssh"
+        echo "filter = sshd"
+        echo "logpath = /var/log/auth.log"
+        echo "maxretry = 3"
+        echo "findtime = 300"
+        echo "bantime = 3600"
+        echo "ignoreip = 127.0.0.1"
+    } >/etc/fail2ban/jail.local
+    echo "Restarting fail2ban"
+    sudo systemctl restart fail2ban.service
+    echo "Check status with fail2banstatus or 'sudo fail2ban-client status sshd'"
 }
 
 transfer() {
