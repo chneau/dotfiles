@@ -351,6 +351,7 @@ alias nowtime=now
 alias npmig='npm i -g npm ungit npm-check-updates nodemon prettier typesync depcheck'
 alias npmup='ncu --upgrade --target=minor && npm install --silent && ncu'
 alias nud='nvm use default'
+alias nx='nodemon -x'
 alias oc='code -a .'
 alias openports='nmap -p- portquiz.net | grep -i open'
 alias path='echo -e ${PATH//:/\\n}'
