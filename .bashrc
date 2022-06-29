@@ -9,6 +9,7 @@ export NODE_OPTIONS=--max_old_space_size=4096
 export KUBECTL_EXTERNAL_DIFF='diff --color -u -N -I generation'
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 export DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true
+export NPM_CONFIG_YES=true
 
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
