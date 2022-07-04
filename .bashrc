@@ -354,6 +354,7 @@ alias nmr='sudo service network-manager restart'
 alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
 alias nowtime=now
+alias npme='npm exec --yes --'
 alias npmig='npm i -g npm ungit npm-check-updates nodemon prettier typesync depcheck'
 alias npmup='ncu --upgrade --target=minor && npm install --silent && ncu'
 alias nud='nvm use default'
