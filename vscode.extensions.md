@@ -87,6 +87,8 @@ redhat.vscode-commons
 redhat.vscode-yaml
 rust-lang.rust
 silvenon.mdx
+SonarSource.sonarlint-vscode
+styled-components.vscode-styled-components
 timonwong.shellcheck
 VisualStudioExptTeam.vscodeintellicode
 vscjava.vscode-java-debug
