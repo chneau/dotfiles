@@ -219,6 +219,7 @@ alias gitmessage='curl -s http://whatthecommit.com/index.txt'
 alias gitnewfresh='git checkout --orphan'
 alias gitrmtag='git push -d origin'
 alias gl='git pull'
+alias gla='git pull --all'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias glom='git pull origin master'
 alias gobuild="CGO_ENABLED=0 go build -trimpath -ldflags '-s -w -extldflags \"-static\"'"
