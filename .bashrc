@@ -367,6 +367,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias pipi="pip install --upgrade --user"
 alias pipup="pip list --format freeze --outdated | sed 's/=.*//g' | xargs -n1 pip install -U"
 alias poefilterup='poefilterup'
+alias portkill='f(){ sudo fuser -k "$1/tcp"; unset -f f; }; f'
 alias ports='netstat -tulanp'
 alias ps='ps auxf'
 alias pscpu='ps auxf | sort -nr -k 3'
