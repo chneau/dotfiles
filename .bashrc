@@ -237,7 +237,7 @@ alias gpggit='git config --global user.signingkey' # +key
 alias gpglist='gpg --list-secret-keys --keyid-format LONG'
 alias gpgnew='gpg --default-new-key-algo rsa4096 --gen-key'
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
-alias grb="git fetch --all; git for-each-ref --sort='committerdate:iso8601' --format='%(committerdate:relative)|%(refname:short)|%(committername)' refs/remotes/ | column -s '|' -t"
+alias grb="git fetch --all; git for-each-ref --sort=-committerdate --format='%(HEAD) %(color:blue)%(authordate:iso) %(color:red)%(objectname:short) %(color:yellow)%(refname:short) %(color:reset)%(contents:subject) %(color:magenta)%(authorname) %(color:green)%(committerdate:relative)' refs"
 alias grep='grep --color=auto'
 alias grephere='grep -rnw . -e'
 alias grm='git ls-files --deleted | xargs git rm'
