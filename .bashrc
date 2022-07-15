@@ -231,11 +231,12 @@ alias gols="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Sta
 alias gotest='go test -cover -count=1'
 alias goup='rm -f go.mod go.sum && go mod init && go get -u && go mod tidy'
 alias gp='git push'
-alias gpm='git push origin $(git branch --show-current):master'
+alias gpcb='f(){ git push origin $(git branch --show-current):"$1"; unset -f f; }; f'
 alias gpgexport='gpg --armor --export'             # +key
 alias gpggit='git config --global user.signingkey' # +key
 alias gpglist='gpg --list-secret-keys --keyid-format LONG'
 alias gpgnew='gpg --default-new-key-algo rsa4096 --gen-key'
+alias gpm='git push origin $(git branch --show-current):master'
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias grb="git fetch --all; git for-each-ref --sort=-committerdate --format='%(HEAD) %(color:blue)%(authordate:iso) %(color:red)%(objectname:short) %(color:yellow)%(refname:short) %(color:reset)%(contents:subject) %(color:magenta)%(authorname) %(color:green)%(committerdate:relative)' refs"
 alias grep='grep --color=auto'
