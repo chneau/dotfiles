@@ -130,6 +130,7 @@ else
 fi
 
 alias a='ansible'
+alias addselftogroup='f(){ sudo adduser $USER $1; exec sudo su -l $USER; unset -f f; }; f'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias apti='sudo apt install -y'
 alias aptr='sudo apt remove --auto-remove -y'
@@ -379,6 +380,7 @@ alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pstats='powerstat -d 0 -f 1'
 alias refresh='clear; exec $0'
+alias refreshgroups='exec sudo su -l $USER'
 alias renewip='sudo dhclient -v -r && sudo dhclient -v'
 alias rmdot='for f in *.*; do pre="${f%.*}"; suf="${f##*.}"; mv -i -- "$f" "${pre//./_}.${suf}"; done'
 alias root='\sudo \su'
