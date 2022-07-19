@@ -51,8 +51,9 @@ choco install make
 choco install cheatengine
 
 REM Twitch
-choco install chatterino
+choco install chatterino7
 choco install streamlink
+choco install streamlink-twitch-gui
 
 REM openvpn is not openvpn-connect
 
