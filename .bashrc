@@ -20,7 +20,7 @@ export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
 export BUN_INSTALL=~/.bun
 
-export PATH=$PATH:$BUN_INSTALL/bin:$PATH
+export PATH=$PATH:$BUN_INSTALL/bin
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.arkade/bin
 export PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin
