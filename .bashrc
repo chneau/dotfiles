@@ -18,10 +18,12 @@ export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
 export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
+export BUN_INSTALL=~/.bun
 
+export PATH=$PATH:$BUN_INSTALL/bin:$PATH
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.arkade/bin
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.dotnet
 export PATH=$PATH:~/.go/bin
