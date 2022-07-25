@@ -39,7 +39,7 @@ code --list-extensions
 ## My current list
 
 ```
-alexcvzz.vscode-sqlite
+alexcalexcvzz.vscode-sqlite
 bungcip.better-toml
 chneau.saturated-dark-plus
 christian-kohler.npm-intellisense
@@ -50,6 +50,7 @@ denigmaapp.denigma
 DotJoshJohnson.xml
 dsznajder.es7-react-js-snippets
 eamodio.gitlens
+EditorConfig.EditorConfig
 eg2.vscode-npm-script
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
@@ -57,14 +58,13 @@ foxundermoon.shell-format
 fwcd.kotlin
 GitHub.codespaces
 GitHub.copilot
+gitpod.gitpod-desktop
 golang.go
 GraphQL.vscode-graphql
 hashicorp.terraform
-iocave.customize-ui
 iocave.monkey-patch
 jasonnutter.search-node-modules
 jawandarajbir.react-vscode-extension-pack
-jpoissonnier.vscode-styled-components
 mathiasfrohlich.Kotlin
 mechatroner.rainbow-csv
 ms-dotnettools.blazorwasm-companion
@@ -85,7 +85,7 @@ Prisma.prisma
 redhat.java
 redhat.vscode-commons
 redhat.vscode-yaml
-rust-lang.rust
+rust-lang.rust-analyzer
 silvenon.mdx
 SonarSource.sonarlint-vscode
 styled-components.vscode-styled-components
