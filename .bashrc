@@ -363,7 +363,7 @@ alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
 alias nowtime=now
 alias npme='npm exec --yes --'
-alias npmig='npm i -g npm ungit npm-check-updates nodemon prettier typesync depcheck'
+alias npmig='npm i -g npm ungit npm-check-updates nodemon prettier typesync depcheck concurrently'
 alias npmup='ncu --upgrade --target=minor && npm install --silent && ncu'
 alias nud='nvm use default'
 alias nx='f(){ nodemon --signal SIGTERM --ext "$1" --exec "${*:2} || false"; unset -f f; }; f'
