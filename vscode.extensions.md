@@ -39,7 +39,7 @@ code --list-extensions
 ## My current list
 
 ```
-alexcalexcvzz.vscode-sqlite
+alexcvzz.vscode-sqlite
 bungcip.better-toml
 chneau.saturated-dark-plus
 christian-kohler.npm-intellisense
