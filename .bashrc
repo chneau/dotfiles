@@ -19,6 +19,7 @@ export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PAT
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
 export BUN_INSTALL=~/.bun
+export DOTNET_ROOT=~/.dotnet
 
 export PATH=$PATH:$BUN_INSTALL/bin
 export PATH=$PATH:~/go/bin
