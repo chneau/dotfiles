@@ -26,6 +26,7 @@ export PATH=$PATH:~/.arkade/bin
 export PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.dotnet
+export PATH=$PATH:~/.dotnet/tools
 export PATH=$PATH:~/.go/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/bin
