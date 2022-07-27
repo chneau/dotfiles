@@ -24,7 +24,7 @@ setopt AUTO_MENU
 autoload -U colors && colors
 TMOUT=1
 TRAPALRM() {
-    zle reset-prompt
+    [ "$WIDGET" != "expand-or-complete" ] && zle reset-prompt
 }
 preexec() {
     timer=$(($(date +%s%0N) / 1000))
@@ -82,9 +82,7 @@ bindkey "^B" backward-char                       # ctrl-b
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename ~/.zshrc
 
 autoload -Uz compinit && compinit
-# End of lines added by compinstall
+
+zstyle ':completion:*' menu yes=long select
