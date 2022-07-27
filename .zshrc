@@ -7,26 +7,29 @@ esac
 
 setopt extendedglob
 setopt dotglob
-# shopt -s histappend
-# shopt -s checkwinsize
 setopt globstarshort
-# shopt -s cmdhist
-setopt autocd
 setopt cdablevars
-# shopt -s cdspell
+setopt AUTO_CD
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt EXTENDED_HISTORY
+setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END
 setopt PROMPT_SUBST
+unsetopt MENU_COMPLETE
+setopt AUTO_MENU
+
 autoload -U colors && colors
-
 TMOUT=1
-
 TRAPALRM() {
     zle reset-prompt
 }
-
 preexec() {
     timer=$(($(date +%s%0N) / 1000))
 }
-
 precmd() {
     Last_Command=$? # Must come first!
     if [ $timer ]; then
@@ -61,19 +64,19 @@ precmd() {
         unset timer
     fi
 }
-
 PROMPT="%B%F{green}[%D{%H:%M:%S}] %n@%m %F{blue}%~ $ %f%b"
-
-parse_git_branch() {
-    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-}
 
 . $HOME/.aliases
 
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+bindkey "^K" kill-whole-line                     # ctrl-k
+bindkey "^R" history-incremental-search-backward # ctrl-r
+bindkey "^A" beginning-of-line                   # ctrl-a
+bindkey "^E" end-of-line                         # ctrl-e
+bindkey "[B" history-search-forward              # down arrow
+bindkey "[A" history-search-backward             # up arrow
+bindkey "^D" delete-char                         # ctrl-d
+bindkey "^F" forward-char                        # ctrl-f
+bindkey "^B" backward-char                       # ctrl-b
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
