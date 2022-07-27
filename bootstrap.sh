@@ -16,3 +16,5 @@ wget -qO ~/.aliases raw.githubusercontent.com/chneau/dotfiles/master/.aliases ||
 echo "Downloading .env..."
 wget -qO ~/.env raw.githubusercontent.com/chneau/dotfiles/master/.env ||
     curl -fsSLo ~/.env raw.githubusercontent.com/chneau/dotfiles/master/.env
+
+echo "Execute \`exec \$0\` or sh or bash or zsh..."
