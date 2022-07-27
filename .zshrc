@@ -102,6 +102,8 @@ bindkey "[A" history-search-backward             # up arrow
 bindkey "^D" delete-char                         # ctrl-d
 bindkey "^F" forward-char                        # ctrl-f
 bindkey "^B" backward-char                       # ctrl-b
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
