@@ -62,6 +62,8 @@ precmd() {
             RPROMPT="%B%F{red}✗ %F{cyan}${timer_show} %f%b"
         fi
         unset timer
+    else
+        RPROMPT=
     fi
 }
 
@@ -90,7 +92,7 @@ function git_prompt_info {
     fi
 }
 
-PROMPT="%B%F{green}[%D{%H:%M:%S}] %n@%m %F{blue}%~ $(git_prompt_info) $ %f%b"
+PROMPT="%B%F{green}[%D{%H:%M:%S}] %n@%m %F{blue}%~ $(git_prompt_info) %F{blue}$ %f%b"
 
 . $HOME/.aliases
 
