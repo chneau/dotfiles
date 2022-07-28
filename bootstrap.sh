@@ -14,5 +14,5 @@ fetch() {
 fetch .bashrc
 fetch .zshrc
 fetch .aliases
-fetch .env
+fetch .profile
 exec $SHELL

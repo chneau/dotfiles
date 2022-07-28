@@ -1,4 +1,4 @@
-. ~/.env
+. ~/.profile
 
 case $- in
 *i*) ;;      # this shell is interactive

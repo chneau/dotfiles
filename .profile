@@ -1,4 +1,5 @@
 # shellcheck shell=sh
+# shellcheck disable=SC1091
 
 export HISTCONTROL="ignoreboth"
 export HISTFILE="$HOME/.histfile"
@@ -12,6 +13,7 @@ export CARGO_NET_GIT_FETCH_WITH_CLI="true"
 export DOTNET_WATCH_RESTART_ON_RUDE_EDIT="true"
 export NPM_CONFIG_YES="true"
 export NPM_CONFIG_FUND="false"
+export CLR_OPENSSL_VERSION_OVERRIDE="1.1"
 
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"

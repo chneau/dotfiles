@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 # shellcheck disable=SC1090
 
-. ~/.env
+. ~/.profile
 
 case $- in
 *i*) ;;      # this shell is interactive
