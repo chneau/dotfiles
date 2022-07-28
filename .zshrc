@@ -79,8 +79,10 @@ bindkey "[A" history-search-backward             # up arrow
 bindkey "^D" delete-char                         # ctrl-d
 bindkey "^F" forward-char                        # ctrl-f
 bindkey "^B" backward-char                       # ctrl-b
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word                   # ctrl-right
+bindkey "^[[1;5D" backward-word                  # ctrl-left
+bindkey "^[[H" beginning-of-line                 # home
+bindkey "^[[F" end-of-line                       # end
 bindkey -e
 
 autoload -Uz compinit && compinit
