@@ -15,4 +15,3 @@ fetch .bashrc
 fetch .zshrc
 fetch .aliases
 fetch .profile
-exec $SHELL
