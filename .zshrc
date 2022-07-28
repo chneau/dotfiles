@@ -70,20 +70,16 @@ PROMPT="%B%F{green}%D{%H:%M:%S} %n@%m %F{blue}%~ $ %f%b"
 
 . $HOME/.aliases
 
-bindkey "^K" kill-whole-line                     # ctrl-k
-bindkey "^R" history-incremental-search-backward # ctrl-r
-bindkey "^A" beginning-of-line                   # ctrl-a
-bindkey "^E" end-of-line                         # ctrl-e
-bindkey "[B" history-search-forward              # down arrow
-bindkey "[A" history-search-backward             # up arrow
-bindkey "^D" delete-char                         # ctrl-d
-bindkey "^F" forward-char                        # ctrl-f
-bindkey "^B" backward-char                       # ctrl-b
-bindkey "^[[1;5C" forward-word                   # ctrl-right
-bindkey "^[[1;5D" backward-word                  # ctrl-left
-bindkey "^[[H" beginning-of-line                 # home
-bindkey "^[[F" end-of-line                       # end
 bindkey -e
+bindkey "^R" history-incremental-search-backward  # ctrl-r
+bindkey "^[[A" history-beginning-search-backward  # up arrow
+bindkey "^[[B" history-beginning-search-forward   # down arrow
+bindkey "^[[5~" history-beginning-search-backward # page down
+bindkey "^[[6~" history-beginning-search-forward  # page up
+bindkey "^[[1;5C" forward-word                    # ctrl-right
+bindkey "^[[1;5D" backward-word                   # ctrl-left
+bindkey "^[[H" beginning-of-line                  # home
+bindkey "^[[F" end-of-line                        # end
 
 autoload -Uz compinit && compinit
 
