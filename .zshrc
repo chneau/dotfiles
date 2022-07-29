@@ -80,6 +80,7 @@ bindkey "^[[1;5C" forward-word                    # ctrl-right
 bindkey "^[[1;5D" backward-word                   # ctrl-left
 bindkey "^[[H" beginning-of-line                  # home
 bindkey "^[[F" end-of-line                        # end
+bindkey "^[[3~" delete-char                       # delete
 
 autoload -Uz compinit && compinit
 
@@ -99,6 +100,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit wait lucid for \
-    OMZP::sudo \
-    zsh-users/zsh-autosuggestions
+zinit ice wait lucid
+zinit snippet OMZP::sudo
+zinit ice wait lucid
+zinit load zsh-users/zsh-autosuggestions
