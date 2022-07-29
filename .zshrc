@@ -100,9 +100,11 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit ice wait depth"1"
+zinit ice wait
 zinit snippet OMZP::sudo
-zinit ice wait depth"1"
+zinit ice wait
+zinit snippet OMZP::docker
+zinit ice wait
 zinit snippet OMZP::fancy-ctrl-z
 # zinit ice wait as"completion"
 # zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
