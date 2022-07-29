@@ -103,6 +103,10 @@ autoload -Uz _zinit
 zinit ice wait
 zinit snippet OMZP::sudo
 zinit ice wait
+zinit snippet OMZP::fancy-ctrl-z
+zinit ice wait
 zinit load zsh-users/zsh-autosuggestions
+zinit ice wait
+zinit load zsh-users/zsh-syntax-highlighting
 zinit ice wait from"gh-r" as"program"
 zinit load junegunn/fzf
