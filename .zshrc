@@ -100,15 +100,27 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit ice wait
+zinit ice wait depth"1"
 zinit snippet OMZP::sudo
-zinit ice wait
+zinit ice wait depth"1"
 zinit snippet OMZP::fancy-ctrl-z
-zinit ice wait
+# zinit ice wait as"completion"
+# zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+zinit ice wait depth"1"
 zinit load zsh-users/zsh-autosuggestions
-zinit ice wait
+zinit ice wait depth"1"
 zinit load hlissner/zsh-autopair
-zinit ice wait
+zinit ice wait depth"1"
 zinit load zsh-users/zsh-syntax-highlighting
-zinit ice wait from"gh-r" as"program"
+zinit ice wait from"gh-r" as"command" pick"fzf"
 zinit load junegunn/fzf
+zinit ice wait from"gh-r" as"command" mv"bat*/bat -> bat" pick"bat"
+zinit load sharkdp/bat
+zinit ice wait from"gh-r" as"command" mv"bin/exa -> exa" pick"exa"
+zinit load ogham/exa
+zinit ice wait from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd"
+zinit load sharkdp/fd
+
+alias ls=exa
+alias cat=bat
