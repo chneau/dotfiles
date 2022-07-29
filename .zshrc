@@ -100,7 +100,9 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit ice wait lucid
+zinit ice wait
 zinit snippet OMZP::sudo
-zinit ice wait lucid
+zinit ice wait
 zinit load zsh-users/zsh-autosuggestions
+zinit ice wait from"gh-r" as"program"
+zinit load junegunn/fzf
