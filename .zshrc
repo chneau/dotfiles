@@ -126,4 +126,9 @@ zinit load sharkdp/fd
 
 alias ls='exa'
 alias cat='bat'
-alias l='ls -F'
+
+# fix exa unknown argument error
+alias l='exa -F'
+alias la='exa -a'
+alias lld='exa -alFhr --sort newest --group-directories-first'
+alias lo='exa -l'
