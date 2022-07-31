@@ -124,5 +124,6 @@ zinit load ogham/exa
 zinit ice wait from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd"
 zinit load sharkdp/fd
 
-alias ls=exa
-alias cat=bat
+alias ls='exa'
+alias cat='bat'
+alias l='ls -F'
