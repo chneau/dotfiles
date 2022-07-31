@@ -24,7 +24,10 @@ setopt AUTO_MENU
 autoload -U colors && colors
 TMOUT=1
 TRAPALRM() {
-    [ "$WIDGET" != "expand-or-complete" ] && zle reset-prompt
+    [ "$WIDGET" != "expand-or-complete" ] \
+    && [ "$WIDGET" != "fzf-history-widget" ] \
+    && [ "$WIDGET" != "fzf-file-widget" ] \
+    && zle reset-prompt
 }
 preexec() {
     timer=$(($(date +%s%0N) / 1000))
@@ -123,6 +126,8 @@ zinit ice wait from"gh-r" as"command" mv"bin/exa -> exa" pick"exa"
 zinit load ogham/exa
 zinit ice wait from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd"
 zinit load sharkdp/fd
+zinit ice wait depth"1"
+zinit load unixorn/fzf-zsh-plugin
 
 alias ls='exa'
 alias cat='bat'
