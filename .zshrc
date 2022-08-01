@@ -27,6 +27,7 @@ TRAPALRM() {
     [ "$WIDGET" != "expand-or-complete" ] \
     && [ "$WIDGET" != "fzf-history-widget" ] \
     && [ "$WIDGET" != "fzf-file-widget" ] \
+    && [ "$WIDGET" != "fzf-tab-complete" ] \
     && zle reset-prompt
 }
 preexec() {
@@ -85,10 +86,6 @@ bindkey "^[[H" beginning-of-line                  # home
 bindkey "^[[F" end-of-line                        # end
 bindkey "^[[3~" delete-char                       # delete
 
-autoload -Uz compinit && compinit
-
-zstyle ':completion:*' menu yes=long select
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -113,8 +110,9 @@ zinit wait light-mode for \
     depth"1" @hlissner/zsh-autopair \
     depth"1" @unixorn/fzf-zsh-plugin \
     depth"1" @zdharma-continuum/fast-syntax-highlighting \
+    depth"1" @Aloxaf/fzf-tab \
     @OMZP::sudo \
-    @OMZP::docker \
+    @OMZP::docker/_docker \
     @OMZP::fancy-ctrl-z \
     @OMZP::colored-man-pages
 
@@ -124,3 +122,5 @@ alias l='exa -F'
 alias la='exa -a'
 alias lld='exa -alFhr --sort newest --group-directories-first'
 alias lo='exa -l'
+
+autoload -Uz compinit && compinit
