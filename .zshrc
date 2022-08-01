@@ -103,21 +103,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit ice wait
-zinit snippet OMZP::sudo
-zinit ice wait
-zinit snippet OMZP::docker
-zinit ice wait
-zinit snippet OMZP::fancy-ctrl-z
-# zinit ice wait as"completion"
-# zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-zinit ice wait depth"1"
-zinit load zsh-users/zsh-autosuggestions
-zinit ice wait depth"1"
-zinit load hlissner/zsh-autopair
-zinit ice wait depth"1"
-zinit load zsh-users/zsh-syntax-highlighting
 zinit ice wait from"gh-r" as"command" pick"fzf"
 zinit load junegunn/fzf
 zinit ice wait from"gh-r" as"command" mv"bat*/bat -> bat" pick"bat"
@@ -126,13 +111,23 @@ zinit ice wait from"gh-r" as"command" mv"bin/exa -> exa" pick"exa"
 zinit load ogham/exa
 zinit ice wait from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd"
 zinit load sharkdp/fd
+
+zinit ice wait depth"1"
+zinit load zsh-users/zsh-autosuggestions
+zinit ice wait depth"1"
+zinit load hlissner/zsh-autopair
+zinit ice wait depth"1"
+zinit load zsh-users/zsh-syntax-highlighting
 zinit ice wait depth"1"
 zinit load unixorn/fzf-zsh-plugin
 
+zinit ice wait
+zinit snippet OMZP::sudo
+zinit ice wait
+zinit snippet OMZP::fancy-ctrl-z
+
 alias ls='exa'
 alias cat='bat'
-
-# fix exa unknown argument error
 alias l='exa -F'
 alias la='exa -a'
 alias lld='exa -alFhr --sort newest --group-directories-first'
