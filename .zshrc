@@ -93,7 +93,7 @@ zstyle ':completion:*' menu yes=long select
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+    command git clone --depth=1 https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
         print -P "%F{33} %F{34}Installation successful.%f%b" || \
         print -P "%F{160} The clone has failed.%f%b"
 fi
@@ -103,28 +103,19 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit ice wait from"gh-r" as"command" pick"fzf"
-zinit load junegunn/fzf
-zinit ice wait from"gh-r" as"command" mv"bat*/bat -> bat" pick"bat"
-zinit load sharkdp/bat
-zinit ice wait from"gh-r" as"command" mv"bin/exa -> exa" pick"exa"
-zinit load ogham/exa
-zinit ice wait from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd"
-zinit load sharkdp/fd
-
-zinit ice wait depth"1"
-zinit load zsh-users/zsh-autosuggestions
-zinit ice wait depth"1"
-zinit load hlissner/zsh-autopair
-zinit ice wait depth"1"
-zinit load zsh-users/zsh-syntax-highlighting
-zinit ice wait depth"1"
-zinit load unixorn/fzf-zsh-plugin
-
-zinit ice wait
-zinit snippet OMZP::sudo
-zinit ice wait
-zinit snippet OMZP::fancy-ctrl-z
+zinit wait for \
+    from"gh-r" as"command" pick"fzf" @junegunn/fzf \
+    from"gh-r" as"command" mv"bat*/bat -> bat" pick"bat" @sharkdp/bat \
+    from"gh-r" as"command" mv"bin/exa -> exa" pick"exa" @ogham/exa \
+    from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd" @sharkdp/fd \
+    depth"1" @zsh-users/zsh-autosuggestions \
+    depth"1" @hlissner/zsh-autopair \
+    depth"1" @zsh-users/zsh-syntax-highlighting \
+    depth"1" @unixorn/fzf-zsh-plugin \
+    @OMZP::sudo \
+    @OMZP::docker \
+    @OMZP::fancy-ctrl-z \
+    @OMZP::colored-man-pages
 
 alias ls='exa'
 alias cat='bat'
