@@ -110,8 +110,8 @@ zinit wait for \
     from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd" @sharkdp/fd \
     depth"1" @zsh-users/zsh-autosuggestions \
     depth"1" @hlissner/zsh-autopair \
-    depth"1" @zsh-users/zsh-syntax-highlighting \
     depth"1" @unixorn/fzf-zsh-plugin \
+    depth"1" @zdharma-continuum/fast-syntax-highlighting \
     @OMZP::sudo \
     @OMZP::docker \
     @OMZP::fancy-ctrl-z \
