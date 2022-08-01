@@ -103,11 +103,12 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit wait for \
+zinit wait light-mode for \
     from"gh-r" as"command" pick"fzf" @junegunn/fzf \
     from"gh-r" as"command" mv"bat*/bat -> bat" pick"bat" @sharkdp/bat \
     from"gh-r" as"command" mv"bin/exa -> exa" pick"exa" @ogham/exa \
     from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd" @sharkdp/fd \
+    depth"1" @paulirish/git-open \
     depth"1" @zsh-users/zsh-autosuggestions \
     depth"1" @hlissner/zsh-autopair \
     depth"1" @unixorn/fzf-zsh-plugin \
