@@ -101,4 +101,5 @@ wholroyd.jinja
 xabikos.JavaScriptSnippets
 xabikos.ReactSnippets
 yinfei.luahelper
+Zignd.html-css-class-completion
 ```
