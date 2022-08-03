@@ -82,6 +82,7 @@ ms-vscode.hexeditor
 ms-vscode.js-debug-nightly
 ms-vscode.vscode-typescript-next
 mtxr.sqltools
+mutantdino.resourcemonitor
 Prisma.prisma
 redhat.java
 redhat.vscode-commons
