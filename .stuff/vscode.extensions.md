@@ -41,6 +41,7 @@ code --list-extensions
 ```
 alexcvzz.vscode-sqlite
 bungcip.better-toml
+chneau.resource-monitor
 chneau.saturated-dark-plus
 christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
@@ -58,7 +59,6 @@ foxundermoon.shell-format
 fwcd.kotlin
 GitHub.codespaces
 GitHub.copilot
-gitpod.gitpod-desktop
 golang.go
 GraphQL.vscode-graphql
 hashicorp.terraform
