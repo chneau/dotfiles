@@ -84,6 +84,7 @@ ms-vscode.js-debug-nightly
 ms-vscode.vscode-typescript-next
 mtxr.sqltools
 mutantdino.resourcemonitor
+natecorkish.html-css-class-completion
 Prisma.prisma
 redhat.java
 redhat.vscode-commons
