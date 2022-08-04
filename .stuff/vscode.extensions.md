@@ -45,6 +45,7 @@ chneau.resource-monitor
 chneau.saturated-dark-plus
 christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
+cschleiden.vscode-github-actions
 dakara.transformer
 dbaeumer.vscode-eslint
 denigmaapp.denigma
