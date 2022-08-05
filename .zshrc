@@ -20,6 +20,7 @@ setopt ALWAYS_TO_END
 setopt PROMPT_SUBST
 unsetopt MENU_COMPLETE
 setopt AUTO_MENU
+setopt SH_WORD_SPLIT
 
 autoload -U colors && colors
 TMOUT=1
