@@ -294,6 +294,10 @@ alias yabsgeekbench='curl -sL yabs.sh | bash -s -- -ifd'
 alias yabswithiperf='curl -sL yabs.sh | bash -s -- -r'
 alias ymp3='youtube-dl --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s"' # --min-views --match-filter '!is_live'
 alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+alias z='zig'
+alias zb='zig build'
+alias zbr='zig build run'
+alias zr='zig run'
 
 function completeall() {
     if command -v kubectl &>/dev/null; then
