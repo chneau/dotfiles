@@ -1231,3 +1231,11 @@ npm init vite@latest
 ## windows tips
 
 - emoji available with `windows + .`
+
+## zsh learning
+
+```bash
+# https://grml.org/zsh-pony/
+ls =vim
+# or ls + CTRL+?
+```
