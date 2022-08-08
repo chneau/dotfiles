@@ -1238,4 +1238,6 @@ npm init vite@latest
 # https://grml.org/zsh-pony/
 ls =vim
 # or ls + CTRL+?
+
+# good list https://dev.to/sso/zsh-plugins-commit-top-4mbl
 ```

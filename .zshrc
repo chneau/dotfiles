@@ -112,10 +112,13 @@ zinit wait light-mode for \
     depth"1" @unixorn/fzf-zsh-plugin \
     depth"1" @zdharma-continuum/fast-syntax-highlighting \
     depth"1" @Aloxaf/fzf-tab \
+    depth"1" @olets/zsh-abbr \
     @OMZP::sudo \
     @OMZP::docker/_docker \
     @OMZP::fancy-ctrl-z \
     @OMZP::colored-man-pages
+
+# abbr import-aliases
 
 alias ls='exa'
 alias cat='bat'
