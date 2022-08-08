@@ -1239,5 +1239,7 @@ npm init vite@latest
 ls =vim
 # or ls + CTRL+?
 
+# CTRL+X A to expand
+
 # good list https://dev.to/sso/zsh-plugins-commit-top-4mbl
 ```
