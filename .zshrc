@@ -127,5 +127,3 @@ alias lld='exa -alFhr --sort newest --group-directories-first'
 alias lo='exa -l'
 
 autoload -Uz compinit && compinit
-
-alias xdg-open='echo'
