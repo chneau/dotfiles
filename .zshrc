@@ -112,6 +112,8 @@ zinit wait light-mode for \
     depth"1" @unixorn/fzf-zsh-plugin \
     depth"1" @zdharma-continuum/fast-syntax-highlighting \
     depth"1" @Aloxaf/fzf-tab \
+    @https://github.com/chneau/dotfiles/blob/master/zsh/lib/functions.zsh \
+    @OMZP::web-search \
     @OMZP::sudo \
     @OMZP::docker/_docker \
     @OMZP::fancy-ctrl-z \
@@ -125,3 +127,5 @@ alias lld='exa -alFhr --sort newest --group-directories-first'
 alias lo='exa -l'
 
 autoload -Uz compinit && compinit
+
+alias xdg-open='echo'
