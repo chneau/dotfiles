@@ -29,6 +29,7 @@ TRAPALRM() {
     && [ "$WIDGET" != "fzf-history-widget" ] \
     && [ "$WIDGET" != "fzf-file-widget" ] \
     && [ "$WIDGET" != "fzf-tab-complete" ] \
+    && [ "$WIDGET" != "fzf-completion" ] \
     && zle reset-prompt
 }
 preexec() {
@@ -63,7 +64,7 @@ precmd() {
         if [[ $Last_Command == 0 ]]; then
             RPROMPT="%B%F{green}${timer_show}%f%b"
         else
-            RPROMPT="%B%F{red}${timer_show}%f%b"
+            RPROMPT="%B%F{red}$(nice_exit_code ${Last_Command}) ${timer_show}%f%b"
         fi
         unset timer
     else
@@ -102,22 +103,26 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 zinit wait light-mode for \
-    from"gh-r" as"command" pick"fzf" @junegunn/fzf \
     from"gh-r" as"command" mv"bat*/bat -> bat" pick"bat" @sharkdp/bat \
     from"gh-r" as"command" mv"bin/exa -> exa" pick"exa" @ogham/exa \
     from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd" @sharkdp/fd \
-    depth"1" @paulirish/git-open \
-    depth"1" @zsh-users/zsh-autosuggestions \
+    from"gh-r" as"command" pick"fzf" @junegunn/fzf \
+    depth"1" @Aloxaf/fzf-tab \
+    depth"1" @bric3/nice-exit-code \
     depth"1" @hlissner/zsh-autopair \
+    depth"1" @MichaelAquilina/zsh-you-should-use \
+    depth"1" @micrenda/zsh-nohup \
+    depth"1" @paulirish/git-open \
     depth"1" @unixorn/fzf-zsh-plugin \
     depth"1" @zdharma-continuum/fast-syntax-highlighting \
-    depth"1" @Aloxaf/fzf-tab \
+    depth"1" @zsh-users/zsh-autosuggestions \
+    depth"1" @zsh-users/zsh-completions \
     @https://github.com/chneau/dotfiles/blob/master/zsh/lib/functions.zsh \
-    @OMZP::web-search \
-    @OMZP::sudo \
+    @OMZP::colored-man-pages \
     @OMZP::docker/_docker \
     @OMZP::fancy-ctrl-z \
-    @OMZP::colored-man-pages
+    @OMZP::sudo \
+    @OMZP::web-search
 
 alias ls='exa'
 alias cat='bat'
