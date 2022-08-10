@@ -39,7 +39,8 @@ alias dockertags='dockertags'
 alias dockerup='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --debug --run-once'
 alias doh='docker history'
 alias dotnethttps='dotnet dev-certs https --clean && dotnet dev-certs https --trust'
-alias dotnetup='dotnetup'
+alias dotnetig='dotnet tool install --global dotnet-outdated-tool || dotnet tool update --global dotnet-outdated-tool'
+alias dotnetup='dotnet outdated --upgrade'
 alias dpihole='docker run -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ="Europe/London" -v "$(pwd)/pihole/etc/pihole/:/etc/pihole/" -v "$(pwd)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST="pihole" -e PROXY_LOCATION="pihole" -e ServerIP="127.0.0.1" pihole/pihole:latest'
 alias dprune='docker system prune -f --volumes'
 alias dprunea='docker system prune -af --volumes'
@@ -362,21 +363,6 @@ function transfer() {
         curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null
     fi
     echo
-}
-
-function dotnetup() {
-    regex='PackageReference Include="([^"]*)" Version="([^"]*)"'
-    find . -name "*.*proj" | while read -r proj; do
-        while read -r line; do
-            if [[ $line =~ $regex ]]; then
-                name="${BASH_REMATCH[1]}"
-                version="${BASH_REMATCH[2]}"
-                if [[ $version != *-* ]]; then
-                    dotnet add "$proj" package "$name"
-                fi
-            fi
-        done <"$proj"
-    done
 }
 
 function curlt() {
