@@ -728,7 +728,7 @@ python3 -m pip install --upgrade --force pip
 - https://github.com/Sycnex/Windows10Debloater
 
 ```powershell
-Set-MpPreference -DisableRealtimeMonitoring $true
+Set-MpPreference -DisableIntrusionPreventionSystem $true -DisableIOAVProtection $true -DisableRealtimeMonitoring $true -DisableScriptScanning $true -EnableControlledFolderAccess Disabled -EnableNetworkProtection AuditMode -Force -MAPSReporting Disabled -SubmitSamplesConsent NeverSend
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
 # using the disable_windows_defender.bat works better
 ```
