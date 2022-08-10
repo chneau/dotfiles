@@ -18,9 +18,10 @@ setopt HIST_REDUCE_BLANKS
 setopt COMPLETE_IN_WORD
 setopt ALWAYS_TO_END
 setopt PROMPT_SUBST
-unsetopt MENU_COMPLETE
 setopt AUTO_MENU
 setopt SH_WORD_SPLIT
+unsetopt MENU_COMPLETE
+
 
 autoload -U colors && colors
 TMOUT=1
@@ -132,3 +133,4 @@ alias lld='exa -alFhr --sort newest --group-directories-first'
 alias lo='exa -l'
 
 autoload -Uz compinit && compinit
+unset zle_bracketed_paste
