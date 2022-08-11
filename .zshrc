@@ -132,5 +132,5 @@ alias la='exa -a'
 alias lld='exa -alFhr --sort newest --group-directories-first'
 alias lo='exa -l'
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
 unset zle_bracketed_paste
