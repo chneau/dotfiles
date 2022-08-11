@@ -116,7 +116,7 @@ zinit wait light-mode for \
     depth"1" @paulirish/git-open \
     depth"1" @unixorn/fzf-zsh-plugin \
     depth"1" @zdharma-continuum/fast-syntax-highlighting \
-    depth"1" @zsh-users/zsh-autosuggestions \
+    depth"1" atload'bindkey "^[^M" autosuggest-execute;' @zsh-users/zsh-autosuggestions \
     depth"1" @zsh-users/zsh-completions \
     @https://github.com/chneau/dotfiles/blob/master/zsh/lib/functions.zsh \
     @OMZP::colored-man-pages \
