@@ -40,6 +40,7 @@ code --list-extensions
 
 ```
 alexcvzz.vscode-sqlite
+AugusteRame.zls-vscode
 bungcip.better-toml
 chneau.resource-monitor
 chneau.saturated-dark-plus
@@ -53,7 +54,6 @@ DotJoshJohnson.xml
 dsznajder.es7-react-js-snippets
 eamodio.gitlens
 EditorConfig.EditorConfig
-eg2.vscode-npm-script
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 foxundermoon.shell-format
@@ -62,6 +62,7 @@ GitHub.codespaces
 GitHub.copilot
 golang.go
 GraphQL.vscode-graphql
+GraphQL.vscode-graphql-syntax
 hashicorp.terraform
 iocave.monkey-patch
 JannisX11.batch-rename-extension
@@ -83,23 +84,25 @@ ms-vscode.hexeditor
 ms-vscode.js-debug-nightly
 ms-vscode.vscode-typescript-next
 mtxr.sqltools
-mutantdino.resourcemonitor
-natecorkish.html-css-class-completion
 Prisma.prisma
+redhat.fabric8-analytics
 redhat.java
 redhat.vscode-commons
 redhat.vscode-yaml
 rust-lang.rust-analyzer
-silvenon.mdx
 SonarSource.sonarlint-vscode
 styled-components.vscode-styled-components
+tiehuis.zig
 timonwong.shellcheck
+unifiedjs.vscode-mdx
+VisualStudioExptTeam.intellicode-api-usage-examples
 VisualStudioExptTeam.vscodeintellicode
 vscjava.vscode-java-debug
 vscjava.vscode-java-pack
 vscjava.vscode-java-test
 vscjava.vscode-maven
 wholroyd.jinja
+wix.vscode-import-cost
 xabikos.JavaScriptSnippets
 xabikos.ReactSnippets
 yinfei.luahelper
