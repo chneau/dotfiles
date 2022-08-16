@@ -90,7 +90,6 @@ redhat.java
 redhat.vscode-commons
 redhat.vscode-yaml
 rust-lang.rust-analyzer
-SonarSource.sonarlint-vscode
 styled-components.vscode-styled-components
 tiehuis.zig
 timonwong.shellcheck
