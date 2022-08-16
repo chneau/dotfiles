@@ -102,7 +102,6 @@ vscjava.vscode-java-pack
 vscjava.vscode-java-test
 vscjava.vscode-maven
 wholroyd.jinja
-wix.vscode-import-cost
 xabikos.JavaScriptSnippets
 xabikos.ReactSnippets
 yinfei.luahelper
