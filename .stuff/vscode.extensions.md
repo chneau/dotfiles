@@ -58,7 +58,6 @@ esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 foxundermoon.shell-format
 fwcd.kotlin
-GitHub.codespaces
 GitHub.copilot
 golang.go
 GraphQL.vscode-graphql
