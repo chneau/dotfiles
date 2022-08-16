@@ -85,5 +85,6 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editorAssociations": { "*.ipynb": "jupyter-notebook" },
   "workbench.layoutControl.enabled": false,
-  "workbench.tree.renderIndentGuides": "always"
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.startupEditor": "none"
 }
