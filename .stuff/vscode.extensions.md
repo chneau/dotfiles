@@ -63,7 +63,6 @@ golang.go
 GraphQL.vscode-graphql
 GraphQL.vscode-graphql-syntax
 hashicorp.terraform
-iocave.monkey-patch
 JannisX11.batch-rename-extension
 jasonnutter.search-node-modules
 jawandarajbir.react-vscode-extension-pack
