@@ -139,6 +139,7 @@ alias ibrew='bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/in
 alias ibun='curl -fsSL https://bun.sh/install | bash'
 alias icroc='go install github.com/schollz/croc/v9@latest'
 alias idatree='go install github.com/datreeio/datree@latest'
+alias ideno='curl -fsSL https://deno.land/install.sh | sh'
 alias idl='pip install -U yt-dlp'
 alias idocker='curl -sSL get.docker.com | sh'
 alias idockercompose='pip install docker-compose'
