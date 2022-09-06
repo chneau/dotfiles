@@ -66,6 +66,7 @@ hashicorp.terraform
 JannisX11.batch-rename-extension
 jasonnutter.search-node-modules
 jawandarajbir.react-vscode-extension-pack
+jebbs.plantuml
 mathiasfrohlich.Kotlin
 mechatroner.rainbow-csv
 ms-dotnettools.blazorwasm-companion
