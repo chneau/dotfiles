@@ -1250,4 +1250,5 @@ ls =vim
 # found back the name from here https://www.reddit.com/r/antivirus/comments/n0lf9i/whats_the_best_ondemand_scanner_now_that/?sort=top
 
 # https://www.malwarebytes.com/adwcleaner
+# Direct download link: https://adwcleaner.malwarebytes.com/adwcleaner?channel=release
 ```
