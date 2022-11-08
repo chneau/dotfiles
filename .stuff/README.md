@@ -1243,3 +1243,11 @@ ls =vim
 
 # good list https://dev.to/sso/zsh-plugins-commit-top-4mbl
 ```
+
+## Good on demande anti malware/virus
+
+```bash
+# found back the name from here https://www.reddit.com/r/antivirus/comments/n0lf9i/whats_the_best_ondemand_scanner_now_that/?sort=top
+
+# https://www.malwarebytes.com/adwcleaner
+```
