@@ -1252,3 +1252,11 @@ ls =vim
 # https://www.malwarebytes.com/adwcleaner
 # Direct download link: https://adwcleaner.malwarebytes.com/adwcleaner?channel=release
 ```
+
+## Anything graph software engineering related
+
+```bash
+
+# https://plantuml.com/starting
+
+```
