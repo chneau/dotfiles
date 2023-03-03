@@ -124,6 +124,7 @@ zinit wait light-mode for \
     @OMZP::fancy-ctrl-z \
     @OMZP::sudo \
     @OMZP::web-search
+# TODO: Follow https://github.com/ohmyzsh/ohmyzsh/pull/11532 and update zinit snippet to use ohmyzsh plugins instead of my own "fork" of the functions.zsh file
 
 alias ls='exa'
 alias cat='bat'
