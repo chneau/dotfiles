@@ -162,6 +162,7 @@ alias ik3s='curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S
 alias ik3slatest='curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC="--disable=traefik" INSTALL_K3S_CHANNEL=latest sh -s -'
 alias ik3sup='go install github.com/alexellis/k3sup@latest'
 alias ik8s='curl -sSL https://get.k8s.io | bash'
+alias ik9s='go install github.com/derailed/k9s@latest'
 alias ikind='go install sigs.k8s.io/kind@latest'
 alias ikubectl='curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod u+x kubectl && sudo mv kubectl /usr/local/bin/'
 alias ikubectx='go install github.com/ahmetb/kubectx/cmd/kubectx@latest'
