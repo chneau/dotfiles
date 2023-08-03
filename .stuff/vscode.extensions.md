@@ -41,7 +41,6 @@ code --list-extensions
 ```
 alexcvzz.vscode-sqlite
 AugusteRame.zls-vscode
-bungcip.better-toml
 chneau.resource-monitor
 chneau.saturated-dark-plus
 christian-kohler.npm-intellisense
@@ -61,6 +60,9 @@ formulahendry.auto-rename-tag
 foxundermoon.shell-format
 fwcd.kotlin
 GitHub.copilot
+GitHub.copilot-chat
+GitHub.copilot-labs
+GitHub.remotehub
 github.vscode-github-actions
 golang.go
 GraphQL.vscode-graphql
@@ -96,7 +98,6 @@ ms-vscode.vscode-typescript-next
 ms-vsliveshare.vsliveshare
 mtxr.sqltools
 mtxr.sqltools-driver-sqlite
-Orta.vscode-jest
 Prisma.prisma
 redhat.fabric8-analytics
 redhat.java
@@ -105,6 +106,7 @@ redhat.vscode-yaml
 ritwickdey.LiveServer
 rust-lang.rust-analyzer
 styled-components.vscode-styled-components
+tamasfe.even-better-toml
 tiehuis.zig
 timonwong.shellcheck
 unifiedjs.vscode-mdx
