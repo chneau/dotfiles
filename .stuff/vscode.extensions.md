@@ -107,7 +107,6 @@ ritwickdey.LiveServer
 rust-lang.rust-analyzer
 styled-components.vscode-styled-components
 tamasfe.even-better-toml
-tiehuis.zig
 timonwong.shellcheck
 unifiedjs.vscode-mdx
 VisualStudioExptTeam.intellicode-api-usage-examples
@@ -122,6 +121,7 @@ wix.vscode-import-cost
 xabikos.JavaScriptSnippets
 xabikos.ReactSnippets
 yinfei.luahelper
+ziglang.vscode-zig
 Zignd.html-css-class-completion
 ZixuanChen.vitest-explorer
 ```
