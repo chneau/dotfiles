@@ -70,6 +70,7 @@ alias dwatch='docker run -d --restart=always --name=watchtower -v=/var/run/docke
 alias e='\du * -cs | sort -nr | head'
 alias egrep='egrep --color=auto'
 alias exe='chmod u+x '
+alias exportenv='export $(xargs < .env)'
 alias extract='extract'
 alias fail2banstatus='sudo fail2ban-client status sshd'
 alias ff='freecache; free'
