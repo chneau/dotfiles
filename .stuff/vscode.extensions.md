@@ -99,7 +99,6 @@ ms-vsliveshare.vsliveshare
 mtxr.sqltools
 mtxr.sqltools-driver-sqlite
 Prisma.prisma
-redhat.fabric8-analytics
 redhat.java
 redhat.vscode-commons
 redhat.vscode-yaml
