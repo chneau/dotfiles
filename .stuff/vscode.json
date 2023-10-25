@@ -76,7 +76,7 @@
   "python.formatting.autopep8Args": ["--max-line-length=200"],
   "python.languageServer": "Pylance",
   "redhat.telemetry.enabled": false,
-  "remote.SSH.defaultExtensions": ["chneau.resource-monitor", "chneau.saturated-dark-plus", "dakara.transformer", "dbaeumer.vscode-eslint", "dsznajder.es7-react-js-snippets", "esbenp.prettier-vscode", "GitHub.copilot", "golang.go", "hashicorp.terraform", "jebbs.plantuml", "mechatroner.rainbow-csv", "ms-dotnettools.csharp", "ms-vscode-remote.remote-ssh", "ms-vscode.js-debug-nightly", "ms-vscode.remote-explorer", "ms-vscode.vscode-typescript-next", "styled-components.vscode-styled-components", "timonwong.shellcheck", "VisualStudioExptTeam.vscodeintellicode"],
+  "remote.SSH.defaultExtensions": ["chneau.resource-monitor", "chneau.saturated-dark-plus", "chneau.saturated-dark-modern", "dakara.transformer", "dbaeumer.vscode-eslint", "dsznajder.es7-react-js-snippets", "esbenp.prettier-vscode", "GitHub.copilot", "golang.go", "hashicorp.terraform", "jebbs.plantuml", "mechatroner.rainbow-csv", "ms-dotnettools.csharp", "ms-vscode-remote.remote-ssh", "ms-vscode.js-debug-nightly", "ms-vscode.remote-explorer", "ms-vscode.vscode-typescript-next", "styled-components.vscode-styled-components", "timonwong.shellcheck", "VisualStudioExptTeam.vscodeintellicode"],
   "remote.SSH.remotePlatform": { "nc": "linux" },
   "search.exclude": { "**/node_modules": true, "**/bower_components": true, "**/*.code-search": true, "**/package-lock.json": true },
   "search.quickOpen.includeSymbols": true,
