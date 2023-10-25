@@ -59,10 +59,6 @@ formulahendry.auto-rename-tag
 foxundermoon.shell-format
 fwcd.kotlin
 GitHub.copilot
-GitHub.copilot-chat
-GitHub.copilot-labs
-GitHub.remotehub
-github.vscode-github-actions
 golang.go
 GraphQL.vscode-graphql
 GraphQL.vscode-graphql-execution
