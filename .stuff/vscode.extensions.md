@@ -102,7 +102,6 @@ Prisma.prisma
 redhat.java
 redhat.vscode-commons
 redhat.vscode-yaml
-ritwickdey.LiveServer
 rust-lang.rust-analyzer
 styled-components.vscode-styled-components
 tamasfe.even-better-toml
