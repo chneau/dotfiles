@@ -41,6 +41,7 @@ code --list-extensions
 ```
 chneau.resource-monitor
 chneau.saturated-dark-plus
+chneau.saturated-dark-modern
 dakara.transformer
 dbaeumer.vscode-eslint
 dsznajder.es7-react-js-snippets
