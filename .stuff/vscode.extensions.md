@@ -95,7 +95,6 @@ ms-vscode.js-debug-nightly
 ms-vscode.remote-explorer
 ms-vscode.remote-repositories
 ms-vscode.vscode-typescript-next
-ms-vsliveshare.vsliveshare
 mtxr.sqltools
 mtxr.sqltools-driver-sqlite
 Prisma.prisma
@@ -120,6 +119,5 @@ xabikos.JavaScriptSnippets
 xabikos.ReactSnippets
 yinfei.luahelper
 ziglang.vscode-zig
-Zignd.html-css-class-completion
 ZixuanChen.vitest-explorer
 ```
