@@ -53,7 +53,6 @@ DEVSENSE.phptools-vscode
 DEVSENSE.profiler-php-vscode
 DotJoshJohnson.xml
 dsznajder.es7-react-js-snippets
-eamodio.gitlens
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
