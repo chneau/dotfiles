@@ -18,6 +18,7 @@ code --install-extension ms-dotnettools.csdevkit
 code --install-extension ms-dotnettools.csharp
 code --install-extension ms-dotnettools.vscode-dotnet-runtime
 code --install-extension ms-dotnettools.vscodeintellicode-csharp
+code --install-extension ms-python.autopep8
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance
 code --install-extension ms-toolsai.jupyter
