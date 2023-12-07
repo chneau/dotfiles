@@ -272,6 +272,7 @@ alias nginxreload='sudo /usr/local/nginx/sbin/nginx -s reload'
 alias nginxtest='sudo /usr/local/nginx/sbin/nginx -t'
 alias nload='nload -m -u M'
 alias nmr='sudo service network-manager restart'
+alias nopasswd='echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER'
 alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
 alias nowtime=now
