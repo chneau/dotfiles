@@ -338,6 +338,7 @@ alias z='zig'
 alias zb='zig build'
 alias zbr='zig build run'
 alias zr='zig run'
+alias zshdefault='command -v zsh | sudo tee -a /etc/shells && sudo chsh -s $(which zsh) $USER'
 
 function completeall() {
     if command -v kubectl &>/dev/null; then
