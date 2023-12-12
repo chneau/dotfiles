@@ -337,6 +337,7 @@ alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl
 alias z='zig'
 alias zb='zig build'
 alias zbr='zig build run'
+alias ziup='zi update --all --parallel'
 alias zr='zig run'
 alias zshdefault='command -v zsh | sudo tee -a /etc/shells && sudo chsh -s $(which zsh) $USER'
 
