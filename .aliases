@@ -50,7 +50,7 @@ alias dockerup='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock con
 alias doh='docker history'
 alias dotnethttps='dotnet dev-certs https --clean && dotnet dev-certs https --trust'
 alias dotneti='f(){ dotnet tool install --global "$1" || dotnet tool update --global "$1"; unset -f f; }; f'
-alias dotnetig='dotnet tool install --global dotnet-outdated-tool || dotnet tool update --global dotnet-outdated-tool'
+alias dotnetig='dotneti dotnet-outdated-tool & dotneti Roslynator.DotNet.Cli & dotneti dotnet-ef & wait'
 alias dotnetup='dotnet outdated --upgrade'
 alias dpihole='docker run -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ="Europe/London" -v "$(pwd)/pihole/etc/pihole/:/etc/pihole/" -v "$(pwd)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST="pihole" -e PROXY_LOCATION="pihole" -e ServerIP="127.0.0.1" pihole/pihole:latest'
 alias dprune='docker system prune -f --volumes'
