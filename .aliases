@@ -230,6 +230,7 @@ alias kdecode="f(){ kubectl get secret \"\$1\" --template='{{range \$k,\$v := .d
 alias kdes='kubectl describe'
 alias kdestroy='kubectl delete --grace-period=0 --force'
 alias kdk='kubectl diff -k'
+alias kdn='kubectl describe node'
 alias ke='kubectl exec -ti '
 alias kenv='kubectl set env pods --all --list'
 alias kg='kubectl get'
