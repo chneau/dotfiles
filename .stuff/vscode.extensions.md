@@ -1,6 +1,7 @@
 # extensions
 
 ```bash
+code --install-extension biomejs.biome
 code --install-extension chneau.resource-monitor
 code --install-extension chneau.saturated-dark-modern
 code --install-extension chneau.saturated-dark-plus
