@@ -334,6 +334,7 @@ alias toix="curl -F 'f:1=<-' ix.io"
 alias toqrcode='curl -F-=\<- qrenco.de'
 alias traefikauth='f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\$/\\$\\$/g; unset -f f; }; f'
 alias transfer='transfer'
+alias tslint='tsc --noEmit --project .'
 alias u='ls -hltr'
 alias up='updatebashrc; updateall'
 alias upb='updatebashrc; refresh'
