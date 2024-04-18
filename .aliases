@@ -335,6 +335,8 @@ alias toix="curl -F 'f:1=<-' ix.io"
 alias toqrcode='curl -F-=\<- qrenco.de'
 alias traefikauth='f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\$/\\$\\$/g; unset -f f; }; f'
 alias transfer='transfer'
+alias tsall='npm-check-updates --upgrade --install=always --packageManager=bun --deep; biome check --apply-unsafe .; depcheck; ts-unused-exports tsconfig.json; tsc --noEmit --project .'
+alias tsfmt='biome check --apply-unsafe .'
 alias tslint='tsc --noEmit --project .'
 alias u='ls -hltr'
 alias up='updatebashrc; updateall'
