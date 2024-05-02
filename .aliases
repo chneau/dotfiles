@@ -197,6 +197,7 @@ alias invm='curl -sSL https://raw.githubusercontent.com/creationix/nvm/v0.33.6/i
 alias ioctant='go get github.com/vmware-tanzu/octant/cmd/octant@latest' # does not work on windows
 alias iombash='bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"'
 alias iomzsh='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+alias ipipx='brew install pipx'
 alias ipt='sudo /sbin/iptables'
 alias iptableclean='iptables-save | uniq | iptables-restore'
 alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
