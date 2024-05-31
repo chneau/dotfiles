@@ -19,42 +19,11 @@
 		"ms-vscode.vscode-typescript-next",
 		"VisualStudioExptTeam.vscodeintellicode"
 	],
-	"search.exclude": {
-		"**/node_modules": true,
-		"**/bower_components": true,
-		"**/*.code-search": true,
-		"**/package-lock.json": true
-	},
 	"files.exclude": {
-		"**/*.cshtml__virtual.html": true,
 		"**/obj/": true,
 		"**/bin/": true,
-		"**/*.razor__bg__virtual.cs": true,
 		"**/node_modules/": true,
-		"**/.meteor/local/": true,
-		"**/__pycache__/": true,
-		"**/zig-cache/**": true,
-		"**/zig-out/**": true
-	},
-	"files.watcherExclude": {
-		"**/.git/objects/**": true,
-		"**/.git/subtree-cache/**": true,
-		"**/node_modules/*/**": true,
-		"**/.hg/store/**": true,
-		"**/*.cshtml__virtual.html": true,
-		"**/obj/**": true,
-		"**/bin/**": true,
-		"**/*.razor__bg__virtual.cs": true,
-		"**/node_modules/**": true,
-		"**/.meteor/local/**": true,
-		"**/zig-cache/**": true,
-		"**/zig-out/**": true
-	},
-	"github.copilot.enable": {
-		"*": true,
-		"plaintext": false,
-		"markdown": true,
-		"scminput": false
+		"**/.meteor/local/": true
 	},
 	"[aspnetcorerazor]": { "editor.formatOnSave": false },
 	"[css]": { "editor.defaultFormatter": "biomejs.biome" },
@@ -106,16 +75,10 @@
 	"git.postCommitCommand": "sync",
 	"git.pruneOnFetch": true,
 	"git.rebaseWhenSync": true,
-	"go.coverageDecorator": { "type": "gutter" },
-	"go.coverOnSave": true,
-	"go.coverOnSingleTest": true,
-	"go.lintTool": "golangci-lint",
-	"go.toolsManagement.autoUpdate": true,
-	"go.useLanguageServer": true,
+	"github.copilot.enable": { "*": true },
 	"javascript.preferences.useAliasesForRenames": false,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"notebook.formatOnSave.enabled": true,
-	"omnisharp.useModernNet": true,
 	"remote.SSH.remotePlatform": { "ncce": "linux" },
 	"search.quickOpen.includeSymbols": true,
 	"security.workspace.trust.enabled": false,
@@ -133,6 +96,5 @@
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editorAssociations": { "*.ipynb": "jupyter-notebook" },
 	"workbench.layoutControl.enabled": false,
-	"workbench.tree.renderIndentGuides": "always",
-	"zig.initialSetupDone": true
+	"workbench.tree.renderIndentGuides": "always"
 }
