@@ -14,8 +14,6 @@
 		"golang.go",
 		"ms-dotnettools.csharp",
 		"ms-vscode-remote.remote-ssh",
-		"ms-vscode.js-debug-nightly",
-		"ms-vscode.remote-explorer",
 		"ms-vscode.vscode-typescript-next",
 		"VisualStudioExptTeam.vscodeintellicode"
 	],
