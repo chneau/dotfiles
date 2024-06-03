@@ -25,6 +25,7 @@
 		"**/node_modules/": true,
 		"**/.meteor/local/": true
 	},
+	"[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
 	"[aspnetcorerazor]": { "editor.formatOnSave": false },
 	"[css]": { "editor.defaultFormatter": "biomejs.biome" },
 	"[dotenv]": { "editor.formatOnSave": false },
@@ -37,9 +38,6 @@
 	"[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
 	"[razor]": { "editor.formatOnSave": false },
 	"[scss]": { "editor.defaultFormatter": "biomejs.biome" },
-	"[typescript]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
 	"[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
 	"[yaml]": { "editor.defaultFormatter": "biomejs.biome" },
 	"debug.onTaskErrors": "debugAnyway",
@@ -78,6 +76,7 @@
 	"javascript.preferences.useAliasesForRenames": false,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"notebook.formatOnSave.enabled": true,
+	"prisma.showPrismaDataPlatformNotification": false,
 	"remote.SSH.remotePlatform": { "ncce": "linux" },
 	"search.quickOpen.includeSymbols": true,
 	"security.workspace.trust.enabled": false,
@@ -89,12 +88,11 @@
 	"typescript.preferences.useAliasesForRenames": false,
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"window.commandCenter": false,
+	"workbench.colorTheme": "Saturated Dark Modern",
 	"workbench.editor.decorations.badges": true,
 	"workbench.editor.decorations.colors": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editorAssociations": { "*.ipynb": "jupyter-notebook" },
 	"workbench.layoutControl.enabled": false,
-	"workbench.tree.renderIndentGuides": "always",
-	"prisma.showPrismaDataPlatformNotification": false,
-	"workbench.colorTheme": "Saturated Dark Modern"
+	"workbench.tree.renderIndentGuides": "always"
 }
