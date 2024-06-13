@@ -4,9 +4,9 @@
 
 - bunjs
 - vite
-- elysia + treaty
-  - [ ] hono + hc
-  - [ ] trpc
+- elysia + treaty (less popular?)
+  - [ ] hono + hc (more popular?)
+  - [ ] trpc (too old?)
 - react-query
 - lucia
 - biome
