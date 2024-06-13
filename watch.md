@@ -14,16 +14,27 @@
 - dayjs
 - react-use
 - yup
+- [ ] nivo
+- pretty-ts-errors (vscode)
 
-# very nice
+## very nice
 
 - zustand
 - superjson
 
-# nice
+## nice
 
 - mapbox-gl / deck.gl
 - antd
 - styled-components
 - react-select
 - nanostores
+- [ ] kysely
+- [ ] falso
+
+## other cool
+
+- langchainjs
+- grammy
+- commander
+- puppeteer
