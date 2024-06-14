@@ -60,13 +60,19 @@
 	"extensions.ignoreRecommendations": true,
 	"git.autofetch": true,
 	"git.confirmSync": false,
+	"git.enableSmartCommit": true,
+	"git.openRepositoryInParentFolders": "always",
+	"git.postCommitCommand": "sync",
 	"github.copilot.enable": { "*": true },
 	"notebook.formatOnSave.enabled": true,
 	"remote.SSH.remotePlatform": { "ncce": "linux" },
 	"security.workspace.trust.enabled": false,
+	"telemetry.telemetryLevel": "off",
 	"terminal.integrated.allowChords": false,
+	"terminal.integrated.showExitAlert": false,
 	"typescript.preferences.useAliasesForRenames": false,
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"window.commandCenter": false,
-	"workbench.colorTheme": "Saturated Dark Modern"
+	"workbench.colorTheme": "Saturated Dark Modern",
+	"workbench.tree.renderIndentGuides": "always"
 }
