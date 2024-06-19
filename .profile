@@ -15,6 +15,8 @@ export DOTNET_WATCH_RESTART_ON_RUDE_EDIT="true"
 export NPM_CONFIG_YES="true"
 export NPM_CONFIG_FUND="false"
 export CLR_OPENSSL_VERSION_OVERRIDE="1.1"
+export BUN_CONFIG_NO_CLEAR_TERMINAL_ON_RELOAD="1"
+export DO_NOT_TRACK="1"
 
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
