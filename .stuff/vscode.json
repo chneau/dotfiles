@@ -45,7 +45,7 @@
 	"editor.bracketPairColorization.enabled": true,
 	"editor.formatOnSave": true,
 	"editor.guides.bracketPairs": true,
-	"editor.hover.delay": 0,
+	"editor.hover.delay": 100,
 	"editor.inlineSuggest.enabled": true,
 	"editor.renderControlCharacters": true,
 	"editor.renderWhitespace": "boundary",
