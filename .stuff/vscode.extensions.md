@@ -4,6 +4,20 @@
 code --install-extension biomejs.biome
 code --install-extension chneau.resource-monitor
 code --install-extension chneau.saturated-dark-modern
+code --install-extension dakara.transformer
+code --install-extension esbenp.prettier-vscode
+code --install-extension GitHub.copilot
+code --install-extension golang.go
+code --install-extension ms-dotnettools.csharp
+code --install-extension ms-vscode-remote.remote-ssh
+code --install-extension ms-vscode.vscode-typescript-next
+code --install-extension Prisma.prisma
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+code --install-extension yoavbls.pretty-ts-errors
+
+code --install-extension biomejs.biome
+code --install-extension chneau.resource-monitor
+code --install-extension chneau.saturated-dark-modern
 code --install-extension chneau.saturated-dark-plus
 code --install-extension dakara.transformer
 code --install-extension dbaeumer.vscode-eslint
