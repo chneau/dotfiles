@@ -100,7 +100,7 @@ autoload -Uz _zinit
 
 zinit wait light-mode for \
     from"gh-r" as"command" mv"bat*/bat -> bat" pick"bat" @sharkdp/bat \
-    from"gh-r" as"command" mv"bin/exa -> exa" pick"exa" @ogham/exa \
+    from"gh-r" as"command" pick"eza" @eza-community/eza \
     from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd" @sharkdp/fd \
     from"gh-r" as"command" pick"fzf" @junegunn/fzf \
     depth"1" @Aloxaf/fzf-tab \
@@ -120,12 +120,10 @@ zinit wait light-mode for \
     @OMZP::sudo \
     @OMZP::web-search
 
-alias ls='exa'
 alias cat='bat'
-alias l='exa -F'
-alias la='exa -a'
-alias lld='exa -alFhr --sort newest --group-directories-first'
-alias lo='exa -l'
+alias ls='eza'
+alias l='eza -F'
+alias lld='eza -alhrF --sort newest --group-directories-first'
 
 autoload -Uz compinit && compinit -i
 unset zle_bracketed_paste
