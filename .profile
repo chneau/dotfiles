@@ -18,6 +18,8 @@ export CLR_OPENSSL_VERSION_OVERRIDE="1.1"
 export BUN_CONFIG_NO_CLEAR_TERMINAL_ON_RELOAD="1"
 export DO_NOT_TRACK="1"
 export FORCE_COLOR="1"
+export BAT_PAGING="never"
+export BAT_STYLE="plain"
 
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
