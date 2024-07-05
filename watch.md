@@ -3,18 +3,17 @@
 ## must have
 
 - bunjs
-- vite
+- vite / farm
 - elysia + treaty (less popular?)
   - [ ] hono + hc (more popular?)
   - [ ] trpc (too old?)
-- react-query
+- react-query + persister / react-router
 - lucia
 - biome
-- prisma
+- prisma / prismabox
 - dayjs
 - react-use
 - yup
-- [ ] nivo
 - pretty-ts-errors (vscode)
 
 ## very nice
@@ -31,6 +30,7 @@
 - nanostores
 - [ ] kysely
 - [ ] falso
+- [ ] nivo
 
 ## other cool
 
