@@ -124,6 +124,9 @@ alias cat='bat'
 alias ls='eza'
 alias l='eza -F'
 alias lld='eza -alhrF --sort newest --group-directories-first'
+if type kubecolor > /dev/null; then
+  alias kubectl='kubecolor'
+fi
 
 autoload -Uz compinit && compinit -i
 unset zle_bracketed_paste
