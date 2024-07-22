@@ -120,10 +120,14 @@ zinit wait light-mode for \
     @OMZP::sudo \
     @OMZP::web-search
 
-alias cat='bat'
-alias ls='eza'
-alias l='eza -F'
-alias lld='eza -alhrF --sort newest --group-directories-first'
+if type bat > /dev/null; then
+  alias cat='bat'
+fi
+if type eza > /dev/null; then
+  alias ls='eza'
+  alias l='eza -F'
+  alias lld='eza -alhrF --sort newest --group-directories-first'
+fi
 if type kubecolor > /dev/null; then
   alias kubectl='kubecolor'
 fi
