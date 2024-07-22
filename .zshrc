@@ -103,6 +103,7 @@ zinit wait light-mode for \
     from"gh-r" as"command" pick"eza" @eza-community/eza \
     from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd" @sharkdp/fd \
     from"gh-r" as"command" pick"fzf" @junegunn/fzf \
+    from"gh-r" as"command" pick"kubecolor" @kubecolor/kubecolor \
     depth"1" @Aloxaf/fzf-tab \
     depth"1" @bric3/nice-exit-code \
     depth"1" @hlissner/zsh-autopair \
