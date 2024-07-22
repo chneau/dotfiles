@@ -121,17 +121,11 @@ zinit wait light-mode for \
     @OMZP::sudo \
     @OMZP::web-search
 
-if type bat > /dev/null; then
-  alias cat='bat'
-fi
-if type eza > /dev/null; then
-  alias ls='eza'
-  alias l='eza -F'
-  alias lld='eza -alhrF --sort newest --group-directories-first'
-fi
-if type kubecolor > /dev/null; then
-  alias kubectl='kubecolor'
-fi
+alias cat='bat'
+alias ls='eza'
+alias l='eza -F'
+alias lld='eza -alhrF --sort newest --group-directories-first'
+alias kubectl='kubecolor'
 
 autoload -Uz compinit && compinit -i
 unset zle_bracketed_paste
