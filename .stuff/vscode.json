@@ -74,5 +74,6 @@
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"window.commandCenter": false,
 	"workbench.colorTheme": "Saturated Dark Modern",
-	"workbench.tree.renderIndentGuides": "always"
+	"workbench.tree.renderIndentGuides": "always",
+	"window.zoomLevel": -1
 }
