@@ -10,7 +10,7 @@
 - react-query + persister / react-router
 - lucia
 - biome
-- prisma / prismabox
+- prisma
 - dayjs
 - react-use
 - yup
