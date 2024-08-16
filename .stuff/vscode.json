@@ -62,12 +62,18 @@
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
 	"git.postCommitCommand": "sync",
-	"github.copilot.enable": { "*": true },
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": true,
+		"markdown": true,
+		"scminput": true
+	},
 	"notebook.formatOnSave.enabled": true,
 	"remote.SSH.remotePlatform": { "ncce": "linux" },
 	"security.workspace.trust.enabled": false,
 	"telemetry.telemetryLevel": "off",
 	"terminal.integrated.allowChords": false,
+	"terminal.integrated.enableMultiLinePasteWarning": "never",
 	"terminal.integrated.showExitAlert": false,
 	"typescript.preferences.useAliasesForRenames": false,
 	"typescript.updateImportsOnFileMove.enabled": "always",
@@ -75,6 +81,5 @@
 	"window.zoomLevel": -1,
 	"workbench.colorTheme": "Saturated Dark Modern",
 	"workbench.tree.renderIndentGuides": "always",
-	"terminal.integrated.enableMultiLinePasteWarning": "never",
 	"workbench.activityBar.location": "top"
 }
