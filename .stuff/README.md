@@ -951,7 +951,7 @@ wsl --unregister Ubuntu
 REM to install Ubuntu again, type in ubuntu, it will install it back as fresh
 ```
 
-## TODO
+## Things I thought were cool back then
 
 - Investigate `heroku login` cool login process
 - Draw project in c# dotnet core
