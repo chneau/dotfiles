@@ -319,6 +319,7 @@ alias oc='code -a .'
 alias openports='nmap -p- portquiz.net | grep -i open'
 alias path='echo -e ${PATH//:/\\n}'
 alias pipi="pip install --upgrade --user"
+alias pipig='uv tool install'
 alias pipup="pip list --format freeze --outdated | sed 's/=.*//g' | xargs -n1 pip install -U"
 alias pipupg="pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
 alias poefilterup='poefilterup'
