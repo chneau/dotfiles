@@ -123,9 +123,9 @@ zinit wait light-mode for \
 
 alias cat='bat'
 alias ls='eza'
-alias l='eza -F'
-alias ll='eza -alhF'
-alias lld='eza -alhrF --sort newest --group-directories-first'
+alias l='eza -F auto'
+alias ll='eza -alhF auto'
+alias lld='eza -alhrF auto --sort newest --group-directories-first'
 alias kubectl='kubecolor'
 
 autoload -Uz compinit && compinit -i
