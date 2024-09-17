@@ -117,6 +117,7 @@ zinit wait light-mode for \
     @OMZL::functions.zsh \
     @OMZP::colored-man-pages \
     @OMZP::docker \
+    @OMZP::bun \
     @OMZP::fancy-ctrl-z \
     @OMZP::sudo \
     @OMZP::web-search
