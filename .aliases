@@ -558,7 +558,7 @@ function di() {
 function dps() {
     docker ps "$@" | docker-color-output
 }
-
+unalias dps 2>/dev/null || true
 function dcps() {
     docker compose ps "$@" | docker-color-output
 }
