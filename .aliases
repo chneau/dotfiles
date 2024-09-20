@@ -63,7 +63,6 @@ alias dpihole='docker run -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 
 alias dprune='docker system prune -f --volumes'
 alias dprunea='docker system prune -af --volumes'
 alias drm='docker rmi $(docker images -q --filter "dangling=true")'
-alias ds='docker stats'
 alias dsave='f(){ docker save "$1" | gzip >"$1.tgz" && echo "$1.tgz created";  unset -f f; }; f'
 alias dsd='docker stack down'
 alias dsi='docker service inspect --pretty'
@@ -550,4 +549,20 @@ HELP
     fi
 
     echo "${tags}"
+}
+
+function di() {
+    docker images "$@" | docker-color-output
+}
+
+function dps() {
+    docker ps "$@" | docker-color-output
+}
+
+function dcps() {
+    docker compose ps "$@" | docker-color-output
+}
+
+function ds() {
+    docker stats "$@" | docker-color-output
 }
