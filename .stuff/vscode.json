@@ -17,6 +17,7 @@
 		"ms-vscode.vscode-typescript-next",
 		"Prisma.prisma",
 		"VisualStudioExptTeam.vscodeintellicode",
+		"waderyan.gitblame",
 		"yoavbls.pretty-ts-errors"
 	],
 	"files.exclude": {
