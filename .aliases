@@ -297,7 +297,7 @@ alias mip='dig +short txt ch whoami.cloudflare @1.0.0.1 | tr -d \" || (curl api.
 alias mip2='curl icanhazip.com'
 alias mkcdir='f(){ mkdir -- "$1" && cd -P -- "$1"; unset -f f; }; f'
 alias mkdir='mkdir -pv'
-alias n='printf "\n\n\nx=\"raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh\"; (curl -fsSL \$x || wget -qO - \$x) | sh\n\n\n\n"'
+alias n='printf "\nx=\"raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh\"; (curl -fsSL \$x || wget -qO - \$x) | sh\n\nbun install --global @chneau/x\n\n"'
 alias ncup='npm-check-updates --upgrade --install=always --packageManager=bun --deep'
 alias newfarm='bun create farm@latest'
 alias newrefine='bun create refine-app@latest'
