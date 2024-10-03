@@ -15,4 +15,5 @@ fetch .bashrc &
 fetch .zshrc &
 fetch .aliases &
 fetch .profile &
+fetch .bash_profile &
 wait
