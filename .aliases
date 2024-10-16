@@ -39,6 +39,7 @@ alias dcode='docker run --pull=always -p 127.0.0.1:8443:8443 -v "${PWD}:/root/pr
 alias ddown='docker stop $(docker ps -a -q)'
 alias de='docker exec -it'
 alias df='df -Tha --total'
+alias dfirefox='docker run --rm --name=ff --net=host lscr.io/linuxserver/firefox'
 alias diff='diff --color -u -w'
 alias dir='dir --color=auto'
 alias diskspace='du -S | sort -n -r | more'
