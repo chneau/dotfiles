@@ -16,6 +16,7 @@
 		"golang.go",
 		"grapecity.gc-excelviewer",
 		"ms-dotnettools.csharp",
+		"ms-toolsai.jupyter",
 		"ms-vscode.vscode-typescript-next",
 		"Prisma.prisma",
 		"VisualStudioExptTeam.vscodeintellicode",
