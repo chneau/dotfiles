@@ -28,9 +28,10 @@
 - styled-components
 - react-select
 - nanostores
-- [ ] kysely
-- [ ] falso
-- [ ] nivo
+- jotai
+- kysely
+- falso
+- nivo
 
 ## other cool
 
