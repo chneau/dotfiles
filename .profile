@@ -20,6 +20,7 @@ export DO_NOT_TRACK="1"
 export FORCE_COLOR="1"
 export BAT_PAGING="never"
 export BAT_STYLE="plain"
+export BAT_TABS="2"
 
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
