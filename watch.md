@@ -27,7 +27,6 @@
 - antd
 - styled-components
 - react-select
-- nanostores
 - jotai
 - kysely
 - falso
