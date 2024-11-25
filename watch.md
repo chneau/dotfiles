@@ -38,3 +38,27 @@
 - grammy
 - commander
 - puppeteer
+
+# Great stack for now:
+
+## frontend
+
+- react
+- jotai
+- react-use
+- @tanstack/react-query
+- es-toolkit
+- posthog-js
+- antd
+- @farmfe/cli
+- wouter
+
+## backend
+
+- hono
+- @mikro-orm/postgresql
+- jose
+
+## infra
+
+- cdk8s
