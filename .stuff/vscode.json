@@ -19,6 +19,7 @@
 		"ms-python.python",
 		"ms-toolsai.jupyter",
 		"ms-vscode.vscode-typescript-next",
+		"oven.bun-vscode",
 		"Prisma.prisma",
 		"VisualStudioExptTeam.vscodeintellicode",
 		"waderyan.gitblame",
@@ -29,6 +30,12 @@
 		"**/bin/": true,
 		"**/node_modules/": true,
 		"**/.meteor/local/": true
+	},
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": true,
+		"markdown": true,
+		"scminput": true
 	},
 	"[aspnetcorerazor]": { "editor.formatOnSave": false },
 	"[css]": { "editor.defaultFormatter": "biomejs.biome" },
@@ -45,6 +52,7 @@
 	"[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
 	"[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
 	"[yaml]": { "editor.defaultFormatter": "biomejs.biome" },
+	"bun.debugTerminal.enabled": true,
 	"dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
 	"editor.accessibilitySupport": "off",
 	"editor.bracketPairColorization.enabled": true,
@@ -69,12 +77,6 @@
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
 	"git.postCommitCommand": "sync",
-	"github.copilot.enable": {
-		"*": true,
-		"plaintext": true,
-		"markdown": true,
-		"scminput": true
-	},
 	"notebook.formatOnSave.enabled": true,
 	"remote.SSH.remotePlatform": { "ncce": "linux" },
 	"security.workspace.trust.enabled": false,
