@@ -27,7 +27,6 @@
 - antd
 - styled-components
 - react-select
-- jotai
 - kysely
 - falso
 - nivo
@@ -45,6 +44,7 @@
 
 - react
 - jotai
+- valtio
 - react-use
 - @tanstack/react-query
 - es-toolkit
