@@ -6,7 +6,6 @@
 - vite / farm
 - elysia + treaty (less popular?)
   - [ ] hono + hc (more popular?)
-  - [ ] trpc (too old?)
 - react-query + persister / react-router
 - lucia
 - biome
