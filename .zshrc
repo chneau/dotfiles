@@ -131,4 +131,5 @@ autoload -Uz compinit && compinit -i
 unset zle_bracketed_paste
 mkdir -p $ZSH_CACHE_DIR/completions
 
+source <(kubectl completion zsh)
 compdef kubecolor=kubectl
