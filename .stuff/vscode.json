@@ -73,6 +73,7 @@
 	"explorer.confirmDragAndDrop": false,
 	"extensions.ignoreRecommendations": true,
 	"git.autofetch": true,
+	"git.blame.editorDecoration.enabled": true,
 	"git.confirmSync": false,
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
