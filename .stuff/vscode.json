@@ -23,7 +23,6 @@
 		"jebbs.plantuml",
 		"Prisma.prisma",
 		"VisualStudioExptTeam.vscodeintellicode",
-		"waderyan.gitblame",
 		"yoavbls.pretty-ts-errors"
 	],
 	"files.exclude": {
@@ -78,6 +77,7 @@
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
 	"git.postCommitCommand": "sync",
+	"github.copilot.nextEditSuggestions.enabled": true,
 	"go.toolsManagement.autoUpdate": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"notebook.formatOnSave.enabled": true,
