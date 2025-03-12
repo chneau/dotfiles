@@ -37,6 +37,9 @@
 		"markdown": true,
 		"scminput": true
 	},
+	"github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+		{ "text": "Focus on what and why, be concise and clear." }
+	],
 	"[aspnetcorerazor]": { "editor.formatOnSave": false },
 	"[css]": { "editor.defaultFormatter": "biomejs.biome" },
 	"[dotenv]": { "editor.formatOnSave": false },
