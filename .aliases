@@ -22,6 +22,7 @@ alias bup='zi update --all --parallel --quiet --no-pager & brew upgrade --quiet 
 alias bverbosefetch='BUN_CONFIG_VERBOSE_FETCH=curl '
 alias bw='bun --watch --no-clear-screen'
 alias bx='bun x'
+alias catfull='cat --style=full'
 alias cc='concurrently --prefix-colors=auto'
 alias cleanos='rm -rf bleachbit && HOME= git clone --depth=1 https://github.com/bleachbit/bleachbit && python3 bleachbit/bleachbit.py --list | grep -v system.free_disk_space | grep -v system.memory | grep -v deepscan | xargs sudo python3 bleachbit/bleachbit.py --clean && rm -rf bleachbit'
 alias completeall='completeall'
