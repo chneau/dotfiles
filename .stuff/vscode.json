@@ -56,6 +56,7 @@
 	"[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
 	"[yaml]": { "editor.defaultFormatter": "biomejs.biome" },
 	"bun.debugTerminal.enabled": true,
+	"chat.agent.enabled": true,
 	"dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
 	"editor.accessibilitySupport": "off",
 	"editor.bracketPairColorization.enabled": true,
