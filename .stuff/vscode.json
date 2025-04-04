@@ -63,6 +63,7 @@
 	"editor.guides.bracketPairs": true,
 	"editor.hover.delay": 100,
 	"editor.inlineSuggest.enabled": true,
+	"editor.pasteAs.preferences": ["text.updateImports.jsts"],
 	"editor.quickSuggestions": { "other": "off" },
 	"editor.renderControlCharacters": true,
 	"editor.renderWhitespace": "boundary",
