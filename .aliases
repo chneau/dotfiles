@@ -208,6 +208,7 @@ alias invm='curl -sSL https://raw.githubusercontent.com/creationix/nvm/v0.33.6/i
 alias ioctant='go get github.com/vmware-tanzu/octant/cmd/octant@latest' # does not work on windows
 alias iombash='bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"'
 alias iomzsh='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+alias iopencode='curl -fsSL https://opencode.ai/install | bash'
 alias ipipx='brew install pipx'
 alias iproxy='export PROXY_LOGIN=`base64 < /dev/urandom | head -c256 | sha256sum | head -c32`; export PROXY_PASSWORD=`base64 < /dev/urandom | head -c256 | sha256sum | head -c32`; echo "Login: $PROXY_LOGIN"; echo "Password: $PROXY_PASSWORD"; export _IP=`mip`; echo "HTTPS_PROXY=\"http://$PROXY_LOGIN:$PROXY_PASSWORD@$_IP:3128/\""; docker rm -f proxy; docker run --pull=always --rm -d -e PROXY_LOGIN -e PROXY_PASSWORD --name=proxy --net=host ghcr.io/tarampampam/3proxy:latest;'
 alias ipt='sudo /sbin/iptables'
@@ -321,7 +322,7 @@ alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
 alias nowtime=now
 alias npme='npm exec --yes --'
-alias npmig='x="npm@latest oxlint@latest @chneau/x @biomejs/biome@latest http-server@latest live-server@latest fkill-cli@latest ungit@latest npm-check@latest tsx@latest npm-check-updates@latest nodemon@latest prettier@latest typesync@latest depcheck@latest concurrently@latest ts-unused-exports@latest"; bun install --force --global --silent $x || npm install --global $x; bun update --global --force'
+alias npmig='x="npm@latest opencode-ai@latest oxlint@latest @chneau/x @biomejs/biome@latest http-server@latest live-server@latest fkill-cli@latest ungit@latest npm-check@latest tsx@latest npm-check-updates@latest nodemon@latest prettier@latest typesync@latest depcheck@latest concurrently@latest ts-unused-exports@latest"; bun install --force --global --silent $x || npm install --global $x; bun update --global --force'
 alias npmup='npm-check-updates --deep --upgrade --install=always --packageManager=bun'
 alias nud='nvm use default'
 alias nx='f(){ nodemon --signal SIGTERM --ext "$1" --exec "${*:2} || false"; unset -f f; }; f'
