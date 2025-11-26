@@ -40,11 +40,13 @@ alias dbtest='docker build --pull --tag test .'
 alias dc='docker-compose'
 alias dcb='echo http://localhost:8978/; docker run --name cloudbeaver --rm -it -p 8978:8978 -v ~/.cache/cloudbeaver:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest'
 alias dcode='docker run --pull=always -p 127.0.0.1:8443:8443 -v "${PWD}:/root/project" codercom/code-server code-server --allow-http --no-auth'
+alias dcps='f(){ docker compose ps "$@" | docker-color-output; unset -f f; }; f'
 alias ddown='docker stop $(docker ps -a -q)'
 alias de='docker exec -it'
 alias df='df -Tha --total'
 alias dff='dfirefox'
 alias dfirefox='docker run --pull=always --rm --name=ff --net=host --security-opt=seccomp=unconfined --shm-size=4gb --env=TZ=Europe/London --env=PUID=1000 --env=PGID=1000 -v=$HOME/docker/firefox:/config lscr.io/linuxserver/firefox'
+alias di='docker images'
 alias diff='diff --color -u -w'
 alias dir='dir --color=auto'
 alias diskspace='du -S | sort -n -r | more'
@@ -69,7 +71,9 @@ alias dotnetup='dotnet outdated --upgrade'
 alias dpihole='docker run --pull=always -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ="Europe/London" -v "$(pwd)/pihole/etc/pihole/:/etc/pihole/" -v "$(pwd)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST="pihole" -e PROXY_LOCATION="pihole" -e ServerIP="127.0.0.1" pihole/pihole:latest'
 alias dprune='docker system prune --force --volumes; docker volume prune --force'
 alias dprunea='docker system prune --force --volumes --all; docker volume prune --force --all'
+alias dps='f(){ docker ps "$@" | docker-color-output; unset -f f; }; f'
 alias drm='docker rmi $(docker images -q --filter "dangling=true")'
+alias ds='f(){ docker stats "$@" | docker-color-output; unset -f f; }; f'
 alias dsave='f(){ docker save "$1" | gzip >"$1.tgz" && echo "$1.tgz created";  unset -f f; }; f'
 alias dsd='docker stack down'
 alias dsi='docker service inspect --pretty'
@@ -564,20 +568,4 @@ HELP
     fi
 
     echo "${tags}"
-}
-
-function di() {
-    docker images "$@" | docker-color-output
-}
-
-function dps() {
-    docker ps "$@" | docker-color-output
-}
-
-function dcps() {
-    docker compose ps "$@" | docker-color-output
-}
-
-function ds() {
-    docker stats "$@" | docker-color-output
 }
