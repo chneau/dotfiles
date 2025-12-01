@@ -80,3 +80,10 @@ updatebashrc
 ### Miscellaneous
 
 The `.stuff/` directory contains additional scripts, legacy configurations, and platform-specific files (e.g., for Windows/WSL).
+
+### Windows
+
+```bash
+Set-ExecutionPolicy Unrestricted -Scope Process -Force
+irm https://christitus.com/win | iex
+```
