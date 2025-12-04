@@ -359,6 +359,7 @@ alias rmdot='for f in *.*; do pre="${f%.*}"; suf="${f##*.}"; mv -i -- "$f" "${pr
 alias root='\sudo \su'
 alias rr='fk node dotnet bun code code-server go python; sudo service docker stop; killall -u $USER'
 alias s='strace -fqc'
+alias scode='sudo code --no-sandbox --user-data-dir /tmp'
 alias screen='screen -q'
 alias serveo='f(){ ssh -o "StrictHostKeyChecking no" -R 80:localhost:$1 localhost.run; unset -f f; }; f'
 alias servepy='python -m http.server'
