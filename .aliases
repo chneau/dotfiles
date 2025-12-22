@@ -238,6 +238,7 @@ alias ispeedtest='curl -s https://install.speedtest.net/app/cli/install.deb.sh |
 alias issh='ssh-keygen -t rsa -b 2048'
 alias isshuttle='sudo apt -y install sshuttle'
 alias istern='go install github.com/stern/stern@latest'
+alias itrail='curl -sSL https://trailbase.io/install.sh | bash'
 alias iuv='curl -LsSf https://astral.sh/uv/install.sh | sh'
 alias iv='gitget https://github.com/vlang/v && make && sudo ./v symlink && v ls --install &&'
 alias ivagrant='sudo apt -y install vagrant'
