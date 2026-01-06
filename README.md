@@ -58,6 +58,8 @@ Easily install tools using `i`-prefixed aliases:
 - `ik3s` / `ik8s`: Install Kubernetes distributions.
 - `inix`: Install Nix.
 - `ibun`: Install Bun.
+- `igemini`: Install Gemini CLI.
+- `iqwen`: Install Qwen.
 
 ### 🖥 Custom Prompt
 
