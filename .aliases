@@ -177,6 +177,7 @@ alias ibrew='bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/in
 alias ibun='curl -fsSL https://bun.sh/install | bash'
 alias icharlie='bun i -g charlie-git@latest'
 alias icoolify='curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash'
+alias icopilot='bun i -g @github/copilot@latest'
 alias icroc='go install github.com/schollz/croc/v9@latest'
 alias idatree='go install github.com/datreeio/datree@latest'
 alias ideno='curl -fsSL https://deno.land/install.sh | sh'
