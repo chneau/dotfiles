@@ -126,6 +126,7 @@ alias l='eza -F auto'
 alias ll='eza -alhF auto'
 alias lld='eza -alhrF auto --sort newest --group-directories-first'
 alias kubectl='kubecolor'
+alias brs='bun run --sequential'
 
 autoload -Uz compinit && compinit -i
 unset zle_bracketed_paste
