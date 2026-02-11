@@ -347,7 +347,7 @@ alias npmig='x="npm@latest opencode-ai@latest oxlint@latest @chneau/x @biomejs/b
 alias npmup='npm-check-updates --deep --upgrade --install=always --packageManager=bun'
 alias nud='nvm use default'
 alias nx='f(){ nodemon --signal SIGTERM --ext "$1" --exec "${*:2} || false"; unset -f f; }; f'
-alias oc='opencode'
+alias oc='code -a .'
 alias openports='nmap -p- portquiz.net | grep -i open'
 alias path='echo -e ${PATH//:/\\n}'
 alias pipi="pip install --upgrade --user"
