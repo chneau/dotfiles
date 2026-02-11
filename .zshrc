@@ -117,8 +117,7 @@ zinit wait light-mode for \
     @OMZL::functions.zsh \
     @OMZP::colored-man-pages \
     @OMZP::fancy-ctrl-z \
-    @OMZP::sudo \
-    @OMZP::web-search
+    @OMZP::sudo
 
 alias cat='bat'
 alias ls='eza'
@@ -126,7 +125,6 @@ alias l='eza -F auto'
 alias ll='eza -alhF auto'
 alias lld='eza -alhrF auto --sort newest --group-directories-first'
 alias kubectl='kubecolor'
-alias brs='bun run --sequential'
 
 autoload -Uz compinit && compinit -i
 unset zle_bracketed_paste
