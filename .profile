@@ -21,6 +21,7 @@ export FORCE_COLOR="1"
 export BAT_PAGING="never"
 export BAT_STYLE="plain"
 export BAT_TABS="2"
+export DOTNET_CLI_TELEMETRY_OPTOUT="1"
 
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
