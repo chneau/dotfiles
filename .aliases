@@ -205,6 +205,7 @@ alias igoogler='curl -sSLO https://raw.githubusercontent.com/jarun/googler/maste
 alias igotop='go install github.com/xxxserxxx/gotop/v4@latest'
 alias igotty='go install github.com/yudai/gotty@latest'
 alias igradle='echo "org.gradle.console=plain" > ~/.gradle/gradle.properties'
+alias igravitycli='curl -fsSL https://antigravity.google/cli/install.sh | bash'
 alias ihey='go install github.com/rakyll/hey@latest'
 alias ijellyfin='curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash'
 alias ik3d='curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash'
