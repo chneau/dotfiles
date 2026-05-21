@@ -3,6 +3,7 @@
 
 alias a='ansible'
 alias addselftogroup='f(){ sudo adduser $USER $1; exec sudo su -l $USER; unset -f f; }; f'
+alias agyy='agy --dangerously-skip-permissions'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias apti='sudo apt install -y'
 alias aptr='sudo apt remove --auto-remove -y'
