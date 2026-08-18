@@ -156,7 +156,7 @@ zinit wait light-mode for \
     depth"1" @hlissner/zsh-autopair \
     depth"1" @MichaelAquilina/zsh-you-should-use \
     depth"1" @micrenda/zsh-nohup \
-    depth"1" @paulirish/git-open \
+    depth"1" atclone"sed -i 's/\"\$open\" \"\$openurl\"/\$open \"\$openurl\"/' git-open" atpull"%atclone" @paulirish/git-open \
     depth"1" @unixorn/fzf-zsh-plugin \
     depth"1" @zdharma-continuum/fast-syntax-highlighting \
     depth"1" atload'bindkey "^[^M" autosuggest-execute;' @zsh-users/zsh-autosuggestions \
