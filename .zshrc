@@ -19,7 +19,6 @@ setopt COMPLETE_IN_WORD
 setopt ALWAYS_TO_END
 setopt PROMPT_SUBST
 setopt AUTO_MENU
-setopt SH_WORD_SPLIT
 unsetopt MENU_COMPLETE
 
 
@@ -87,8 +86,8 @@ bindkey -e
 bindkey "^R" history-incremental-search-backward  # ctrl-r
 bindkey "^[[A" history-beginning-search-backward  # up arrow
 bindkey "^[[B" history-beginning-search-forward   # down arrow
-bindkey "^[[5~" history-beginning-search-backward # page down
-bindkey "^[[6~" history-beginning-search-forward  # page up
+bindkey "^[[5~" history-beginning-search-backward # page up
+bindkey "^[[6~" history-beginning-search-forward  # page down
 bindkey "^[[1;5C" forward-word                    # ctrl-right
 bindkey "^[[1;5D" backward-word                   # ctrl-left
 bindkey "^[[H" beginning-of-line                  # home
@@ -129,11 +128,9 @@ fi
 
 # FZF environment options & preview defaults
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --inline-info"
-if (( $+commands[fd] )); then
-    export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
-fi
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 
 # Exit code styling for bric3/nice-exit-code
 export ZSH_PROMPT_EXIT_SIGNAL_PREFIX=""
@@ -153,7 +150,7 @@ zinit wait light-mode for \
     from"gh-r" as"command" pick"eza" @eza-community/eza \
     from"gh-r" as"command" mv"fd*/fd -> fd" pick"fd" @sharkdp/fd \
     from"gh-r" as"command" pick"fzf" @junegunn/fzf \
-    from"gh-r" as"command" pick"kubecolor" @kubecolor/kubecolor \
+    from"gh-r" as"command" pick"kubecolor" atload'(( $+commands[kubectl] )) && compdef kubecolor=kubectl 2>/dev/null' @kubecolor/kubecolor \
     depth"1" @Aloxaf/fzf-tab \
     depth"1" @bric3/nice-exit-code \
     depth"1" @hlissner/zsh-autopair \
@@ -163,7 +160,7 @@ zinit wait light-mode for \
     depth"1" @unixorn/fzf-zsh-plugin \
     depth"1" @zdharma-continuum/fast-syntax-highlighting \
     depth"1" atload'bindkey "^[^M" autosuggest-execute;' @zsh-users/zsh-autosuggestions \
-    depth"1" @zsh-users/zsh-completions \
+    blockf depth"1" atpull'zinit creinstall -q .' atload'zicompinit; zicdreplay' @zsh-users/zsh-completions \
     @OMZL::functions.zsh \
     @OMZP::colored-man-pages \
     @OMZP::fancy-ctrl-z \
