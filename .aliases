@@ -176,7 +176,7 @@ alias h='f(){ echo -e "$(curl -s cht.sh/$@)"; unset -f f; }; f'
 alias hf='hyperfine'
 alias hla='helm list --all-namespaces'
 alias hp='sudo hping3 --flood'
-alias hs='history | grep $1'
+alias hs='history | grep'
 alias iact='curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash'
 alias iarkade='curl -sLS https://dl.get-arkade.dev | sudo sh'
 alias iaz='curl -L https://aka.ms/InstallAzureCli | bash'
@@ -381,7 +381,7 @@ alias pstats='powerstat -d 0 -f 1'
 alias refresh='clear; exec $SHELL'
 alias refreshgroups='exec sudo su -l $USER'
 alias renewip='sudo dhclient -v -r && sudo dhclient -v'
-alias rmdot='for f in *.*; do pre="${f%.*}"; suf="${f##*.}"; mv -i -- "$f" "${pre//./_}.${suf}"; done'
+alias rmdot='f(){ (setopt localoptions nullglob 2>/dev/null; for f in *.*; do [ -f "$f" ] || continue; pre="${f%.*}"; suf="${f##*.}"; newname="${pre//./_}.${suf}"; [ "$f" != "$newname" ] && mv -i -- "$f" "$newname"; done); unset -f f; }; f'
 alias root='\sudo \su'
 alias rr='fk node dotnet bun code code-server go python; sudo service docker stop; killall -u $USER'
 alias s='strace -fqc'
@@ -431,22 +431,31 @@ alias zr='zig run'
 alias zshdefault='command -v zsh | sudo tee -a /etc/shells && sudo chsh -s $(which zsh) $USER'
 
 function completeall() {
-    if command -v kubectl &>/dev/null; then
-        source <(kubectl completion bash)
+    if [ -n "$ZSH_VERSION" ]; then
+        autoload -Uz compinit && compinit -u
+        autoload -Uz bashcompinit && bashcompinit
+        if command -v kubectl &>/dev/null; then
+            source <(kubectl completion zsh)
+        fi
+        eval "$(curl -sSL https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias)"
+        alias_names=$(alias -L | cut -d= -f1 | sed 's/^alias //')
+        complete -F _complete_alias $alias_names
+    elif [ -n "$BASH_VERSION" ]; then
+        if command -v kubectl &>/dev/null; then
+            source <(kubectl completion bash)
+        fi
+        eval "$(curl -sSL https://raw.githubusercontent.com/scop/bash-completion/master/bash_completion)"
+        eval "$(curl -sSL https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias)"
+        complete -F _complete_alias $(alias -p | cut -d= -f1 | sed 's/^alias //')
     fi
-    eval "$(curl -sSL https://raw.githubusercontent.com/scop/bash-completion/master/bash_completion)"
-    eval "$(curl -sSL https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias)"
-    complete -F _complete_alias $(alias | while read -r line; do
-        line="${line%%=*}"
-        echo "${line:6}"
-    done)
 }
 
 function fixgitbashbatfiles() {
-    for var in *.bat; do
+    (setopt localoptions nullglob 2>/dev/null; for var in *.bat; do
+        [ -f "$var" ] || continue
         printf '#!/bin/sh\ncmd //c "$0.bat" "$@"\n' >"${var%.bat}"
         echo "Created ${var%.bat}"
-    done
+    done)
 }
 
 function ifail2ban() {
@@ -515,7 +524,7 @@ function gitget() {
 
     if ! git ls-remote "$git_url" >/dev/null 2>&1; then
         echo Repository "$git_url" not found !
-        exit 1
+        return 1
     fi
 
     echo Cloning "$repo_name" into "$clone_dir"
