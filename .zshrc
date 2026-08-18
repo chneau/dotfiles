@@ -2,7 +2,7 @@
 
 case $- in
 *i*) ;;      # this shell is interactive
-*) return ;; # this shel is not interative, early return
+*) return ;; # this shell is not interactive, early return
 esac
 
 setopt extendedglob
@@ -102,11 +102,20 @@ alias ll='eza -alhF auto'
 alias lld='eza -alhrF auto --sort newest --group-directories-first'
 alias kubectl='kubecolor'
 
-# Initialize completions before loading completion-dependent plugins
-autoload -Uz compinit
-compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump" -i
-unset zle_bracketed_paste
+# Add custom completions directory to fpath
 mkdir -p "${ZSH_CACHE_DIR:-$HOME/.cache/zsh}/completions"
+fpath=("${ZSH_CACHE_DIR:-$HOME/.cache/zsh}/completions" $fpath)
+
+# Initialize completions before loading completion-dependent plugins (24h cache)
+autoload -Uz compinit
+typeset -g _comp_dumpfile="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+mkdir -p "$(dirname "$_comp_dumpfile")"
+if [[ -n "$_comp_dumpfile"(#qN.mh+24) || ! -s "$_comp_dumpfile" ]]; then
+    compinit -d "$_comp_dumpfile" -i
+else
+    compinit -C -d "$_comp_dumpfile"
+fi
+unset zle_bracketed_paste
 
 # Cached kubectl completion
 if (( $+commands[kubectl] )); then
