@@ -261,7 +261,7 @@ alias isshuttle='sudo apt -y install sshuttle'
 alias istern='go install github.com/stern/stern@latest'
 alias itrail='curl -sSL https://trailbase.io/install.sh | bash'
 alias iuv='curl -LsSf https://astral.sh/uv/install.sh | sh'
-alias iv='gitget https://github.com/vlang/v && make && sudo ./v symlink && v ls --install &&'
+alias iv='gitget https://github.com/vlang/v && make && sudo ./v symlink && v ls --install'
 alias ivagrant='sudo apt -y install vagrant'
 alias ivirtualbox='sudo apt -y install virtualbox'
 alias ivpn='ivpnnyr'
@@ -482,8 +482,8 @@ function transfer() {
             return 1
         fi
         if [ -d "$file" ]; then
-            file_name="$file_name.zip",
-            (cd "$file" && zip -r -q - .) | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null,
+            file_name="$file_name.zip"
+            (cd "$file" && zip -r -q - .) | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null
         else curl <"$file" --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null; fi
     else
         file_name=$1
@@ -589,10 +589,15 @@ EXAMPLE:
        dockertags php apache
 
 HELP
+        return 1
     fi
 
     image="$1"
-    tags=$(curl -s https://registry.hub.docker.com/v1/repositories/"${image}"/tags | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' | tr '}' '\n' | awk -F: '{print $3}')
+    if [[ "$image" != *"/"* ]]; then
+        image="library/$image"
+    fi
+
+    tags=$(curl -sSL "https://hub.docker.com/v2/repositories/${image}/tags?page_size=100" | grep -o '"name": *"[^"]*"' | cut -d'"' -f4)
 
     if [ -n "$2" ]; then
         tags=$(echo "${tags}" | grep "$2")
