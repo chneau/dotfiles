@@ -23,6 +23,7 @@ setopt SH_WORD_SPLIT
 unsetopt MENU_COMPLETE
 
 
+zmodload zsh/datetime
 autoload -U colors && colors
 TMOUT=1
 TRAPALRM() {
@@ -34,13 +35,12 @@ TRAPALRM() {
     && zle reset-prompt
 }
 preexec() {
-    timer=$(($(date +%s%0N) / 1000))
+    timer=$EPOCHREALTIME
 }
 precmd() {
     Last_Command=$? # Must come first!
-    if [ $timer ]; then
-        now=$(($(date +%s%0N) / 1000))
-        elapsed=$(($now - $timer))
+    if [[ -n "$timer" ]]; then
+        integer elapsed=$(( (EPOCHREALTIME - timer) * 1000000 ))
         us=$((elapsed % 1000))
         ms=$(((elapsed / 1000) % 1000))
         s=$(((elapsed / 1000000) % 60))
@@ -65,7 +65,13 @@ precmd() {
         if [[ $Last_Command == 0 ]]; then
             RPROMPT="%B%F{green}${timer_show}%f%b"
         else
-            RPROMPT="%B%F{red}$(nice_exit_code ${Last_Command}) ${timer_show}%f%b"
+            local err_msg
+            if (( $+functions[nice_exit_code] )); then
+                err_msg="$(nice_exit_code ${Last_Command}) "
+            else
+                err_msg="${Last_Command} "
+            fi
+            RPROMPT="%B%F{red}${err_msg}${timer_show}%f%b"
         fi
         unset timer
     else
@@ -88,6 +94,29 @@ bindkey "^[[1;5D" backward-word                   # ctrl-left
 bindkey "^[[H" beginning-of-line                  # home
 bindkey "^[[F" end-of-line                        # end
 bindkey "^[[3~" delete-char                       # delete
+
+alias cat='bat'
+alias ls='eza'
+alias l='eza -F auto'
+alias ll='eza -alhF auto'
+alias lld='eza -alhrF auto --sort newest --group-directories-first'
+alias kubectl='kubecolor'
+
+# Initialize completions before loading completion-dependent plugins
+autoload -Uz compinit
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump" -i
+unset zle_bracketed_paste
+mkdir -p "${ZSH_CACHE_DIR:-$HOME/.cache/zsh}/completions"
+
+# Cached kubectl completion
+if (( $+commands[kubectl] )); then
+    _k8s_comp_cache="${ZSH_CACHE_DIR:-$HOME/.cache/zsh}/completions/_kubectl"
+    if [[ ! -f "$_k8s_comp_cache" ]] || [[ "$_k8s_comp_cache" -ot "$(whence -p kubectl)" ]]; then
+        command kubectl completion zsh > "$_k8s_comp_cache" 2>/dev/null
+    fi
+    [[ -f "$_k8s_comp_cache" ]] && source "$_k8s_comp_cache"
+    compdef kubecolor=kubectl
+fi
 
 ### Added by Zinit's installer
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -118,17 +147,3 @@ zinit wait light-mode for \
     @OMZP::colored-man-pages \
     @OMZP::fancy-ctrl-z \
     @OMZP::sudo
-
-alias cat='bat'
-alias ls='eza'
-alias l='eza -F auto'
-alias ll='eza -alhF auto'
-alias lld='eza -alhrF auto --sort newest --group-directories-first'
-alias kubectl='kubecolor'
-
-autoload -Uz compinit && compinit -i
-unset zle_bracketed_paste
-mkdir -p $ZSH_CACHE_DIR/completions
-
-source <(command kubectl completion zsh)
-compdef kubecolor=kubectl
