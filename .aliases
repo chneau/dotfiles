@@ -414,7 +414,7 @@ alias updatebashrc='(curl -H "Cache-Control: no-cache, no-store" -fsSL "raw.gith
 alias va='vagrant'
 alias vdir='vdir --color=auto'
 alias weather='f(){ curl -s wttr.in/"$1"; unset -f f; }; f'
-alias webshare='python -m SimpleHTTPServer'
+alias webshare='python3 -m http.server'
 alias wsldocker='wsl --user root service docker start; wsl'
 alias yabs='curl -sL yabs.sh | bash -s -- -i'
 alias yabsgeekbench='curl -sL yabs.sh | bash -s -- -ifd'
