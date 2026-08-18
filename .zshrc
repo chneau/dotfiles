@@ -127,6 +127,18 @@ if (( $+commands[kubectl] )); then
     compdef kubecolor=kubectl
 fi
 
+# FZF environment options & preview defaults
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --inline-info"
+if (( $+commands[fd] )); then
+    export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
+fi
+
+# Exit code styling for bric3/nice-exit-code
+export ZSH_PROMPT_EXIT_SIGNAL_PREFIX=""
+export ZSH_PROMPT_EXIT_SIGNAL_SUFFIX=""
+
 ### Added by Zinit's installer
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
