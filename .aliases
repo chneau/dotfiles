@@ -138,7 +138,7 @@ alias gd='git diff'
 alias gefy='gemini --model gemini-3-flash-preview --yolo'
 alias genpwd='PASSWORD=$(base64 < /dev/urandom | head -c32); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum; echo -n "$PASSWORD" | sha256sum | head -c 16; echo; < /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-16}; echo;'
 alias genuuid="python -c 'import uuid; print(uuid.uuid4())'"
-alias gg='git pull -f; git reset --hard origin/master'
+alias gg='git pull -f; git reset --hard origin/$(git show-ref --verify --quiet refs/remotes/origin/main && echo main || echo master)'
 alias gigit='git clone --depth=1'
 alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags; GIT_ASK_YESNO=false git clean -ffdx'
 alias gitget='gitget'
