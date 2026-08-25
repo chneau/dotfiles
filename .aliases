@@ -413,6 +413,8 @@ alias topb="curl -F 'file=@-' 0x0.st"
 alias toqrcode='curl -F-=\<- qrenco.de'
 alias traefikauth='f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\$/\\$\\$/g; unset -f f; }; f'
 alias transfer='transfer'
+alias tmuxhelp='tmuxhelp'
+alias tmux-help='tmuxhelp'
 alias tsall='npm-check-updates --upgrade --install=always --packageManager=bun --deep; biome check --write --unsafe .; depcheck; ts-unused-exports tsconfig.json; tsc --noEmit --project .'
 alias tsfmt='biome check --write --unsafe .'
 alias tslint='tsc --noEmit --project .'
@@ -624,4 +626,53 @@ HELP
     fi
 
     echo "${tags}"
+}
+
+function tmuxhelp() {
+    cat <<'EOF'
+tmux Cheat Sheet & Basics
+-------------------------
+Default prefix key: Ctrl+b  (press Ctrl+b, release, then press key)
+
+Sessions
+  tmux                        Start a new session
+  tmux new -s <name>          Start a new session named <name>
+  tmux ls                     List existing sessions
+  tmux a                      Attach to the last session
+  tmux a -t <name>            Attach to session named <name>
+  tmux kill-session -t <name> Kill a session by name
+  tmux kill-server            Kill all tmux sessions and server
+  Ctrl+b d                    Detach from current session
+  Ctrl+b s                    Interactive session selector / list
+  Ctrl+b $                    Rename current session
+
+Windows (Tabs)
+  Ctrl+b c                    Create a new window
+  Ctrl+b ,                    Rename current window
+  Ctrl+b w                    Interactive window / session list
+  Ctrl+b n                    Switch to next window
+  Ctrl+b p                    Switch to previous window
+  Ctrl+b <0-9>                Switch to window by index
+  Ctrl+b &                    Close current window
+
+Panes (Splits)
+  Ctrl+b %                    Split pane vertically (left / right)
+  Ctrl+b "                    Split pane horizontally (top / bottom)
+  Ctrl+b <arrows>             Navigate between panes
+  Ctrl+b o                    Cycle through panes
+  Ctrl+b z                    Toggle pane zoom (fullscreen)
+  Ctrl+b x                    Close current pane
+  Ctrl+b { / }                Swap current pane with previous / next
+  Ctrl+b q                    Show pane numbers (press number to jump)
+  Ctrl+b Space                Cycle pane layout arrangements
+
+Scroll & Copy Mode
+  Ctrl+b [                    Enter scroll / copy mode (q to exit)
+  Space / Enter               (In copy mode) Start selection / Copy
+
+Help & Commands
+  Ctrl+b ?                    Show all tmux keybindings
+  Ctrl+b :                    Open tmux command prompt
+  Ctrl+b t                    Display digital clock
+EOF
 }
