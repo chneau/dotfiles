@@ -132,7 +132,6 @@ alias fixwifi="sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powe
 alias fk='\fkill --force'
 alias free='free -mt'
 alias freecache='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
-alias g='gemini --model gemini-3-flash-preview --yolo'
 alias ga='git add'
 alias gb='git branch --sort=-committerdate -vv'
 alias gba='git branch --sort=-committerdate -vva'
@@ -142,7 +141,6 @@ alias gcl='git clone'
 alias gco='git checkout'
 alias gcom='git checkout master'
 alias gd='git diff'
-alias gefy='gemini --model gemini-3-flash-preview --yolo'
 alias genpwd='PASSWORD=$(base64 < /dev/urandom | head -c32); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum; echo -n "$PASSWORD" | sha256sum | head -c 16; echo; < /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-16}; echo;'
 alias genuuid="python -c 'import uuid; print(uuid.uuid4())'"
 alias gg='git pull -f; git reset --hard origin/$(git show-ref --verify --quiet refs/remotes/origin/main && echo main || echo master)'
@@ -179,7 +177,6 @@ alias grephere='grep -rnw . -e'
 alias grm='git ls-files --deleted | xargs git rm'
 alias gs='git status -sb'
 alias gundopush='git push -f origin HEAD^:master'
-alias gy='gemini --yolo'
 alias h='f(){ echo -e "$(curl -s cht.sh/$@)"; unset -f f; }; f'
 alias hf='hyperfine'
 alias hla='helm list --all-namespaces'
@@ -210,8 +207,6 @@ alias idotnetpreview='curl -L https://aka.ms/install-dotnet-preview -o install-d
 alias ifail2ban='ifail2ban'
 alias iflux='curl -s https://fluxcd.io/install.sh | sudo bash'
 alias ifnm='curl -fsSL https://fnm.vercel.app/install | bash'
-alias igemini='bun i -g @google/gemini-cli@latest'
-alias igemininightly='bun i -g @google/gemini-cli@nightly'
 alias igit='git config --global user.email "charles63500@gmail.com"; git config --global user.name "chneau"; git config --global url.ssh://git@github.com/.insteadOf https://github.com/; git config --global merge.ff false; git config --global pull.ff true; git config --global core.whitespace blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol; git config --global fetch.prune true; git config --global pull.rebase true'
 alias igo='curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer'
 alias igoogler='curl -sSLO https://raw.githubusercontent.com/jarun/googler/master/googler && exe googler && echo "move googler in some path"'
@@ -367,7 +362,7 @@ alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
 alias nowtime=now
 alias npme='npm exec --yes --'
-alias npmig='x=(npm@latest opencode-ai@latest oxlint@latest @chneau/x @biomejs/biome@latest http-server@latest live-server@latest fkill-cli@latest ungit@latest npm-check@latest tsx@latest npm-check-updates@latest nodemon@latest prettier@latest typesync@latest depcheck@latest concurrently@latest ts-unused-exports@latest @qwen-code/qwen-code@latest @google/gemini-cli@latest); bun install --force --global --silent "${x[@]}" || npm install --global "${x[@]}"; bun update --global --latest --force'
+alias npmig='x=(npm@latest opencode-ai@latest oxlint@latest @chneau/x @biomejs/biome@latest http-server@latest live-server@latest fkill-cli@latest ungit@latest npm-check@latest tsx@latest npm-check-updates@latest nodemon@latest prettier@latest typesync@latest depcheck@latest concurrently@latest ts-unused-exports@latest @qwen-code/qwen-code@latest); bun install --force --global --silent "${x[@]}" || npm install --global "${x[@]}"; bun update --global --latest --force'
 alias npmup='npm-check-updates --deep --upgrade --install=always --packageManager=bun'
 alias nud='nvm use default'
 alias nx='f(){ nodemon --signal SIGTERM --ext "$1" --exec "${*:2} || false"; unset -f f; }; f'
@@ -687,7 +682,6 @@ AI CLI Tools & Assistants
 Tool       Provider / Vendor       Aliases                 Description
 ----       -----------------       -------                 -----------
 claude     Anthropic               cl, cly                 Claude AI coding assistant & agent
-gemini     Google                  g, gefy, gy             Gemini CLI assistant (flash/pro models)
 agy        Google DeepMind         agyy                    Antigravity agentic coding assistant CLI
 codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
 copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
@@ -699,7 +693,6 @@ rtk        RTK AI                  -                       RTK AI developer tool
 
 Install / Update Aliases:
   iclaude      Install Claude CLI
-  igemini      Install Gemini CLI (@google/gemini-cli)
   igravitycli  Install Antigravity CLI
   icodex       Install OpenAI Codex CLI
   icopilot     Install GitHub Copilot CLI
