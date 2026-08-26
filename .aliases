@@ -145,7 +145,7 @@ alias gigit='git clone --depth=1'
 alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags; GIT_ASK_YESNO=false git clean -ffdx'
 alias gitget='gitget'
 alias gitgetc='f(){ gitget "https://github.com/chneau/$1"; }; f'
-alias gitmessage='curl -s http://whatthecommit.com/index.txt'
+alias gitmessage='curl -s https://whatthecommit.com/index.txt'
 alias gitnewfresh='git checkout --orphan'
 alias gitrmtag='git push -d origin'
 alias gl='git pull'
@@ -156,6 +156,7 @@ alias gobuild="CGO_ENABLED=0 go build -trimpath -ldflags '-s -w -extldflags \"-s
 alias gocd='f(){ cd ~/go/src/${1#*://}; unset -f f; }; f'
 alias goget='f(){ go get -u -v ${1#*://}; unset -f f; }; f'
 alias goi='go install'
+alias goinst='f(){ go install "${1#*://}@latest"; unset -f f; }; f'
 alias gols="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 alias gotest='go test -cover -count=1'
 alias goup='rm -f go.mod go.sum && go mod init && go get -u && go mod tidy'
@@ -357,7 +358,7 @@ alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
 alias nowtime=now
 alias npme='npm exec --yes --'
-alias npmig='x=(npm@latest opencode-ai@latest oxlint@latest @chneau/x @biomejs/biome@latest http-server@latest live-server@latest fkill-cli@latest ungit@latest npm-check@latest tsx@latest npm-check-updates@latest nodemon@latest prettier@latest typesync@latest depcheck@latest concurrently@latest ts-unused-exports@latest @qwen-code/qwen-code@latest); bun install --force --global --silent "${x[@]}" || npm install --global "${x[@]}"; bun update --global --latest --force'
+alias npmig='x=(npm@latest opencode-ai@latest oxlint@latest @chneau/x @biomejs/biome@latest http-server@latest live-server@latest fkill-cli@latest ungit@latest tsx@latest npm-check-updates@latest nodemon@latest prettier@latest typesync@latest depcheck@latest concurrently@latest ts-unused-exports@latest @qwen-code/qwen-code@latest); bun install --force --global --silent "${x[@]}" || npm install --global "${x[@]}"; bun update --global --latest --force'
 alias npmup='npm-check-updates --deep --upgrade --install=always --packageManager=bun'
 alias nud='nvm use default'
 alias nx='f(){ nodemon --signal SIGTERM --ext "$1" --exec "${*:2} || false"; unset -f f; }; f'
@@ -398,7 +399,6 @@ alias sss='service --status-all'
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 alias sudo='sudo env "PATH=$PATH" '
 alias t='terraform'
-alias theia='docker run --pull=always -it -p 3000:3000 -v "$(pwd):/home/project:cached" theiaide/theia:next'
 alias tobase64='base64 -w 0; echo'
 alias topb="curl -F 'file=@-' 0x0.st"
 alias toqrcode='curl -F-=\<- qrenco.de'
@@ -496,11 +496,13 @@ function transfer() {
         fi
         if [ -d "$file" ]; then
             file_name="$file_name.zip"
-            (cd "$file" && zip -r -q - .) | curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null
-        else curl <"$file" --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null; fi
+            (cd "$file" && zip -r -q - .) | curl --progress-bar -F "reqtype=fileupload" -F "time=72h" -F "fileToUpload=@-;filename=$file_name" "https://litterbox.catbox.moe/resources/internals/api.php" | tee /dev/null
+        else
+            curl --progress-bar -F "reqtype=fileupload" -F "time=72h" -F "fileToUpload=@$file;filename=$file_name" "https://litterbox.catbox.moe/resources/internals/api.php" | tee /dev/null
+        fi
     else
-        file_name=$1
-        curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name" | tee /dev/null
+        file_name=${1:-upload.txt}
+        curl --progress-bar -F "reqtype=fileupload" -F "time=72h" -F "fileToUpload=@-;filename=$file_name" "https://litterbox.catbox.moe/resources/internals/api.php" | tee /dev/null
     fi
     echo
 }
