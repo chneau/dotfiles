@@ -98,7 +98,7 @@ alias cat='bat'
 alias ls='eza'
 alias l='eza -F auto'
 alias ll='eza -alhF auto'
-alias lld='eza -alhrF auto --sort newest --group-directories-first'
+alias lld='eza -alhF auto --sort date --group-directories-first'
 alias kubectl='kubecolor'
 
 # Add custom completions directory to fpath
