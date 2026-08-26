@@ -4,6 +4,8 @@
 alias a='ansible'
 alias addselftogroup='f(){ sudo adduser $USER $1; exec sudo su -l $USER; unset -f f; }; f'
 alias agyy='agy --dangerously-skip-permissions'
+alias aihelp='aihelp'
+alias ai-help='aihelp'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias apti='sudo apt install -y'
 alias aptr='sudo apt remove --auto-remove -y'
@@ -674,5 +676,37 @@ Help & Commands
   Ctrl+b ?                    Show all tmux keybindings
   Ctrl+b :                    Open tmux command prompt
   Ctrl+b t                    Display digital clock
+EOF
+}
+
+function aihelp() {
+    cat <<'EOF'
+AI CLI Tools & Assistants
+=========================
+
+Tool       Provider / Vendor       Aliases                 Description
+----       -----------------       -------                 -----------
+claude     Anthropic               cl, cly                 Claude AI coding assistant & agent
+gemini     Google                  g, gefy, gy             Gemini CLI assistant (flash/pro models)
+agy        Google DeepMind         agyy                    Antigravity agentic coding assistant CLI
+codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
+copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
+qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
+reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistant CLI & web interface
+opencode   OpenCode AI             -                       Multi-provider open-source coding assistant
+deepcode   Vegamo                  -                       DeepCode terminal AI assistant
+rtk        RTK AI                  -                       RTK AI developer toolkit CLI
+
+Install / Update Aliases:
+  iclaude      Install Claude CLI
+  igemini      Install Gemini CLI (@google/gemini-cli)
+  igravitycli  Install Antigravity CLI
+  icodex       Install OpenAI Codex CLI
+  icopilot     Install GitHub Copilot CLI
+  iqwen        Install Qwen Code CLI
+  ireasonix    Install Reasonix CLI
+  iopencode    Install OpenCode CLI
+  ideepcode    Install DeepCode CLI
+  irtk         Install RTK CLI
 EOF
 }
