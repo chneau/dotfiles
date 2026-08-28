@@ -255,7 +255,7 @@ alias inix='sh <(curl -L https://nixos.org/nix/install) --no-daemon'
 alias invm='curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash'
 alias iombash='bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"'
 alias iomzsh='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
-alias iopencode='bun install --force --global opencode-ai@latest'
+alias iopencode='curl -fsSL https://opencode.ai/install | bash'
 alias ipandoc='brew install pandoc'
 alias ipipx='brew install pipx'
 alias iproxy='export PROXY_LOGIN=`base64 < /dev/urandom | head -c256 | sha256sum | head -c32`; export PROXY_PASSWORD=`base64 < /dev/urandom | head -c256 | sha256sum | head -c32`; echo "Login: $PROXY_LOGIN"; echo "Password: $PROXY_PASSWORD"; export _IP=`mip`; echo "HTTPS_PROXY=\"http://$PROXY_LOGIN:$PROXY_PASSWORD@$_IP:3128/\""; docker rm -f proxy; docker run --pull=always --rm -d -e PROXY_LOGIN -e PROXY_PASSWORD --name=proxy --net=host ghcr.io/tarampampam/3proxy:latest;'
@@ -381,6 +381,8 @@ alias npmup='npm-check-updates --deep --upgrade --install=always --packageManage
 alias nud='nvm use default'
 alias nx='f(){ nodemon --signal SIGTERM --ext "$1" --exec "${*:2} || false"; unset -f f; }; f'
 alias oc='code -a .'
+alias ocy='opencode --auto'
+alias opencodey='opencode --auto'
 alias openports='nmap -p- portquiz.net | grep -i open'
 alias path='echo -e ${PATH//:/\\n}'
 alias pipi="uv pip install --upgrade"
@@ -702,7 +704,7 @@ codex      OpenAI                  codexy                  ChatGPT / Codex termi
 copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
 qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
 reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistant CLI & web interface
-opencode   OpenCode AI             -                       Multi-provider open-source coding assistant
+opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
 deepcode   Vegamo                  -                       DeepCode terminal AI assistant
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 
