@@ -205,6 +205,7 @@ alias ibun='curl -fsSL https://bun.sh/install | bash'
 alias icargo='curl https://sh.rustup.rs -sSf | sh'
 alias icharlie='bun i -g charlie-git@latest'
 alias iclaude='curl -fsSL https://claude.ai/install.sh | bash'
+alias icline='bun i -g cline'
 alias icodex='curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh'
 alias icoolify='curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash'
 alias icopilot='bun i -g @github/copilot@latest'
@@ -700,6 +701,7 @@ AI CLI Tools & Assistants
 Tool       Provider / Vendor       Aliases                 Description
 ----       -----------------       -------                 -----------
 claude     Anthropic               cl, cly                 Claude AI coding assistant & agent
+cline      Cline                   -                       Cline AI coding agent (YOLO by default in CLI)
 agy        Google DeepMind         agyy                    Antigravity agentic coding assistant CLI
 codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
 copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
@@ -711,6 +713,7 @@ rtk        RTK AI                  -                       RTK AI developer tool
 
 Install / Update Aliases:
   iclaude      Install Claude CLI
+  icline       Install Cline CLI
   igravitycli  Install Antigravity CLI
   iagy         Install Antigravity CLI (short)
   icodex       Install OpenAI Codex CLI
