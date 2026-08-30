@@ -147,6 +147,7 @@ alias genuuid="uv run python -c 'import uuid; print(uuid.uuid4())'"
 alias gg='git pull -f; git reset --hard origin/$(git show-ref --verify --quiet refs/remotes/origin/main && echo main || echo master)'
 alias gigit='git clone --depth=1'
 alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags; GIT_ASK_YESNO=false git clean -ffdx'
+alias gitcleanr='f(){ find . -maxdepth $(( ${1:-1} + 1 )) -name .git -prune -execdir sh -c "echo \"=== Cleaning \$PWD ===\"; git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags; GIT_ASK_YESNO=false git clean -ffdx" \; ; unset -f f; }; f'
 alias gitget='gitget'
 alias gitgetc='f(){ gitget "https://github.com/chneau/$1"; }; f'
 alias gitmessage='curl -s https://whatthecommit.com/index.txt'
