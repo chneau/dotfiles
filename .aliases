@@ -431,6 +431,7 @@ alias tmux-help='tmuxhelp'
 alias tmuxhelp='tmuxhelp'
 alias tobase64='base64 -w 0; echo'
 alias topb="curl -F 'file=@-' 0x0.st"
+alias pasteit='f(){ if [ $# -gt 0 ]; then curl --data-binary "@$1" https://paste.rs; else curl --data-binary @- https://paste.rs; fi; echo; unset -f f; }; f'
 alias toqrcode='curl -F-=\<- qrenco.de'
 alias traefikauth='f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\$/\\$\\$/g; unset -f f; }; f'
 alias transfer='transfer'
@@ -741,6 +742,7 @@ Command        Service            Description
 transfer       Catbox/Litterbox   Upload a file, directory (auto-zipped) or piped stdin; 72h expiry
 fio            file.io            Upload a file -> single-use download link
 fio1           file.io            Upload a file -> single-use link that expires after 1 day
+pasteit        paste.rs           Paste a file or piped text -> plain-text share link
 topb           0x0.st             Upload piped stdin (cat file | topb) -> short-link
 toqrcode       qrenco.de          Convert piped text into a QR code
 
@@ -753,6 +755,8 @@ Usage examples:
   transfer ./folder            # zips folder and uploads
   cat notes.txt | transfer notes.txt
   fio report.pdf
+  pasteit report.md
+  cat notes.txt | pasteit
   cat notes.txt | topb
   echo "https://my.link" | toqrcode
 EOF
