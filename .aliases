@@ -9,6 +9,8 @@ alias addselftogroup='f(){ sudo adduser $USER $1; exec sudo su -l $USER; unset -
 alias agyy='agy --dangerously-skip-permissions'
 alias ai-help='aihelp'
 alias aihelp='aihelp'
+alias upload-help='uploadhelp'
+alias uploadhelp='uploadhelp'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias apti='sudo apt install -y'
 alias aptr='sudo apt remove --auto-remove -y'
@@ -726,5 +728,32 @@ Install / Update Aliases:
   iopencode    Install OpenCode CLI
   ideepcode    Install DeepCode CLI
   irtk         Install RTK CLI
+EOF
+}
+
+function uploadhelp() {
+    cat <<'EOF'
+File Upload / Share Commands
+============================
+
+Command        Service            Description
+-------        -------            -----------
+transfer       Catbox/Litterbox   Upload a file, directory (auto-zipped) or piped stdin; 72h expiry
+fio            file.io            Upload a file -> single-use download link
+fio1           file.io            Upload a file -> single-use link that expires after 1 day
+topb           0x0.st             Upload piped stdin (cat file | topb) -> short-link
+toqrcode       qrenco.de          Convert piped text into a QR code
+
+Serve / Share (host locally, others download from you):
+  servepy         uv run python -m http.server
+  webshare        uv run python -m http.server
+
+Usage examples:
+  transfer report.pdf
+  transfer ./folder            # zips folder and uploads
+  cat notes.txt | transfer notes.txt
+  fio report.pdf
+  cat notes.txt | topb
+  echo "https://my.link" | toqrcode
 EOF
 }
