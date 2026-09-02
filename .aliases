@@ -9,8 +9,6 @@ alias addselftogroup='f(){ sudo adduser $USER $1; exec sudo su -l $USER; unset -
 alias agyy='agy --dangerously-skip-permissions'
 alias ai-help='aihelp'
 alias aihelp='aihelp'
-alias upload-help='uploadhelp'
-alias uploadhelp='uploadhelp'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias apti='sudo apt install -y'
 alias aptr='sudo apt remove --auto-remove -y'
@@ -391,6 +389,7 @@ alias oc='code -a .'
 alias ocy='opencode --auto'
 alias opencodey='opencode --auto'
 alias openports='nmap -p- portquiz.net | grep -i open'
+alias pasteit='f(){ if [ $# -gt 0 ]; then curl --data-binary "@$1" https://paste.rs; else curl --data-binary @- https://paste.rs; fi; echo; unset -f f; }; f'
 alias path='echo -e ${PATH//:/\\n}'
 alias pipi="uv pip install --upgrade"
 alias pipig='uv tool install'
@@ -427,11 +426,11 @@ alias sss='service --status-all'
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 alias sudo='sudo env "PATH=$PATH" '
 alias t='terraform'
+alias tb='nc termbin.com 9999'
 alias tmux-help='tmuxhelp'
 alias tmuxhelp='tmuxhelp'
 alias tobase64='base64 -w 0; echo'
 alias topb="curl -F 'file=@-' 0x0.st"
-alias pasteit='f(){ if [ $# -gt 0 ]; then curl --data-binary "@$1" https://paste.rs; else curl --data-binary @- https://paste.rs; fi; echo; unset -f f; }; f'
 alias toqrcode='curl -F-=\<- qrenco.de'
 alias traefikauth='f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\$/\\$\\$/g; unset -f f; }; f'
 alias transfer='transfer'
@@ -444,6 +443,8 @@ alias upb='updatebashrc; refresh'
 alias update='updatebashrc; updateall'
 alias updateall='sudo DEBIAN_FRONTEND=noninteractive apt-get update && sudo DEBIAN_FRONTEND=noninteractive UCF_FORCE_CONFFOLD=1 apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --auto-remove --purge full-upgrade </dev/null'
 alias updatebashrc='(curl -H "Cache-Control: no-cache, no-store" -fsSL "raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh?$(date +%s)" || wget --no-cookies --no-cache -qO - "raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh?$(date +%s)") | sh'
+alias upload-help='uploadhelp'
+alias uploadhelp='uploadhelp'
 alias va='vagrant'
 alias vdir='vdir --color=auto'
 alias weather='f(){ curl -s wttr.in/"$1"; unset -f f; }; f'
@@ -743,6 +744,7 @@ transfer       Catbox/Litterbox   Upload a file, directory (auto-zipped) or pipe
 fio            file.io            Upload a file -> single-use download link
 fio1           file.io            Upload a file -> single-use link that expires after 1 day
 pasteit        paste.rs           Paste a file or piped text -> plain-text share link
+tb             termbin.com        Piped text -> plain-text paste link (nc, ~1 week retention)
 topb           0x0.st             Upload piped stdin (cat file | topb) -> short-link
 toqrcode       qrenco.de          Convert piped text into a QR code
 
@@ -757,6 +759,7 @@ Usage examples:
   fio report.pdf
   pasteit report.md
   cat notes.txt | pasteit
+  cat notes.txt | tb
   cat notes.txt | topb
   echo "https://my.link" | toqrcode
 EOF
