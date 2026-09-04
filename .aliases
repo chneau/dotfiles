@@ -7,6 +7,7 @@ alias ..='cd ..'
 alias a='ansible'
 alias addselftogroup='f(){ sudo adduser $USER $1; exec sudo su -l $USER; unset -f f; }; f'
 alias agyy='agy --dangerously-skip-permissions'
+alias agenty='agent --yolo'
 alias ai-help='aihelp'
 alias aihelp='aihelp'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -715,7 +716,7 @@ Tool       Provider / Vendor       Aliases                 Description
 claude     Anthropic               cl, cly                 Claude AI coding assistant & agent
 cline      Cline                   -                       Cline AI coding agent (YOLO by default in CLI)
 agy        Google DeepMind         agyy                    Antigravity agentic coding assistant CLI
-agent      Cursor / Anysphere      -                       Cursor AI terminal agent & CLI
+agent      Cursor / Anysphere      agenty                  Cursor AI terminal agent & CLI
 codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
 copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
 qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
