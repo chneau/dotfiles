@@ -715,9 +715,9 @@ Tool       Provider / Vendor       Aliases                 Description
 claude     Anthropic               cl, cly                 Claude AI coding assistant & agent
 cline      Cline                   -                       Cline AI coding agent (YOLO by default in CLI)
 agy        Google DeepMind         agyy                    Antigravity agentic coding assistant CLI
+agent      Cursor / Anysphere      -                       Cursor AI terminal agent & CLI
 codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
 copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
-cursor     Cursor / Anysphere      -                       Cursor AI terminal agent & CLI
 qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
 reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistant CLI & web interface
 opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
