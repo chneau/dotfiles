@@ -213,6 +213,7 @@ alias icodex='curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERA
 alias icoolify='curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash'
 alias icopilot='bun i -g @github/copilot@latest'
 alias icroc='curl -fsSL https://getcroc.schollz.com | bash'
+alias icursor='curl -fsSL https://cursor.com/install | bash'
 alias idatree='go install github.com/datreeio/datree@latest'
 alias ideepcode='bun i -g @vegamo/deepcode-cli@latest'
 alias idefendnot='irm https://dnot.sh/ | iex'
@@ -716,6 +717,7 @@ cline      Cline                   -                       Cline AI coding agent
 agy        Google DeepMind         agyy                    Antigravity agentic coding assistant CLI
 codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
 copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
+cursor     Cursor / Anysphere      -                       Cursor AI terminal agent & CLI
 qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
 reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistant CLI & web interface
 opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
@@ -729,6 +731,7 @@ Install / Update Aliases:
   iagy         Install Antigravity CLI (short)
   icodex       Install OpenAI Codex CLI
   icopilot     Install GitHub Copilot CLI
+  icursor      Install Cursor CLI
   iqwen        Install Qwen Code CLI
   ireasonix    Install Reasonix CLI
   iopencode    Install OpenCode CLI
