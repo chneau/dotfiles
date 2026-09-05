@@ -267,6 +267,7 @@ alias iombash='bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/
 alias iomzsh='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 alias iopencode='curl -fsSL https://opencode.ai/install | bash'
 alias ipandoc='brew install pandoc'
+alias ipi='curl -fsSL https://pi.dev/install.sh | sh'
 alias ipipx='brew install pipx'
 alias iposthogcli='bun i -g @posthog/cli@latest'
 alias iproxy='export PROXY_LOGIN=`base64 < /dev/urandom | head -c256 | sha256sum | head -c32`; export PROXY_PASSWORD=`base64 < /dev/urandom | head -c256 | sha256sum | head -c32`; echo "Login: $PROXY_LOGIN"; echo "Password: $PROXY_PASSWORD"; export _IP=`mip`; echo "HTTPS_PROXY=\"http://$PROXY_LOGIN:$PROXY_PASSWORD@$_IP:3128/\""; docker rm -f proxy; docker run --pull=always --rm -d -e PROXY_LOGIN -e PROXY_PASSWORD --name=proxy --net=host ghcr.io/tarampampam/3proxy:latest;'
@@ -724,6 +725,7 @@ reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistan
 opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
 deepcode   Vegamo                  -                       DeepCode terminal AI assistant
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
+pi         pi.dev                  -                       Pi terminal coding agent
 
 Install / Update Aliases:
   iclaude      Install Claude CLI
@@ -738,6 +740,7 @@ Install / Update Aliases:
   iopencode    Install OpenCode CLI
   ideepcode    Install DeepCode CLI
   irtk         Install RTK CLI
+  ipi          Install Pi CLI
 EOF
 }
 
