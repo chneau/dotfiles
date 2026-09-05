@@ -211,6 +211,7 @@ alias icharlie='bun i -g charlie-git@latest'
 alias iclaude='curl -fsSL https://claude.ai/install.sh | bash'
 alias icline='bun i -g cline'
 alias icodex='curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh'
+alias icommandcode='bun i -g command-code@latest'
 alias icoolify='curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash'
 alias icopilot='bun i -g @github/copilot@latest'
 alias icroc='curl -fsSL https://getcroc.schollz.com | bash'
@@ -728,6 +729,7 @@ deepcode   Vegamo                  -                       DeepCode terminal AI 
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 pi         pi.dev                  -                       Pi terminal coding agent
 freebuff   Codebuff                -                       Free Codebuff coding agent
+commandcode Command Code           -                       Coding agent that learns your coding taste
 
 Install / Update Aliases:
   iclaude      Install Claude CLI
@@ -744,6 +746,7 @@ Install / Update Aliases:
   irtk         Install RTK CLI
   ipi          Install Pi CLI
   ifreebuff    Install freebuff CLI
+  icommandcode Install command-code CLI
 EOF
 }
 
