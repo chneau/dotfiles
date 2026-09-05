@@ -753,6 +753,8 @@ Useful Prompts:
     Look through my codebase for opportunities to refactor and simplify, and suggest the highest-impact ones.
   Code Simplification:
     Refactor this code to eliminate redundancy and improve readability and maintainability.
+  Test Coverage:
+    Analyze my test coverage and tell me where adding tests would have the most impact.
 EOF
 }
 
