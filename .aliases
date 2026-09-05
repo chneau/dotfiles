@@ -755,6 +755,24 @@ Useful Prompts:
     Refactor this code to eliminate redundancy and improve readability and maintainability.
   Test Coverage:
     Analyze my test coverage and tell me where adding tests would have the most impact.
+  Security Audit:
+    Review this codebase for security vulnerabilities, injection risks, and sensitive data exposure.
+  Strict Code Review:
+    Review my recent changes like a senior engineer. Flag regressions, edge cases, and architectural smells.
+  Performance Bottlenecks:
+    Profile this logic and identify the primary performance or memory bottlenecks with concrete optimizations.
+  Database Optimization:
+    Analyze these database queries/schemas for missing indexes, N+1 issues, and slow operations.
+  Root Cause Analysis:
+    Diagnose this failure, determine the root cause, and propose the minimal fix to prevent recurrence.
+  Edge Case Discovery:
+    Identify unhandled edge cases, failure modes, and concurrency issues in this implementation.
+  Architecture Check:
+    Critique the current design against SOLID/DRY principles and recommend cleaner abstractions without overengineering.
+  API Ergonomics:
+    Review this API/interface for ergonomics, consistency, idiomatic design, and ease of use.
+  Missing Docs:
+    Identify critical undocumented assumptions, setup steps, and failure modes across this project.
 EOF
 }
 
