@@ -747,6 +747,12 @@ Install / Update Aliases:
   ipi          Install Pi CLI
   ifreebuff    Install freebuff CLI
   icommandcode Install command-code CLI
+
+Useful Prompts:
+  Codebase Refactor:
+    Look through my codebase for opportunities to refactor and simplify, and suggest the highest-impact ones.
+  Code Simplification:
+    Refactor this code to eliminate redundancy and improve readability and maintainability.
 EOF
 }
 
