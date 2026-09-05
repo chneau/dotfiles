@@ -23,7 +23,7 @@ This repository contains personal configuration files for Linux/Unix environment
 
 ### ⚡ Productivity Aliases
 
-- **General**: `ll` (detailed list), `grep` (auto-colored), `c` (clear).
+- **General**: `ll` (detailed list), `grep` (auto-colored).
 - **Git**:
   - `gs`: `git status -sb`
   - `gp`: `git push`
@@ -34,7 +34,7 @@ This repository contains personal configuration files for Linux/Unix environment
   - `d`: `docker`
   - `dps`: Colorized `docker ps`
   - `dl`: Follow docker logs (`docker logs -f --tail 40`)
-  - `dc`: `docker-compose`
+  - `dc`: `docker compose`
 - **Kubernetes**:
   - `k`: `kubectl`
   - `kg`: `kubectl get`
@@ -44,7 +44,7 @@ This repository contains personal configuration files for Linux/Unix environment
 ### 🛠 Utility Functions
 
 - **`extract <file>`**: Intelligently extracts any archive (`.tar.gz`, `.zip`, `.rar`, `.bz2`, etc.).
-- **`transfer <file>`**: Uploads a file to `transfer.sh` and returns a shareable URL.
+- **`transfer <file>`**: Uploads a file (or directory, auto-zipped) to litterbox.catbox.moe and returns a shareable URL (72h expiry).
 - **`gitget <url>`**: Clones a repository into a Go-style directory structure (`~/go/src/...`).
 - **`dockertags <image>`**: Lists available tags for a Docker image from the registry.
 - **`curlt`**: A `curl` wrapper that prints detailed timing information (DNS lookup, connect time, etc.).
@@ -64,7 +64,7 @@ Easily install tools using `i`-prefixed aliases:
 
 The shell prompt is configured to display:
 
-- **Status**: Green checkmark (✔) or red cross (✘) for the last command's exit code.
+- **Status**: Green checkmark (✓) or red cross (✘) for the last command's exit code.
 - **Timing**: Execution time of the last command (e.g., `(1m3s)`).
 - **Context**: User, hostname, and current directory.
 
