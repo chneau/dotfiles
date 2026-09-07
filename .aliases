@@ -250,6 +250,8 @@ alias ik3sup='go install github.com/alexellis/k3sup@latest'
 alias ik8s='curl -sSL https://get.k8s.io | bash'
 alias ik9s='go install github.com/derailed/k9s@latest'
 alias ikilo='curl -fsSL https://kilo.ai/cli/install | bash'
+alias kiloy='kilo --auto'
+alias hermesy='hermes --yolo'
 alias ikind='go install sigs.k8s.io/kind@latest'
 alias iknip='bun install --global knip@latest'
 alias ikrew='(set -x; cd "$(mktemp -d)" && OS="$(uname | tr '\''[:upper:]'\'' '\''[:lower:]'\'')" && ARCH="$(uname -m | sed -e '\''s/x86_64/amd64/'\'' -e '\''s/\(arm\)\(64\)\?.*/\1\2/'\'' -e '\''s/aarch64$/arm64/'\'')" && KREW="krew-${OS}_${ARCH}" && curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" && tar zxvf "${KREW}.tar.gz" && ./"${KREW}" install krew)'
@@ -732,8 +734,8 @@ rtk        RTK AI                  -                       RTK AI developer tool
 pi         pi.dev                  -                       Pi terminal coding agent
 freebuff   Codebuff                -                       Free Codebuff coding agent
 commandcode Command Code           -                       Coding agent that learns your coding taste
-kilo       Kilo AI                 -                       Kilo AI coding agent CLI
-hermes     Nous Research           -                       Hermes agentic coding assistant CLI
+kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)
+hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
 
 Install / Update Aliases:
   iclaude      Install Claude CLI
