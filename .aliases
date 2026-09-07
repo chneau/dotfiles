@@ -782,6 +782,8 @@ Useful Prompts:
     Review this API/interface for ergonomics, consistency, idiomatic design, and ease of use.
   Missing Docs:
     Identify critical undocumented assumptions, setup steps, and failure modes across this project.
+  Log Analysis:
+    Analyze these logs to identify errors, warnings, recurring anomalies, and their potential root causes.
 EOF
 }
 
