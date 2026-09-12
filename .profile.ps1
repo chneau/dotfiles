@@ -73,15 +73,31 @@ $Red   = "$Esc[1;31m"
 $Blue  = "$Esc[1;34m"
 $White = "$Esc[1;37m"
 
+# Timer setup: Measure only actual command execution time (not idle prompt time)
+# We hook the Enter key via PSReadLine so the stopwatch starts only when you hit Enter.
+$global:__cmdWatch = $null
+
+if (Get-Module -ListAvailable PSReadLine) {
+    try {
+        Import-Module PSReadLine -ErrorAction SilentlyContinue
+        Set-PSReadLineKeyHandler -Key Enter -ScriptBlock {
+            $global:__cmdWatch = [System.Diagnostics.Stopwatch]::StartNew()
+            [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+        }
+    } catch {}
+}
+
 function prompt {
     $lastExit = $global:LASTEXITCODE
     $lastSuccess = $?
 
-    # Timer calculation
+    # Calculate duration of the executed command only
     $durationStr = ""
-    if ($global:__commandWatch -and $global:__commandWatch.IsRunning) {
-        $global:__commandWatch.Stop()
-        $elapsedMs = $global:__commandWatch.ElapsedMilliseconds
+    if ($global:__cmdWatch -and $global:__cmdWatch.IsRunning) {
+        $global:__cmdWatch.Stop()
+        $elapsedMs = $global:__cmdWatch.ElapsedMilliseconds
+        $global:__cmdWatch = $null
+
         if ($elapsedMs -ge 60000) {
             $mins = [math]::Floor($elapsedMs / 60000)
             $secs = [math]::Floor(($elapsedMs % 60000) / 1000)
@@ -108,15 +124,9 @@ function prompt {
 
     Write-Host ""
     Write-Host "$statusIcon $timerDisplay$White$timeNow$Reset $userHost $currDir"
-    
-    # Restart stopwatch for the next command prompt cycle
-    $global:__commandWatch = [System.Diagnostics.Stopwatch]::StartNew()
 
     return "$Blue>$Reset "
 }
-
-# Initial command timer
-$global:__commandWatch = [System.Diagnostics.Stopwatch]::StartNew()
 
 # ==============================================================================
 # 3. Navigation
