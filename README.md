@@ -84,7 +84,17 @@ The `.stuff/` directory contains additional scripts, legacy configurations, and 
 
 ### Windows
 
-```bash
+Bootstrap PowerShell 5.1 & PowerShell 7+ with this one-liner:
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+irm https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.ps1 | iex
+```
+
+Other Windows tools:
+
+```powershell
 Set-ExecutionPolicy Unrestricted -Scope Process -Force
 irm https://christitus.com/win | iex
 ```
+
