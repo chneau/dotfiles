@@ -88,8 +88,19 @@ if (Get-Module -ListAvailable PSReadLine) {
 }
 
 function prompt {
-    $lastExit = $global:LASTEXITCODE
     $lastSuccess = $?
+    $lastExit = $global:LASTEXITCODE
+
+    # Exit icon & status code:
+    # In PowerShell, internal cmdlets/functions set $? to $true/$false but do NOT reset $LASTEXITCODE.
+    # So if $lastSuccess is $true, the last command succeeded.
+    if ($lastSuccess) {
+        $statusIcon = "$Green[OK]$Reset"
+        $global:LASTEXITCODE = 0
+    } else {
+        $code = if ($null -ne $lastExit -and $lastExit -ne 0) { $lastExit } else { 1 }
+        $statusIcon = "$Red[ERR:$code]$Reset"
+    }
 
     # Calculate duration of the executed command only
     $durationStr = ""
@@ -107,13 +118,6 @@ function prompt {
         } else {
             $durationStr = "{0}ms" -f $elapsedMs
         }
-    }
-
-    # Exit icon & status code
-    $statusIcon = if ($lastSuccess -and ($lastExit -eq 0 -or $null -eq $lastExit)) {
-        "$Green[OK]$Reset"
-    } else {
-        "$Red[ERR:$lastExit]$Reset"
     }
 
     $timeNow = Get-Date -Format "HH:mm:ss"
