@@ -603,7 +603,7 @@ function ymp3 {
 function updateprofile {
     $bootstrapUrl = "https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.ps1"
     Write-Host "Updating PowerShell profile from $bootstrapUrl..." -ForegroundColor Cyan
-    Invoke-Expression (Invoke-RestMethod "$bootstrapUrl?$([DateTimeOffset]::UtcNow.ToUnixTimeSeconds())")
+    Invoke-Expression (Invoke-RestMethod -Uri $bootstrapUrl -Headers @{ 'Cache-Control' = 'no-cache' })
 }
 function updatebashrc { updateprofile }
 function up { updateprofile }

@@ -8,7 +8,7 @@ $ErrorActionPreference = 'Stop'
 $baseUrl = "https://raw.githubusercontent.com/chneau/dotfiles/master"
 $profileFileName = ".profile.ps1"
 $targetLocalProfile = Join-Path $HOME $profileFileName
-$downloadUrl = "$baseUrl/$profileFileName?$([DateTimeOffset]::UtcNow.ToUnixTimeSeconds())"
+$downloadUrl = "$baseUrl/$profileFileName"
 
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host "  Dotfiles Windows Bootstrapper" -ForegroundColor Cyan
@@ -19,7 +19,7 @@ Write-Host "Downloading $profileFileName to $targetLocalProfile..." -ForegroundC
 try {
     # Ensure TLS 1.2 is enabled for Windows PowerShell 5.1
     [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-    Invoke-RestMethod -Uri $downloadUrl -OutFile $targetLocalProfile
+    Invoke-RestMethod -Uri $downloadUrl -Headers @{ 'Cache-Control' = 'no-cache' } -OutFile $targetLocalProfile
     Write-Host "Successfully downloaded $profileFileName" -ForegroundColor Green
 } catch {
     Write-Error "Failed to download $profileFileName : $_"
