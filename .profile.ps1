@@ -18,14 +18,115 @@ foreach ($c in $conflicts) {
 }
 
 # ==============================================================================
-# 1. Navigation
+# 1. Environment Variables (Ported from .profile)
+# ==============================================================================
+
+$env:DOCKER_BUILDKIT = "1"
+$env:BUILDX_EXPERIMENTAL = "1"
+$env:NODE_OPTIONS = "--max_old_space_size=4096"
+$env:CARGO_NET_GIT_FETCH_WITH_CLI = "true"
+$env:DOTNET_WATCH_RESTART_ON_RUDE_EDIT = "true"
+$env:NPM_CONFIG_YES = "true"
+$env:NPM_CONFIG_FUND = "false"
+$env:BUN_CONFIG_NO_CLEAR_TERMINAL_ON_RELOAD = "1"
+$env:DO_NOT_TRACK = "1"
+$env:FORCE_COLOR = "1"
+$env:BAT_PAGING = "never"
+$env:BAT_STYLE = "plain"
+$env:BAT_TABS = "2"
+$env:DOTNET_CLI_TELEMETRY_OPTOUT = "1"
+
+# Fast PATH extensions (only added if directory exists on Windows)
+$candidatePaths = @(
+    (Join-Path $HOME ".cargo\bin"),
+    (Join-Path $HOME ".dotnet\tools"),
+    (Join-Path $HOME ".dotnet"),
+    (Join-Path $HOME ".bun\bin"),
+    (Join-Path $HOME "go\bin"),
+    (Join-Path $HOME ".deno\bin"),
+    (Join-Path $HOME ".pulumi\bin"),
+    (Join-Path $HOME ".kilo\bin"),
+    (Join-Path $HOME ".local\bin"),
+    (Join-Path $HOME "bin")
+)
+
+$currentPathEntries = $env:PATH -split ';'
+$pathsToAdd = @()
+foreach ($p in $candidatePaths) {
+    if ((Test-Path $p) -and ($currentPathEntries -notcontains $p)) {
+        $pathsToAdd += $p
+    }
+}
+if ($pathsToAdd.Count -gt 0) {
+    $env:PATH = ($pathsToAdd -join ';') + ';' + $env:PATH
+}
+
+# ==============================================================================
+# 2. Custom Prompt with Timer & Exit Code (Ported from .bashrc)
+# ==============================================================================
+
+# Enable ANSI escape sequences support if in Windows PowerShell 5.1 / ConHost
+$Esc = [char]27
+$Reset = "$Esc[0m"
+$Green = "$Esc[1;32m"
+$Red   = "$Esc[1;31m"
+$Blue  = "$Esc[1;34m"
+$White = "$Esc[1;37m"
+
+function prompt {
+    $lastExit = $global:LASTEXITCODE
+    $lastSuccess = $?
+
+    # Timer calculation
+    $durationStr = ""
+    if ($global:__commandWatch -and $global:__commandWatch.IsRunning) {
+        $global:__commandWatch.Stop()
+        $elapsedMs = $global:__commandWatch.ElapsedMilliseconds
+        if ($elapsedMs -ge 60000) {
+            $mins = [math]::Floor($elapsedMs / 60000)
+            $secs = [math]::Floor(($elapsedMs % 60000) / 1000)
+            $durationStr = "{0}m{1}s" -f $mins, $secs
+        } elseif ($elapsedMs -ge 1000) {
+            $durationStr = "{0:N1}s" -f ($elapsedMs / 1000)
+        } else {
+            $durationStr = "{0}ms" -f $elapsedMs
+        }
+    }
+
+    # Exit icon & status code
+    $statusIcon = if ($lastSuccess -and ($lastExit -eq 0 -or $null -eq $lastExit)) {
+        "$Green[OK]$Reset"
+    } else {
+        "$Red[ERR:$lastExit]$Reset"
+    }
+
+    $timeNow = Get-Date -Format "HH:mm:ss"
+    $userHost = "$Green$env:USERNAME@$env:COMPUTERNAME$Reset"
+    $currDir = "$Blue$(Get-Location)$Reset"
+
+    $timerDisplay = if ($durationStr) { "($durationStr) " } else { "" }
+
+    Write-Host ""
+    Write-Host "$statusIcon $timerDisplay$White$timeNow$Reset $userHost $currDir"
+    
+    # Restart stopwatch for the next command prompt cycle
+    $global:__commandWatch = [System.Diagnostics.Stopwatch]::StartNew()
+
+    return "$Blue>$Reset "
+}
+
+# Initial command timer
+$global:__commandWatch = [System.Diagnostics.Stopwatch]::StartNew()
+
+# ==============================================================================
+# 3. Navigation
 # ==============================================================================
 function .. { Set-Location .. }
 function ... { Set-Location ..\.. }
 function .... { Set-Location ..\..\.. }
 
 # ==============================================================================
-# 2. General CLI & File System
+# 4. General CLI & File System
 # ==============================================================================
 function l { Get-ChildItem -Force @args }
 function la { Get-ChildItem -Force @args }
@@ -83,7 +184,7 @@ function tobase64 {
 }
 
 # ==============================================================================
-# 3. Git Shortcuts
+# 5. Git Shortcuts
 # ==============================================================================
 function ga { git add @args }
 function gb { git branch --sort=-committerdate -vv @args }
@@ -182,7 +283,7 @@ function gitgetc($repo) {
 }
 
 # ==============================================================================
-# 4. Docker & Kubernetes
+# 6. Docker & Kubernetes
 # ==============================================================================
 function d { docker @args }
 function db { docker build --pull --tag @args }
@@ -259,7 +360,7 @@ function ktpa { kubectl top pods --all-namespaces --sort-by=memory @args }
 function kw { kubectl get po -w @args }
 
 # ==============================================================================
-# 5. Language Tools & Runtimes (Bun, Node, Go, Python/uv, DotNet, Zig, Rust)
+# 7. Language Tools & Runtimes (Bun, Node, Go, Python/uv, DotNet, Zig, Rust)
 # ==============================================================================
 
 # Bun
@@ -372,7 +473,7 @@ function zbr { zig build run @args }
 function zr { zig run @args }
 
 # ==============================================================================
-# 6. AI Coding Assistants & CLI Tools
+# 8. AI Coding Assistants & CLI Tools
 # ==============================================================================
 function cl { claude @args }
 function cly { claude --dangerously-skip-permissions @args }
@@ -447,7 +548,7 @@ Media & Utilities:
 }
 
 # ==============================================================================
-# 7. Network & Web Utilities
+# 9. Network & Web Utilities
 # ==============================================================================
 function myip {
     try { (Invoke-RestMethod "https://icanhazip.com").Trim() }
@@ -485,7 +586,7 @@ function imas { irm https://massgrave.dev/get | iex }
 function idefendnot { irm https://dnot.sh/ | iex }
 
 # ==============================================================================
-# 8. Media Utilities (yt-dlp)
+# 10. Media Utilities (yt-dlp)
 # ==============================================================================
 function yt { yt-dlp @args }
 function ymp4 { yt-dlp -S res,ext:mp4:m4a --recode mp4 @args }
@@ -497,7 +598,7 @@ function ymp3 {
 }
 
 # ==============================================================================
-# 9. Update Shortcuts
+# 11. Update Shortcuts
 # ==============================================================================
 function updateprofile {
     $bootstrapUrl = "https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.ps1"

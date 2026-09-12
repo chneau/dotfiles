@@ -6,23 +6,23 @@
 $ErrorActionPreference = 'Stop'
 
 $baseUrl = "https://raw.githubusercontent.com/chneau/dotfiles/master"
-$aliasesFileName = ".aliases.ps1"
-$targetLocalAliases = Join-Path $HOME $aliasesFileName
-$downloadUrl = "$baseUrl/$aliasesFileName?$([DateTimeOffset]::UtcNow.ToUnixTimeSeconds())"
+$profileFileName = ".profile.ps1"
+$targetLocalProfile = Join-Path $HOME $profileFileName
+$downloadUrl = "$baseUrl/$profileFileName?$([DateTimeOffset]::UtcNow.ToUnixTimeSeconds())"
 
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host "  Dotfiles Windows Bootstrapper" -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 
-# 1. Download .aliases.ps1 to $HOME/.aliases.ps1
-Write-Host "Downloading $aliasesFileName to $targetLocalAliases..." -ForegroundColor Yellow
+# 1. Download .profile.ps1 to $HOME/.profile.ps1
+Write-Host "Downloading $profileFileName to $targetLocalProfile..." -ForegroundColor Yellow
 try {
     # Ensure TLS 1.2 is enabled for Windows PowerShell 5.1
     [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-    Invoke-RestMethod -Uri $downloadUrl -OutFile $targetLocalAliases
-    Write-Host "Successfully downloaded $aliasesFileName" -ForegroundColor Green
+    Invoke-RestMethod -Uri $downloadUrl -OutFile $targetLocalProfile
+    Write-Host "Successfully downloaded $profileFileName" -ForegroundColor Green
 } catch {
-    Write-Error "Failed to download $aliasesFileName : $_"
+    Write-Error "Failed to download $profileFileName : $_"
     exit 1
 }
 
@@ -40,12 +40,12 @@ $profilePaths = @(
 ) | Select-Object -Unique
 
 # Marker block to include in profile
-$markerStart = "# >>> dotfiles aliases >>>"
-$markerEnd   = "# <<< dotfiles aliases <<<"
+$markerStart = "# >>> dotfiles profile >>>"
+$markerEnd   = "# <<< dotfiles profile <<<"
 $dotSourceLine = @"
 $markerStart
-if (Test-Path "`$HOME\$aliasesFileName") {
-    . "`$HOME\$aliasesFileName"
+if (Test-Path "`$HOME\$profileFileName") {
+    . "`$HOME\$profileFileName"
 }
 $markerEnd
 "@
@@ -82,9 +82,9 @@ foreach ($p in $profilePaths) {
 }
 
 # 4. Dot-source in current session
-if (Test-Path $targetLocalAliases) {
-    Write-Host "Loading aliases into current session..." -ForegroundColor Green
-    . $targetLocalAliases
+if (Test-Path $targetLocalProfile) {
+    Write-Host "Loading profile and aliases into current session..." -ForegroundColor Green
+    . $targetLocalProfile
 }
 
-Write-Host "`nAll set! Dotfiles and aliases are loaded and will run automatically on every PowerShell launch." -ForegroundColor Green
+Write-Host "`nAll set! Dotfiles and profile are loaded and will run automatically on every PowerShell launch." -ForegroundColor Green
