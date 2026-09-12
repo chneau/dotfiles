@@ -122,10 +122,7 @@ function prompt {
 
     $timerDisplay = if ($durationStr) { "($durationStr) " } else { "" }
 
-    Write-Host ""
-    Write-Host "$statusIcon $timerDisplay$White$timeNow$Reset $userHost $currDir"
-
-    return "$Blue>$Reset "
+    return "$statusIcon $timerDisplay$White$timeNow$Reset $userHost $currDir $Blue>$Reset "
 }
 
 # ==============================================================================
