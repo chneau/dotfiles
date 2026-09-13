@@ -87,4 +87,24 @@ if (Test-Path $targetLocalProfile) {
     . $targetLocalProfile
 }
 
-Write-Host "`nAll set! Dotfiles and profile are loaded and will run automatically on every PowerShell launch." -ForegroundColor Green
+# 5. Configure cmd.exe (aliases.cmd + AutoRun registry)
+$cmdAliasesFileName = "aliases.cmd"
+$targetLocalCmd = Join-Path $HOME $cmdAliasesFileName
+$downloadUrlCmd = "$baseUrl/$cmdAliasesFileName"
+
+Write-Host "Downloading $cmdAliasesFileName to $targetLocalCmd..." -ForegroundColor Yellow
+try {
+    Invoke-RestMethod -Uri $downloadUrlCmd -Headers @{ 'Cache-Control' = 'no-cache' } -OutFile $targetLocalCmd
+    # Set AutoRun in Registry for cmd.exe
+    $regKey = "HKCU:\Software\Microsoft\Command Processor"
+    if (-not (Test-Path $regKey)) {
+        New-Item -Path $regKey -Force | Out-Null
+    }
+    Set-ItemProperty -Path $regKey -Name "AutoRun" -Value "`"$targetLocalCmd`"" -Force
+    Write-Host "Configured cmd.exe AutoRun with $cmdAliasesFileName" -ForegroundColor Green
+} catch {
+    Write-Warning "Could not configure cmd.exe AutoRun: $_"
+}
+
+Write-Host "`nAll set! Dotfiles and profiles are loaded for both PowerShell and CMD." -ForegroundColor Green
+

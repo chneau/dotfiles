@@ -84,12 +84,14 @@ The `.stuff/` directory contains additional scripts, legacy configurations, and 
 
 ### Windows
 
-Bootstrap PowerShell 5.1 & PowerShell 7+ with this one-liner:
+Bootstrap PowerShell 5.1, PowerShell 7+, and `cmd.exe` with this one-liner:
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 irm https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.ps1 | iex
 ```
+
+*(This automatically configures your PowerShell profiles and CMD via AutoRun with matching prompt and aliases).*
 
 Other Windows tools:
 
