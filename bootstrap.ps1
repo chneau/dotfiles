@@ -87,8 +87,8 @@ if (Test-Path $targetLocalProfile) {
     . $targetLocalProfile
 }
 
-# 5. Configure cmd.exe (profile.cmd + AutoRun registry)
-$cmdProfileFileName = "profile.cmd"
+# 5. Configure cmd.exe (.profile.cmd + AutoRun registry)
+$cmdProfileFileName = ".profile.cmd"
 $targetLocalCmd = Join-Path $HOME $cmdProfileFileName
 $downloadUrlCmd = "$baseUrl/$cmdProfileFileName"
 
@@ -101,6 +101,8 @@ try {
         New-Item -Path $regKey -Force | Out-Null
     }
     Set-ItemProperty -Path $regKey -Name "AutoRun" -Value "`"$targetLocalCmd`"" -Force
+    # Clean up legacy un-dotted profile.cmd or aliases.cmd if they exist
+    Remove-Item (Join-Path $HOME "profile.cmd"), (Join-Path $HOME "aliases.cmd") -ErrorAction SilentlyContinue
     Write-Host "Configured cmd.exe AutoRun with $cmdProfileFileName" -ForegroundColor Green
 } catch {
     Write-Warning "Could not configure cmd.exe AutoRun: $_"
