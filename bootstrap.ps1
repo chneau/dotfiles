@@ -87,12 +87,12 @@ if (Test-Path $targetLocalProfile) {
     . $targetLocalProfile
 }
 
-# 5. Configure cmd.exe (aliases.cmd + AutoRun registry)
-$cmdAliasesFileName = "aliases.cmd"
-$targetLocalCmd = Join-Path $HOME $cmdAliasesFileName
-$downloadUrlCmd = "$baseUrl/$cmdAliasesFileName"
+# 5. Configure cmd.exe (profile.cmd + AutoRun registry)
+$cmdProfileFileName = "profile.cmd"
+$targetLocalCmd = Join-Path $HOME $cmdProfileFileName
+$downloadUrlCmd = "$baseUrl/$cmdProfileFileName"
 
-Write-Host "Downloading $cmdAliasesFileName to $targetLocalCmd..." -ForegroundColor Yellow
+Write-Host "Downloading $cmdProfileFileName to $targetLocalCmd..." -ForegroundColor Yellow
 try {
     Invoke-RestMethod -Uri $downloadUrlCmd -Headers @{ 'Cache-Control' = 'no-cache' } -OutFile $targetLocalCmd
     # Set AutoRun in Registry for cmd.exe
@@ -101,7 +101,7 @@ try {
         New-Item -Path $regKey -Force | Out-Null
     }
     Set-ItemProperty -Path $regKey -Name "AutoRun" -Value "`"$targetLocalCmd`"" -Force
-    Write-Host "Configured cmd.exe AutoRun with $cmdAliasesFileName" -ForegroundColor Green
+    Write-Host "Configured cmd.exe AutoRun with $cmdProfileFileName" -ForegroundColor Green
 } catch {
     Write-Warning "Could not configure cmd.exe AutoRun: $_"
 }
