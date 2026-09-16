@@ -298,6 +298,7 @@ alias irtk='curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/insta
 alias irust='curl https://sh.rustup.rs -sSf | sh'
 alias iscc='go install github.com/boyter/scc/v4@latest'
 alias iserve='go install github.com/chneau/serve@latest'
+alias iskillsmattpocock='bunx skills add mattpocock/skills'
 alias ispacetime='curl -sSf https://install.spacetimedb.com | sh'
 alias ispeedtest='curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash'
 alias issh='ssh-keygen -t rsa -b 2048'
