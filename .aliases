@@ -756,7 +756,7 @@ Install / Update Aliases:
   icopilot     Install GitHub Copilot CLI
   icursor      Install Cursor CLI
   iqwen        Install Qwen Code CLI
-  ireasonix    Install Reasonix CLI
+  ireasonix    Install / update Reasonix CLI
   iopencode    Install OpenCode CLI
   ideepcode    Install DeepCode CLI
   irtk         Install RTK CLI

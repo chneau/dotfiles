@@ -505,6 +505,8 @@ function hermesy { hermes --yolo @args }
 function reasonixy { reasonix --permission-mode bypassPermissions @args }
 function ry { reasonix --permission-mode bypassPermissions --yolo @args }
 function rw { reasonix web @args }
+# ireasonix is also the update path: the built-in `reasonix upgrade` downloads a
+# GitHub release tarball and fails with 404 while upstream lags on publishing it.
 function ireasonix { bun i -g reasonix@latest }
 function iqwen { bun install -fg @qwen-code/qwen-code@latest }
 function ifreebuff { bun i -g freebuff@latest }

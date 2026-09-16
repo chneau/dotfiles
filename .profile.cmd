@@ -186,6 +186,7 @@ doskey hermesy=hermes --yolo $*
 doskey reasonixy=reasonix --permission-mode bypassPermissions $*
 doskey ry=reasonix --permission-mode bypassPermissions --yolo $*
 doskey rw=reasonix web $*
+doskey ireasonix=bun i -g reasonix@latest $*
 doskey ix=bun install --force --global @chneau/x
 
 :: ==============================================================================
