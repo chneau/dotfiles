@@ -29,6 +29,9 @@ This repository contains personal configuration files for Linux/Unix environment
   - `gp`: `git push`
   - `gl`: `git pull`
   - `gc`: `git commit -v`
+  - `gcam`: `git commit -a -m` (commit all tracked changes with a message)
+  - `gcamp`: `gcam` + `gp` (commit everything with a message and push in one go)
+  - `gsp`: `git add -A` + commit with a message + `git push` (includes untracked files)
   - `gd`: `git diff`
 - **Docker**:
   - `d`: `docker`

@@ -203,6 +203,18 @@ function gba { git branch --sort=-committerdate -vva @args }
 function gc { git commit -v @args }
 function gca { git commit . -v @args }
 function gcam { git commit -a -m @args }
+function gcamp($message) {
+    if (-not $message) { Write-Error "Usage: gcamp <message>"; return }
+    git commit -a -m "$message"
+    if ($LASTEXITCODE -eq 0) { git push }
+}
+function gsp($message) {
+    if (-not $message) { Write-Error "Usage: gsp <message>"; return }
+    git add -A
+    if ($LASTEXITCODE -ne 0) { return }
+    git commit -m "$message"
+    if ($LASTEXITCODE -eq 0) { git push }
+}
 function gcl { git clone @args }
 function gco { git checkout @args }
 function gcom { git checkout master @args }

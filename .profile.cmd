@@ -53,6 +53,8 @@ doskey gba=git branch --sort=-committerdate -vva $*
 doskey gc=git commit -v $*
 doskey gca=git commit . -v $*
 doskey gcam=git commit -a -m $*
+doskey gcamp=git commit -a -m $* $T git push
+doskey gsp=git add -A $T git commit -m $* $T git push
 doskey gcl=git clone $*
 doskey gco=git checkout $*
 doskey gcom=git checkout master $*
