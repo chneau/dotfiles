@@ -513,6 +513,15 @@ function ifreebuff { bun i -g freebuff@latest }
 function icommandcode { bun i -g command-code@latest }
 function ideepcode { bun i -g @vegamo/deepcode-cli@latest }
 function imcode { bun i -g @minimax-ai/code }
+function icf { bun i -g cf }
+function icharlie { bun i -g charlie-git@latest }
+function icline { bun i -g cline }
+function idsh { bun i -g @deepseek-ai/dsh@latest }
+function ijsdoc-scribe { bun i -g jsdoc-scribe@latest }
+function iposthogcli { bun i -g @posthog/cli@latest }
+function iskillsmattpocock { bunx skills add mattpocock/skills }
+function ihermes { powershell -c "irm https://hermes-agent.nousresearch.com/install.ps1 | iex" }
+function ipi { powershell -c "irm https://pi.dev/install.ps1 | iex" }
 function irtk { powershell -c "irm https://raw.githubusercontent.com/rtk-ai/rtk/master/install.ps1 | iex" }
 function ix { bun install --force --global @chneau/x }
 
@@ -535,6 +544,8 @@ reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistan
 opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
 kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI
 hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
+dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
+pi         Pi                       -                       Pi coding agent CLI
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 "@
 }

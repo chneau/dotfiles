@@ -188,6 +188,15 @@ doskey ry=reasonix --permission-mode bypassPermissions --yolo $*
 doskey rw=reasonix web $*
 doskey ireasonix=bun i -g reasonix@latest $*
 doskey imcode=bun i -g @minimax-ai/code $*
+doskey icf=bun i -g cf $*
+doskey icharlie=bun i -g charlie-git@latest $*
+doskey icline=bun i -g cline $*
+doskey idsh=bun i -g @deepseek-ai/dsh@latest $*
+doskey ijsdoc-scribe=bun i -g jsdoc-scribe@latest $*
+doskey iposthogcli=bun i -g @posthog/cli@latest $*
+doskey iskillsmattpocock=bunx skills add mattpocock/skills $*
+doskey ihermes=powershell -c "irm https://hermes-agent.nousresearch.com/install.ps1 | iex"
+doskey ipi=powershell -c "irm https://pi.dev/install.ps1 | iex"
 doskey ix=bun install --force --global @chneau/x
 
 :: ==============================================================================
