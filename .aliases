@@ -793,6 +793,32 @@ Useful Prompts:
     Identify critical undocumented assumptions, setup steps, and failure modes across this project.
   Log Analysis:
     Analyze these logs to identify errors, warnings, recurring anomalies, and their potential root causes.
+  UX Flow Audit:
+    Walk through this feature's user journey step by step and flag friction, dead ends, and unnecessary steps.
+  Friction Reduction:
+    Find where users will hesitate, get confused, or abandon this flow, and propose the smallest changes that reduce friction.
+  Onboarding Review:
+    Evaluate the first-run experience and remove anything that delays a new user from reaching value.
+  Empty States:
+    Design helpful empty, loading, and error states so users always know what is happening and what to do next.
+  Error Recovery:
+    Review these error messages and failure flows for clarity and actionable recovery paths.
+  Microcopy:
+    Rewrite these labels, buttons, and helper texts for clarity, consistency, and tone.
+  Navigation & IA:
+    Assess this navigation and information architecture so users can predict where things live.
+  Feedback & Responsiveness:
+    Ensure every action gives timely, clear feedback for loading, success, and failure.
+  Accessibility Pass:
+    Review this UI for input, contrast, focus, and feedback issues that block users.
+  Cross-Device Flow:
+    Check this flow on mobile and keyboard-only use, and flag where it breaks or degrades.
+  State Consistency:
+    Audit this flow for inconsistent labels, state transitions, and feedback across screens.
+  Progressive Disclosure:
+    Identify where this interface overwhelms users and what should be hidden until it is needed.
+  UX Heuristic Review:
+    Critique this interface against Nielsen's usability heuristics and rank the top fixes by impact.
 EOF
 }
 
