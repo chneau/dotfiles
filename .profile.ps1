@@ -512,6 +512,7 @@ function iqwen { bun install -fg @qwen-code/qwen-code@latest }
 function ifreebuff { bun i -g freebuff@latest }
 function icommandcode { bun i -g command-code@latest }
 function ideepcode { bun i -g @vegamo/deepcode-cli@latest }
+function imcode { bun i -g @minimax-ai/code }
 function irtk { powershell -c "irm https://raw.githubusercontent.com/rtk-ai/rtk/master/install.ps1 | iex" }
 function ix { bun install --force --global @chneau/x }
 
@@ -529,6 +530,7 @@ agent      Cursor / Anysphere      agenty                  Cursor AI terminal ag
 codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
 copilot    GitHub / Microsoft      -                       GitHub Copilot CLI
 qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
+mcode      MiniMax                 -                       MiniMax Code coding agent CLI
 reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistant CLI & web UI
 opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
 kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI
