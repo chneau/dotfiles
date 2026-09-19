@@ -738,6 +738,7 @@ agent      Cursor / Anysphere      agenty                  Cursor AI terminal ag
 codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
 copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
 qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
+mcode      MiniMax                 -                       MiniMax Code coding agent CLI
 reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistant CLI & web interface
 opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
 deepcode   Vegamo                  -                       DeepCode terminal AI assistant
@@ -747,10 +748,13 @@ freebuff   Codebuff                -                       Free Codebuff coding 
 commandcode Command Code           -                       Coding agent that learns your coding taste
 kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)
 hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
+dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
 
 Install / Update Aliases:
   iclaude      Install Claude CLI
   icline       Install Cline CLI
+  icf          Install Cloudflare cf CLI
+  icharlie     Install Charlie Git CLI
   igravitycli  Install Antigravity CLI
   iagy         Install Antigravity CLI (short)
   icodex       Install OpenAI Codex CLI
@@ -762,8 +766,12 @@ Install / Update Aliases:
   ideepcode    Install DeepCode CLI
   irtk         Install RTK CLI
   ipi          Install Pi CLI
+  imcode       Install MiniMax Code CLI
+  idsh         Install DeepSeek dsh CLI
+  iposthogcli  Install PostHog CLI
   ifreebuff    Install freebuff CLI
   icommandcode Install command-code CLI
+  iskillsmattpocock  Install mattpocock skills CLI
   ikilo        Install Kilo CLI
   ihermes      Install Hermes CLI
 

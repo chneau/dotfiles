@@ -533,20 +533,102 @@ AI CLI Tools & Assistants (Windows / PowerShell)
 Tool       Provider / Vendor       Aliases                 Description
 ----       -----------------       -------                 -----------
 claude     Anthropic               cl, cly                 Claude AI coding assistant & agent
-cline      Cline                   -                       Cline AI coding agent
+cline      Cline                   -                       Cline AI coding agent (YOLO by default in CLI)
 agy        Google DeepMind         agyy                    Antigravity agentic coding assistant CLI
 agent      Cursor / Anysphere      agenty                  Cursor AI terminal agent & CLI
 codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
-copilot    GitHub / Microsoft      -                       GitHub Copilot CLI
+copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
 qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
 mcode      MiniMax                 -                       MiniMax Code coding agent CLI
 reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistant CLI & web UI
 opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
-kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI
+deepcode   Vegamo                  -                       DeepCode terminal AI assistant
+commandcode Command Code           -                       Coding agent that learns your coding taste
+kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)
 hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
 dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
 pi         Pi                       -                       Pi coding agent CLI
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
+freebuff   Codebuff                -                       Free Codebuff coding agent
+
+Install / Update Aliases:
+  iclaude      Install Claude CLI
+  icline       Install Cline CLI
+  icf          Install Cloudflare cf CLI
+  icharlie     Install Charlie Git CLI
+  igravitycli  Install Antigravity CLI
+  iagy         Install Antigravity CLI (short)
+  icodex       Install OpenAI Codex CLI
+  icopilot     Install GitHub Copilot CLI
+  icursor      Install Cursor CLI
+  iqwen        Install Qwen Code CLI
+  ireasonix    Install / update Reasonix CLI
+  iopencode    Install OpenCode CLI
+  ideepcode    Install DeepCode CLI
+  irtk         Install RTK CLI
+  ipi          Install Pi CLI
+  imcode       Install MiniMax Code CLI
+  idsh         Install DeepSeek dsh CLI
+  iposthogcli  Install PostHog CLI
+  ifreebuff    Install freebuff CLI
+  icommandcode Install command-code CLI
+  ikilo        Install Kilo CLI
+  ihermes      Install Hermes CLI
+  iskillsmattpocock  Install mattpocock skills CLI
+
+Useful Prompts:
+  Codebase Refactor:
+    Look through my codebase for opportunities to refactor and simplify, and suggest the highest-impact ones.
+  Code Simplification:
+    Refactor this code to eliminate redundancy and improve readability and maintainability.
+  Test Coverage:
+    Analyze my test coverage and tell me where adding tests would have the most impact.
+  Security Audit:
+    Review this codebase for security vulnerabilities, injection risks, and sensitive data exposure.
+  Strict Code Review:
+    Review my recent changes like a senior engineer. Flag regressions, edge cases, and architectural smells.
+  Performance Bottlenecks:
+    Profile this logic and identify the primary performance or memory bottlenecks with concrete optimizations.
+  Database Optimization:
+    Analyze these database queries/schemas for missing indexes, N+1 issues, and slow operations.
+  Root Cause Analysis:
+    Diagnose this failure, determine the root cause, and propose the minimal fix to prevent recurrence.
+  Edge Case Discovery:
+    Identify unhandled edge cases, failure modes, and concurrency issues in this implementation.
+  Architecture Check:
+    Critique the current design against SOLID/DRY principles and recommend cleaner abstractions without overengineering.
+  API Ergonomics:
+    Review this API/interface for ergonomics, consistency, idiomatic design, and ease of use.
+  Missing Docs:
+    Identify critical undocumented assumptions, setup steps, and failure modes across this project.
+  Log Analysis:
+    Analyze these logs to identify errors, warnings, recurring anomalies, and their potential root causes.
+  UX Flow Audit:
+    Walk through this feature's user journey step by step and flag friction, dead ends, and unnecessary steps.
+  Friction Reduction:
+    Find where users will hesitate, get confused, or abandon this flow, and propose the smallest changes that reduce friction.
+  Onboarding Review:
+    Evaluate the first-run experience and remove anything that delays a new user from reaching value.
+  Empty States:
+    Design helpful empty, loading, and error states so users always know what is happening and what to do next.
+  Error Recovery:
+    Review these error messages and failure flows for clarity and actionable recovery paths.
+  Microcopy:
+    Rewrite these labels, buttons, and helper texts for clarity, consistency, and tone.
+  Navigation & IA:
+    Assess this navigation and information architecture so users can predict where things live.
+  Feedback & Responsiveness:
+    Ensure every action gives timely, clear feedback for loading, success, and failure.
+  Accessibility Pass:
+    Review this UI for input, contrast, focus, and feedback issues that block users.
+  Cross-Device Flow:
+    Check this flow on mobile and keyboard-only use, and flag where it breaks or degrades.
+  State Consistency:
+    Audit this flow for inconsistent labels, state transitions, and feedback across screens.
+  Progressive Disclosure:
+    Identify where this interface overwhelms users and what should be hidden until it is needed.
+  UX Heuristic Review:
+    Critique this interface against Nielsen's usability heuristics and rank the top fixes by impact.
 "@
 }
 
