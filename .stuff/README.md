@@ -1,5 +1,29 @@
 # Stuff
 
+## Directory Overview
+
+- **`notes/`**: Guides, cheatsheets, and reference notes.
+  - `coding-principles.md`: Core software engineering and clean code principles.
+  - `solid-principles.md`: SOLID design principles explained simply.
+  - `geforcenow.md`: Latency & optimization guide for GeForce NOW / hotspot tethering.
+  - `minimax-deepseek.md`: Guide to configure MiniMax Code with DeepSeek API.
+  - `frontend-tech-stack.md`: Frontend and full-stack recommendations.
+  - `vite-starter.md`: Vite & React project starter snippets.
+  - `epicgames-export.md`: Browser script to export Epic Games Store order history.
+- **`vscode/`**: VSCode configuration files.
+  - `settings.json`: Recommended VSCode settings.
+  - `extensions.md`: Essential VSCode extension install list.
+- **`windows/`**: Windows setup & optimization scripts.
+  - `choco.bat`: Chocolatey package installer script.
+  - `disable_defender.bat` / `.ps1`: Scripts to adjust Windows Defender settings.
+  - `win10_setup.ps1`: Windows initial setup & debloating script.
+- **`legacy/`**: Archived configurations, docker templates, and older utility scripts.
+  - `docker/`: Legacy docker-compose, nginx configs, and container scripts.
+  - `scripts/`: Legacy helper scripts (rdp, swap, git cache helper, vpn setup, etc.).
+  - `configs/`: Legacy tool configurations (Eclipse preferences).
+
+---
+
 free -> <https://github.com/ripienaar/free-for-dev>
 
 ## Bash variable manipulation
