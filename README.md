@@ -3,10 +3,12 @@
 Bootstrap your environment with this one-liner:
 
 ```bash
-x="raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh"; (curl -fsSL $x || wget -qO - $x) | sh
+(curl -fsSL sh.neau.pro || wget -qO - sh.neau.pro) | sh
 
 bun install --global @chneau/x
 ```
+
+> **Note:** `sh.neau.pro` is a short Cloudflare redirect to [`https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh`](https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh).
 
 ## Overview
 
@@ -91,8 +93,10 @@ Bootstrap PowerShell 5.1, PowerShell 7+, and `cmd.exe` with this one-liner:
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-irm https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.ps1 | iex
+irm ps.neau.pro | iex
 ```
+
+> **Note:** `ps.neau.pro` is a short Cloudflare redirect to [`https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.ps1`](https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.ps1).
 
 *(This automatically configures your PowerShell profiles and CMD via AutoRun with matching prompt and aliases).*
 
