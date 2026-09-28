@@ -434,6 +434,7 @@ alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pstats='powerstat -d 0 -f 1'
+alias reactdoctor='bunx react-doctor@latest'
 alias reasonixy='reasonix --permission-mode bypassPermissions'
 alias refresh='clear; exec $SHELL'
 alias refreshgroups='exec sudo su -l $USER'
@@ -754,6 +755,7 @@ commandcode Command Code           -                       Coding agent that lea
 kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)
 hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
 dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
+reactdoctor React Doctor           -                       AI-powered React code diagnostics (bunx react-doctor@latest)
 
 Install / Update Aliases:
   iclaude      Install Claude CLI
