@@ -220,6 +220,7 @@ alias icf='bun i -g cf'
 alias icharlie='bun i -g charlie-git@latest'
 alias iclaude='curl -fsSL https://claude.ai/install.sh | bash'
 alias icline='bun i -g cline'
+alias icolab='uv tool install --force google-colab-cli'
 alias icodex='curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh'
 alias icommandcode='bun i -g command-code@latest'
 alias icoolify='curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash'
@@ -760,6 +761,7 @@ reactdoctor React Doctor           -                       AI-powered React code
 Install / Update Aliases:
   iclaude      Install Claude CLI
   icline       Install Cline CLI
+  icolab       Install Google Colab CLI
   icf          Install Cloudflare cf CLI
   icharlie     Install Charlie Git CLI
   igravitycli  Install Antigravity CLI
