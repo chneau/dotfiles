@@ -287,6 +287,7 @@ alias inextdns='sh -c "$(curl -sL https://nextdns.io/install)"'
 alias inix='sh <(curl -L https://nixos.org/nix/install) --no-daemon'
 alias invm='curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash'
 alias iombash='bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"'
+alias iomp='bun install -g @oh-my-pi/pi-coding-agent'
 alias iomzsh='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 alias iopencode='curl -fsSL https://opencode.ai/v2/install | bash'
 alias ipandoc='brew install pandoc'
@@ -754,6 +755,7 @@ opencode   OpenCode AI             ocy, opencodey          Multi-provider open-s
 deepcode   Vegamo                  -                       DeepCode terminal AI assistant
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 pi         pi.dev                  -                       Pi terminal coding agent
+omp        Oh My Pi                -                       Oh My Pi coding agent CLI
 freebuff   Codebuff                -                       Free Codebuff coding agent
 commandcode Command Code           -                       Coding agent that learns your coding taste
 kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)
@@ -778,6 +780,7 @@ Install / Update Aliases:
   ideepcode    Install DeepCode CLI
   irtk         Install RTK CLI
   ipi          Install Pi CLI
+  iomp         Install Oh My Pi CLI
   imcode       Install MiniMax Code CLI
   idsh         Install DeepSeek dsh CLI
   iposthogcli  Install PostHog CLI

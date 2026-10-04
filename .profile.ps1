@@ -534,6 +534,7 @@ function iposthogcli { bun i -g @posthog/cli@latest }
 function iskillsmattpocock { bunx skills add mattpocock/skills }
 function ihermes { powershell -c "irm https://hermes-agent.nousresearch.com/install.ps1 | iex" }
 function ipi { powershell -c "irm https://pi.dev/install.ps1 | iex" }
+function iomp { bun install -g @oh-my-pi/pi-coding-agent }
 function irtk { powershell -c "irm https://raw.githubusercontent.com/rtk-ai/rtk/master/install.ps1 | iex" }
 function ix { bun install --force --global @chneau/x }
 
@@ -560,6 +561,7 @@ kilo       Kilo AI                 kiloy                   Kilo AI coding agent 
 hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
 dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
 pi         Pi                       -                       Pi coding agent CLI
+omp        Oh My Pi                -                       Oh My Pi coding agent CLI
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 freebuff   Codebuff                -                       Free Codebuff coding agent
 
@@ -579,6 +581,7 @@ Install / Update Aliases:
   ideepcode    Install DeepCode CLI
   irtk         Install RTK CLI
   ipi          Install Pi CLI
+  iomp         Install Oh My Pi CLI
   imcode       Install MiniMax Code CLI
   idsh         Install DeepSeek dsh CLI
   iposthogcli  Install PostHog CLI

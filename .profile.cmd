@@ -199,6 +199,7 @@ doskey iposthogcli=bun i -g @posthog/cli@latest $*
 doskey iskillsmattpocock=bunx skills add mattpocock/skills $*
 doskey ihermes=powershell -c "irm https://hermes-agent.nousresearch.com/install.ps1 | iex"
 doskey ipi=powershell -c "irm https://pi.dev/install.ps1 | iex"
+doskey iomp=bun install -g @oh-my-pi/pi-coding-agent $*
 doskey ix=bun install --force --global @chneau/x
 
 :: ==============================================================================
