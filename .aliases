@@ -253,6 +253,7 @@ alias igotty='go install github.com/yudai/gotty@latest'
 alias igradle='echo "org.gradle.console=plain" > ~/.gradle/gradle.properties'
 alias igravitycli='curl -fsSL https://antigravity.google/cli/install.sh | bash'
 alias ihermes='curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash'
+alias iherdr='curl -fsSL https://herdr.dev/install.sh | sh'
 alias ihey='go install github.com/rakyll/hey@latest'
 alias ihimalaya='curl -sSL https://raw.githubusercontent.com/pimalaya/himalaya/master/install.sh | PREFIX=~/.local sh'
 alias ijellyfin='curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash'
@@ -785,6 +786,7 @@ Install / Update Aliases:
   iskillsmattpocock  Install mattpocock skills CLI
   ikilo        Install Kilo CLI
   ihermes      Install Hermes CLI
+  iherdr       Install Herdr CLI
 
 Useful Prompts:
   Codebase Refactor:
