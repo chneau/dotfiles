@@ -513,9 +513,11 @@ function ocy { opencode --auto @args }
 function opencodey { opencode --auto @args }
 function iopencode { powershell -c "irm https://opencode.ai/install.ps1 | iex" }
 function kiloy { kilo --auto @args }
+function ikilo { powershell -c "irm https://kilo.ai/cli/install.ps1 | iex" }
 function hermesy { hermes --yolo @args }
 function reasonixy { reasonix --permission-mode bypassPermissions @args }
 function ry { reasonix --permission-mode bypassPermissions --yolo @args }
+function ryp { reasonix -p --permission-mode bypassPermissions --add-dir "$HOME" --add-dir /tmp @args }
 function rw { reasonix web @args }
 # ireasonix is also the update path: the built-in `reasonix upgrade` downloads a
 # GitHub release tarball and fails with 404 while upstream lags on publishing it.
@@ -533,10 +535,15 @@ function ijsdoc-scribe { bun i -g jsdoc-scribe@latest }
 function iposthogcli { bun i -g @posthog/cli@latest }
 function iskillsmattpocock { bunx skills add mattpocock/skills }
 function ihermes { powershell -c "irm https://hermes-agent.nousresearch.com/install.ps1 | iex" }
+function iherdr { powershell -c "irm https://herdr.dev/install.ps1 | iex" }
+function ituios { powershell -c "irm https://raw.githubusercontent.com/Gaurav-Gosain/tuios/main/install.ps1 | iex" }
+function iccusage { bun i -g ccusage@latest }
+function reactdoctor { bunx react-doctor@latest @args }
 function ipi { powershell -c "irm https://pi.dev/install.ps1 | iex" }
 function iomp { bun install -g @oh-my-pi/pi-coding-agent }
 function irtk { powershell -c "irm https://raw.githubusercontent.com/rtk-ai/rtk/master/install.ps1 | iex" }
 function ix { bun install --force --global @chneau/x }
+function lg { lazygit @args }
 
 function aihelp {
     @"
@@ -562,6 +569,7 @@ hermes     Nous Research           hermesy                 Hermes agentic coding
 dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
 pi         Pi                       -                       Pi coding agent CLI
 omp        Oh My Pi                -                       Oh My Pi coding agent CLI
+reactdoctor React Doctor           -                       AI-powered React code diagnostics (bunx react-doctor@latest)
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 freebuff   Codebuff                -                       Free Codebuff coding agent
 
@@ -590,6 +598,9 @@ Install / Update Aliases:
   ikilo        Install Kilo CLI
   ihermes      Install Hermes CLI
   iskillsmattpocock  Install mattpocock skills CLI
+  iccusage     Install ccusage CLI
+  iherdr       Install Herdr CLI
+  ituios       Install tuios CLI
 
 Useful Prompts:
   Codebase Refactor:
