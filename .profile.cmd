@@ -193,6 +193,7 @@ doskey iopencode=powershell -c "irm https://opencode.ai/install.ps1 | iex"
 doskey kiloy=kilo --auto $*
 doskey ikilo=powershell -c "irm https://kilo.ai/cli/install.ps1 | iex"
 doskey hermesy=hermes --yolo $*
+doskey ompy=omp --auto-approve $*
 doskey ihermes=powershell -c "irm https://hermes-agent.nousresearch.com/install.ps1 | iex"
 doskey reasonixy=reasonix --permission-mode bypassPermissions $*
 doskey ry=reasonix --permission-mode bypassPermissions --yolo $*

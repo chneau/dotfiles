@@ -420,6 +420,7 @@ alias nud='nvm use default'
 alias nx='f(){ nodemon --signal SIGTERM --ext "$1" --exec "${*:2} || false"; unset -f f; }; f'
 alias oc='code -a .'
 alias ocy='opencode --auto'
+alias ompy='omp --auto-approve'
 alias opencodey='opencode --auto'
 alias openports='nmap -p- portquiz.net | grep -i open'
 alias pasteit='f(){ if [ $# -gt 0 ]; then curl --data-binary "@$1" https://paste.rs; else curl --data-binary @- https://paste.rs; fi; echo; unset -f f; }; f'
@@ -755,7 +756,7 @@ opencode   OpenCode AI             ocy, opencodey          Multi-provider open-s
 deepcode   Vegamo                  -                       DeepCode terminal AI assistant
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 pi         pi.dev                  -                       Pi terminal coding agent
-omp        Oh My Pi                -                       Oh My Pi coding agent CLI
+omp        Oh My Pi                ompy                    Oh My Pi coding agent CLI (run w/ --auto-approve)
 freebuff   Codebuff                -                       Free Codebuff coding agent
 commandcode Command Code           -                       Coding agent that learns your coding taste
 kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)

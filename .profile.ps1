@@ -515,6 +515,7 @@ function iopencode { powershell -c "irm https://opencode.ai/install.ps1 | iex" }
 function kiloy { kilo --auto @args }
 function ikilo { powershell -c "irm https://kilo.ai/cli/install.ps1 | iex" }
 function hermesy { hermes --yolo @args }
+function ompy { omp --auto-approve @args }
 function reasonixy { reasonix --permission-mode bypassPermissions @args }
 function ry { reasonix --permission-mode bypassPermissions --yolo @args }
 function ryp { reasonix -p --permission-mode bypassPermissions --add-dir "$HOME" --add-dir /tmp @args }
@@ -568,7 +569,7 @@ kilo       Kilo AI                 kiloy                   Kilo AI coding agent 
 hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
 dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
 pi         Pi                       -                       Pi coding agent CLI
-omp        Oh My Pi                -                       Oh My Pi coding agent CLI
+omp        Oh My Pi                ompy                    Oh My Pi coding agent CLI (run w/ --auto-approve)
 reactdoctor React Doctor           -                       AI-powered React code diagnostics (bunx react-doctor@latest)
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 freebuff   Codebuff                -                       Free Codebuff coding agent
