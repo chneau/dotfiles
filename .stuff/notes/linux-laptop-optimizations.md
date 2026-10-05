@@ -176,3 +176,58 @@ sudo systemctl restart docker 2>/dev/null || true
 echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
 sudo chmod 0440 /etc/sudoers.d/$USER
 ```
+
+---
+
+## 4. GNOME Desktop UI, Dock & Developer Ergonomics
+
+### Appearance, Dock & Window Management
+```bash
+# Global dark mode
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+# Show exact battery percentage in top right panel
+gsettings set org.gnome.desktop.interface show-battery-percentage true
+
+# Click-to-minimize on dock (clicking open app icon minimizes/restores it)
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+
+# Compact 36px floating dock (gives more vertical & horizontal code real estate)
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 36
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+
+# Pin favorite core apps to dock
+gsettings set org.gnome.shell favorite-apps "['microsoft-edge.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Ptyxis.desktop', 'snap-store_snap-store.desktop', 'org.gnome.Settings.desktop']"
+```
+
+### Developer Typing & File Chooser Tuning
+```bash
+# Fast keyboard repeat rate & lower delay (snappier code & Vim navigation)
+gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+
+# Always show hidden files (.env, .config, .gitignore) in file picker dialogs
+gsettings set org.gtk.Settings.FileChooser show-hidden true
+gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
+
+# Mute annoying terminal and system bell alert beeps
+gsettings set org.gnome.desktop.sound event-sounds false
+
+# Default Git new repositories to 'main' branch
+git config --global init.defaultBranch main
+git config --global core.preloadindex true
+git config --global core.fscache true
+```
+
+---
+
+## 5. Debloating Background Telemetry & Daemons
+
+Masks and disables background services that consume CPU/RAM or trigger desktop alert dialogs:
+```bash
+# Disable & mask crash submitters & media broadcasting daemons
+sudo systemctl disable --now whoopsie.path whoopsie.service apport.service 2>/dev/null || true
+sudo systemctl mask whoopsie apport rygel 2>/dev/null || true
+systemctl --user mask rygel 2>/dev/null || true
+```
+
