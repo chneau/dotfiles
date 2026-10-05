@@ -3,6 +3,7 @@
 ## Directory Overview
 
 - **`notes/`**: Guides, cheatsheets, and reference notes.
+  - `linux-laptop-optimizations.md`: Ubuntu/Debian laptop hardware tuning, power management, and fixes for Wi-Fi drops & broken browser downloads.
   - `coding-principles.md`: Core software engineering and clean code principles.
   - `solid-principles.md`: SOLID design principles explained simply.
   - `geforcenow.md`: Latency & optimization guide for GeForce NOW / hotspot tethering.
