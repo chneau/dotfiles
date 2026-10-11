@@ -87,6 +87,7 @@ alias dndd='docker run --detach --pull=always --name=netdata --pid=host --networ
 alias dnekoff='echo http://$(curl -s4 https://ifconfig.co):8080; docker run --pull=always --rm -it --name=neko --shm-size=2gb --net=host --env=NEKO_DESKTOP_SCREEN=1920x1080@30 --env=NEKO_MEMBER_MULTIUSER_USER_PASSWORD=c --env=NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD=cc --env=NEKO_WEBRTC_EPR=52000-52100 --env=NEKO_WEBRTC_ICELITE=1 ghcr.io/m1k1o/neko/firefox'
 alias dockertags='dockertags'
 alias dockerup='docker run --pull=always --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --remove-volumes --debug --run-once'
+alias dockerlazy='sudo systemctl disable docker.service && sudo systemctl enable docker.socket && sudo systemctl stop docker.service'
 alias doh='docker history'
 alias dotnetfmt='dotnet csharpier .'
 alias dotnethttps='dotnet dev-certs https --clean && dotnet dev-certs https --trust'
