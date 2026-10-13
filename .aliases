@@ -293,6 +293,7 @@ alias iomp='bun install -g @oh-my-pi/pi-coding-agent'
 alias iomzsh='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 alias iopencode='curl -fsSL https://opencode.ai/v2/install | bash'
 alias ipandoc='brew install pandoc'
+alias ipaseo='bun install -g @getpaseo/cli@latest'
 alias ipi='curl -fsSL https://pi.dev/install.sh | sh'
 alias ipipx='brew install pipx'
 alias iposthogcli='bun i -g @posthog/cli@latest'
@@ -766,6 +767,7 @@ commandcode Command Code           -                       Coding agent that lea
 kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)
 hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
 dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
+paseo      Paseo                   -                       Paseo CLI to control AI coding agents from the terminal
 reactdoctor React Doctor           -                       AI-powered React code diagnostics (bunx react-doctor@latest)
 
 Install / Update Aliases:
@@ -795,6 +797,7 @@ Install / Update Aliases:
   ikilo        Install Kilo CLI
   ihermes      Install Hermes CLI
   iherdr       Install Herdr CLI
+  ipaseo      Install / update Paseo CLI
 
 Useful Prompts:
   Codebase Refactor:
