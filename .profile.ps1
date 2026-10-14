@@ -258,13 +258,111 @@ function grm {
     $deleted = git ls-files --deleted
     if ($deleted) { $deleted | ForEach-Object { git rm $_ } }
 }
-function gitclean {
+# Remove worktrees of the current repo. MODE 'safe' only drops worktrees whose
+# HEAD is already merged into the default branch and that have no local changes,
+# so no work of a still-active tree is lost. MODE 'force' drops every worktree
+# except the one we are in.
+function _GitcleanWorktrees([string]$Mode, [string]$Default) {
+    $top = git rev-parse --show-toplevel 2>$null
+    $entries = @()
+    $entry = $null
+    foreach ($line in (git worktree list --porcelain)) {
+        if ($line -like 'worktree *') {
+            if ($entry) { $entries += $entry }
+            $entry = [pscustomobject]@{ Path = $line.Substring(9); Head = $null; Branch = $null }
+        } elseif ($line -like 'HEAD *') { $entry.Head = $line.Substring(5) }
+        elseif ($line -like 'branch refs/heads/*') { $entry.Branch = $line.Substring(18) }
+        elseif ($line -eq 'detached') { $entry.Branch = $null }
+    }
+    if ($entry) { $entries += $entry }
+
+    foreach ($e in $entries) {
+        if (-not $e.Path -or ($e.Path -eq $top)) { continue }
+        $label = if ($e.Branch) { " ($($e.Branch))" } else { "" }
+        if ($Mode -eq 'force') {
+            Write-Host "gitclean: removing worktree '$($e.Path)'$label"
+            git worktree remove --force $e.Path
+            if ($LASTEXITCODE -ne 0) { Write-Host "gitclean: could not remove '$($e.Path)'" }
+        } else {
+            if (-not $Default) { continue }
+            git merge-base --is-ancestor $e.Head $Default 2>$null
+            if ($LASTEXITCODE -ne 0) { continue }
+            if (git -C $e.Path status --porcelain 2>$null) { continue }
+            Write-Host "gitclean: removing merged worktree '$($e.Path)'$label"
+            git worktree remove $e.Path
+            if ($LASTEXITCODE -ne 0) { Write-Host "gitclean: could not remove '$($e.Path)'" }
+        }
+    }
+    git worktree prune
+}
+
+function _Gitclean([string]$Mode) {
+    # Drop tags that only exist locally (never pushed, or deleted on the remote)
+    $remote = if (git remote | Where-Object { $_ -eq 'origin' }) { 'origin' } else { git remote | Select-Object -First 1 }
+    if ($remote) {
+        $remoteTags = git ls-remote --tags --refs $remote 2>$null
+        if ($LASTEXITCODE -eq 0) {
+            $remoteTags = $remoteTags | ForEach-Object { ($_ -split 'refs/tags/')[-1] }
+            git tag | Where-Object { $remoteTags -notcontains $_ } | ForEach-Object {
+                Write-Host "gitclean: removing local-only tag '$_'"
+                git tag -d $_
+            }
+        }
+    }
+
+    git fetch --prune --prune-tags
+
+    # Everything is compared against the default branch: origin/HEAD, else
+    # origin/main or origin/master, else the local HEAD.
+    $default = $null
+    if ($remote) {
+        $default = git symbolic-ref --quiet --short "refs/remotes/$remote/HEAD" 2>$null
+        if (-not $default) {
+            foreach ($candidate in @("$remote/main", "$remote/master")) {
+                git show-ref --verify --quiet "refs/remotes/$candidate" 2>$null
+                if ($LASTEXITCODE -eq 0) { $default = $candidate; break }
+            }
+        }
+    }
+    if (-not $default) { $default = git symbolic-ref --quiet --short HEAD 2>$null }
+
+    _GitcleanWorktrees $Mode $default
+
+    # Drop local-only branches that carry no work of their own (nothing beyond the
+    # default branch). Branches still checked out in a surviving worktree are kept.
+    if ($remote -and $default) {
+        $current = git symbolic-ref --quiet --short HEAD 2>$null
+        $top = git rev-parse --show-toplevel 2>$null
+        $worktrees = @{}
+        $worktree = $null
+        foreach ($line in (git worktree list --porcelain)) {
+            if ($line -like 'worktree *') { $worktree = $line.Substring(9) }
+            elseif ($line -like 'branch refs/heads/*') { $worktrees[$line.Substring(18)] = $worktree }
+        }
+        foreach ($name in (git for-each-ref --format='%(refname:short)' refs/heads)) {
+            if ($name -eq $current) { continue }
+            git show-ref --verify --quiet "refs/remotes/$remote/$name" 2>$null
+            if ($LASTEXITCODE -eq 0) { continue }
+            if ((git rev-list --count "$default..$name") -ne 0) { continue }
+            $pin = $worktrees[$name]
+            if ($pin -and ($pin -ne $top)) {
+                Write-Host "gitclean: keeping branch '$name' (still checked out in '$pin')"
+                continue
+            }
+            Write-Host "gitclean: removing local-only branch '$name'"
+            git branch -D $name
+        }
+    }
+
     git reflog expire --expire=now --all
     git repack -ad
     git prune
-    git fetch --prune --prune-tags
+
     git clean -ffdx
 }
+
+function gitclean { _Gitclean 'safe' }
+function gitcleanf { _Gitclean 'force' }
 function gitnewfresh { git checkout --orphan @args }
 function gitrmtag { git push -d origin @args }
 function gitmessage { (Invoke-RestMethod "https://whatthecommit.com/index.txt").Trim() }

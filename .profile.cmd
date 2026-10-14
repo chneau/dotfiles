@@ -74,7 +74,10 @@ doskey gstl=git stash list $*
 doskey gstp=git stash pop $*
 doskey grba=git rebase --abort $*
 doskey grbc=git rebase --continue $*
-doskey gitclean=git reflog expire --expire=now --all ^& git repack -ad ^& git prune ^& git fetch --prune --prune-tags ^& git clean -ffdx
+:: Delegate to the PowerShell implementation (.profile.ps1) so cmd gets the same
+:: local-only tag pruning and worktree cleanup logic in one place.
+doskey gitclean=powershell -NoLogo -Command gitclean $*
+doskey gitcleanf=powershell -NoLogo -Command gitcleanf $*
 doskey gitnewfresh=git checkout --orphan $*
 doskey gitrmtag=git push -d origin $*
 

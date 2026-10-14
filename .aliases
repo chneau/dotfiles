@@ -159,8 +159,9 @@ alias genpwd='PASSWORD=$(base64 < /dev/urandom | head -c32); echo "$PASSWORD"; e
 alias genuuid="uv run python -c 'import uuid; print(uuid.uuid4())'"
 alias gg='git pull -f; git reset --hard origin/$(git show-ref --verify --quiet refs/remotes/origin/main && echo main || echo master)'
 alias gigit='git clone --depth=1'
-alias gitclean='git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags; GIT_ASK_YESNO=false git clean -ffdx'
-alias gitcleanr='f(){ find . -maxdepth $(( ${1:-1} + 1 )) -name .git -prune -execdir sh -c "echo \"=== Cleaning \$PWD ===\"; git reflog expire --expire=now --all; git repack -ad; git prune; git fetch --prune --prune-tags; GIT_ASK_YESNO=false git clean -ffdx" \; ; unset -f f; }; f'
+alias gitclean='gitclean'
+alias gitcleanf='gitcleanf'
+alias gitcleanr='gitcleanr'
 alias gitget='gitget'
 alias gitgetc='f(){ gitget "https://github.com/chneau/$1"; }; f'
 alias gitmessage='curl -s https://whatthecommit.com/index.txt'
@@ -911,4 +912,103 @@ Media, Sharing & Remote Services:
   topb       0x0.st pastebin
   weather    wttr.in weather service
 EOF
+}
+
+# Remove worktrees of the current repo. MODE "safe" only drops worktrees whose
+# HEAD is already merged into $2 (the default branch) and that have no local
+# changes, so no work of a still-active tree is lost. MODE "force" drops every
+# worktree except the one we are in.
+function _gitclean_worktrees() {
+    local mode=$1 default=$2 top wt head branch
+    top=$(git rev-parse --show-toplevel 2>/dev/null)
+    git worktree list --porcelain | awk -v OFS='\t' '
+        /^worktree /{p=substr($0,10)}
+        /^HEAD /{h=substr($0,6)}
+        /^branch /{b=substr($0,8); sub(/^refs\/heads\//,"",b)}
+        /^detached/{b=""}
+        /^$/{if(p!="")print p,h,b; p="";h="";b=""}
+        END{if(p!="")print p,h,b}
+    ' | while IFS=$'\t' read -r wt head branch; do
+        [ -n "$wt" ] && [ "$wt" != "$top" ] || continue
+        if [ "$mode" = force ]; then
+            echo "gitclean: removing worktree '$wt'${branch:+ ($branch)}"
+            git worktree remove --force "$wt" || echo "gitclean: could not remove '$wt'"
+        else
+            [ -n "$default" ] || continue
+            git merge-base --is-ancestor "$head" "$default" 2>/dev/null || continue
+            [ -z "$(git -C "$wt" status --porcelain 2>/dev/null)" ] || continue
+            echo "gitclean: removing merged worktree '$wt'${branch:+ ($branch)}"
+            git worktree remove "$wt" || echo "gitclean: could not remove '$wt'"
+        fi
+    done
+    git worktree prune
+}
+
+function _gitclean() {
+    local mode=$1 remote default remote_tags current top name wt c
+
+    remote=$(git remote | awk '/^origin$/{o=1} NR==1{f=$0} END{if(o)print "origin"; else print f}')
+
+    # Drop tags that only exist locally (never pushed, or deleted on the remote)
+    if [ -n "$remote" ] && remote_tags=$(git ls-remote --tags --refs "$remote" 2>/dev/null); then
+        comm -23 <(git tag | sort) <(printf '%s\n' "$remote_tags" | sed 's#.*refs/tags/##' | sort -u) |
+            while IFS= read -r tag; do
+                echo "gitclean: removing local-only tag '$tag'"
+                git tag -d "$tag"
+            done
+    fi
+
+    git fetch --prune --prune-tags
+
+    # Everything is compared against the default branch: origin/HEAD, else
+    # origin/main or origin/master, else the local HEAD.
+    default=
+    if [ -n "$remote" ]; then
+        default=$(git symbolic-ref --quiet --short "refs/remotes/$remote/HEAD" 2>/dev/null)
+        if [ -z "$default" ]; then
+            for c in "$remote/main" "$remote/master"; do
+                if git show-ref --verify --quiet "refs/remotes/$c"; then default=$c; break; fi
+            done
+        fi
+    fi
+    [ -n "$default" ] || default=$(git symbolic-ref --quiet --short HEAD 2>/dev/null)
+
+    _gitclean_worktrees "$mode" "$default"
+
+    # Drop local-only branches that carry no work of their own (nothing beyond the
+    # default branch). Branches still checked out in a surviving worktree are kept.
+    if [ -n "$remote" ] && [ -n "$default" ]; then
+        current=$(git symbolic-ref --quiet --short HEAD)
+        top=$(git rev-parse --show-toplevel 2>/dev/null)
+        git for-each-ref --format='%(refname:short)' refs/heads |
+            while IFS= read -r name; do
+                [ "$name" = "$current" ] && continue
+                git show-ref --verify --quiet "refs/remotes/$remote/$name" && continue
+                [ "$(git rev-list --count "$default..$name")" = 0 ] || continue
+                wt=$(git worktree list --porcelain | awk -v b="refs/heads/$name" '/^worktree /{w=substr($0,10)} /^branch /{if($2==b)print w}')
+                if [ -n "$wt" ] && [ "$wt" != "$top" ]; then
+                    echo "gitclean: keeping branch '$name' (still checked out in '$wt')"
+                    continue
+                fi
+                echo "gitclean: removing local-only branch '$name'"
+                git branch -D "$name"
+            done
+    fi
+
+    git reflog expire --expire=now --all
+    git repack -ad
+    git prune
+
+    GIT_ASK_YESNO=false git clean -ffdx
+}
+
+function gitclean() { _gitclean safe; }
+function gitcleanf() { _gitclean force; }
+
+function gitcleanr() {
+    find . -maxdepth $(( ${1:-1} + 1 )) -name .git -prune -execdir pwd \; |
+        while IFS= read -r dir; do
+            echo "=== Cleaning $dir ==="
+            (cd "$dir" && gitclean)
+        done
 }
