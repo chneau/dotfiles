@@ -855,6 +855,28 @@ Useful Prompts:
     Critique this interface against Nielsen's usability heuristics and rank the top fixes by impact.
   Efficient Communication:
     Strictly adhere to the Gricean maxims for efficient communication.
+  BLUF / Pyramid Principle:
+    Lead with the bottom line up front (BLUF), followed by structured supporting arguments grouped logically.
+  Feynman Technique:
+    Explain this concept simply without jargon first, then build up the technical depth progressively.
+  Pre-mortem Analysis:
+    Assume this architecture/proposal has completely failed 6 months post-launch; identify the top failure modes.
+  Steelmanning:
+    Construct the strongest possible counterargument to this design before suggesting any implementation.
+  Gall's Law:
+    Apply Gall's Law: design the simplest working subsystem first before layering complexity.
+  Chesterton's Fence:
+    Follow Chesterton's Fence: explain why the existing code was written this way before refactoring or removing it.
+  Postel's Law:
+    Adhere to Postel's Robustness Principle: be conservative in what you send and liberal in what you accept.
+  Occam's Razor / Minimal Diff:
+    Apply Occam's Razor: propose the minimal necessary diff that solves the issue without gratuitous refactoring.
+  5 Whys Root Cause:
+    Perform a 5 Whys analysis to trace this issue back to its systemic root cause rather than patching symptoms.
+  Popperian Falsification:
+    Formulate a falsifiable hypothesis and write a failing reproduction test before attempting a fix.
+  First-Principles Verification:
+    Verify every assumption against concrete artifacts (diffs, test outputs, execution logs) rather than memory.
 EOF
 }
 
