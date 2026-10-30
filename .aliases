@@ -853,6 +853,8 @@ Useful Prompts:
     Identify where this interface overwhelms users and what should be hidden until it is needed.
   UX Heuristic Review:
     Critique this interface against Nielsen's usability heuristics and rank the top fixes by impact.
+  Efficient Communication:
+    Strictly adhere to the Gricean maxims for efficient communication.
 EOF
 }
 
