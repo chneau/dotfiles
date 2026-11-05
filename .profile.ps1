@@ -10,7 +10,7 @@
 $OutputEncoding = [System.Text.Encoding]::UTF8
 
 # Remove built-in aliases that conflict with standard CLI utilities
-$conflicts = @('curl', 'wget', 'diff', 'cp', 'rm', 'ls', 'sc', 'mv', 'cat', 'gc', 'gp', 'gl', 'ga', 'measure')
+$conflicts = @('curl', 'wget', 'diff', 'cp', 'rm', 'ls', 'sc', 'mv', 'cat', 'gc', 'gp', 'gl', 'ga', 'h', 'measure')
 foreach ($c in $conflicts) {
     if (Get-Alias -Name $c -ErrorAction SilentlyContinue) {
         Remove-Item "Alias:$c" -Force -ErrorAction SilentlyContinue
@@ -192,6 +192,213 @@ function tobase64 {
     if ($inputStr) {
         [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($inputStr))
     }
+}
+
+# --- Aliases mirrored from .aliases: navigation-free helpers -------------------
+function ai-help { aihelp @args }
+function tmux-help { tmuxhelp @args }
+function upload-help { uploadhelp @args }
+function cli-help { clihelp @args }
+
+function bench { hyperfine @args }
+function hf { hyperfine @args }
+function cc { concurrently --prefix-colors=auto @args }
+function catfull { bat --style=full @args }
+function fk { fkill --force @args }
+function oc { code -a . @args }
+
+# Run a single command with BUN_CONFIG_VERBOSE_FETCH=curl, then restore it.
+function bverbosefetch {
+    if (-not $args) { Write-Error "Usage: bverbosefetch <command> [args...]"; return }
+    $previous = $env:BUN_CONFIG_VERBOSE_FETCH
+    $env:BUN_CONFIG_VERBOSE_FETCH = 'curl'
+    try {
+        $command = $args[0]
+        $rest = @()
+        if ($args.Count -gt 1) { $rest = @($args[1..($args.Count - 1)]) }
+        & $command @rest
+    } finally {
+        $env:BUN_CONFIG_VERBOSE_FETCH = $previous
+    }
+}
+
+function cpuinfo {
+    Get-CimInstance Win32_Processor |
+        Select-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed
+}
+
+function free {
+    $os = Get-CimInstance Win32_OperatingSystem
+    [pscustomobject]@{
+        TotalMB = [math]::Round($os.TotalVisibleMemorySize / 1024)
+        UsedMB  = [math]::Round(($os.TotalVisibleMemorySize - $os.FreePhysicalMemory) / 1024)
+        FreeMB  = [math]::Round($os.FreePhysicalMemory / 1024)
+    }
+}
+function meminfo { free }
+function ff { free }
+
+function pscpu { Get-Process | Sort-Object CPU -Descending }
+function pscpu10 { Get-Process | Sort-Object CPU -Descending | Select-Object -First 10 }
+function psmem { Get-Process | Sort-Object WorkingSet64 -Descending }
+function psmem10 { Get-Process | Sort-Object WorkingSet64 -Descending | Select-Object -First 10 }
+function psg([string]$pattern) {
+    if (-not $pattern) { Write-Error "Usage: psg <pattern>"; return }
+    Get-Process | Where-Object { $_.Name -match $pattern -or $_.Path -match $pattern }
+}
+
+function df {
+    Get-PSDrive -PSProvider FileSystem | ForEach-Object {
+        $total = $_.Used + $_.Free
+        [pscustomobject]@{
+            Name    = $_.Name
+            TotalGB = if ($total) { [math]::Round($total / 1GB, 1) } else { 0 }
+            UsedGB  = if ($_.Used) { [math]::Round($_.Used / 1GB, 1) } else { 0 }
+            FreeGB  = if ($_.Free) { [math]::Round($_.Free / 1GB, 1) } else { 0 }
+            Root    = $_.Root
+        }
+    }
+}
+
+function du {
+    Get-ChildItem -Force @args | ForEach-Object {
+        $size = if ($_.PSIsContainer) {
+            (Get-ChildItem -Recurse -Force -File $_.FullName -ErrorAction SilentlyContinue |
+                Measure-Object Length -Sum).Sum
+        } else { $_.Length }
+        [pscustomobject]@{ Size = [long]$size; Name = $_.Name }
+    } | Sort-Object Size -Descending |
+        Select-Object @{ n = 'MB'; e = { [math]::Round($_.Size / 1MB, 2) } }, Size, Name
+}
+function diskspace { du @args }
+function e { Get-ChildItem -Force | Sort-Object Length -Descending | Select-Object -First 10 }
+
+function u {
+    Get-ChildItem -Force | Sort-Object LastWriteTime |
+        Format-Table Mode, LastWriteTime, Length, Name -AutoSize
+}
+function lo {
+    Get-ChildItem -Force | Format-Table Mode, LastWriteTime, Length, Name -AutoSize
+}
+function lld {
+    Get-ChildItem -Force |
+        Sort-Object @{ e = { $_.PSIsContainer }; Descending = $true },
+                    @{ e = { $_.LastWriteTime }; Descending = $true } |
+        Format-Table Mode, LastWriteTime, Length, Name -AutoSize
+}
+
+# Align whitespace-separated columns, like `column -t`.
+function ct {
+    $rows = @()
+    foreach ($line in @($input)) {
+        foreach ($part in ($line -split "`r?`n")) {
+            if (-not $part -or $part -match '^\s*$') { continue }
+            $rows += , @($part.Trim() -split '\s+')
+        }
+    }
+    if ($rows.Count -eq 0) { return }
+    $widths = @{}
+    foreach ($r in $rows) {
+        for ($i = 0; $i -lt $r.Count; $i++) {
+            if ($r[$i].Length -gt $widths[$i]) { $widths[$i] = $r[$i].Length }
+        }
+    }
+    foreach ($r in $rows) {
+        $cells = for ($i = 0; $i -lt $r.Count; $i++) { $r[$i].PadRight($widths[$i]) }
+        ($cells -join ' ').TrimEnd()
+    }
+}
+
+function hs { Get-History | Select-String @args }
+
+function findfile([string]$pattern) {
+    if (-not $pattern) { Write-Error "Usage: findfile <pattern>"; return }
+    Get-ChildItem -Recurse -File -Force -Filter $pattern
+}
+
+function stripcolors {
+    $esc = [char]27
+    foreach ($line in @($input)) { $line -replace "$esc\[[0-9;]{1,6}[mGK]", '' }
+}
+
+# Load .env into the current session (bash: set -o allexport; source .env).
+function ee {
+    if (-not (Test-Path .env)) { Write-Error "ee: .env not found"; return }
+    foreach ($line in Get-Content .env) {
+        if ($line -match '^\s*#' -or $line -notmatch '=') { continue }
+        $name, $value = $line -split '=', 2
+        Set-Item -Path "Env:$($name.Trim())" -Value $value.Trim()
+    }
+}
+function exportenv { ee @args }
+
+function genpwd {
+    $rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+    $bytes = New-Object byte[] 32
+    $rng.GetBytes($bytes)
+    $password = [Convert]::ToBase64String($bytes)
+    $password
+    $hash = [System.Security.Cryptography.SHA256]::Create().ComputeHash(
+        [System.Text.Encoding]::UTF8.GetBytes($password))
+    $hex = -join ($hash | ForEach-Object { $_.ToString('x2') })
+    $hex
+    $hex.Substring(0, 16)
+    $alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    -join (1..16 | ForEach-Object { $alpha[(Get-Random -Maximum $alpha.Length)] })
+}
+
+function extract {
+    if (-not $args) {
+        Write-Host "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+        return
+    }
+    foreach ($n in $args) {
+        if (-not (Test-Path -LiteralPath $n)) { Write-Host "'$n' - file does not exist"; return }
+        switch -Regex ($n) {
+            '\.(tar\.bz2|tar\.gz|tar\.xz|tbz2|tgz|txz|tar)$' { tar xvf $n; break }
+            '\.(zip|arj|cab|chm|deb|dmg|iso|lzh|msi|rpm|udf|wim|xar|7z)$' { 7z x $n; break }
+            '\.exe$' { cabextract $n; break }
+            '\.xz$' { unxz $n; break }
+            '\.gz$' { gunzip $n; break }
+            '\.bz2$' { bunzip2 $n; break }
+            '\.rar$' { unrar x -ad $n; break }
+            '\.lzma$' { unlzma $n; break }
+            default { Write-Host "extract: '$n' - unknown archive method"; return }
+        }
+    }
+}
+
+# Upload a file, directory (zipped) or piped stdin to litterbox (72h).
+# `... | transfer name.txt` uploads the pipeline content under name.txt.
+function transfer {
+    $file = $args[0]
+    $file_name = if ($file) { Split-Path $file -Leaf } else { 'upload.txt' }
+
+    if ($MyInvocation.ExpectingInput) {
+        $tmp = Join-Path ([System.IO.Path]::GetTempPath()) $file_name
+        $stream = [System.IO.File]::Create($tmp)
+        $writer = New-Object System.IO.StreamWriter($stream, (New-Object System.Text.UTF8Encoding($false)))
+        foreach ($line in $input) { $writer.WriteLine($line) }
+        $writer.Dispose()
+        $stream.Dispose()
+        $file = $tmp
+    } elseif (-not $file) {
+        Write-Error "No arguments specified.`nUsage:`n transfer <file|directory>`n ... | transfer <file_name>"
+        return
+    } elseif (-not (Test-Path -LiteralPath $file)) {
+        Write-Error "${file}: No such file or directory"
+        return
+    } elseif (Test-Path -LiteralPath $file -PathType Container) {
+        $archive = Join-Path ([System.IO.Path]::GetTempPath()) "$file_name.zip"
+        Compress-Archive -Path (Join-Path $file '*') -DestinationPath $archive -Force
+        $file = $archive
+        $file_name = "$file_name.zip"
+    }
+
+    curl.exe --progress-bar -F "reqtype=fileupload" -F "time=72h" `
+        -F "fileToUpload=@$file;filename=$file_name" `
+        "https://litterbox.catbox.moe/resources/internals/api.php"
+    Write-Host
 }
 
 # ==============================================================================
@@ -403,6 +610,34 @@ function gitgetc($repo) {
     gitget "https://github.com/chneau/$repo"
 }
 
+function goget([string]$pkg) {
+    if (-not $pkg) { Write-Error "Usage: goget <pkg>"; return }
+    go get -u -v ($pkg -replace '^.*://', '')
+}
+
+function gols {
+    $deps = go list -f '{{join .Deps "\n"}}'
+    go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' @deps
+}
+
+function gundopush { git push -f origin HEAD^:master @args }
+
+function gpgexport { gpg --armor --export @args }
+function gpggit { git config --global user.signingkey @args }
+function gpglist { gpg --list-secret-keys --keyid-format LONG }
+function gpgnew { gpg --default-new-key-algo rsa4096 --gen-key }
+
+# Run gitclean in every nested repository (up to $Depth levels below the cwd).
+function gitcleanr([int]$Depth = 1) {
+    Get-ChildItem -Directory -Force -Recurse -Depth $Depth |
+        Where-Object { Test-Path (Join-Path $_.FullName '.git') } |
+        ForEach-Object {
+            Write-Host "=== Cleaning $($_.FullName) ==="
+            Push-Location $_.FullName
+            try { gitclean } finally { Pop-Location }
+        }
+}
+
 # ==============================================================================
 # 6. Docker & Kubernetes
 # ==============================================================================
@@ -434,18 +669,150 @@ function dprunea {
     docker system prune --force --volumes --all
     docker volume prune --force --all
 }
-function dps { docker ps @args }
 function drm {
     $dangling = docker images -q --filter "dangling=true"
     if ($dangling) { docker rmi $dangling }
 }
-function ds { docker stats @args }
 function dsdf { docker system df @args }
 function dsi { docker service inspect --pretty @args }
 function dsl { docker service logs -f @args }
 function dsls { docker service ls --tail 40 @args }
 function dt { docker run --rm -it @args }
 function dtest { docker run --rm -it --name test --hostname test @args }
+
+# Docker needs forward slashes in volume paths; Windows paths use backslashes.
+function _DockerPath([string]$Path = $PWD.Path) { $Path -replace '\\', '/' }
+
+function dcps {
+    $out = docker compose ps @args
+    if (Get-Command docker-color-output -ErrorAction SilentlyContinue) { $out | docker-color-output } else { $out }
+}
+function dps {
+    $out = docker ps @args
+    if (Get-Command docker-color-output -ErrorAction SilentlyContinue) { $out | docker-color-output } else { $out }
+}
+function ds {
+    $out = docker stats @args
+    if (Get-Command docker-color-output -ErrorAction SilentlyContinue) { $out | docker-color-output } else { $out }
+}
+
+function dc9router {
+    $json = @"
+{"services":{"9router":{"image":"decolua/9router:latest","ports":["20128:20128"],"volumes":["$(_DockerPath $HOME)/.9router:/app/data"],"environment":{"DATA_DIR":"/app/data","HEADROOM_URL":"http://headroom:8787"},"depends_on":["headroom"]},"headroom":{"image":"ghcr.io/chopratejas/headroom:latest","ports":["8787:8787"]}}}
+"@
+    $composeFile = Join-Path ([System.IO.Path]::GetTempPath()) 'dotfiles-9router.compose.json'
+    [System.IO.File]::WriteAllText($composeFile, $json, (New-Object System.Text.UTF8Encoding($false)))
+    docker compose -f $composeFile up -d
+}
+function dc9routerup {
+    docker pull decolua/9router:latest
+    docker pull ghcr.io/chopratejas/headroom:latest
+    dc9router
+}
+
+function dcb {
+    Write-Host "http://localhost:8978/"
+    docker run --name cloudbeaver --rm -it -p 8978:8978 -v "$(_DockerPath $HOME)/.cache/cloudbeaver:/opt/cloudbeaver/workspace" dbeaver/cloudbeaver:latest
+}
+function dcode {
+    docker run --pull=always -p 127.0.0.1:8443:8443 -v "$(_DockerPath):/root/project" codercom/code-server code-server --allow-http --no-auth
+}
+function dfirefox {
+    Write-Host "https://c:c@$(curl.exe -s4 https://ifconfig.co):3001"
+    docker run --pull=always --rm --name=ff --net=host --security-opt=seccomp=unconfined --shm-size=4gb --env=TZ=Europe/London --env=PUID=1000 --env=PGID=1000 --env=CUSTOM_USER=c --env=PASSWORD=c -v="$(_DockerPath $HOME)/docker/firefox:/config" lscr.io/linuxserver/firefox
+}
+function dff { dfirefox }
+function djellyfin {
+    Write-Host "http://$(curl.exe -s4 https://ifconfig.co):8096"
+    New-Item -ItemType Directory -Force -Path "$HOME/docker/jellyfin/config", "$HOME/docker/jellyfin/cache", "$HOME/docker/jellyfin/media" | Out-Null
+    docker run --pull always --rm -it --name jellyfin --user 1000:1000 --net host --volume "$(_DockerPath $HOME)/docker/jellyfin/config:/config" --volume "$(_DockerPath $HOME)/docker/jellyfin/cache:/cache" --volume "$(_DockerPath $HOME)/docker/jellyfin/media:/media" jellyfin/jellyfin
+}
+function dk {
+    docker run --pull=always --rm -it --name=kaggle -p=8080:8080 -v="$(_DockerPath):$(_DockerPath)" -w="$(_DockerPath)" kaggle/python jupyter notebook --no-browser --notebook-dir="$(_DockerPath)" --allow-root --port=8080 --ip=*
+}
+function dm {
+    docker run --pull=always --net=host --rm -itv "$(_DockerPath):$(_DockerPath)" -w "$(_DockerPath)" -u 1000 mongo
+}
+function dn {
+    docker run --pull=always --rm -itv "$(_DockerPath):$(_DockerPath)" -w "$(_DockerPath)" -u 1000 node:alpine
+}
+function dnd {
+    docker run --rm -it --pull=always --name=netdata --pid=host --network=host -v netdataconfig:/etc/netdata -v netdatalib:/var/lib/netdata -v netdatacache:/var/cache/netdata -v /:/host/root:ro,rslave -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /etc/localtime:/etc/localtime:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/log:/host/var/log:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -v /run/dbus:/run/dbus:ro --cap-add SYS_PTRACE --cap-add SYS_ADMIN --security-opt apparmor=unconfined --no-healthcheck netdata/netdata
+}
+function dndd {
+    docker run --detach --pull=always --name=netdata --pid=host --network=host -v netdataconfig:/etc/netdata -v netdatalib:/var/lib/netdata -v netdatacache:/var/cache/netdata -v /:/host/root:ro,rslave -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /etc/localtime:/etc/localtime:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/log:/host/var/log:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -v /run/dbus:/run/dbus:ro --restart always --cap-add SYS_PTRACE --cap-add SYS_ADMIN --security-opt apparmor=unconfined --no-healthcheck netdata/netdata
+}
+function dnekoff {
+    Write-Host "http://$(curl.exe -s4 https://ifconfig.co):8080"
+    docker run --pull=always --rm -it --name=neko --shm-size=2gb --net=host --env=NEKO_DESKTOP_SCREEN=1920x1080@30 --env=NEKO_MEMBER_MULTIUSER_USER_PASSWORD=c --env=NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD=cc --env=NEKO_WEBRTC_EPR=52000-52100 --env=NEKO_WEBRTC_ICELITE=1 ghcr.io/m1k1o/neko/firefox
+}
+function doh { docker history @args }
+function dockerup {
+    docker run --pull=always --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --remove-volumes --debug --run-once
+}
+function dup { dockerup }
+function dwatch {
+    docker run --pull=always -d --restart=always --name=watchtower -v=/var/run/docker.sock:/var/run/docker.sock:ro containrrr/watchtower --cleanup --remove-volumes
+}
+function dpihole {
+    docker run --pull=always -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ="Europe/London" -v "$(_DockerPath)/pihole/etc/pihole/:/etc/pihole/" -v "$(_DockerPath)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST="pihole" -e PROXY_LOCATION="pihole" -e ServerIP="127.0.0.1" pihole/pihole:latest
+}
+function dsd { docker stack down @args }
+function dsu { docker stack up -c @args }
+function dsave($image) {
+    if (-not $image) { Write-Error "Usage: dsave <image>"; return }
+    docker save $image -o "$image.tar"
+    if ($LASTEXITCODE -ne 0) { return }
+    gzip -f "$image.tar"
+    if ($LASTEXITCODE -eq 0) { Write-Host "$image.tgz created" }
+}
+function dlog {
+    $ids = @(docker ps -q)
+    if (-not $ids) { return }
+    if ($PSVersionTable.PSVersion.Major -ge 7) {
+        $ids | ForEach-Object -Parallel { docker logs --since 30s -f $_ }
+    } else {
+        $ids | ForEach-Object { docker logs --since 30s -f $_ }
+    }
+}
+function dtf {
+    docker run --pull=always --rm -it --name=kaggle -p=8080:8080 -v="$(_DockerPath):$(_DockerPath)" -w="$(_DockerPath)" tensorflow/tensorflow jupyter notebook --no-browser --notebook-dir="$(_DockerPath)" --allow-root --port=8080 --ip=*
+}
+
+function iproxy {
+    $alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    $login = -join (1..32 | ForEach-Object { $alpha[(Get-Random -Maximum $alpha.Length)] })
+    $password = -join (1..32 | ForEach-Object { $alpha[(Get-Random -Maximum $alpha.Length)] })
+    $env:PROXY_LOGIN = $login
+    $env:PROXY_PASSWORD = $password
+    $ip = (curl.exe -s4 https://ifconfig.co).Trim()
+    Write-Host "Login: $login"
+    Write-Host "Password: $password"
+    Write-Host "HTTPS_PROXY=`"http://${login}:${password}@${ip}:3128/`""
+    docker rm -f proxy 2>$null | Out-Null
+    docker run --pull=always --rm -d -e PROXY_LOGIN -e PROXY_PASSWORD --name=proxy --net=host ghcr.io/tarampampam/3proxy:latest
+}
+
+# List all tags for a Docker image on a remote registry.
+function dockertags([string]$image, [string]$filter) {
+    if (-not $image) {
+        @'
+dockertags  --  list all tags for a Docker image on a remote registry.
+
+EXAMPLE:
+    - list all tags for ubuntu:
+       dockertags ubuntu
+
+    - list all php tags containing apache:
+       dockertags php apache
+'@
+        return
+    }
+    if ($image -notmatch '/') { $image = "library/$image" }
+    $tags = (Invoke-RestMethod "https://hub.docker.com/v2/repositories/$image/tags?page_size=100").results.name
+    if ($filter) { $tags = $tags | Where-Object { $_ -match $filter } }
+    $tags
+}
 
 # Kubernetes
 function k { kubectl @args }
@@ -479,6 +846,58 @@ function ktn { kubectl top nodes @args }
 function ktp { kubectl top pods --sort-by=memory @args }
 function ktpa { kubectl top pods --all-namespaces --sort-by=memory @args }
 function kw { kubectl get po -w @args }
+
+function kctx { kubectx @args }
+function kns { kubens @args }
+function hla { helm list --all-namespaces @args }
+function kd { kubectl diff -f @args }
+function kdk { kubectl diff -k @args }
+function kdebug { kubectl run -i --tty --rm debug --image=alpine --restart=Never -- sh }
+function kcron { Write-Host "kubectl create job --from=cronjob/dump manual-001" }
+function kgapi { kubectl get apiservices @args }
+function knt { kubent @args }
+
+function kdecode($name) {
+    if (-not $name) { Write-Error "Usage: kdecode <secret>"; return }
+    $secret = kubectl get secret $name -o json | ConvertFrom-Json
+    foreach ($prop in $secret.data.PSObject.Properties) {
+        $value = [System.Text.Encoding]::UTF8.GetString(
+            [Convert]::FromBase64String($prop.Value))
+        "{0}: {1}" -f $prop.Name, $value
+    }
+}
+
+function kclean {
+    $replicas = kubectl get rs -o jsonpath="{range .items[?(@.spec.replicas==0)]}{.metadata.name}{' '}{end}"
+    foreach ($name in ($replicas -split '\s+')) {
+        if ($name) { kubectl delete rs $name }
+    }
+    kubectl delete pods --field-selector status.phase=Failed --ignore-not-found
+    kubectl delete pods --field-selector status.phase=Succeeded --ignore-not-found
+}
+
+function klall { kubectl stern --max-log-requests=999 --since=1s @args }
+function klallall { kubectl stern --all-namespaces --max-log-requests=999 --since=1s @args }
+function klall_old { kubectl logs --selector=pod-template-hash --all-containers --ignore-errors --follow --max-log-requests=999 --timestamps --prefix @args }
+
+function kmip { kubectl run debug --stdin --tty --rm --image=alpine --restart=Never -- sh -ci "wget -qO- api.ipify.org && echo" }
+
+function krewig {
+    kubectl krew install ns ctx stern
+    kubectl krew upgrade
+}
+function ks0 {
+    kubectl scale --replicas=0 deployment --all
+    kubectl scale --replicas=0 statefulset --all
+}
+function ks1 {
+    kubectl scale --replicas=1 deployment --all
+    kubectl scale --replicas=1 statefulset --all
+}
+function ktest([string]$image, [Parameter(ValueFromRemainingArguments = $true)]$rest) {
+    if (-not $image) { Write-Error "Usage: ktest <image> [command...]"; return }
+    kubectl run -i --tty --rm debug --image=$image --restart=Never -- @rest
+}
 
 # ==============================================================================
 # 7. Language Tools & Runtimes (Bun, Node, Go, Python/uv, DotNet, Zig, Rust)
@@ -593,6 +1012,51 @@ function zb { zig build @args }
 function zbr { zig build run @args }
 function zr { zig run @args }
 
+# Scaffolding
+function newfarm { bun create farm@latest @args }
+function newrefine { bun create refine-app@latest @args }
+function newrsbuild { bun create rsbuild@latest @args }
+function newstorybook { npx storybook@latest init @args }
+function newvite { bun create vite@latest @args }
+
+# nodemon with an extension filter (bash: nx ext cmd...)
+function nx([string]$ext, [Parameter(ValueFromRemainingArguments = $true)]$cmd) {
+    if (-not $ext -or -not $cmd) { Write-Error "Usage: nx <ext> <command...>"; return }
+    nodemon --signal SIGTERM --ext $ext --exec "$($cmd -join ' ') || false"
+}
+
+# Terraform & Vagrant
+function tf { terraform @args }
+function va { vagrant @args }
+
+function igradle { 'org.gradle.console=plain' | Set-Content "$HOME/.gradle/gradle.properties" }
+
+# Installer shortcuts that run natively on Windows
+function ibombardier { go install github.com/codesenberg/bombardier@latest }
+function idatree { go install github.com/datreeio/datree@latest }
+function igogg { go install github.com/habedi/gogg@latest }
+function igotop { go install github.com/xxxserxxx/gotop/v4@latest }
+function igotty { go install github.com/yudai/gotty@latest }
+function ihey { go install github.com/rakyll/hey@latest }
+function ik3sup { go install github.com/alexellis/k3sup@latest }
+function ik9s { go install github.com/derailed/k9s@latest }
+function ikind { go install sigs.k8s.io/kind@latest }
+function ikubectx { go install github.com/ahmetb/kubectx/cmd/kubectx@latest }
+function ikubens { go install github.com/ahmetb/kubectx/cmd/kubens@latest }
+function ilazygit { go install github.com/jesseduffield/lazygit@latest }
+function ilux { go install github.com/iawia002/lux@latest }
+function iscc { go install github.com/boyter/scc/v4@latest }
+function iserve { go install github.com/chneau/serve@latest }
+function istern { go install github.com/stern/stern@latest }
+
+function idl { uv tool install --force yt-dlp }
+function ibpytop { uv tool install --force bpytop }
+function icolab { uv tool install --force google-colab-cli }
+function ilivereload { uv tool install --force livereload }
+function ipaseo { bun install -g @getpaseo/cli@latest }
+function iknip { bun install --global knip@latest }
+function ideno { powershell -c "irm https://deno.land/install.ps1 | iex" }
+
 # ==============================================================================
 # 8. AI Coding Assistants & CLI Tools
 # ==============================================================================
@@ -644,6 +1108,87 @@ function irtk { powershell -c "irm https://raw.githubusercontent.com/rtk-ai/rtk/
 function ix { bun install --force --global @chneau/x }
 function lg { lazygit @args }
 
+function tmuxhelp {
+    @'
+tmux Cheat Sheet & Basics
+-------------------------
+Default prefix key: Ctrl+b  (press Ctrl+b, release, then press key)
+
+Sessions
+  tmux                        Start a new session
+  tmux new -s <name>          Start a new session named <name>
+  tmux ls                     List existing sessions
+  tmux a                      Attach to the last session
+  tmux a -t <name>            Attach to session named <name>
+  tmux kill-session -t <name> Kill a session by name
+  tmux kill-server            Kill all tmux sessions and server
+  Ctrl+b d                    Detach from current session
+  Ctrl+b s                    Interactive session selector / list
+  Ctrl+b $                    Rename current session
+
+Windows (Tabs)
+  Ctrl+b c                    Create a new window
+  Ctrl+b ,                    Rename current window
+  Ctrl+b w                    Interactive window / session list
+  Ctrl+b n                    Switch to next window
+  Ctrl+b p                    Switch to previous window
+  Ctrl+b <0-9>                Switch to window by index
+  Ctrl+b &                    Close current window
+
+Panes (Splits)
+  Ctrl+b %                    Split pane vertically (left / right)
+  Ctrl+b "                    Split pane horizontally (top / bottom)
+  Ctrl+b <arrows>             Navigate between panes
+  Ctrl+b o                    Cycle through panes
+  Ctrl+b z                    Toggle pane zoom (fullscreen)
+  Ctrl+b x                    Close current pane
+  Ctrl+b { / }                Swap current pane with previous / next
+  Ctrl+b q                    Show pane numbers (press number to jump)
+  Ctrl+b Space                Cycle pane layout arrangements
+
+Scroll & Copy Mode
+  Ctrl+b [                    Enter scroll / copy mode (q to exit)
+  Space / Enter               (In copy mode) Start selection / Copy
+
+Help & Commands
+  Ctrl+b ?                    Show all tmux keybindings
+  Ctrl+b :                    Open tmux command prompt
+  Ctrl+b t                    Display digital clock
+'@
+}
+
+function uploadhelp {
+    @'
+File Upload / Share Commands
+============================
+
+Command        Service            Description
+-------        -------            -----------
+transfer       Catbox/Litterbox   Upload a file, directory (auto-zipped) or piped stdin; 72h expiry
+fio            file.io            Upload a file -> single-use download link
+fio1           file.io            Upload a file -> single-use link that expires after 1 day
+pasteit        paste.rs           Paste a file or piped text -> plain-text share link
+tb             termbin.com        Piped text -> plain-text paste link (~1 week retention)
+topb           0x0.st             Upload piped stdin (cat file | topb) -> short-link
+toqrcode       qrenco.de          Convert piped text into a QR code
+
+Serve / Share (host locally, others download from you):
+  servepy         uv run python -m http.server
+  webshare        uv run python -m http.server
+
+Usage examples:
+  transfer report.pdf
+  transfer ./folder            # zips folder and uploads
+  cat notes.txt | transfer notes.txt
+  fio report.pdf
+  pasteit report.md
+  cat notes.txt | pasteit
+  cat notes.txt | tb
+  cat notes.txt | topb
+  echo "https://my.link" | toqrcode
+'@
+}
+
 function aihelp {
     @"
 AI CLI Tools & Assistants (Windows / PowerShell)
@@ -671,10 +1216,12 @@ omp        Oh My Pi                ompy                    Oh My Pi coding agent
 reactdoctor React Doctor           -                       AI-powered React code diagnostics (bunx react-doctor@latest)
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 freebuff   Codebuff                -                       Free Codebuff coding agent
+paseo      Paseo                   -                       Paseo CLI to control AI coding agents from the terminal
 
 Install / Update Aliases:
   iclaude      Install Claude CLI
   icline       Install Cline CLI
+  icolab       Install Google Colab CLI
   icf          Install Cloudflare cf CLI
   icharlie     Install Charlie Git CLI
   igravitycli  Install Antigravity CLI
@@ -700,6 +1247,7 @@ Install / Update Aliases:
   iccusage     Install ccusage CLI
   iherdr       Install Herdr CLI
   ituios       Install tuios CLI
+  ipaseo       Install / update Paseo CLI
 
 Useful Prompts:
   Codebase Refactor:
@@ -775,6 +1323,10 @@ Developer Platforms:
 
 Media & Utilities:
   yt-dlp     YouTube & video platform downloader
+  transfer   Catbox / Litterbox file sharing
+  pasteit    paste.rs pastebin
+  tb         termbin.com pastebin
+  topb       0x0.st pastebin
   weather    wttr.in weather lookup
   curlt      HTTP request timing inspection
 "@
@@ -787,7 +1339,6 @@ function myip {
     try { (Invoke-RestMethod "https://icanhazip.com").Trim() }
     catch { (Invoke-RestMethod "https://api.ipify.org").Trim() }
 }
-function mip { myip }
 function mh { (Invoke-RestMethod "https://ifconfig.me/host").Trim() }
 function weather($city) {
     $url = if ($city) { "https://wttr.in/$city" } else { "https://wttr.in" }
@@ -814,6 +1365,100 @@ starttransfer:  %{time_starttransfer}s
     }
 }
 
+function mip {
+    if (Get-Command dig.exe -ErrorAction SilentlyContinue) {
+        $out = dig.exe +short txt ch whoami.cloudflare '@1.0.0.1'
+        if ($out) { $out; return }
+    }
+    curl.exe -s4 https://api.ipify.org
+    Write-Host
+}
+function mip2 { curl.exe -s4 https://icanhazip.com }
+
+function h([Parameter(ValueFromRemainingArguments = $true)]$query) {
+    curl.exe -s "https://cht.sh/$($query -join '/')"
+    Write-Host
+}
+
+function ports { netstat -ano @args }
+function openports { nmap -p- portquiz.net | Select-String -Pattern 'open' -CaseSensitive:$false }
+function portinuse([string]$port) {
+    if (-not $port) { Write-Error "Usage: portinuse <port>"; return }
+    Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue |
+        Select-Object LocalAddress, LocalPort, State, OwningProcess,
+            @{ n = 'Process'; e = { (Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue).ProcessName } }
+}
+function portkill([string]$port) {
+    if (-not $port) { Write-Error "Usage: portkill <port>"; return }
+    Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue |
+        Select-Object -ExpandProperty OwningProcess -Unique |
+        ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }
+}
+
+function serveo([string]$port) {
+    if (-not $port) { Write-Error "Usage: serveo <port>"; return }
+    ssh -o "StrictHostKeyChecking no" -R "80:localhost:$port" localhost.run
+}
+
+function issh { ssh-keygen -t rsa -b 2048 @args }
+function sshgenkey {
+    New-Item -ItemType Directory -Force -Path .ssh | Out-Null
+    ssh-keygen -t rsa -f .ssh/id_rsa -q --% -N ""
+}
+function sshkillagents { ssh-add -D }
+
+function traefikauth([string]$user, [string]$pass) {
+    if (-not $user -or -not $pass) { Write-Error "Usage: traefikauth <user> <pass>"; return }
+    (htpasswd -nb $user $pass) -replace '\$', '$$'
+}
+
+# --- Upload / share (bash: fio, pasteit, tb, topb, toqrcode) ------------------
+function fio {
+    if (-not $args) { Write-Error "Usage: fio <file>"; return }
+    curl.exe -F "file=@$($args[0])" https://file.io
+    Write-Host
+}
+function fio1 {
+    if (-not $args) { Write-Error "Usage: fio1 <file>"; return }
+    curl.exe -F "file=@$($args[0])" "https://file.io/?expires=1d"
+    Write-Host
+}
+function pasteit {
+    if ($args) {
+        curl.exe --data-binary "@$($args[0])" https://paste.rs
+    } else {
+        (@($input) -join "`n") | curl.exe --data-binary '@-' https://paste.rs
+    }
+    Write-Host
+}
+function tb {
+    $client = New-Object System.Net.Sockets.TcpClient('termbin.com', 9999)
+    try {
+        $stream = $client.GetStream()
+        $writer = New-Object System.IO.StreamWriter($stream)
+        $writer.Write((@($input) -join "`n") + "`n")
+        $writer.Flush()
+        $reader = New-Object System.IO.StreamReader($stream)
+        $reader.ReadToEnd().Trim()
+    } finally {
+        $client.Close()
+    }
+}
+function topb {
+    (@($input) -join "`n") | curl.exe -F "file=@-" https://0x0.st
+    Write-Host
+}
+function toqrcode {
+    (@($input) -join "`n") | curl.exe "-F-=<-" https://qrenco.de
+    Write-Host
+}
+
+# WSL helpers
+function wsldocker {
+    wsl --user root service docker start
+    wsl
+}
+
 # Fast Windows Activation / Utilities
 function imas { irm https://massgrave.dev/get | iex }
 function idefendnot { irm https://dnot.sh/ | iex }
@@ -822,6 +1467,7 @@ function idefendnot { irm https://dnot.sh/ | iex }
 # 10. Media Utilities (yt-dlp)
 # ==============================================================================
 function yt { yt-dlp @args }
+function dlfast { lux -n 100 -m @args }
 function ymp4 { yt-dlp -S res,ext:mp4:m4a --recode mp4 @args }
 function ymp4s { yt-dlp -S res,ext:mp4:m4a --recode mp4 --embed-subs --sub-lang en --add-metadata --convert-subs srt --embed-thumbnail @args }
 function ymp3 {
@@ -840,6 +1486,7 @@ function updateprofile {
 }
 function updatebashrc { updateprofile }
 function up { updateprofile }
+function upb { updateprofile; refresh }
 function refresh {
     Write-Host "Reloading PowerShell profile..." -ForegroundColor Green
     if (Test-Path $PROFILE) { . $PROFILE }
