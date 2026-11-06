@@ -6,7 +6,7 @@
   - `linux-laptop-optimizations.md`: Ubuntu/Debian laptop hardware tuning, power management, and fixes for Wi-Fi drops & broken browser downloads.
   - `coding-principles.md`: Core software engineering and clean code principles.
   - `solid-principles.md`: SOLID design principles explained simply.
-  - `geforcenow.md`: Latency & optimization guide for GeForce NOW / hotspot tethering.
+  - `geforcenow.md`: GeForce NOW over cellular tethering — measured latency/throughput per path (Wi-Fi hotspot vs USB RNDIS), laptop + OnePlus/OxygenOS settings, GFN client JSON tuning, and verified dead ends.
   - `minimax-deepseek.md`: Guide to configure MiniMax Code with DeepSeek API.
   - `frontend-tech-stack.md`: Frontend and full-stack recommendations.
   - `vite-starter.md`: Vite & React project starter snippets.

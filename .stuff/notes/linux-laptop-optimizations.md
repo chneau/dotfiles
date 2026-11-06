@@ -2,6 +2,9 @@
 
 Comprehensive guide on hardware tuning, power management, memory optimization, and fixes for dropped/broken Wi-Fi and browser downloads on Ubuntu/Debian.
 
+> Windows + Android-tethering equivalent: see [`geforcenow.md`](geforcenow.md)
+> (measured latency per path, laptop/OnePlus settings, GFN client tuning).
+
 ---
 
 ## 1. Fixing Broken Downloads & Wi-Fi Drops
