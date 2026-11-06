@@ -178,7 +178,52 @@ Other phone levers:
   OnePlus' Smart 5G LTE-fallback is disabled **while tethering**, so the link
   won't silently demote to LTE mid-session.
 
-## 5. Verified dead ends (don't retry)
+## 5. Steam Deck OLED
+
+Product name `Galileo`, APU `AMD Custom GPU 0405` (Sephiroth), 1280x800 **90 Hz
+10-bit OLED + HDR**, Wi-Fi 6E. Client is the official flatpak
+`com.nvidia.geforcenow`.
+
+Its config is **not** in the same place as on Windows:
+
+```bash
+~/.var/app/com.nvidia.geforcenow/.local/state/NVIDIA/GeForceNOW/sharedstorage.json
+```
+
+The client self-detects the panel and picks the right profile on first run —
+**1280x800, 90 fps, 10-bit, HDR** — so only the bitrate needs capping:
+
+```bash
+# close the client first (it rewrites the file on exit)
+pkill -x GeForceNOW          # NOT: pkill -f GeForceNOW — that kills your own ssh session
+python3 - <<'EOF'
+import json, shutil
+p="/home/deck/.var/app/com.nvidia.geforcenow/.local/state/NVIDIA/GeForceNOW/sharedstorage.json"
+shutil.copy(p, p+".bak")
+j=json.load(open(p)); c=j["appSettingsConfig"]["customProfile"]
+c["maxBitrate"]=60; c["maxBitrateAuto"]=False
+json.dump(j, open(p,"w"), separators=(",",":"))
+EOF
+```
+
+Notes that cost time to learn:
+- The valid HDR token is **`"HDR"`**, not `"ON"` — the client writes it itself, don't invent values.
+- 10-bit **is** correct here (real 10-bit panel), unlike the laptop where 8-bit is the right call.
+- 90 fps at 1280x800 + 10-bit + HDR needs ~60 Mbps; over the phone hotspot, cap it.
+- Launch headless from ssh (for config work):
+  ```bash
+  env XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus \
+      WAYLAND_DISPLAY=wayland-0 DISPLAY=:0 flatpak run com.nvidia.geforcenow
+  ```
+- Wi-Fi is already fine: Valve ships
+  `/etc/NetworkManager/conf.d/99-valve-wifi-backend.conf` with `wifi.powersave=2`
+  (wpa_supplicant backend), and `iw dev wlan0 get power_save` confirms `off`.
+  HE-MCS 10 @ 80 MHz (~1 Gbit/s tx), −63 dBm. Nothing to tune.
+- Network position is worse than the laptop's: same phone AP, 8 dB weaker RSSI.
+  A USB-C dock with Ethernet removes that hop entirely.
+- Set the Deck's refresh to 90 Hz for the stream (Quick Access → Performance).
+
+## 6. Verified dead ends (don't retry)
 
 | Attempt | Result |
 |---|---|
@@ -190,7 +235,7 @@ Other phone levers:
 | ICMP to `*.cloudmatchbeta.nvidiagrid.net` | Blocked — use TCP 443 connect timing instead |
 | 3G-era "start a call to lower latency" | Obsolete: that pinned UMTS DCH. LTE/NR RRC is already held by the UDP stream; a VoLTE call now competes with it |
 
-## 6. Measurement recipes
+## 7. Measurement recipes
 
 **LAN RTT + jitter to the AP** (jitter = mean absolute delta between samples):
 ```powershell
@@ -228,7 +273,7 @@ for ($i = 0; $i -lt 8; $i++) {
 ```
 Historical zone latencies are cached per-network in `networkConfig.networks.*.zonesLatencies`.
 
-## 7. What is actually left
+## 8. What is actually left
 
 | Lever | Gain | Cost |
 |---|---|---|
