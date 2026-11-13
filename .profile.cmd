@@ -368,6 +368,7 @@ doskey cl=claude $*
 doskey cly=claude --dangerously-skip-permissions $*
 doskey iclaude=powershell -c "irm https://claude.ai/install.ps1 | iex"
 doskey agyy=agy --dangerously-skip-permissions $*
+doskey ijust=just --choose $*
 doskey iagy=powershell -c "irm https://antigravity.google/cli/install.ps1 | iex"
 doskey igravitycli=powershell -c "irm https://antigravity.google/cli/install.ps1 | iex"
 doskey agenty=agent --yolo $*

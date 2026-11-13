@@ -1064,6 +1064,7 @@ function cl { claude @args }
 function cly { claude --dangerously-skip-permissions @args }
 function iclaude { powershell -c "irm https://claude.ai/install.ps1 | iex" }
 function agyy { agy --dangerously-skip-permissions @args }
+function ijust { just --choose @args }
 function iagy { powershell -c "irm https://antigravity.google/cli/install.ps1 | iex" }
 function igravitycli { iagy }
 function agenty { agent --yolo @args }
