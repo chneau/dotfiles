@@ -1,0 +1,1573 @@
+# Single source of truth for cross-platform aliases.
+# Run `./generate.py` (or `uv run generate.py`) to update:
+#   - .aliases
+#   - .profile.ps1
+#   - .profile.cmd
+
+[aliases]
+".." = { sh = "cd ..", ps1 = "Set-Location ..", cmd = "cd .." }
+"..." = { sh = "cd ../..", ps1 = "Set-Location ..\\..", cmd = "cd ..\\.." }
+"...." = { sh = "cd ../../..", ps1 = "Set-Location ..\\..\\..", cmd = "cd ..\\..\\.." }
+a = "ansible"
+addselftogroup = { sh = "f(){ sudo adduser $USER $1; exec sudo su -l $USER; unset -f f; }; f" }
+agenty = "agent --yolo"
+agyy = "agy --dangerously-skip-permissions"
+ai-help = { sh = "aihelp", ps1 = "aihelp", cmd = "powershell -NoLogo -Command aihelp" }
+aihelp = { sh = "aihelp", cmd = "powershell -c \"aihelp\"", ps1 = "aihelp" }
+alert = { sh = "notify-send --urgency=low -i \"$([ $? = 0 ] && echo terminal || echo error)\" \"$(history|tail -n1|sed -e 's/^\\s*[0-9]\\+\\s*//;s/[;&|]\\s*alert$//')\"" }
+apti = { sh = "sudo apt install -y" }
+aptr = { sh = "sudo apt remove --auto-remove -y" }
+b = "bun"
+banip = { sh = "sudo iptables -A INPUT -j DROP -s " }
+bbmd = "bun build --metafile-md"
+bbx = "bun --bun x"
+bcp = "bun --cpu-prof-md"
+bcphp = "bun --cpu-prof-md --heap-prof-md"
+bd = "bun run dev"
+bench = "hyperfine"
+benchsh = { sh = "wget -qO- bench.sh | bash" }
+bfmt = "biome check --write --unsafe ."
+bh = "bun --hot --no-clear-screen"
+bhp = "bun --heap-prof-md"
+bi = "bun install --force --no-save"
+bic = "biome check --write --unsafe ."
+bo = "bun outdated"
+br = "bun run"
+brp = "bun run --parallel"
+brs = "bun run --sequential"
+bs = "bun start"
+btop = { sh = "btop || bpytop" }
+bup = { sh = "(NO_INPUT=1 NO_PAGER=1 zi update --all --parallel --quiet --no-pager </dev/null & NONINTERACTIVE=1 brew upgrade --yes --quiet </dev/null & bun upgrade </dev/null & npmig </dev/null & updateall & updatebashrc </dev/null & dotnetig </dev/null & deno upgrade </dev/null & uv self update </dev/null & uv tool upgrade --all </dev/null & x upgrade </dev/null & wait); zinit cclear" }
+bverbosefetch = { sh = "BUN_CONFIG_VERBOSE_FETCH=curl ", cmd = "set \"BUN_CONFIG_VERBOSE_FETCH=curl\" ^& $* ^& set \"BUN_CONFIG_VERBOSE_FETCH=\"", ps1 = "BUN_CONFIG_VERBOSE_FETCH=curl " }
+bw = "bun --watch --no-clear-screen"
+bx = "bun x"
+bxb = "bun --bun x"
+catfull = { sh = "cat --style=full", ps1 = "bat --style=full", cmd = "bat --style=full" }
+cc = "concurrently --prefix-colors=auto"
+cl = "claude"
+cleanos = { sh = "rm -rf bleachbit && HOME= git clone --depth=1 https://github.com/bleachbit/bleachbit && uv run python bleachbit/bleachbit.py --list | grep -v -e system.empty_space -e system.free_disk_space | grep -v system.memory | grep -v deepscan | xargs sudo env PATH=\"$PATH\" uv run python bleachbit/bleachbit.py --clean && rm -rf bleachbit" }
+cli-help = { ps1 = "clihelp", cmd = "powershell -NoLogo -Command clihelp" }
+clihelp = { sh = "clihelp", cmd = "powershell -c \"clihelp\"", ps1 = "clihelp" }
+cly = "claude --dangerously-skip-permissions"
+codexy = "codex --dangerously-bypass-approvals-and-sandbox"
+completeall = "completeall"
+cpuinfo = { sh = "lscpu", cmd = "powershell -NoLogo -Command cpuinfo", ps1 = "lscpu" }
+crictlprune = { sh = "'crictl images -q | xargs -n 1 crictl rmi' # crictl rmi --prune" }
+ct = { sh = "column -t", cmd = "powershell -NoLogo -Command \"$input | ct\"", ps1 = "column -t" }
+curlt = { sh = "curlt", cmd = "powershell -NoLogo -Command curlt", ps1 = "curlt" }
+d = "docker"
+db = "docker build --pull --tag"
+dbpush = "docker build --pull --push --tag"
+dbtest = "docker build --pull --tag test ."
+dc = "docker compose"
+dc9router = { sh = "echo '{\"services\":{\"9router\":{\"image\":\"decolua/9router:latest\",\"ports\":[\"20128:20128\"],\"volumes\":[\"$HOME/.9router:/app/data\"],\"environment\":{\"DATA_DIR\":\"/app/data\",\"HEADROOM_URL\":\"http://headroom:8787\"},\"depends_on\":[\"headroom\"]},\"headroom\":{\"image\":\"ghcr.io/chopratejas/headroom:latest\",\"ports\":[\"8787:8787\"]}}}' | docker compose -f - up -d", cmd = "powershell -NoLogo -Command dc9router" }
+dc9routerup = { sh = "docker pull decolua/9router:latest && docker pull ghcr.io/chopratejas/headroom:latest && dc9router", cmd = "powershell -NoLogo -Command dc9routerup" }
+dcb = { sh = "echo http://localhost:8978/; docker run --name cloudbeaver --rm -it -p 8978:8978 -v ~/.cache/cloudbeaver:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest", cmd = "powershell -NoLogo -Command dcb" }
+dcode = { sh = "docker run --pull=always -p 127.0.0.1:8443:8443 -v \"${PWD}:/root/project\" codercom/code-server code-server --allow-http --no-auth", cmd = "powershell -NoLogo -Command dcode", ps1 = "docker run --pull=always -p 127.0.0.1:8443:8443 -v \"${PWD}:/root/project\" codercom/code-server code-server --allow-http --no-auth" }
+dcps = { sh = "f(){ docker compose ps \"$@\" | docker-color-output; unset -f f; }; f", cmd = "powershell -NoLogo -Command dcps" }
+ddown = { sh = "docker stop $(docker ps -a -q)", cmd = "powershell -NoLogo -Command ddown" }
+de = "docker exec -it"
+df = { sh = "df -Tha --total", cmd = "powershell -NoLogo -Command df", ps1 = "df -Tha --total" }
+dff = { sh = "dfirefox", ps1 = "dfirefox", cmd = "powershell -NoLogo -Command dfirefox" }
+dfirefox = { sh = "echo https://c:c@$(curl -s4 https://ifconfig.co):3001; docker run --pull=always --rm --name=ff --net=host --security-opt=seccomp=unconfined --shm-size=4gb --env=TZ=Europe/London --env=PUID=1000 --env=PGID=1000 --env=CUSTOM_USER=c --env=PASSWORD=c -v=$HOME/docker/firefox:/config lscr.io/linuxserver/firefox", cmd = "powershell -NoLogo -Command dfirefox" }
+di = "docker images"
+diff = { sh = "diff --color -u -w", cmd = "git diff --no-index", ps1 = "diff --color -u -w" }
+dir = "dir --color=auto"
+diskspace = { sh = "du -S | sort -n -r | more", ps1 = "du", cmd = "powershell -NoLogo -Command diskspace" }
+djellyfin = { sh = "echo http://$(curl -s4 https://ifconfig.co):8096; mkdir -p $HOME/docker/jellyfin/{config,cache,media}; docker run --pull always --rm -it --name jellyfin --user 1000:1000 --net host --volume $HOME/docker/jellyfin/config:/config --volume $HOME/docker/jellyfin/cache:/cache --volume $HOME/docker/jellyfin/media:/media jellyfin/jellyfin", cmd = "powershell -NoLogo -Command djellyfin" }
+dk = { sh = "docker run --pull=always --rm -it --name=kaggle -p=8080:8080 -v=`pwd`:`pwd` -w=`pwd` kaggle/python jupyter notebook --no-browser --notebook-dir=`pwd` --allow-root --port=8080 --ip=\\*", cmd = "powershell -NoLogo -Command dk" }
+dkill = { sh = "docker kill $(docker ps -q)", cmd = "powershell -NoLogo -Command dkill" }
+dkilla = { sh = "docker stop $(docker ps -a -q)", cmd = "powershell -NoLogo -Command dkilla" }
+dl = "docker logs --tail 40 -f"
+dlfast = "lux -n 100 -m"
+dlog = { sh = "docker ps -q | xargs -L 1 -P `docker ps | wc -l` docker logs --since 30s -f", cmd = "powershell -NoLogo -Command dlog" }
+dm = { sh = "docker run --pull=always --net=host --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 mongo", cmd = "powershell -NoLogo -Command dm" }
+dn = { sh = "docker run --pull=always --rm -itv `pwd`:`pwd` -w `pwd` -u 1000 node:alpine", cmd = "powershell -NoLogo -Command dn" }
+dnd = "docker run --rm -it --pull=always --name=netdata --pid=host --network=host -v netdataconfig:/etc/netdata -v netdatalib:/var/lib/netdata -v netdatacache:/var/cache/netdata -v /:/host/root:ro,rslave -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /etc/localtime:/etc/localtime:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/log:/host/var/log:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -v /run/dbus:/run/dbus:ro --cap-add SYS_PTRACE --cap-add SYS_ADMIN --security-opt apparmor=unconfined --no-healthcheck netdata/netdata"
+dndd = "docker run --detach --pull=always --name=netdata --pid=host --network=host -v netdataconfig:/etc/netdata -v netdatalib:/var/lib/netdata -v netdatacache:/var/cache/netdata -v /:/host/root:ro,rslave -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /etc/localtime:/etc/localtime:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/log:/host/var/log:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -v /run/dbus:/run/dbus:ro --restart always --cap-add SYS_PTRACE --cap-add SYS_ADMIN --security-opt apparmor=unconfined --no-healthcheck netdata/netdata"
+dnekoff = { sh = "echo http://$(curl -s4 https://ifconfig.co):8080; docker run --pull=always --rm -it --name=neko --shm-size=2gb --net=host --env=NEKO_DESKTOP_SCREEN=1920x1080@30 --env=NEKO_MEMBER_MULTIUSER_USER_PASSWORD=c --env=NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD=cc --env=NEKO_WEBRTC_EPR=52000-52100 --env=NEKO_WEBRTC_ICELITE=1 ghcr.io/m1k1o/neko/firefox", cmd = "docker run --pull=always --rm -it --name=neko --shm-size=2gb --net=host --env=NEKO_DESKTOP_SCREEN=1920x1080@30 --env=NEKO_MEMBER_MULTIUSER_USER_PASSWORD=c --env=NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD=cc --env=NEKO_WEBRTC_EPR=52000-52100 --env=NEKO_WEBRTC_ICELITE=1 ghcr.io/m1k1o/neko/firefox" }
+dockerlazy = { sh = "sudo systemctl disable docker.service && sudo systemctl enable docker.socket && sudo systemctl stop docker.service" }
+dockertags = { sh = "dockertags", cmd = "powershell -NoLogo -Command dockertags", ps1 = "dockertags" }
+dockerup = "docker run --pull=always --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --remove-volumes --debug --run-once"
+doh = "docker history"
+dotnetfmt = "dotnet csharpier ."
+dotnethttps = { sh = "dotnet dev-certs https --clean && dotnet dev-certs https --trust", cmd = "dotnet dev-certs https --clean ^& dotnet dev-certs https --trust" }
+dotneti = { sh = "f(){ dotnet tool install --global \"$1\" || dotnet tool update --global \"$1\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command dotneti" }
+dotnetig = { sh = "dotneti dotnet-outdated-tool & dotneti Roslynator.DotNet.Cli & dotneti dotnet-ef & dotneti dotnet-serve & dotneti PowerShell & dotneti CSharpier & dotneti CentralisedPackageConverter & dotneti dotnet-symbol & wait", cmd = "powershell -NoLogo -Command dotnetig", ps1 = "dotneti dotnet-outdated-tool & dotneti Roslynator.DotNet.Cli & dotneti dotnet-ef & dotneti dotnet-serve & dotneti PowerShell & dotneti CSharpier & dotneti CentralisedPackageConverter & dotneti dotnet-symbol & wait" }
+dotnetup = "dotnet outdated --upgrade"
+dpihole = { sh = "docker run --pull=always -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ=\"Europe/London\" -v \"$(pwd)/pihole/etc/pihole/:/etc/pihole/\" -v \"$(pwd)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/\" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST=\"pihole\" -e PROXY_LOCATION=\"pihole\" -e ServerIP=\"127.0.0.1\" pihole/pihole:latest", cmd = "powershell -NoLogo -Command dpihole" }
+dprune = { sh = "docker system prune --force --volumes; docker volume prune --force", cmd = "docker system prune --force --volumes ^& docker volume prune --force" }
+dprunea = { sh = "docker system prune --force --volumes --all; docker volume prune --force --all", cmd = "docker system prune --force --volumes --all ^& docker volume prune --force --all" }
+dps = { sh = "f(){ docker ps \"$@\" | docker-color-output; unset -f f; }; f", cmd = "docker ps" }
+drm = { sh = "docker rmi $(docker images -q --filter \"dangling=true\")", cmd = "powershell -NoLogo -Command drm" }
+ds = { sh = "f(){ docker stats \"$@\" | docker-color-output; unset -f f; }; f", cmd = "docker stats" }
+dsave = { sh = "f(){ docker save \"$1\" | gzip >\"$1.tgz\" && echo \"$1.tgz created\";  unset -f f; }; f", cmd = "powershell -NoLogo -Command dsave" }
+dsd = "docker stack down"
+dsdf = "docker system df"
+dsi = "docker service inspect --pretty"
+dsl = "docker service logs -f"
+dsls = "docker service ls --tail 40"
+dsu = "docker stack up -c"
+dt = "docker run --rm -it"
+dtest = "docker run --rm -it --name test --hostname test"
+dtf = { sh = "docker run --pull=always --rm -it --name=kaggle -p=8080:8080 -v=`pwd`:`pwd` -w=`pwd` tensorflow/tensorflow jupyter notebook --no-browser --notebook-dir=`pwd` --allow-root --port=8080 --ip=\\*", cmd = "powershell -NoLogo -Command dtf" }
+du = { sh = "\\du -chs *", cmd = "powershell -NoLogo -Command du", ps1 = "\\du -chs *" }
+dup = { sh = "dockerup", ps1 = "dockerup", cmd = "powershell -NoLogo -Command dockerup" }
+dwatch = "docker run --pull=always -d --restart=always --name=watchtower -v=/var/run/docker.sock:/var/run/docker.sock:ro containrrr/watchtower --cleanup --remove-volumes"
+e = { sh = "\\du * -cs | sort -nr | head", ps1 = "Get-ChildItem -Force | Sort-Object Length -Descending | Select-Object -First 10", cmd = "powershell -NoLogo -Command e" }
+ee = { sh = "set -o allexport; source .env;set +o allexport", cmd = "for /f \"usebackq eol=# tokens=1,* delims==\" %a in (.env) do set \"%a=%b\"" }
+egrep = { sh = "grep -E --color=auto", ps1 = "grep -E", cmd = "findstr /i /r" }
+exe = { sh = "chmod u+x " }
+exportenv = { sh = "set -o allexport; source .env;set +o allexport", ps1 = "ee", cmd = "for /f \"usebackq eol=# tokens=1,* delims==\" %a in (.env) do set \"%a=%b\"" }
+extract = { sh = "extract", cmd = "powershell -NoLogo -Command extract", ps1 = "extract" }
+fail2banstatus = { sh = "sudo fail2ban-client status sshd" }
+ff = { sh = "freecache; free", ps1 = "free", cmd = "powershell -NoLogo -Command ff" }
+fgrep = { sh = "grep -F --color=auto", ps1 = "grep -F", cmd = "findstr /i /c:$*" }
+findfile = { sh = "find -type f -name", cmd = "dir /s /b", ps1 = "find -type f -name" }
+findtext = { sh = "grep -rnw . -e", ps1 = "grep -rnw . -e", cmd = "findstr /s /i /n /c:\"$*\" .\\*" }
+fio = { sh = "f(){ curl -F \"file=@$@\" https://file.io && echo;  unset -f f; }; f", cmd = "powershell -NoLogo -Command fio" }
+fio1 = { sh = "f(){ curl -F \"file=@$@\" https://file.io/?expires=1d && echo;  unset -f f; }; f", cmd = "powershell -NoLogo -Command fio1" }
+firewall = "iptlist"
+fixgitbashbatfiles = "fixgitbashbatfiles"
+fixgpg = { sh = "f(){ gpg --keyserver keyserver.ubuntu.com --recv-keys \"$1\" && gpg --export \"$1\" | sudo tee /etc/apt/trusted.gpg.d/\"$1\".gpg >/dev/null; unset -f f; }; f" }
+fixinotify = { sh = "sudo sysctl -w fs.inotify.max_user_instances=524288 fs.inotify.max_user_watches=524288; grep -Fxq \"fs.inotify.max_user_instances=524288\" /etc/sysctl.conf || echo fs.inotify.max_user_instances=524288 | sudo tee -a /etc/sysctl.conf; grep -Fxq \"fs.inotify.max_user_watches=524288\" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p" }
+fixinotifyinstances = { sh = "sudo sysctl -w fs.inotify.max_user_instances=524288; grep -Fxq \"fs.inotify.max_user_instances=524288\" /etc/sysctl.conf || echo fs.inotify.max_user_instances=524288 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p" }
+fixinotifywatches = { sh = "sudo sysctl -w fs.inotify.max_user_watches=524288; grep -Fxq \"fs.inotify.max_user_watches=524288\" /etc/sysctl.conf || echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p" }
+fixionotify = "fixinotify"
+fixionotifyinstances = "fixinotifyinstances"
+fixionotifywatches = "fixinotifywatches"
+fixsleep = { sh = "sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target" }
+fixsshperm = { sh = "chown `id -u` ~/; chown `id -u` ~/.ssh; chmod go-w ~/; chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys; chmod 600 ~/.ssh/id_rsa; chmod 600 ~/.ssh/config; chmod 644 ~/.ssh/id_rsa.pub" }
+fixtz = "timedatectl set-timezone Europe/London"
+fixvpnipv4 = "nmcli connection modify VPN_NAME ipv6.method disabled"
+fixwifi = { sh = "sudo sed -i 's/3/2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf; sudo systemctl restart NetworkManager" }
+fk = { sh = "\\fkill --force", ps1 = "fkill --force", cmd = "fkill --force" }
+free = { sh = "free -mt", cmd = "powershell -NoLogo -Command free", ps1 = "free -mt" }
+freecache = { sh = "sudo sh -c \"echo 3 > /proc/sys/vm/drop_caches\"" }
+ga = "git add"
+gb = "git branch --sort=-committerdate -vv"
+gba = "git branch --sort=-committerdate -vva"
+gc = "git commit -v"
+gca = "git commit . -v"
+gcam = "git commit -a -m"
+gcamp = { sh = "f(){ git commit -a -m \"$1\" && git push; unset -f f; }; f", cmd = "git commit -a -m $* $T git push" }
+gcl = "git clone"
+gco = "git checkout"
+gcom = "git checkout master"
+gd = "git diff"
+genpwd = { sh = "PASSWORD=$(base64 < /dev/urandom | head -c32); echo \"$PASSWORD\"; echo -n \"$PASSWORD\" | sha256sum; echo -n \"$PASSWORD\" | sha256sum | head -c 16; echo; < /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-16}; echo;", cmd = "powershell -NoLogo -Command genpwd" }
+genuuid = { sh = "uv run python -c 'import uuid; print(uuid.uuid4())'", ps1 = "uv run python -c \"import uuid; print(uuid.uuid4())\"", cmd = "powershell -NoLogo -Command genuuid" }
+gg = { sh = "git pull -f; git reset --hard origin/$(git show-ref --verify --quiet refs/remotes/origin/main && echo main || echo master)", cmd = "powershell -NoLogo -Command gg" }
+gigit = "git clone --depth=1"
+gitclean = { sh = "gitclean", ps1 = "_Gitclean 'safe'", cmd = "powershell -NoLogo -Command gitclean" }
+gitcleanf = { sh = "gitcleanf", ps1 = "_Gitclean 'force'", cmd = "powershell -NoLogo -Command gitcleanf" }
+gitcleanr = { sh = "gitcleanr", cmd = "powershell -NoLogo -Command gitcleanr", ps1 = "gitcleanr" }
+gitget = { sh = "gitget", cmd = "powershell -NoLogo -Command gitget", ps1 = "gitget" }
+gitgetc = { sh = "f(){ gitget \"https://github.com/chneau/$1\"; }; f", cmd = "powershell -NoLogo -Command gitgetc" }
+gitmessage = { sh = "curl -s https://whatthecommit.com/index.txt", ps1 = "(Invoke-RestMethod \"https://whatthecommit.com/index.txt\").Trim()", cmd = "powershell -NoLogo -Command gitmessage" }
+gitnewfresh = "git checkout --orphan"
+gitrmtag = "git push -d origin"
+gl = "git pull"
+gla = "git pull --all"
+glog = { sh = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative", cmd = "git log --graph --pretty=format:\"%%Cred%%h%%Creset %%an: %%s - %%C(yellow)%%d%%Creset %%Cgreen(%%cr)%%Creset\" --abbrev-commit --date=relative", ps1 = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative" }
+glom = "git pull origin master"
+gobuild = { sh = "CGO_ENABLED=0 go build -trimpath -ldflags '-s -w -extldflags \\\"-static\\\"'", cmd = "powershell -NoLogo -Command gobuild", ps1 = "CGO_ENABLED=0 go build -trimpath -ldflags '-s -w -extldflags \\\"-static\\\"'" }
+gocd = { sh = "f(){ cd ~/go/src/${1#*://}; unset -f f; }; f", cmd = "powershell -NoLogo -Command gocd" }
+goget = { sh = "f(){ go get -u -v ${1#*://}; unset -f f; }; f", cmd = "powershell -NoLogo -Command goget" }
+goi = "go install"
+goinst = { sh = "f(){ go install \"${1#*://}@latest\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command goinst" }
+gols = { sh = "go list -f '{{join .Deps \\\"\\n\\\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'", cmd = "powershell -NoLogo -Command gols" }
+gotest = "go test -cover -count=1"
+gotestfast = "go test -v ./..."
+gotidy = { sh = "go mod tidy && go mod verify", cmd = "go mod tidy ^& go mod verify" }
+goup = { sh = "rm -f go.mod go.sum && go mod init && go get -u && go mod tidy", cmd = "powershell -NoLogo -Command goup" }
+gp = "git push"
+gpcb = { sh = "f(){ git push origin $(git branch --show-current):\"$1\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command gpcb" }
+gpgexport = { sh = "'gpg --armor --export'             # +key", ps1 = "gpg --armor --export", cmd = "gpg --armor --export" }
+gpggit = { sh = "'git config --global user.signingkey' # +key", ps1 = "git config --global user.signingkey", cmd = "git config --global user.signingkey" }
+gpglist = "gpg --list-secret-keys --keyid-format LONG"
+gpgnew = "gpg --default-new-key-algo rsa4096 --gen-key"
+gpm = { sh = "git push origin $(git branch --show-current):master", cmd = "powershell -NoLogo -Command gpm" }
+gpumeminfo = { sh = "grep -i --color memory /var/log/Xorg.0.log" }
+gr = { sh = "grep -C5 --color=auto", ps1 = "grep -C5", cmd = "powershell -NoLogo -Command gr" }
+grb = { sh = "git fetch --all; git for-each-ref --sort=-committerdate --format='%(HEAD) %(color:blue)%(authordate:iso) %(color:red)%(objectname:short) %(color:yellow)%(refname:short) %(color:reset)%(contents:subject) %(color:magenta)%(authorname) %(color:green)%(committerdate:relative)' refs", cmd = "powershell -NoLogo -Command grb" }
+grba = "git rebase --abort"
+grbc = "git rebase --continue"
+grep = { sh = "grep --color=auto", cmd = "findstr /i", ps1 = "grep --color=auto" }
+grephere = { sh = "grep -rnw . -e", ps1 = "grep -rnw . -e", cmd = "findstr /s /i /n /w /c:$* .\\*" }
+grm = { sh = "git ls-files --deleted | xargs git rm", cmd = "powershell -NoLogo -Command grm" }
+gs = "git status -sb"
+gsc = "git switch -c"
+gsp = { sh = "f(){ git add -A && git commit -m \"$1\" && git push; unset -f f; }; f", cmd = "git add -A $T git commit -m $* $T git push" }
+gsta = "git stash push"
+gstd = "git stash drop"
+gstl = "git stash list"
+gstp = "git stash pop"
+gsw = "git switch"
+gundopush = "git push -f origin HEAD^:master"
+h = { sh = "f(){ echo -e \"$(curl -s cht.sh/$@)\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command h" }
+hermesy = "hermes --yolo"
+hf = "hyperfine"
+hla = "helm list --all-namespaces"
+hp = { sh = "sudo hping3 --flood" }
+hs = { sh = "history | grep", ps1 = "Get-History | Select-String", cmd = "doskey /history ^| findstr" }
+iact = { sh = "curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash" }
+iagy = { sh = "curl -fsSL https://antigravity.google/cli/install.sh | bash", ps1 = "powershell -c \"irm https://antigravity.google/cli/install.ps1 | iex\"", cmd = "powershell -c \"irm https://antigravity.google/cli/install.ps1 | iex\"" }
+iarkade = { sh = "curl -sLS https://dl.get-arkade.dev | sudo sh" }
+iaz = { sh = "curl -L https://aka.ms/InstallAzureCli | bash" }
+ibombardier = "go install github.com/codesenberg/bombardier@latest"
+ibpytop = "uv tool install --force bpytop"
+ibrew = { sh = "bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"" }
+ibun = { sh = "curl -fsSL https://bun.sh/install | bash", ps1 = "powershell -c \"irm bun.sh/install.ps1 | iex\"", cmd = "powershell -c \"irm bun.sh/install.ps1 | iex\"" }
+icargo = { sh = "curl https://sh.rustup.rs -sSf | sh" }
+iccusage = "bun i -g ccusage@latest"
+icf = "bun i -g cf"
+icharlie = "bun i -g charlie-git@latest"
+iclaude = { sh = "curl -fsSL https://claude.ai/install.sh | bash", ps1 = "powershell -c \"irm https://claude.ai/install.ps1 | iex\"", cmd = "powershell -c \"irm https://claude.ai/install.ps1 | iex\"" }
+icline = "bun i -g cline"
+icodex = { sh = "curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh", ps1 = "powershell -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"", cmd = "powershell -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"" }
+icolab = "uv tool install --force google-colab-cli"
+icommandcode = "bun i -g command-code@latest"
+icoolify = { sh = "curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash" }
+icopilot = "bun i -g @github/copilot@latest"
+icroc = { sh = "curl -fsSL https://getcroc.schollz.com | bash" }
+icursor = { sh = "curl -fsSL https://cursor.com/install | bash", ps1 = "powershell -c \"irm https://cursor.com/install.ps1 | iex\"", cmd = "powershell -c \"irm https://cursor.com/install.ps1 | iex\"" }
+idatree = "go install github.com/datreeio/datree@latest"
+ideepcode = "bun i -g @vegamo/deepcode-cli@latest"
+idefendnot = { sh = "irm https://dnot.sh/ | iex", ps1 = "irm https://dnot.sh/ | iex", cmd = "powershell -c \"irm https://dnot.sh/ | iex\"" }
+ideno = { sh = "curl -fsSL https://deno.land/install.sh | sh", ps1 = "powershell -c \"irm https://deno.land/install.ps1 | iex\"", cmd = "powershell -c \"irm https://deno.land/install.ps1 | iex\"" }
+idl = "uv tool install --force yt-dlp"
+idocker = { sh = "curl -sSL get.docker.com | sh" }
+idockercompose = { sh = "sudo apt install -y docker-compose-plugin" }
+idoctl = "brew install doctl"
+idotnet = { sh = "curl -sSL https://dot.net/v1/dotnet-install.sh | bash -s -- --channel 11.0" }
+idotnetpreview = { sh = "curl -L https://aka.ms/install-dotnet-preview -o install-dotnet-preview.sh && sudo bash install-dotnet-preview.sh" }
+idsh = "bun i -g @deepseek-ai/dsh@latest"
+ifail2ban = "ifail2ban"
+iflux = { sh = "curl -s https://fluxcd.io/install.sh | sudo bash" }
+ifnm = { sh = "curl -fsSL https://fnm.vercel.app/install | bash" }
+ifreebuff = "bun i -g freebuff@latest"
+ifresh = { sh = "curl -fsSL https://raw.githubusercontent.com/sinelaw/fresh/refs/heads/master/scripts/install.sh | sh" }
+igem = "brew install ruby"
+igit = { sh = "git config --global user.email \"charles63500@gmail.com\"; git config --global user.name \"chneau\"; git config --global url.ssh://git@github.com/.insteadOf https://github.com/; git config --global merge.ff false; git config --global pull.ff true; git config --global core.whitespace blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol; git config --global fetch.prune true; git config --global pull.rebase true; touch ~/.gitignore_global; for l in .antigravitycli .serena .reasonix .agents skills-lock.json .claude; do grep -qxF \"$l\" ~/.gitignore_global || echo \"$l\" >> ~/.gitignore_global; done; git config --global core.excludesfile ~/.gitignore_global", cmd = "powershell -NoLogo -Command igit" }
+igo = { sh = "curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer" }
+igogg = "go install github.com/habedi/gogg@latest"
+igoogler = { sh = "curl -sSLO https://raw.githubusercontent.com/jarun/googler/master/googler && exe googler && echo \"move googler in some path\"" }
+igotop = "go install github.com/xxxserxxx/gotop/v4@latest"
+igotty = "go install github.com/yudai/gotty@latest"
+igradle = { sh = "echo \"org.gradle.console=plain\" > ~/.gradle/gradle.properties", ps1 = "'org.gradle.console=plain' | Set-Content \"$HOME/.gradle/gradle.properties\"", cmd = "powershell -NoLogo -Command igradle" }
+igravitycli = { sh = "curl -fsSL https://antigravity.google/cli/install.sh | bash", ps1 = "iagy", cmd = "powershell -c \"irm https://antigravity.google/cli/install.ps1 | iex\"" }
+iherdr = { sh = "curl -fsSL https://herdr.dev/install.sh | sh", ps1 = "powershell -c \"irm https://herdr.dev/install.ps1 | iex\"", cmd = "powershell -c \"irm https://herdr.dev/install.ps1 | iex\"" }
+ihermes = { sh = "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash", ps1 = "powershell -c \"irm https://hermes-agent.nousresearch.com/install.ps1 | iex\"", cmd = "powershell -c \"irm https://hermes-agent.nousresearch.com/install.ps1 | iex\"" }
+ihey = "go install github.com/rakyll/hey@latest"
+ihimalaya = { sh = "curl -sSL https://raw.githubusercontent.com/pimalaya/himalaya/master/install.sh | PREFIX=~/.local sh" }
+ijellyfin = { sh = "curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash" }
+ijsdoc-scribe = "bun i -g jsdoc-scribe@latest"
+ik3d = { sh = "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash" }
+ik3s = { sh = "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=\"644\" INSTALL_K3S_EXEC=\"--disable=traefik\" sh -s -" }
+ik3slatest = { sh = "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=\"644\" INSTALL_K3S_EXEC=\"--disable=traefik\" INSTALL_K3S_CHANNEL=latest sh -s -" }
+ik3sup = "go install github.com/alexellis/k3sup@latest"
+ik8s = { sh = "curl -sSL https://get.k8s.io | bash" }
+ik9s = "go install github.com/derailed/k9s@latest"
+ikamal = "gem install kamal"
+ikilo = { sh = "curl -fsSL https://kilo.ai/cli/install | bash", ps1 = "powershell -c \"irm https://kilo.ai/cli/install.ps1 | iex\"", cmd = "powershell -c \"irm https://kilo.ai/cli/install.ps1 | iex\"" }
+ikind = "go install sigs.k8s.io/kind@latest"
+iknip = "bun install --global knip@latest"
+ikrew = { sh = "(set -x; cd \"$(mktemp -d)\" && OS=\"$(uname | tr '[:upper:]' '[:lower:]')\" && ARCH=\"$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\\(arm\\)\\(64\\)\\?.*/\\1\\2/' -e 's/aarch64$/arm64/')\" && KREW=\"krew-${OS}_${ARCH}\" && curl -fsSLO \"https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz\" && tar zxvf \"${KREW}.tar.gz\" && ./\"${KREW}\" install krew)" }
+ikubectl = { sh = "(OS=\"$(uname -s | tr '[:upper:]' '[:lower:]')\" && ARCH=\"$(uname -m | sed -e 's/x86_64/amd64/' -e 's/aarch64/arm64/')\" && curl -LO \"https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/${OS}/${ARCH}/kubectl\" && chmod u+x kubectl && sudo mv kubectl /usr/local/bin/)" }
+ikubectx = "go install github.com/ahmetb/kubectx/cmd/kubectx@latest"
+ikubens = "go install github.com/ahmetb/kubectx/cmd/kubens@latest"
+ilazygit = "go install github.com/jesseduffield/lazygit@latest"
+ilivereload = "uv tool install --force livereload"
+ilux = "go install github.com/iawia002/lux@latest"
+imas = { sh = "irm https://massgrave.dev/get | iex", ps1 = "irm https://massgrave.dev/get | iex", cmd = "powershell -c \"irm https://massgrave.dev/get | iex\"" }
+imcode = "bun i -g @minimax-ai/code"
+imeteor = { sh = "curl -sSL install.meteor.com | sh" }
+imicro = { sh = "curl https://getmic.ro | bash" }
+iminikube = { sh = "curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/" }
+imise = { sh = "curl https://mise.run | sh" }
+inextdns = { sh = "sh -c \"$(curl -sL https://nextdns.io/install)\"" }
+inix = "sh <(curl -L https://nixos.org/nix/install) --no-daemon"
+invm = { sh = "curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash" }
+iombash = { sh = "bash -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)\"" }
+iomp = "bun install -g @oh-my-pi/pi-coding-agent"
+iomzsh = { sh = "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"" }
+iopencode = { sh = "curl -fsSL https://opencode.ai/v2/install | bash", ps1 = "powershell -c \"irm https://opencode.ai/install.ps1 | iex\"", cmd = "powershell -c \"irm https://opencode.ai/install.ps1 | iex\"" }
+ipandoc = "brew install pandoc"
+ipaseo = "bun install -g @getpaseo/cli@latest"
+ipi = { sh = "curl -fsSL https://pi.dev/install.sh | sh", ps1 = "powershell -c \"irm https://pi.dev/install.ps1 | iex\"", cmd = "powershell -c \"irm https://pi.dev/install.ps1 | iex\"" }
+ipipx = "brew install pipx"
+iposthogcli = "bun i -g @posthog/cli@latest"
+iproxy = { sh = "export PROXY_LOGIN=`base64 < /dev/urandom | head -c256 | sha256sum | head -c32`; export PROXY_PASSWORD=`base64 < /dev/urandom | head -c256 | sha256sum | head -c32`; echo \"Login: $PROXY_LOGIN\"; echo \"Password: $PROXY_PASSWORD\"; export _IP=`mip`; echo \"HTTPS_PROXY=\\\"http://$PROXY_LOGIN:$PROXY_PASSWORD@$_IP:3128/\\\"\"; docker rm -f proxy; docker run --pull=always --rm -d -e PROXY_LOGIN -e PROXY_PASSWORD --name=proxy --net=host ghcr.io/tarampampam/3proxy:latest;", cmd = "powershell -NoLogo -Command iproxy" }
+ipt = { sh = "sudo /sbin/iptables" }
+iptableclean = { sh = "iptables-save | uniq | iptables-restore" }
+iptlist = { sh = "sudo /sbin/iptables -L -n -v --line-numbers" }
+iptlistfw = { sh = "sudo /sbin/iptables -L FORWARD -n -v --line-numbers" }
+iptlistin = { sh = "sudo /sbin/iptables -L INPUT -n -v --line-numbers" }
+iptlistout = { sh = "sudo /sbin/iptables -L OUTPUT -n -v --line-numbers" }
+ipulumi = { sh = "curl -fsSL https://get.pulumi.com | sh" }
+iqwen = "bun install -fg @qwen-code/qwen-code@latest"
+ireasonix = "bun i -g reasonix@latest"
+irtk = { sh = "curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh", ps1 = "powershell -c \"irm https://raw.githubusercontent.com/rtk-ai/rtk/master/install.ps1 | iex\"", cmd = "powershell -c \"irm https://raw.githubusercontent.com/rtk-ai/rtk/master/install.ps1 | iex\"" }
+irust = { sh = "curl https://sh.rustup.rs -sSf | sh" }
+iscc = "go install github.com/boyter/scc/v4@latest"
+iserve = "go install github.com/chneau/serve@latest"
+iskillsmattpocock = "bunx skills add mattpocock/skills"
+ispacetime = { sh = "curl -sSf https://install.spacetimedb.com | sh" }
+ispeedtest = { sh = "curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash" }
+issh = "ssh-keygen -t rsa -b 2048"
+isshuttle = { sh = "sudo apt -y install sshuttle" }
+istern = "go install github.com/stern/stern@latest"
+itrail = { sh = "curl -sSL https://trailbase.io/install.sh | bash" }
+ituios = { sh = "curl -fsSL https://raw.githubusercontent.com/Gaurav-Gosain/tuios/main/install.sh | bash", ps1 = "powershell -c \"irm https://raw.githubusercontent.com/Gaurav-Gosain/tuios/main/install.ps1 | iex\"", cmd = "powershell -c \"irm https://raw.githubusercontent.com/Gaurav-Gosain/tuios/main/install.ps1 | iex\"" }
+iuv = { sh = "curl -LsSf https://astral.sh/uv/install.sh | sh", ps1 = "powershell -c \"irm https://astral.sh/uv/install.ps1 | iex\"", cmd = "powershell -c \"irm https://astral.sh/uv/install.ps1 | iex\"" }
+iv = { sh = "gitget https://github.com/vlang/v && make && sudo ./v symlink && v ls --install" }
+ivagrant = { sh = "sudo apt -y install vagrant" }
+ivirtualbox = { sh = "sudo apt -y install virtualbox" }
+ivpn = "ivpnnyr"
+ivpnangristan = { sh = "wget https://raw.githubusercontent.com/Angristan/OpenVPN-install/master/openvpn-install.sh -O openvpn-angristan-install.sh && bash openvpn-angristan-install.sh" }
+ivpnnyr = { sh = "wget https://raw.githubusercontent.com/Nyr/openvpn-install/master/openvpn-install.sh -O openvpn-nyr-install.sh && bash openvpn-nyr-install.sh" }
+iwitr = { sh = "curl -fsSL https://raw.githubusercontent.com/pranshuparmar/witr/main/install.sh | bash" }
+ix = "bun install --force --global @chneau/x"
+jctl = { sh = "journalctl -n 200 -f" }
+k = "kubectl"
+k3sconfig = { sh = "cat /etc/rancher/k3s/k3s.yaml" }
+k3sdisabletraefik = { sh = "helm -n kube-system delete traefik; helm -n kube-system delete traefik-crd; kubectl -n kube-system delete helmchart traefik traefik-crd" }
+k3sdisabletraefikonserver = { sh = "touch /var/lib/rancher/k3s/server/manifests/traefik.yaml.skip; systemctl restart k3s" }
+k3sstart = { sh = "sudo systemctl start k3s" }
+k3sstop = { sh = "sudo systemctl stop k3s; k3s-killall.sh" }
+ka = "kubectl apply -f"
+kak = "kubectl apply -k"
+kar = "kubectl api-resources"
+kclean = { sh = "(kubectl get rs -o jsonpath=\"{range .items[?(@.spec.replicas==0)]}{.metadata.name}{\\\" \\\"}{end}\" | xargs -r kubectl delete rs & kubectl delete pods --field-selector status.phase=Failed --ignore-not-found & kubectl delete pods --field-selector status.phase=Succeeded --ignore-not-found & wait)", cmd = "powershell -NoLogo -Command kclean" }
+kconf = "kubectl config view --raw"
+kcron = { sh = "echo \"kubectl create job --from=cronjob/dump manual-001\"", ps1 = "Write-Host \"kubectl create job --from=cronjob/dump manual-001\"", cmd = "echo kubectl create job --from=cronjob/dump manual-001" }
+kctx = "kubectx"
+kd = "kubectl diff -f"
+kdebug = "kubectl run -i --tty --rm debug --image=alpine --restart=Never -- sh"
+kdecode = { sh = "f(){ kubectl get secret \\\"\\$1\\\" --template='{{range \\$k,\\$v := .data}}{{printf \\\"%s: \\\" \\$k}}{{if not \\$v}}{{\\$v}}{{else}}{{\\$v | base64decode}}{{end}}{{\\\"\\\\n\\\"}}{{end}}'; unset -f f; }; f", cmd = "powershell -NoLogo -Command kdecode" }
+kdes = "kubectl describe"
+kdestroy = "kubectl delete --grace-period=0 --force"
+kdk = "kubectl diff -k"
+kdn = "kubectl describe node"
+ke = { sh = "kubectl exec -ti ", ps1 = "kubectl exec -ti", cmd = "kubectl exec -ti" }
+kenv = "kubectl set env pods --all --list"
+kex = "kubectl explain"
+kg = "kubectl get"
+kga = "kubectl get all,ingress"
+kgaa = "kubectl get all,ingress --all-namespaces"
+kgapi = "kubectl get apiservices"
+kgd = "kubectl get deployment,statefulset,daemonset,cronjob"
+kge = "kubectl get events"
+kgea = "kubectl get events --all-namespaces"
+kgia = "kubectl get ingress --all-namespaces"
+kgpa = "kubectl get pods --all-namespaces"
+kgs = "kubectl get secret"
+killalljobs = { sh = "kill `jobs -p`" }
+kiloy = "kilo --auto"
+kk = "kubectl kustomize"
+kkill = "kubectl delete pods --grace-period=0 --force --all"
+kl = "kubectl logs -f --tail=40"
+klall = { sh = "kubectl stern --max-log-requests=999 --since=1s -", ps1 = "kubectl stern --max-log-requests=999 --since=1s", cmd = "kubectl stern --max-log-requests=999 --since=1s" }
+klall_old = "kubectl logs --selector=pod-template-hash --all-containers --ignore-errors --follow --max-log-requests=999 --timestamps --prefix"
+klallall = { sh = "kubectl stern --all-namespaces --max-log-requests=999 --since=1s -", ps1 = "kubectl stern --all-namespaces --max-log-requests=999 --since=1s", cmd = "kubectl stern --all-namespaces --max-log-requests=999 --since=1s" }
+kll = "kubectl logs -f --tail=40 --timestamps --prefix"
+kmip = "kubectl run debug --stdin --tty --rm --image=alpine --restart=Never -- sh -ci \"wget -qO- api.ipify.org && echo\""
+kns = "kubens"
+knt = "kubent"
+kpf = "kubectl port-forward"
+kr = "kubectl rollout"
+krewig = { sh = "kubectl krew install ns ctx stern; kubectl krew upgrade", cmd = "kubectl krew install ns ctx stern ^& kubectl krew upgrade" }
+krr = "kubectl rollout restart"
+ks0 = { sh = "kubectl scale --replicas=0 deployment --all; kubectl scale --replicas=0 statefulset --all", cmd = "kubectl scale --replicas=0 deployment --all ^& kubectl scale --replicas=0 statefulset --all" }
+ks1 = { sh = "kubectl scale --replicas=1 deployment --all; kubectl scale --replicas=1 statefulset --all", cmd = "kubectl scale --replicas=1 deployment --all ^& kubectl scale --replicas=1 statefulset --all" }
+ktest = { sh = "f(){ kubectl run -i --tty --rm debug --image=\"$1\" --restart=Never -- ${@:2}; unset -f f; }; f", cmd = "powershell -NoLogo -Command ktest" }
+ktn = "kubectl top nodes"
+ktp = "kubectl top pods --sort-by=memory"
+ktpa = "kubectl top pods --all-namespaces --sort-by=memory"
+kw = "kubectl get po -w"
+l = { sh = "ls -CF", ps1 = "Get-ChildItem -Force", cmd = "dir /w" }
+la = { sh = "ls -A", ps1 = "Get-ChildItem -Force", cmd = "dir /a /o:gn" }
+lg = "lazygit"
+lh = { sh = "ls -lh", ps1 = "Get-ChildItem -Force", cmd = "dir /a /o:gn" }
+ll = { sh = "ls -alhF", ps1 = "Get-ChildItem -Force", cmd = "dir /a /o:gn" }
+lld = { sh = "ls -alFhtr --group-directories-first", cmd = "powershell -NoLogo -Command lld", ps1 = "ls -alFhtr --group-directories-first" }
+lo = { sh = "ls -o", cmd = "powershell -NoLogo -Command lo", ps1 = "ls -o" }
+ls = { sh = "ls --color=auto", cmd = "dir /o:gn", ps1 = "ls --color=auto" }
+m = "make"
+mapscii = "telnet mapscii.me"
+meminfo = { sh = "free -m -l -t", ps1 = "free", cmd = "powershell -NoLogo -Command meminfo" }
+mh = { sh = "curl ifconfig.me/host", ps1 = "(Invoke-RestMethod \"https://ifconfig.me/host\").Trim()", cmd = "powershell -NoLogo -Command mh" }
+mip = { sh = "dig +short txt ch whoami.cloudflare @1.0.0.1 | tr -d \\\" || (curl api.ipify.org && echo)", cmd = "powershell -NoLogo -Command mip" }
+mip2 = { sh = "curl icanhazip.com", ps1 = "curl.exe -s4 https://icanhazip.com", cmd = "powershell -NoLogo -Command mip2" }
+mkcdir = { sh = "f(){ mkdir -- \"$1\" && cd -P -- \"$1\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command mkcdir" }
+mkdir = "mkdir -pv"
+myip = { sh = "curl -s4 https://ifconfig.co || curl -s4 https://icanhazip.com", cmd = "powershell -NoLogo -Command myip" }
+n = { sh = "printf \"\\n(curl -fsSL sh.neau.pro || wget -qO - sh.neau.pro) | sh\\n\\nx=\\\"raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh\\\"; (curl -fsSL \\$x || wget -qO - \\$x) | sh\\n\\nbun install --global @chneau/x\\n\\n\"" }
+ncup = "npm-check-updates --upgrade --install=always --packageManager=bun --deep"
+newfarm = "bun create farm@latest"
+newrefine = "bun create refine-app@latest"
+newrsbuild = "bun create rsbuild@latest"
+newstorybook = "npx storybook@latest init"
+newvite = "bun create vite@latest"
+nginxreload = { sh = "sudo /usr/local/nginx/sbin/nginx -s reload" }
+nginxtest = { sh = "sudo /usr/local/nginx/sbin/nginx -t" }
+nload = "nload -m -u M"
+nmr = { sh = "sudo service network-manager restart" }
+nopasswd = { sh = "echo \"$USER ALL=(ALL:ALL) NOPASSWD: ALL\" | sudo tee /etc/sudoers.d/$USER" }
+now = { sh = "date +\"%T\"", ps1 = "Get-Date -Format \"HH:mm:ss\"", cmd = "time /t" }
+nowdate = { sh = "date +\"%d-%m-%Y\"", ps1 = "Get-Date -Format \"dd-MM-yyyy\"", cmd = "date /t" }
+nowtime = { sh = "now", ps1 = "now", cmd = "time /t" }
+npme = "npm exec --yes --"
+npmig = { sh = "x=(npm@latest opencode-ai@latest oxlint@latest @chneau/x @biomejs/biome@latest http-server@latest live-server@latest fkill-cli@latest ungit@latest tsx@latest npm-check-updates@latest nodemon@latest prettier@latest typesync@latest depcheck@latest concurrently@latest ts-unused-exports@latest @qwen-code/qwen-code@latest jsdoc-scribe@latest); bun install --force --global --silent \"${x[@]}\" || npm install --global \"${x[@]}\"; bun update --global --latest --force", cmd = "powershell -NoLogo -Command npmig" }
+npmup = "npm-check-updates --deep --upgrade --install=always --packageManager=bun"
+nud = "nvm use default"
+nx = { sh = "f(){ nodemon --signal SIGTERM --ext \"$1\" --exec \"${*:2} || false\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command nx" }
+oc = "code -a ."
+ocy = "opencode --auto"
+ompy = "omp --auto-approve"
+opencodey = "opencode --auto"
+openports = { sh = "nmap -p- portquiz.net | grep -i open", ps1 = "nmap -p- portquiz.net | Select-String -Pattern 'open' -CaseSensitive:$false", cmd = "nmap -p- portquiz.net ^| findstr /i open" }
+pasteit = { sh = "f(){ if [ $# -gt 0 ]; then curl --data-binary \"@$1\" https://paste.rs; else curl --data-binary @- https://paste.rs; fi; echo; unset -f f; }; f", cmd = "powershell -NoLogo -Command \"$input | pasteit $*\"" }
+path = { sh = "echo -e ${PATH//:/\\\\n}", ps1 = "($env:PATH -split ';')", cmd = "powershell -NoLogo -Command path" }
+pipi = "uv pip install --upgrade"
+pipig = "uv tool install"
+pipup = "uv pip install --upgrade"
+pipupg = "uv tool upgrade --all"
+poefilterup = "poefilterup"
+portinuse = { sh = "f(){ sudo ss -tulpn | grep \":$1\" || sudo lsof -i :\"$1\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command portinuse" }
+portkill = { sh = "f(){ sudo fuser -k \"$1/tcp\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command portkill" }
+ports = { sh = "netstat -tulanp", ps1 = "netstat -ano", cmd = "netstat -ano" }
+ps = { sh = "ps auxf", cmd = "tasklist", ps1 = "ps auxf" }
+pscpu = { sh = "ps auxf | sort -nr -k 3", ps1 = "Get-Process | Sort-Object CPU -Descending", cmd = "powershell -NoLogo -Command pscpu" }
+pscpu10 = { sh = "ps auxf | sort -nr -k 3 | head -10", ps1 = "Get-Process | Sort-Object CPU -Descending | Select-Object -First 10", cmd = "powershell -NoLogo -Command pscpu10" }
+psg = { sh = "ps aux | grep -v grep | grep -i -e VSZ -e", cmd = "powershell -NoLogo -Command psg" }
+psmem = { sh = "ps auxf | sort -nr -k 4", ps1 = "Get-Process | Sort-Object WorkingSet64 -Descending", cmd = "powershell -NoLogo -Command psmem" }
+psmem10 = { sh = "ps auxf | sort -nr -k 4 | head -10", ps1 = "Get-Process | Sort-Object WorkingSet64 -Descending | Select-Object -First 10", cmd = "powershell -NoLogo -Command psmem10" }
+pstats = "powerstat -d 0 -f 1"
+reactdoctor = "bunx react-doctor@latest"
+reasonixy = "reasonix --permission-mode bypassPermissions"
+refresh = { sh = "clear; exec $SHELL", cmd = "call \"%USERPROFILE%\\.profile.cmd\"" }
+refreshgroups = "exec sudo su -l $USER"
+renewip = { sh = "sudo dhclient -v -r && sudo dhclient -v" }
+rmdot = { sh = "f(){ (setopt localoptions nullglob 2>/dev/null; for f in *.*; do [ -f \"$f\" ] || continue; pre=\"${f%.*}\"; suf=\"${f##*.}\"; newname=\"${pre//./_}.${suf}\"; [ \"$f\" != \"$newname\" ] && mv -i -- \"$f\" \"$newname\"; done); unset -f f; }; f" }
+root = "\\sudo \\su"
+rr = { sh = "fk node dotnet bun code code-server go python; sudo service docker stop; killall -u $USER" }
+rtk = { cmd = "rtk" }
+rw = "reasonix web"
+ry = { sh = "reasonix --permission-mode bypassPermissions --yolo --add-dir \"$HOME\" --add-dir /tmp", ps1 = "reasonix --permission-mode bypassPermissions --yolo", cmd = "reasonix --permission-mode bypassPermissions --yolo" }
+ryp = { sh = "reasonix -p --permission-mode bypassPermissions --add-dir \"$HOME\" --add-dir /tmp", ps1 = "reasonix -p --permission-mode bypassPermissions --add-dir \"$HOME\" --add-dir /tmp", cmd = "reasonix -p --permission-mode bypassPermissions --add-dir \"%USERPROFILE%\" --add-dir \"%TEMP%\"" }
+s = "strace -fqc"
+scode = { sh = "sudo code --no-sandbox --user-data-dir /tmp" }
+screen = "screen -q"
+serveo = { sh = "f(){ ssh -o \"StrictHostKeyChecking no\" -R 80:localhost:$1 localhost.run; unset -f f; }; f", cmd = "powershell -NoLogo -Command serveo" }
+servepy = "uv run python -m http.server"
+sshgenkey = { sh = "mkdir -p .ssh && ssh-keygen -t rsa -f .ssh/id_rsa -q -N \"\"", cmd = "mkdir .ssh 2^>nul ^& ssh-keygen -t rsa -f .ssh/id_rsa -q -N \"\"" }
+sshkillagents = { sh = "ssh-add -D; ssh-agent -k", ps1 = "ssh-add -D", cmd = "ssh-add -D" }
+sss = { sh = "service --status-all" }
+stripcolors = { sh = "sed \"s/\\x1B\\[\\([0-9]\\{1,2\\}\\(;[0-9]\\{1,2\\}\\)\\?\\)\\?[mGK]//g\"", cmd = "powershell -NoLogo -Command \"$input | stripcolors\"" }
+sudo = { sh = "sudo env \"PATH=$PATH\" " }
+t = "tmux"
+ta = "tmux a"
+tb = { sh = "nc termbin.com 9999", cmd = "powershell -NoLogo -Command \"$input | tb\"", ps1 = "nc termbin.com 9999" }
+tf = "terraform"
+tmux-help = { sh = "tmuxhelp", ps1 = "tmuxhelp", cmd = "powershell -NoLogo -Command tmuxhelp" }
+tmuxhelp = { sh = "tmuxhelp", cmd = "powershell -NoLogo -Command tmuxhelp", ps1 = "tmuxhelp" }
+tobase64 = { sh = "base64 -w 0; echo", cmd = "powershell -NoLogo -Command tobase64" }
+topb = { sh = "curl -F 'file=@-' 0x0.st", cmd = "powershell -NoLogo -Command \"$input | topb\"", ps1 = "curl -F 'file=@-' 0x0.st" }
+toqrcode = { sh = "curl -F-=\\<- qrenco.de", cmd = "powershell -NoLogo -Command \"$input | toqrcode\"", ps1 = "curl -F-=\\<- qrenco.de" }
+traefikauth = { sh = "f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\\\$/\\\\$\\\\$/g; unset -f f; }; f", cmd = "powershell -NoLogo -Command traefikauth" }
+transfer = { sh = "transfer", cmd = "powershell -NoLogo -Command \"$input | transfer $*\"", ps1 = "transfer" }
+tsall = { sh = "npm-check-updates --upgrade --install=always --packageManager=bun --deep; biome check --write --unsafe .; depcheck; ts-unused-exports tsconfig.json; tsc --noEmit --project .", cmd = "powershell -NoLogo -Command tsall" }
+tsfmt = "biome check --write --unsafe ."
+tslint = "tsc --noEmit --project ."
+u = { sh = "ls -hltr", cmd = "powershell -NoLogo -Command u", ps1 = "ls -hltr" }
+up = { sh = "updatebashrc; updateall", ps1 = "updateprofile", cmd = "powershell -c \"updateprofile\"" }
+upb = { sh = "updatebashrc; refresh", ps1 = "updateprofile; refresh", cmd = "powershell -c \"updateprofile; refresh\"" }
+update = { sh = "updatebashrc; updateall" }
+updateall = { sh = "sudo DEBIAN_FRONTEND=noninteractive apt-get update && sudo DEBIAN_FRONTEND=noninteractive UCF_FORCE_CONFFOLD=1 apt-get -y -o Dpkg::Options::=\"--force-confdef\" -o Dpkg::Options::=\"--force-confold\" --auto-remove --purge full-upgrade </dev/null" }
+updatebashrc = { sh = "(curl -H \"Cache-Control: no-cache, no-store\" -fsSL \"raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh?$(date +%s)\" || wget --no-cookies --no-cache -qO - \"raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.sh?$(date +%s)\") | sh", ps1 = "updateprofile", cmd = "powershell -c \"updateprofile\"" }
+updateprofile = { cmd = "powershell -c \"updateprofile\"" }
+upload-help = { sh = "uploadhelp", ps1 = "uploadhelp", cmd = "powershell -NoLogo -Command uploadhelp" }
+uploadhelp = { sh = "uploadhelp", cmd = "powershell -NoLogo -Command uploadhelp", ps1 = "uploadhelp" }
+va = "vagrant"
+vdir = "vdir --color=auto"
+weather = { sh = "f(){ curl -s wttr.in/\"$1\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command weather" }
+webshare = "uv run python -m http.server"
+wsldocker = { sh = "wsl --user root service docker start; wsl", cmd = "wsl --user root service docker start ^& wsl" }
+yabs = { sh = "curl -sL yabs.sh | bash -s -- -i" }
+yabsgeekbench = { sh = "curl -sL yabs.sh | bash -s -- -ifd" }
+yabswithiperf = { sh = "curl -sL yabs.sh | bash -s -- -r" }
+ymp3 = { sh = "yt-dlp --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output \"%(title)s.%(ext)s\"' # --min-views --match-filter '!is_live", cmd = "yt-dlp --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output \"%%(title)s.%%(ext)s\"", ps1 = "yt-dlp --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 --output \"%(title)s.%(ext)s\"' # --min-views --match-filter '!is_live" }
+ymp4 = "yt-dlp -S res,ext:mp4:m4a --recode mp4"
+ymp4s = "yt-dlp -S res,ext:mp4:m4a --recode mp4 --embed-subs --sub-lang en --add-metadata --convert-subs srt --embed-thumbnail"
+yt = "yt-dlp"
+z = "zig"
+zb = "zig build"
+zbr = "zig build run"
+ziup = "zi update --all --parallel"
+zr = "zig run"
+zshdefault = { sh = "command -v zsh | sudo tee -a /etc/shells && sudo chsh -s $(which zsh) $USER" }
+
+[functions.aihelp]
+ps1 = '''
+function aihelp {
+    @"
+AI CLI Tools & Assistants (Windows / PowerShell)
+================================================
+
+Tool       Provider / Vendor       Aliases                 Description
+----       -----------------       -------                 -----------
+claude     Anthropic               cl, cly                 Claude AI coding assistant & agent
+cline      Cline                   -                       Cline AI coding agent (YOLO by default in CLI)
+agy        Google DeepMind         agyy                    Antigravity agentic coding assistant CLI
+agent      Cursor / Anysphere      agenty                  Cursor AI terminal agent & CLI
+codex      OpenAI                  codexy                  ChatGPT / Codex terminal coding agent
+copilot    GitHub / Microsoft      -                       GitHub Copilot CLI for terminal assistance
+qwen       Alibaba Cloud           -                       Qwen Code terminal coding assistant
+mcode      MiniMax                 -                       MiniMax Code coding agent CLI
+reasonix   Reasonix AI             ry, reasonixy, rw       Reasoning AI assistant CLI & web UI
+opencode   OpenCode AI             ocy, opencodey          Multi-provider open-source coding assistant
+deepcode   Vegamo                  -                       DeepCode terminal AI assistant
+commandcode Command Code           -                       Coding agent that learns your coding taste
+kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)
+hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
+dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
+pi         Pi                       -                       Pi coding agent CLI
+omp        Oh My Pi                ompy                    Oh My Pi coding agent CLI (run w/ --auto-approve)
+reactdoctor React Doctor           -                       AI-powered React code diagnostics (bunx react-doctor@latest)
+rtk        RTK AI                  -                       RTK AI developer toolkit CLI
+freebuff   Codebuff                -                       Free Codebuff coding agent
+paseo      Paseo                   -                       Paseo CLI to control AI coding agents from the terminal
+
+Install / Update Aliases:
+  iclaude      Install Claude CLI
+  icline       Install Cline CLI
+  icolab       Install Google Colab CLI
+  icf          Install Cloudflare cf CLI
+  icharlie     Install Charlie Git CLI
+  igravitycli  Install Antigravity CLI
+  iagy         Install Antigravity CLI (short)
+  icodex       Install OpenAI Codex CLI
+  icopilot     Install GitHub Copilot CLI
+  icursor      Install Cursor CLI
+  iqwen        Install Qwen Code CLI
+  ireasonix    Install / update Reasonix CLI
+  iopencode    Install OpenCode CLI
+  ideepcode    Install DeepCode CLI
+  irtk         Install RTK CLI
+  ipi          Install Pi CLI
+  iomp         Install Oh My Pi CLI
+  imcode       Install MiniMax Code CLI
+  idsh         Install DeepSeek dsh CLI
+  iposthogcli  Install PostHog CLI
+  ifreebuff    Install freebuff CLI
+  icommandcode Install command-code CLI
+  ikilo        Install Kilo CLI
+  ihermes      Install Hermes CLI
+  iskillsmattpocock  Install mattpocock skills CLI
+  iccusage     Install ccusage CLI
+  iherdr       Install Herdr CLI
+  ituios       Install tuios CLI
+  ipaseo       Install / update Paseo CLI
+
+Useful Prompts:
+  Codebase Refactor:
+    Look through my codebase for opportunities to refactor and simplify, and suggest the highest-impact ones.
+  Code Simplification:
+    Refactor this code to eliminate redundancy and improve readability and maintainability.
+  Test Coverage:
+    Analyze my test coverage and tell me where adding tests would have the most impact.
+  Security Audit:
+    Review this codebase for security vulnerabilities, injection risks, and sensitive data exposure.
+  Strict Code Review:
+    Review my recent changes like a senior engineer. Flag regressions, edge cases, and architectural smells.
+  Performance Bottlenecks:
+    Profile this logic and identify the primary performance or memory bottlenecks with concrete optimizations.
+  Database Optimization:
+    Analyze these database queries/schemas for missing indexes, N+1 issues, and slow operations.
+  Root Cause Analysis:
+    Diagnose this failure, determine the root cause, and propose the minimal fix to prevent recurrence.
+  Edge Case Discovery:
+    Identify unhandled edge cases, failure modes, and concurrency issues in this implementation.
+  Architecture Check:
+    Critique the current design against SOLID/DRY principles and recommend cleaner abstractions without overengineering.
+  API Ergonomics:
+    Review this API/interface for ergonomics, consistency, idiomatic design, and ease of use.
+  Missing Docs:
+    Identify critical undocumented assumptions, setup steps, and failure modes across this project.
+  Log Analysis:
+    Analyze these logs to identify errors, warnings, recurring anomalies, and their potential root causes.
+  UX Flow Audit:
+    Walk through this feature's user journey step by step and flag friction, dead ends, and unnecessary steps.
+  Friction Reduction:
+    Find where users will hesitate, get confused, or abandon this flow, and propose the smallest changes that reduce friction.
+  Onboarding Review:
+    Evaluate the first-run experience and remove anything that delays a new user from reaching value.
+  Empty States:
+    Design helpful empty, loading, and error states so users always know what is happening and what to do next.
+  Error Recovery:
+    Review these error messages and failure flows for clarity and actionable recovery paths.
+  Microcopy:
+    Rewrite these labels, buttons, and helper texts for clarity, consistency, and tone.
+  Navigation & IA:
+    Assess this navigation and information architecture so users can predict where things live.
+  Feedback & Responsiveness:
+    Ensure every action gives timely, clear feedback for loading, success, and failure.
+  Accessibility Pass:
+    Review this UI for input, contrast, focus, and feedback issues that block users.
+  Cross-Device Flow:
+    Check this flow on mobile and keyboard-only use, and flag where it breaks or degrades.
+  State Consistency:
+    Audit this flow for inconsistent labels, state transitions, and feedback across screens.
+  Progressive Disclosure:
+    Identify where this interface overwhelms users and what should be hidden until it is needed.
+  UX Heuristic Review:
+    Critique this interface against Nielsen's usability heuristics and rank the top fixes by impact.
+"@
+}
+'''
+
+[functions.bverbosefetch]
+ps1 = '''
+function bverbosefetch {
+    if (-not $args) { Write-Error "Usage: bverbosefetch <command> [args...]"; return }
+    $previous = $env:BUN_CONFIG_VERBOSE_FETCH
+    $env:BUN_CONFIG_VERBOSE_FETCH = 'curl'
+    try {
+        $command = $args[0]
+        $rest = @()
+        if ($args.Count -gt 1) { $rest = @($args[1..($args.Count - 1)]) }
+        & $command @rest
+    } finally {
+        $env:BUN_CONFIG_VERBOSE_FETCH = $previous
+    }
+}
+'''
+
+[functions.clihelp]
+ps1 = '''
+function clihelp {
+    @"
+3rd-Party CLI Tools (Windows / PowerShell)
+==========================================
+
+Cloud & Hosting:
+  az         Azure (Microsoft Cloud)
+  aws        Amazon Web Services
+  gcloud     Google Cloud Platform
+  doctl      DigitalOcean
+  cf         Cloudflare
+
+Developer Platforms:
+  gh         GitHub CLI
+  jira       Jira CLI
+
+Media & Utilities:
+  yt-dlp     YouTube & video platform downloader
+  transfer   Catbox / Litterbox file sharing
+  pasteit    paste.rs pastebin
+  tb         termbin.com pastebin
+  topb       0x0.st pastebin
+  weather    wttr.in weather lookup
+  curlt      HTTP request timing inspection
+"@
+}
+'''
+
+[functions.cpuinfo]
+ps1 = '''
+function cpuinfo {
+    Get-CimInstance Win32_Processor |
+        Select-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed
+}
+'''
+
+[functions.ct]
+ps1 = '''
+function ct {
+    $rows = @()
+    foreach ($line in @($input)) {
+        foreach ($part in ($line -split "`r?`n")) {
+            if (-not $part -or $part -match '^\s*$') { continue }
+            $rows += , @($part.Trim() -split '\s+')
+        }
+    }
+    if ($rows.Count -eq 0) { return }
+    $widths = @{}
+    foreach ($r in $rows) {
+        for ($i = 0; $i -lt $r.Count; $i++) {
+            if ($r[$i].Length -gt $widths[$i]) { $widths[$i] = $r[$i].Length }
+        }
+    }
+    foreach ($r in $rows) {
+        $cells = for ($i = 0; $i -lt $r.Count; $i++) { $r[$i].PadRight($widths[$i]) }
+        ($cells -join ' ').TrimEnd()
+    }
+}
+'''
+
+[functions.dc9router]
+ps1 = '''
+function dc9router {
+    $json = @"
+{"services":{"9router":{"image":"decolua/9router:latest","ports":["20128:20128"],"volumes":["$(_DockerPath $HOME)/.9router:/app/data"],"environment":{"DATA_DIR":"/app/data","HEADROOM_URL":"http://headroom:8787"},"depends_on":["headroom"]},"headroom":{"image":"ghcr.io/chopratejas/headroom:latest","ports":["8787:8787"]}}}
+"@
+    $composeFile = Join-Path ([System.IO.Path]::GetTempPath()) 'dotfiles-9router.compose.json'
+    [System.IO.File]::WriteAllText($composeFile, $json, (New-Object System.Text.UTF8Encoding($false)))
+    docker compose -f $composeFile up -d
+}
+'''
+
+[functions.dc9routerup]
+ps1 = '''
+function dc9routerup {
+    docker pull decolua/9router:latest
+    docker pull ghcr.io/chopratejas/headroom:latest
+    dc9router
+}
+'''
+
+[functions.dcb]
+ps1 = '''
+function dcb {
+    Write-Host "http://localhost:8978/"
+    docker run --name cloudbeaver --rm -it -p 8978:8978 -v "$(_DockerPath $HOME)/.cache/cloudbeaver:/opt/cloudbeaver/workspace" dbeaver/cloudbeaver:latest
+}
+'''
+
+[functions.dcode]
+ps1 = '''
+function dcode {
+    docker run --pull=always -p 127.0.0.1:8443:8443 -v "$(_DockerPath):/root/project" codercom/code-server code-server --allow-http --no-auth
+}
+'''
+
+[functions.dcps]
+ps1 = '''
+function dcps {
+    $out = docker compose ps @args
+    if (Get-Command docker-color-output -ErrorAction SilentlyContinue) { $out | docker-color-output } else { $out }
+}
+'''
+
+[functions.ddown]
+ps1 = '''
+function ddown {
+    $running = docker ps -a -q
+    if ($running) { docker stop $running }
+}
+'''
+
+[functions.df]
+ps1 = '''
+function df {
+    Get-PSDrive -PSProvider FileSystem | ForEach-Object {
+        $total = $_.Used + $_.Free
+        [pscustomobject]@{
+            Name    = $_.Name
+            TotalGB = if ($total) { [math]::Round($total / 1GB, 1) } else { 0 }
+            UsedGB  = if ($_.Used) { [math]::Round($_.Used / 1GB, 1) } else { 0 }
+            FreeGB  = if ($_.Free) { [math]::Round($_.Free / 1GB, 1) } else { 0 }
+            Root    = $_.Root
+        }
+    }
+}
+'''
+
+[functions.dfirefox]
+ps1 = '''
+function dfirefox {
+    Write-Host "https://c:c@$(curl.exe -s4 https://ifconfig.co):3001"
+    docker run --pull=always --rm --name=ff --net=host --security-opt=seccomp=unconfined --shm-size=4gb --env=TZ=Europe/London --env=PUID=1000 --env=PGID=1000 --env=CUSTOM_USER=c --env=PASSWORD=c -v="$(_DockerPath $HOME)/docker/firefox:/config" lscr.io/linuxserver/firefox
+}
+'''
+
+[functions.diff]
+ps1 = '''
+function diff {
+    if (Get-Command diff.exe -ErrorAction SilentlyContinue) {
+        & diff.exe -u -w @args
+    } elseif (Get-Command git.exe -ErrorAction SilentlyContinue) {
+        & git.exe diff --no-index @args
+    } else {
+        Compare-Object @args
+    }
+}
+'''
+
+[functions.djellyfin]
+ps1 = '''
+function djellyfin {
+    Write-Host "http://$(curl.exe -s4 https://ifconfig.co):8096"
+    New-Item -ItemType Directory -Force -Path "$HOME/docker/jellyfin/config", "$HOME/docker/jellyfin/cache", "$HOME/docker/jellyfin/media" | Out-Null
+    docker run --pull always --rm -it --name jellyfin --user 1000:1000 --net host --volume "$(_DockerPath $HOME)/docker/jellyfin/config:/config" --volume "$(_DockerPath $HOME)/docker/jellyfin/cache:/cache" --volume "$(_DockerPath $HOME)/docker/jellyfin/media:/media" jellyfin/jellyfin
+}
+'''
+
+[functions.dk]
+ps1 = '''
+function dk {
+    docker run --pull=always --rm -it --name=kaggle -p=8080:8080 -v="$(_DockerPath):$(_DockerPath)" -w="$(_DockerPath)" kaggle/python jupyter notebook --no-browser --notebook-dir="$(_DockerPath)" --allow-root --port=8080 --ip=*
+}
+'''
+
+[functions.dkill]
+ps1 = '''
+function dkill {
+    $running = docker ps -q
+    if ($running) { docker kill $running }
+}
+'''
+
+[functions.dkilla]
+ps1 = '''
+function dkilla {
+    $running = docker ps -a -q
+    if ($running) { docker stop $running }
+}
+'''
+
+[functions.dlog]
+ps1 = '''
+function dlog {
+    $ids = @(docker ps -q)
+    if (-not $ids) { return }
+    if ($PSVersionTable.PSVersion.Major -ge 7) {
+        $ids | ForEach-Object -Parallel { docker logs --since 30s -f $_ }
+    } else {
+        $ids | ForEach-Object { docker logs --since 30s -f $_ }
+    }
+}
+'''
+
+[functions.dm]
+ps1 = '''
+function dm {
+    docker run --pull=always --net=host --rm -itv "$(_DockerPath):$(_DockerPath)" -w "$(_DockerPath)" -u 1000 mongo
+}
+'''
+
+[functions.dn]
+ps1 = '''
+function dn {
+    docker run --pull=always --rm -itv "$(_DockerPath):$(_DockerPath)" -w "$(_DockerPath)" -u 1000 node:alpine
+}
+'''
+
+[functions.dnd]
+ps1 = '''
+function dnd {
+    docker run --rm -it --pull=always --name=netdata --pid=host --network=host -v netdataconfig:/etc/netdata -v netdatalib:/var/lib/netdata -v netdatacache:/var/cache/netdata -v /:/host/root:ro,rslave -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /etc/localtime:/etc/localtime:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/log:/host/var/log:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -v /run/dbus:/run/dbus:ro --cap-add SYS_PTRACE --cap-add SYS_ADMIN --security-opt apparmor=unconfined --no-healthcheck netdata/netdata
+}
+'''
+
+[functions.dndd]
+ps1 = '''
+function dndd {
+    docker run --detach --pull=always --name=netdata --pid=host --network=host -v netdataconfig:/etc/netdata -v netdatalib:/var/lib/netdata -v netdatacache:/var/cache/netdata -v /:/host/root:ro,rslave -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /etc/localtime:/etc/localtime:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /etc/os-release:/host/etc/os-release:ro -v /var/log:/host/var/log:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -v /run/dbus:/run/dbus:ro --restart always --cap-add SYS_PTRACE --cap-add SYS_ADMIN --security-opt apparmor=unconfined --no-healthcheck netdata/netdata
+}
+'''
+
+[functions.dnekoff]
+ps1 = '''
+function dnekoff {
+    Write-Host "http://$(curl.exe -s4 https://ifconfig.co):8080"
+    docker run --pull=always --rm -it --name=neko --shm-size=2gb --net=host --env=NEKO_DESKTOP_SCREEN=1920x1080@30 --env=NEKO_MEMBER_MULTIUSER_USER_PASSWORD=c --env=NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD=cc --env=NEKO_WEBRTC_EPR=52000-52100 --env=NEKO_WEBRTC_ICELITE=1 ghcr.io/m1k1o/neko/firefox
+}
+'''
+
+[functions.dockerup]
+ps1 = '''
+function dockerup {
+    docker run --pull=always --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --remove-volumes --debug --run-once
+}
+'''
+
+[functions.dotnethttps]
+ps1 = '''
+function dotnethttps {
+    dotnet dev-certs https --clean
+    dotnet dev-certs https --trust
+}
+'''
+
+[functions.dotnetig]
+ps1 = '''
+function dotnetig {
+    $tools = @('dotnet-outdated-tool', 'Roslynator.DotNet.Cli', 'dotnet-ef', 'dotnet-serve', 'PowerShell', 'CSharpier', 'CentralisedPackageConverter', 'dotnet-symbol')
+    foreach ($t in $tools) { dotneti $t }
+}
+'''
+
+[functions.dpihole]
+ps1 = '''
+function dpihole {
+    docker run --pull=always -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ="Europe/London" -v "$(_DockerPath)/pihole/etc/pihole/:/etc/pihole/" -v "$(_DockerPath)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST="pihole" -e PROXY_LOCATION="pihole" -e ServerIP="127.0.0.1" pihole/pihole:latest
+}
+'''
+
+[functions.dprune]
+ps1 = '''
+function dprune {
+    docker system prune --force --volumes
+    docker volume prune --force
+}
+'''
+
+[functions.dprunea]
+ps1 = '''
+function dprunea {
+    docker system prune --force --volumes --all
+    docker volume prune --force --all
+}
+'''
+
+[functions.dps]
+ps1 = '''
+function dps {
+    $out = docker ps @args
+    if (Get-Command docker-color-output -ErrorAction SilentlyContinue) { $out | docker-color-output } else { $out }
+}
+'''
+
+[functions.drm]
+ps1 = '''
+function drm {
+    $dangling = docker images -q --filter "dangling=true"
+    if ($dangling) { docker rmi $dangling }
+}
+'''
+
+[functions.ds]
+ps1 = '''
+function ds {
+    $out = docker stats @args
+    if (Get-Command docker-color-output -ErrorAction SilentlyContinue) { $out | docker-color-output } else { $out }
+}
+'''
+
+[functions.dtf]
+ps1 = '''
+function dtf {
+    docker run --pull=always --rm -it --name=kaggle -p=8080:8080 -v="$(_DockerPath):$(_DockerPath)" -w="$(_DockerPath)" tensorflow/tensorflow jupyter notebook --no-browser --notebook-dir="$(_DockerPath)" --allow-root --port=8080 --ip=*
+}
+'''
+
+[functions.du]
+ps1 = '''
+function du {
+    Get-ChildItem -Force @args | ForEach-Object {
+        $size = if ($_.PSIsContainer) {
+            (Get-ChildItem -Recurse -Force -File $_.FullName -ErrorAction SilentlyContinue |
+                Measure-Object Length -Sum).Sum
+        } else { $_.Length }
+        [pscustomobject]@{ Size = [long]$size; Name = $_.Name }
+    } | Sort-Object Size -Descending |
+        Select-Object @{ n = 'MB'; e = { [math]::Round($_.Size / 1MB, 2) } }, Size, Name
+}
+'''
+
+[functions.dwatch]
+ps1 = '''
+function dwatch {
+    docker run --pull=always -d --restart=always --name=watchtower -v=/var/run/docker.sock:/var/run/docker.sock:ro containrrr/watchtower --cleanup --remove-volumes
+}
+'''
+
+[functions.ee]
+ps1 = '''
+function ee {
+    if (-not (Test-Path .env)) { Write-Error "ee: .env not found"; return }
+    foreach ($line in Get-Content .env) {
+        if ($line -match '^\s*#' -or $line -notmatch '=') { continue }
+        $name, $value = $line -split '=', 2
+        Set-Item -Path "Env:$($name.Trim())" -Value $value.Trim()
+    }
+}
+'''
+
+[functions.extract]
+ps1 = '''
+function extract {
+    if (-not $args) {
+        Write-Host "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+        return
+    }
+    foreach ($n in $args) {
+        if (-not (Test-Path -LiteralPath $n)) { Write-Host "'$n' - file does not exist"; return }
+        switch -Regex ($n) {
+            '\.(tar\.bz2|tar\.gz|tar\.xz|tbz2|tgz|txz|tar)$' { tar xvf $n; break }
+            '\.(zip|arj|cab|chm|deb|dmg|iso|lzh|msi|rpm|udf|wim|xar|7z)$' { 7z x $n; break }
+            '\.exe$' { cabextract $n; break }
+            '\.xz$' { unxz $n; break }
+            '\.gz$' { gunzip $n; break }
+            '\.bz2$' { bunzip2 $n; break }
+            '\.rar$' { unrar x -ad $n; break }
+            '\.lzma$' { unlzma $n; break }
+            default { Write-Host "extract: '$n' - unknown archive method"; return }
+        }
+    }
+}
+'''
+
+[functions.fio]
+ps1 = '''
+function fio {
+    if (-not $args) { Write-Error "Usage: fio <file>"; return }
+    curl.exe -F "file=@$($args[0])" https://file.io
+    Write-Host
+}
+'''
+
+[functions.fio1]
+ps1 = '''
+function fio1 {
+    if (-not $args) { Write-Error "Usage: fio1 <file>"; return }
+    curl.exe -F "file=@$($args[0])" "https://file.io/?expires=1d"
+    Write-Host
+}
+'''
+
+[functions.free]
+ps1 = '''
+function free {
+    $os = Get-CimInstance Win32_OperatingSystem
+    [pscustomobject]@{
+        TotalMB = [math]::Round($os.TotalVisibleMemorySize / 1024)
+        UsedMB  = [math]::Round(($os.TotalVisibleMemorySize - $os.FreePhysicalMemory) / 1024)
+        FreeMB  = [math]::Round($os.FreePhysicalMemory / 1024)
+    }
+}
+'''
+
+[functions.genpwd]
+ps1 = '''
+function genpwd {
+    $rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+    $bytes = New-Object byte[] 32
+    $rng.GetBytes($bytes)
+    $password = [Convert]::ToBase64String($bytes)
+    $password
+    $hash = [System.Security.Cryptography.SHA256]::Create().ComputeHash(
+        [System.Text.Encoding]::UTF8.GetBytes($password))
+    $hex = -join ($hash | ForEach-Object { $_.ToString('x2') })
+    $hex
+    $hex.Substring(0, 16)
+    $alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    -join (1..16 | ForEach-Object { $alpha[(Get-Random -Maximum $alpha.Length)] })
+}
+'''
+
+[functions.gg]
+ps1 = '''
+function gg {
+    git pull -f
+    $defaultBranch = if (& git show-ref --verify --quiet refs/remotes/origin/main) { "main" } else { "master" }
+    git reset --hard "origin/$defaultBranch"
+}
+'''
+
+[functions.glog]
+ps1 = '''
+function glog {
+    git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative @args
+}
+'''
+
+[functions.gobuild]
+ps1 = '''
+function gobuild {
+    $env:CGO_ENABLED = "0"
+    go build -trimpath -ldflags '-s -w' @args
+}
+'''
+
+[functions.gols]
+ps1 = '''
+function gols {
+    $deps = go list -f '{{join .Deps "\n"}}'
+    go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' @deps
+}
+'''
+
+[functions.gotidy]
+ps1 = '''
+function gotidy {
+    go mod tidy
+    go mod verify
+}
+'''
+
+[functions.goup]
+ps1 = '''
+function goup {
+    Remove-Item go.mod, go.sum -ErrorAction SilentlyContinue
+    go mod init
+    go get -u
+    go mod tidy
+}
+'''
+
+[functions.gpm]
+ps1 = '''
+function gpm {
+    $curBranch = git branch --show-current
+    git push origin "${curBranch}:master" @args
+}
+'''
+
+[functions.grb]
+ps1 = '''
+function grb {
+    git fetch --all
+    git for-each-ref --sort=-committerdate --format='%(HEAD) %(color:blue)%(authordate:iso) %(color:red)%(objectname:short) %(color:yellow)%(refname:short) %(color:reset)%(contents:subject) %(color:magenta)%(authorname) %(color:green)%(committerdate:relative)' refs
+}
+'''
+
+[functions.grep]
+ps1 = '''
+function grep {
+    if (Get-Command rg.exe -ErrorAction SilentlyContinue) {
+        & rg.exe @args
+    } elseif (Get-Command grep.exe -ErrorAction SilentlyContinue) {
+        & grep.exe --color=auto @args
+    } else {
+        Select-String @args
+    }
+}
+'''
+
+[functions.grm]
+ps1 = '''
+function grm {
+    $deleted = git ls-files --deleted
+    if ($deleted) { $deleted | ForEach-Object { git rm $_ } }
+}
+'''
+
+[functions.igit]
+ps1 = '''
+function igit {
+    git config --global user.email "charles63500@gmail.com"
+    git config --global user.name "chneau"
+    git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+    git config --global merge.ff false
+    git config --global pull.ff true
+    git config --global core.whitespace blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+    git config --global fetch.prune true
+    git config --global pull.rebase true
+    Write-Host "Configured git global settings." -ForegroundColor Green
+}
+'''
+
+[functions.iproxy]
+ps1 = '''
+function iproxy {
+    $alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    $login = -join (1..32 | ForEach-Object { $alpha[(Get-Random -Maximum $alpha.Length)] })
+    $password = -join (1..32 | ForEach-Object { $alpha[(Get-Random -Maximum $alpha.Length)] })
+    $env:PROXY_LOGIN = $login
+    $env:PROXY_PASSWORD = $password
+    $ip = (curl.exe -s4 https://ifconfig.co).Trim()
+    Write-Host "Login: $login"
+    Write-Host "Password: $password"
+    Write-Host "HTTPS_PROXY=`"http://${login}:${password}@${ip}:3128/`""
+    docker rm -f proxy 2>$null | Out-Null
+    docker run --pull=always --rm -d -e PROXY_LOGIN -e PROXY_PASSWORD --name=proxy --net=host ghcr.io/tarampampam/3proxy:latest
+}
+'''
+
+[functions.kclean]
+ps1 = '''
+function kclean {
+    $replicas = kubectl get rs -o jsonpath="{range .items[?(@.spec.replicas==0)]}{.metadata.name}{' '}{end}"
+    foreach ($name in ($replicas -split '\s+')) {
+        if ($name) { kubectl delete rs $name }
+    }
+    kubectl delete pods --field-selector status.phase=Failed --ignore-not-found
+    kubectl delete pods --field-selector status.phase=Succeeded --ignore-not-found
+}
+'''
+
+[functions.krewig]
+ps1 = '''
+function krewig {
+    kubectl krew install ns ctx stern
+    kubectl krew upgrade
+}
+'''
+
+[functions.ks0]
+ps1 = '''
+function ks0 {
+    kubectl scale --replicas=0 deployment --all
+    kubectl scale --replicas=0 statefulset --all
+}
+'''
+
+[functions.ks1]
+ps1 = '''
+function ks1 {
+    kubectl scale --replicas=1 deployment --all
+    kubectl scale --replicas=1 statefulset --all
+}
+'''
+
+[functions.lld]
+ps1 = '''
+function lld {
+    Get-ChildItem -Force |
+        Sort-Object @{ e = { $_.PSIsContainer }; Descending = $true },
+                    @{ e = { $_.LastWriteTime }; Descending = $true } |
+        Format-Table Mode, LastWriteTime, Length, Name -AutoSize
+}
+'''
+
+[functions.lo]
+ps1 = '''
+function lo {
+    Get-ChildItem -Force | Format-Table Mode, LastWriteTime, Length, Name -AutoSize
+}
+'''
+
+[functions.ls]
+ps1 = '''
+function ls {
+    if (Get-Command ls.exe -ErrorAction SilentlyContinue) {
+        & ls.exe --color=auto @args
+    } else {
+        Get-ChildItem @args
+    }
+}
+'''
+
+[functions.mip]
+ps1 = '''
+function mip {
+    if (Get-Command dig.exe -ErrorAction SilentlyContinue) {
+        $out = dig.exe +short txt ch whoami.cloudflare '@1.0.0.1'
+        if ($out) { $out; return }
+    }
+    curl.exe -s4 https://api.ipify.org
+    Write-Host
+}
+'''
+
+[functions.myip]
+ps1 = '''
+function myip {
+    try { (Invoke-RestMethod "https://icanhazip.com").Trim() }
+    catch { (Invoke-RestMethod "https://api.ipify.org").Trim() }
+}
+'''
+
+[functions.npmig]
+ps1 = '''
+function npmig {
+    $pkgs = @(
+        'npm@latest', 'opencode-ai@latest', 'oxlint@latest', '@chneau/x',
+        '@biomejs/biome@latest', 'http-server@latest', 'live-server@latest',
+        'fkill-cli@latest', 'ungit@latest', 'tsx@latest', 'npm-check-updates@latest',
+        'nodemon@latest', 'prettier@latest', 'typesync@latest', 'depcheck@latest',
+        'concurrently@latest', 'ts-unused-exports@latest', '@qwen-code/qwen-code@latest',
+        'jsdoc-scribe@latest'
+    )
+    if (Get-Command bun -ErrorAction SilentlyContinue) {
+        bun install --force --global --silent $pkgs
+        bun update --global --latest --force
+    } else {
+        npm install --global $pkgs
+    }
+}
+'''
+
+[functions.pasteit]
+ps1 = '''
+function pasteit {
+    if ($args) {
+        curl.exe --data-binary "@$($args[0])" https://paste.rs
+    } else {
+        (@($input) -join "`n") | curl.exe --data-binary '@-' https://paste.rs
+    }
+    Write-Host
+}
+'''
+
+[functions.prompt]
+ps1 = '''
+function prompt {
+    $lastSuccess = $?
+    $lastExit = $global:LASTEXITCODE
+
+    # Exit icon & status code:
+    # In PowerShell, internal cmdlets/functions set $? to $true/$false but do NOT reset $LASTEXITCODE.
+    # So if $lastSuccess is $true, the last command succeeded.
+    if ($lastSuccess) {
+        $statusIcon = "$Green[OK]$Reset"
+        $global:LASTEXITCODE = 0
+    } else {
+        $code = if ($null -ne $lastExit -and $lastExit -ne 0) { $lastExit } else { 1 }
+        $statusIcon = "$Red[ERR:$code]$Reset"
+    }
+
+    # Calculate duration of the executed command only
+    $durationStr = ""
+    if ($global:__cmdWatch -and $global:__cmdWatch.IsRunning) {
+        $global:__cmdWatch.Stop()
+        $elapsedMs = $global:__cmdWatch.ElapsedMilliseconds
+        $global:__cmdWatch = $null
+
+        if ($elapsedMs -ge 60000) {
+            $mins = [math]::Floor($elapsedMs / 60000)
+            $secs = [math]::Floor(($elapsedMs % 60000) / 1000)
+            $durationStr = "{0}m{1}s" -f $mins, $secs
+        } elseif ($elapsedMs -ge 1000) {
+            $durationStr = "{0:N1}s" -f ($elapsedMs / 1000)
+        } else {
+            $durationStr = "{0}ms" -f $elapsedMs
+        }
+    }
+
+    $timeNow = Get-Date -Format "HH:mm:ss"
+    $userHost = "$Green$env:USERNAME@$env:COMPUTERNAME$Reset"
+    $currDir = "$Blue$(Get-Location)$Reset"
+
+    $timerDisplay = if ($durationStr) { "($durationStr) " } else { "" }
+
+    return "$statusIcon $timerDisplay$White$timeNow$Reset $userHost $currDir $Blue>$Reset "
+}
+'''
+
+[functions.refresh]
+ps1 = '''
+function refresh {
+    Write-Host "Reloading PowerShell profile..." -ForegroundColor Green
+    if (Test-Path $PROFILE) { . $PROFILE }
+}
+'''
+
+[functions.sshgenkey]
+ps1 = '''
+function sshgenkey {
+    New-Item -ItemType Directory -Force -Path .ssh | Out-Null
+    ssh-keygen -t rsa -f .ssh/id_rsa -q --% -N ""
+}
+'''
+
+[functions.stripcolors]
+ps1 = '''
+function stripcolors {
+    $esc = [char]27
+    foreach ($line in @($input)) { $line -replace "$esc\[[0-9;]{1,6}[mGK]", '' }
+}
+'''
+
+[functions.tb]
+ps1 = '''
+function tb {
+    $client = New-Object System.Net.Sockets.TcpClient('termbin.com', 9999)
+    try {
+        $stream = $client.GetStream()
+        $writer = New-Object System.IO.StreamWriter($stream)
+        $writer.Write((@($input) -join "`n") + "`n")
+        $writer.Flush()
+        $reader = New-Object System.IO.StreamReader($stream)
+        $reader.ReadToEnd().Trim()
+    } finally {
+        $client.Close()
+    }
+}
+'''
+
+[functions.tmuxhelp]
+ps1 = '''
+function tmuxhelp {
+    @'
+tmux Cheat Sheet & Basics
+-------------------------
+Default prefix key: Ctrl+b  (press Ctrl+b, release, then press key)
+
+Sessions
+  tmux                        Start a new session
+  tmux new -s <name>          Start a new session named <name>
+  tmux ls                     List existing sessions
+  tmux a                      Attach to the last session
+  tmux a -t <name>            Attach to session named <name>
+  tmux kill-session -t <name> Kill a session by name
+  tmux kill-server            Kill all tmux sessions and server
+  Ctrl+b d                    Detach from current session
+  Ctrl+b s                    Interactive session selector / list
+  Ctrl+b $                    Rename current session
+
+Windows (Tabs)
+  Ctrl+b c                    Create a new window
+  Ctrl+b ,                    Rename current window
+  Ctrl+b w                    Interactive window / session list
+  Ctrl+b n                    Switch to next window
+  Ctrl+b p                    Switch to previous window
+  Ctrl+b <0-9>                Switch to window by index
+  Ctrl+b &                    Close current window
+
+Panes (Splits)
+  Ctrl+b %                    Split pane vertically (left / right)
+  Ctrl+b "                    Split pane horizontally (top / bottom)
+  Ctrl+b <arrows>             Navigate between panes
+  Ctrl+b o                    Cycle through panes
+  Ctrl+b z                    Toggle pane zoom (fullscreen)
+  Ctrl+b x                    Close current pane
+  Ctrl+b { / }                Swap current pane with previous / next
+  Ctrl+b q                    Show pane numbers (press number to jump)
+  Ctrl+b Space                Cycle pane layout arrangements
+
+Scroll & Copy Mode
+  Ctrl+b [                    Enter scroll / copy mode (q to exit)
+  Space / Enter               (In copy mode) Start selection / Copy
+
+Help & Commands
+  Ctrl+b ?                    Show all tmux keybindings
+  Ctrl+b :                    Open tmux command prompt
+  Ctrl+b t                    Display digital clock
+'@
+}
+'''
+
+[functions.tobase64]
+ps1 = '''
+function tobase64 {
+    $inputStr = ($input | Out-String)
+    if ($inputStr) {
+        [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($inputStr))
+    }
+}
+'''
+
+[functions.topb]
+ps1 = '''
+function topb {
+    (@($input) -join "`n") | curl.exe -F "file=@-" https://0x0.st
+    Write-Host
+}
+'''
+
+[functions.toqrcode]
+ps1 = '''
+function toqrcode {
+    (@($input) -join "`n") | curl.exe "-F-=<-" https://qrenco.de
+    Write-Host
+}
+'''
+
+[functions.transfer]
+ps1 = '''
+function transfer {
+    $file = $args[0]
+    $file_name = if ($file) { Split-Path $file -Leaf } else { 'upload.txt' }
+
+    if ($MyInvocation.ExpectingInput) {
+        $tmp = Join-Path ([System.IO.Path]::GetTempPath()) $file_name
+        $stream = [System.IO.File]::Create($tmp)
+        $writer = New-Object System.IO.StreamWriter($stream, (New-Object System.Text.UTF8Encoding($false)))
+        foreach ($line in $input) { $writer.WriteLine($line) }
+        $writer.Dispose()
+        $stream.Dispose()
+        $file = $tmp
+    } elseif (-not $file) {
+        Write-Error "No arguments specified.`nUsage:`n transfer <file|directory>`n ... | transfer <file_name>"
+        return
+    } elseif (-not (Test-Path -LiteralPath $file)) {
+        Write-Error "${file}: No such file or directory"
+        return
+    } elseif (Test-Path -LiteralPath $file -PathType Container) {
+        $archive = Join-Path ([System.IO.Path]::GetTempPath()) "$file_name.zip"
+        Compress-Archive -Path (Join-Path $file '*') -DestinationPath $archive -Force
+        $file = $archive
+        $file_name = "$file_name.zip"
+    }
+
+    curl.exe --progress-bar -F "reqtype=fileupload" -F "time=72h" `
+        -F "fileToUpload=@$file;filename=$file_name" `
+        "https://litterbox.catbox.moe/resources/internals/api.php"
+    Write-Host
+}
+'''
+
+[functions.tsall]
+ps1 = '''
+function tsall {
+    ncup
+    biome check --write --unsafe .
+    depcheck
+    ts-unused-exports tsconfig.json
+    tsc --noEmit --project .
+}
+'''
+
+[functions.u]
+ps1 = '''
+function u {
+    Get-ChildItem -Force | Sort-Object LastWriteTime |
+        Format-Table Mode, LastWriteTime, Length, Name -AutoSize
+}
+'''
+
+[functions.updateprofile]
+ps1 = '''
+function updateprofile {
+    $bootstrapUrl = "https://raw.githubusercontent.com/chneau/dotfiles/master/bootstrap.ps1"
+    Write-Host "Updating PowerShell profile from $bootstrapUrl..." -ForegroundColor Cyan
+    Invoke-Expression (Invoke-RestMethod -Uri $bootstrapUrl -Headers @{ 'Cache-Control' = 'no-cache' })
+}
+'''
+
+[functions.uploadhelp]
+ps1 = '''
+function uploadhelp {
+    @'
+File Upload / Share Commands
+============================
+
+Command        Service            Description
+-------        -------            -----------
+transfer       Catbox/Litterbox   Upload a file, directory (auto-zipped) or piped stdin; 72h expiry
+fio            file.io            Upload a file -> single-use download link
+fio1           file.io            Upload a file -> single-use link that expires after 1 day
+pasteit        paste.rs           Paste a file or piped text -> plain-text share link
+tb             termbin.com        Piped text -> plain-text paste link (~1 week retention)
+topb           0x0.st             Upload piped stdin (cat file | topb) -> short-link
+toqrcode       qrenco.de          Convert piped text into a QR code
+
+Serve / Share (host locally, others download from you):
+  servepy         uv run python -m http.server
+  webshare        uv run python -m http.server
+
+Usage examples:
+  transfer report.pdf
+  transfer ./folder            # zips folder and uploads
+  cat notes.txt | transfer notes.txt
+  fio report.pdf
+  pasteit report.md
+  cat notes.txt | pasteit
+  cat notes.txt | tb
+  cat notes.txt | topb
+  echo "https://my.link" | toqrcode
+'@
+}
+'''
+
+[functions.wsldocker]
+ps1 = '''
+function wsldocker {
+    wsl --user root service docker start
+    wsl
+}
+'''
+
+[functions.ymp3]
+ps1 = '''
+function ymp3 {
+    yt-dlp --restrict-filenames --continue --ignore-errors --download-archive downloaded.txt `
+           --no-post-overwrites --no-overwrites --extract-audio --audio-format mp3 `
+           --output "%(title)s.%(ext)s" @args
+}
+'''
