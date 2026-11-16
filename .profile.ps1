@@ -550,7 +550,6 @@ function dockertags { dockertags @args }
 function dockerup { docker run --pull=always --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --remove-volumes --debug --run-once @args }
 function doh { docker history @args }
 function dotnetfmt { dotnet csharpier . @args }
-function dotnetig { dotneti dotnet-outdated-tool & dotneti Roslynator.DotNet.Cli & dotneti dotnet-ef & dotneti dotnet-serve & dotneti PowerShell & dotneti CSharpier & dotneti CentralisedPackageConverter & dotneti dotnet-symbol & wait @args }
 function dotnetup { dotnet outdated --upgrade @args }
 function dsd { docker stack down @args }
 function dsdf { docker system df @args }
@@ -596,7 +595,7 @@ function gitclean { _Gitclean 'safe' @args }
 function gitcleanf { _Gitclean 'force' @args }
 function gitcleanr { gitcleanr @args }
 function gitget { gitget @args }
-function gitmessage { (Invoke-RestMethod "https://whatthecommit.com/index.txt").Trim() @args }
+function gitmessage { Write-Output (Invoke-RestMethod "https://whatthecommit.com/index.txt").Trim() @args }
 function gitnewfresh { git checkout --orphan @args }
 function gitrmtag { git push -d origin @args }
 function gl { git pull @args }
@@ -675,7 +674,6 @@ function ilivereload { uv tool install --force livereload @args }
 function ilux { go install github.com/iawia002/lux@latest @args }
 function imas { irm https://massgrave.dev/get | iex @args }
 function imcode { bun i -g @minimax-ai/code @args }
-function inix { sh <(curl -L https://nixos.org/nix/install) --no-daemon @args }
 function iomp { bun install -g @oh-my-pi/pi-coding-agent @args }
 function iopencode { powershell -c "irm https://opencode.ai/install.ps1 | iex" @args }
 function ipandoc { brew install pandoc @args }
@@ -750,7 +748,7 @@ function ls { ls --color=auto @args }
 function m { make @args }
 function mapscii { telnet mapscii.me @args }
 function meminfo { free @args }
-function mh { (Invoke-RestMethod "https://ifconfig.me/host").Trim() @args }
+function mh { Write-Output (Invoke-RestMethod "https://ifconfig.me/host").Trim() @args }
 function mip2 { curl.exe -s4 https://icanhazip.com @args }
 function mkdir { mkdir -pv @args }
 function ncup { npm-check-updates --upgrade --install=always --packageManager=bun --deep @args }
@@ -772,7 +770,7 @@ function ompu { omp update @args }
 function ompy { omp --auto-approve @args }
 function opencodey { opencode --auto @args }
 function openports { nmap -p- portquiz.net | Select-String -Pattern 'open' -CaseSensitive:$false @args }
-function path { ($env:PATH -split ';') @args }
+function path { Write-Output ($env:PATH -split ';') @args }
 function pipi { uv pip install --upgrade @args }
 function pipig { uv tool install @args }
 function pipup { uv pip install --upgrade @args }

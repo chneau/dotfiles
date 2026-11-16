@@ -319,7 +319,6 @@ doskey ilivereload=uv tool install --force livereload $*
 doskey ilux=go install github.com/iawia002/lux@latest $*
 doskey imas=powershell -c "irm https://massgrave.dev/get | iex" $*
 doskey imcode=bun i -g @minimax-ai/code $*
-doskey inix=sh <(curl -L https://nixos.org/nix/install) --no-daemon $*
 doskey iomp=bun install -g @oh-my-pi/pi-coding-agent $*
 doskey iopencode=powershell -c "irm https://opencode.ai/install.ps1 | iex" $*
 doskey ipandoc=brew install pandoc $*

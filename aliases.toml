@@ -93,7 +93,7 @@ doh = "docker history"
 dotnetfmt = "dotnet csharpier ."
 dotnethttps = { sh = "dotnet dev-certs https --clean && dotnet dev-certs https --trust", cmd = "dotnet dev-certs https --clean ^& dotnet dev-certs https --trust" }
 dotneti = { sh = "f(){ dotnet tool install --global \"$1\" || dotnet tool update --global \"$1\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command dotneti" }
-dotnetig = { sh = "dotneti dotnet-outdated-tool & dotneti Roslynator.DotNet.Cli & dotneti dotnet-ef & dotneti dotnet-serve & dotneti PowerShell & dotneti CSharpier & dotneti CentralisedPackageConverter & dotneti dotnet-symbol & wait", cmd = "powershell -NoLogo -Command dotnetig", ps1 = "dotneti dotnet-outdated-tool & dotneti Roslynator.DotNet.Cli & dotneti dotnet-ef & dotneti dotnet-serve & dotneti PowerShell & dotneti CSharpier & dotneti CentralisedPackageConverter & dotneti dotnet-symbol & wait" }
+dotnetig = { sh = "dotneti dotnet-outdated-tool & dotneti Roslynator.DotNet.Cli & dotneti dotnet-ef & dotneti dotnet-serve & dotneti PowerShell & dotneti CSharpier & dotneti CentralisedPackageConverter & dotneti dotnet-symbol & wait", cmd = "powershell -NoLogo -Command dotnetig" }
 dotnetup = "dotnet outdated --upgrade"
 dpihole = { sh = "docker run --pull=always -d --name pihole -p 53:53/tcp -p 53:53/udp -p 1080:80 -e TZ=\"Europe/London\" -v \"$(pwd)/pihole/etc/pihole/:/etc/pihole/\" -v \"$(pwd)/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/\" --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pihole -e VIRTUAL_HOST=\"pihole\" -e PROXY_LOCATION=\"pihole\" -e ServerIP=\"127.0.0.1\" pihole/pihole:latest", cmd = "powershell -NoLogo -Command dpihole" }
 dprune = { sh = "docker system prune --force --volumes; docker volume prune --force", cmd = "docker system prune --force --volumes ^& docker volume prune --force" }
@@ -164,7 +164,7 @@ gitcleanf = { sh = "gitcleanf", ps1 = "_Gitclean 'force'", cmd = "powershell -No
 gitcleanr = { sh = "gitcleanr", cmd = "powershell -NoLogo -Command gitcleanr", ps1 = "gitcleanr" }
 gitget = { sh = "gitget", cmd = "powershell -NoLogo -Command gitget", ps1 = "gitget" }
 gitgetc = { sh = "f(){ gitget \"https://github.com/chneau/$1\"; }; f", cmd = "powershell -NoLogo -Command gitgetc" }
-gitmessage = { sh = "curl -s https://whatthecommit.com/index.txt", ps1 = "(Invoke-RestMethod \"https://whatthecommit.com/index.txt\").Trim()", cmd = "powershell -NoLogo -Command gitmessage" }
+gitmessage = { sh = "curl -s https://whatthecommit.com/index.txt", ps1 = "Write-Output (Invoke-RestMethod \"https://whatthecommit.com/index.txt\").Trim()", cmd = "powershell -NoLogo -Command gitmessage" }
 gitnewfresh = "git checkout --orphan"
 gitrmtag = "git push -d origin"
 gl = "git pull"
@@ -287,7 +287,7 @@ imicro = { sh = "curl https://getmic.ro | bash" }
 iminikube = { sh = "curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/" }
 imise = { sh = "curl https://mise.run | sh" }
 inextdns = { sh = "sh -c \"$(curl -sL https://nextdns.io/install)\"" }
-inix = "sh <(curl -L https://nixos.org/nix/install) --no-daemon"
+inix = { sh = "sh <(curl -L https://nixos.org/nix/install) --no-daemon" }
 invm = { sh = "curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash" }
 iombash = { sh = "bash -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)\"" }
 iomp = "bun install -g @oh-my-pi/pi-coding-agent"
@@ -397,7 +397,7 @@ ls = { sh = "ls --color=auto", cmd = "dir /o:gn", ps1 = "ls --color=auto" }
 m = "make"
 mapscii = "telnet mapscii.me"
 meminfo = { sh = "free -m -l -t", ps1 = "free", cmd = "powershell -NoLogo -Command meminfo" }
-mh = { sh = "curl ifconfig.me/host", ps1 = "(Invoke-RestMethod \"https://ifconfig.me/host\").Trim()", cmd = "powershell -NoLogo -Command mh" }
+mh = { sh = "curl ifconfig.me/host", ps1 = "Write-Output (Invoke-RestMethod \"https://ifconfig.me/host\").Trim()", cmd = "powershell -NoLogo -Command mh" }
 mip = { sh = "dig +short txt ch whoami.cloudflare @1.0.0.1 | tr -d \\\" || (curl api.ipify.org && echo)", cmd = "powershell -NoLogo -Command mip" }
 mip2 = { sh = "curl icanhazip.com", ps1 = "curl.exe -s4 https://icanhazip.com", cmd = "powershell -NoLogo -Command mip2" }
 mkcdir = { sh = "f(){ mkdir -- \"$1\" && cd -P -- \"$1\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command mkcdir" }
@@ -430,7 +430,7 @@ ompy = "omp --auto-approve"
 opencodey = "opencode --auto"
 openports = { sh = "nmap -p- portquiz.net | grep -i open", ps1 = "nmap -p- portquiz.net | Select-String -Pattern 'open' -CaseSensitive:$false", cmd = "nmap -p- portquiz.net ^| findstr /i open" }
 pasteit = { sh = "f(){ if [ $# -gt 0 ]; then curl --data-binary \"@$1\" https://paste.rs; else curl --data-binary @- https://paste.rs; fi; echo; unset -f f; }; f", cmd = "powershell -NoLogo -Command \"$input | pasteit $*\"" }
-path = { sh = "echo -e ${PATH//:/\\\\n}", ps1 = "($env:PATH -split ';')", cmd = "powershell -NoLogo -Command path" }
+path = { sh = "echo -e ${PATH//:/\\\\n}", ps1 = "Write-Output ($env:PATH -split ';')", cmd = "powershell -NoLogo -Command path" }
 pipi = "uv pip install --upgrade"
 pipig = "uv tool install"
 pipup = "uv pip install --upgrade"

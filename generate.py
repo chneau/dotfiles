@@ -7,8 +7,12 @@
 from __future__ import annotations
 
 import argparse
+import os
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 import tomllib
 from pathlib import Path
 
@@ -101,6 +105,40 @@ def update_file(path: Path, start: str, end: str, block: str, check: bool) -> bo
     return changed
 
 
+def ps1_syntax_errors(block: str) -> list[str]:
+    """Parse `block` with PowerShell, if available, and return syntax errors.
+
+    The generator appends `@args` to every alias body, so a body that is not a
+    plain command (e.g. a bare expression or bash syntax such as `&` / `<(...)`)
+    produces a profile that fails to load. Validate before writing.
+    """
+    shell = shutil.which("pwsh") or shutil.which("powershell")
+    if shell is None:
+        return []
+
+    fd, tmp = tempfile.mkstemp(suffix=".ps1")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(block + "\n")
+        script = (
+            "$e=$null; $t=$null; "
+            "[System.Management.Automation.Language.Parser]::ParseFile($env:PS1_TARGET,[ref]$t,[ref]$e) | Out-Null; "
+            "$e | ForEach-Object { '{0}: {1}' -f $_.Extent.StartLineNumber, $_.Message }"
+        )
+        proc = subprocess.run(
+            [shell, "-NoProfile", "-NonInteractive", "-Command", script],
+            env={**os.environ, "PS1_TARGET": tmp},
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+    finally:
+        os.unlink(tmp)
+
+    return [line.strip() for line in (proc.stdout + proc.stderr).splitlines() if line.strip()]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Sync aliases.toml to shell profiles.")
     parser.add_argument("--check", action="store_true", help="Exit non-zero if any file is out of date.")
@@ -109,10 +147,17 @@ def main() -> int:
     with CONFIG_PATH.open("rb") as f:
         data = tomllib.load(f)
 
+    blocks = {shell: render_block(data, shell) for shell in TARGETS}
+    errors = ps1_syntax_errors(blocks["ps1"])
+    if errors:
+        print(f"{TARGETS['ps1']['path'].name}: refusing to write, PowerShell syntax errors:", file=sys.stderr)
+        for line in errors:
+            print(f"  {line}", file=sys.stderr)
+        return 1
+
     any_changed = False
     for shell, cfg in TARGETS.items():
-        block = render_block(data, shell)
-        changed = update_file(cfg["path"], cfg["start"], cfg["end"], block, check=args.check)
+        changed = update_file(cfg["path"], cfg["start"], cfg["end"], blocks[shell], check=args.check)
         any_changed = any_changed or changed
         status = "out of date" if (args.check and changed) else ("updated" if changed else "ok")
         print(f"{cfg['path'].name}: {status}")
