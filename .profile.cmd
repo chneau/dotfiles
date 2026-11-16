@@ -424,6 +424,7 @@ doskey nud=nvm use default $*
 doskey nx=powershell -NoLogo -Command nx $*
 doskey oc=code -a . $*
 doskey ocy=opencode --auto $*
+doskey ompu=omp update $*
 doskey ompy=omp --auto-approve $*
 doskey opencodey=opencode --auto $*
 doskey openports=nmap -p- portquiz.net ^| findstr /i open $*

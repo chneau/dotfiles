@@ -262,7 +262,7 @@ opencode   OpenCode AI             ocy, opencodey          Multi-provider open-s
 deepcode   Vegamo                  -                       DeepCode terminal AI assistant
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 pi         pi.dev                  -                       Pi terminal coding agent
-omp        Oh My Pi                ompy                    Oh My Pi coding agent CLI (run w/ --auto-approve)
+omp        Oh My Pi                ompy, ompu              Oh My Pi coding agent CLI (run w/ --auto-approve; update w/ ompu)
 freebuff   Codebuff                -                       Free Codebuff coding agent
 commandcode Command Code           -                       Coding agent that learns your coding taste
 kilo       Kilo AI                 kiloy                   Kilo AI coding agent CLI (run w/ --auto)
@@ -289,6 +289,7 @@ Install / Update Aliases:
   irtk         Install RTK CLI
   ipi          Install Pi CLI
   iomp         Install Oh My Pi CLI
+  ompu         Update Oh My Pi CLI
   imcode       Install MiniMax Code CLI
   idsh         Install DeepSeek dsh CLI
   iposthogcli  Install PostHog CLI
@@ -958,6 +959,7 @@ alias nud='nvm use default'
 alias nx='f(){ nodemon --signal SIGTERM --ext "$1" --exec "${*:2} || false"; unset -f f; }; f'
 alias oc='code -a .'
 alias ocy='opencode --auto'
+alias ompu='omp update'
 alias ompy='omp --auto-approve'
 alias opencodey='opencode --auto'
 alias openports='nmap -p- portquiz.net | grep -i open'

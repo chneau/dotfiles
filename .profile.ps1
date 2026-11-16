@@ -768,6 +768,7 @@ function npmup { npm-check-updates --deep --upgrade --install=always --packageMa
 function nud { nvm use default @args }
 function oc { code -a . @args }
 function ocy { opencode --auto @args }
+function ompu { omp update @args }
 function ompy { omp --auto-approve @args }
 function opencodey { opencode --auto @args }
 function openports { nmap -p- portquiz.net | Select-String -Pattern 'open' -CaseSensitive:$false @args }
@@ -847,7 +848,7 @@ kilo       Kilo AI                 kiloy                   Kilo AI coding agent 
 hermes     Nous Research           hermesy                 Hermes agentic coding assistant CLI
 dsh        DeepSeek                -                       DeepSeek shell / coding assistant CLI
 pi         Pi                       -                       Pi coding agent CLI
-omp        Oh My Pi                ompy                    Oh My Pi coding agent CLI (run w/ --auto-approve)
+omp        Oh My Pi                ompy, ompu              Oh My Pi coding agent CLI (run w/ --auto-approve; update w/ ompu)
 reactdoctor React Doctor           -                       AI-powered React code diagnostics (bunx react-doctor@latest)
 rtk        RTK AI                  -                       RTK AI developer toolkit CLI
 freebuff   Codebuff                -                       Free Codebuff coding agent
@@ -871,6 +872,7 @@ Install / Update Aliases:
   irtk         Install RTK CLI
   ipi          Install Pi CLI
   iomp         Install Oh My Pi CLI
+  ompu         Update Oh My Pi CLI
   imcode       Install MiniMax Code CLI
   idsh         Install DeepSeek dsh CLI
   iposthogcli  Install PostHog CLI
