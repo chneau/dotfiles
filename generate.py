@@ -48,9 +48,21 @@ def resolve_value(spec: str | dict[str, str | bool], shell: str) -> str | None:
     raise TypeError(f"Unsupported alias spec: {spec!r}")
 
 
+# `f(){ ... }; f` bodies need the alias trick to receive arguments at an
+# interactive prompt.  They must be functions instead: aliases are expanded
+# when the *calling* function is parsed, so a function defined before this
+# alias block (e.g. gitget calling gocd) never sees them.
+SH_WRAPPER_RE = re.compile(r"^\s*f\s*\(\s*\)\s*\{(?P<body>.*)\}\s*;\s*f\s*$", re.DOTALL)
+SH_UNSET_F_RE = re.compile(r"\s*unset\s+-f\s+f\s*;?")
+
+
 def format_line(shell: str, name: str, cmd: str) -> str:
     """Format a single alias definition for the target shell."""
     if shell == "sh":
+        wrapper = SH_WRAPPER_RE.match(cmd)
+        if wrapper:
+            body = SH_UNSET_F_RE.sub("", wrapper.group("body")).strip()
+            return f"function {name}() {{ {body} }}\nalias {name}='{name}'"
         escaped = cmd.replace("'", "'\\''")
         return f"alias {name}='{escaped}'"
     if shell == "ps1":
