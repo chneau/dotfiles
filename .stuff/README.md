@@ -90,6 +90,14 @@ Steps to add Git Bash:
 - Click `Set as Default`
 - Press [Ctrl]+[`] while on the code or click `View -> Terminal`
 
+## Microsoft Edge
+
+Disable the new look and feel holdout feature by adding this flag to the Edge shortcut target/arguments:
+
+```text
+--disable-features=msFeatureGroupNewLookAndFeelHoldout
+```
+
 ## Cool docker images
 
 [mrvautin/adminmongo](https://hub.docker.com/r/mrvautin/adminmongo/)  
