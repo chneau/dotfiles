@@ -26,18 +26,18 @@ bcphp = "bun --cpu-prof-md --heap-prof-md"
 bd = "bun run dev"
 bench = "hyperfine"
 benchsh = { sh = "wget -qO- bench.sh | bash" }
-bfmt = "biome check --write --unsafe ."
+bfmt = { sh = "bun fmt --no-script; bun lint --fix --no-script", ps1 = "bun fmt --no-script; bun lint --fix --no-script", cmd = "bun fmt --no-script ^& bun lint --fix --no-script" }
 bh = "bun --hot --no-clear-screen"
 bhp = "bun --heap-prof-md"
 bi = "bun install --force --no-save"
-bic = "biome check --write --unsafe ."
+bic = { sh = "bun fmt --no-script; bun lint --fix --no-script", ps1 = "bun fmt --no-script; bun lint --fix --no-script", cmd = "bun fmt --no-script ^& bun lint --fix --no-script" }
 bo = "bun outdated"
 br = "bun run"
 brp = "bun run --parallel"
 brs = "bun run --sequential"
 bs = "bun start"
 btop = { sh = "btop || bpytop" }
-bup = { sh = "(NO_INPUT=1 NO_PAGER=1 zi update --all --parallel --quiet --no-pager </dev/null & NONINTERACTIVE=1 brew upgrade --yes --quiet </dev/null & bun upgrade </dev/null & npmig </dev/null & updateall & updatebashrc </dev/null & dotnetig </dev/null & deno upgrade </dev/null & uv self update </dev/null & uv tool upgrade --all </dev/null & x upgrade </dev/null & wait); zinit cclear" }
+bup = { sh = "(NO_INPUT=1 NO_PAGER=1 zi update --all --parallel --quiet --no-pager </dev/null & NONINTERACTIVE=1 brew upgrade --yes --quiet </dev/null & bun upgrade </dev/null & npmig </dev/null & updateall & updatebashrc </dev/null & dotnetig </dev/null & uv self update </dev/null & uv tool upgrade --all </dev/null & x upgrade </dev/null & wait); zinit cclear" }
 bverbosefetch = { sh = "BUN_CONFIG_VERBOSE_FETCH=curl ", cmd = "set \"BUN_CONFIG_VERBOSE_FETCH=curl\" ^& $* ^& set \"BUN_CONFIG_VERBOSE_FETCH=\"", ps1 = "BUN_CONFIG_VERBOSE_FETCH=curl " }
 bw = "bun --watch --no-clear-screen"
 bx = "bun x"
@@ -235,7 +235,6 @@ icursor = { sh = "curl -fsSL https://cursor.com/install | bash", ps1 = "powershe
 idatree = "go install github.com/datreeio/datree@latest"
 ideepcode = "bun i -g @vegamo/deepcode-cli@latest"
 idefendnot = { sh = "irm https://dnot.sh/ | iex", ps1 = "irm https://dnot.sh/ | iex", cmd = "powershell -c \"irm https://dnot.sh/ | iex\"" }
-ideno = { sh = "curl -fsSL https://deno.land/install.sh | sh", ps1 = "powershell -c \"irm https://deno.land/install.ps1 | iex\"", cmd = "powershell -c \"irm https://deno.land/install.ps1 | iex\"" }
 idl = "uv tool install --force yt-dlp"
 idocker = { sh = "curl -sSL get.docker.com | sh" }
 idockercompose = { sh = "sudo apt install -y docker-compose-plugin" }
@@ -479,8 +478,8 @@ topb = { sh = "curl -F 'file=@-' 0x0.st", cmd = "powershell -NoLogo -Command \"$
 toqrcode = { sh = "curl -F-=\\<- qrenco.de", cmd = "powershell -NoLogo -Command \"$input | toqrcode\"", ps1 = "curl -F-=\\<- qrenco.de" }
 traefikauth = { sh = "f(){ echo $(htpasswd -nb $1 $2) | sed -e s/\\\\$/\\\\$\\\\$/g; unset -f f; }; f", cmd = "powershell -NoLogo -Command traefikauth" }
 transfer = { sh = "transfer", cmd = "powershell -NoLogo -Command \"$input | transfer $*\"", ps1 = "transfer" }
-tsall = { sh = "npm-check-updates --upgrade --install=always --packageManager=bun --deep; biome check --write --unsafe .; depcheck; ts-unused-exports tsconfig.json; tsc --noEmit --project .", cmd = "powershell -NoLogo -Command tsall" }
-tsfmt = "biome check --write --unsafe ."
+tsall = { sh = "npm-check-updates --upgrade --install=always --packageManager=bun --deep; bun fmt --no-script; bun lint --fix --no-script; depcheck; ts-unused-exports tsconfig.json; tsc --noEmit --project .", cmd = "powershell -NoLogo -Command tsall" }
+tsfmt = { sh = "bun fmt --no-script; bun lint --fix --no-script", ps1 = "bun fmt --no-script; bun lint --fix --no-script", cmd = "bun fmt --no-script ^& bun lint --fix --no-script" }
 tslint = "tsc --noEmit --project ."
 u = { sh = "ls -hltr", cmd = "powershell -NoLogo -Command u", ps1 = "ls -hltr" }
 up = { sh = "updatebashrc; updateall", ps1 = "updateprofile", cmd = "powershell -c \"updateprofile\"" }
@@ -1268,12 +1267,8 @@ function myip {
 ps1 = '''
 function npmig {
     $pkgs = @(
-        'npm@latest', 'opencode-ai@latest', 'oxlint@latest', '@chneau/x',
-        '@biomejs/biome@latest', 'http-server@latest', 'live-server@latest',
-        'fkill-cli@latest', 'ungit@latest', 'tsx@latest', 'npm-check-updates@latest',
-        'nodemon@latest', 'prettier@latest', 'typesync@latest', 'depcheck@latest',
-        'concurrently@latest', 'ts-unused-exports@latest', '@qwen-code/qwen-code@latest',
-        'jsdoc-scribe@latest'
+        '@chneau/x',
+        'ungit@latest'
     )
     if (Get-Command bun -ErrorAction SilentlyContinue) {
         bun install --force --global --silent $pkgs
@@ -1498,7 +1493,8 @@ function transfer {
 ps1 = '''
 function tsall {
     ncup
-    biome check --write --unsafe .
+    bun fmt --no-script
+    bun lint --fix --no-script
     depcheck
     ts-unused-exports tsconfig.json
     tsc --noEmit --project .

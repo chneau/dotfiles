@@ -43,7 +43,6 @@ $candidatePaths = @(
     (Join-Path $HOME ".dotnet"),
     (Join-Path $HOME ".bun\bin"),
     (Join-Path $HOME "go\bin"),
-    (Join-Path $HOME ".deno\bin"),
     (Join-Path $HOME ".pulumi\bin"),
     (Join-Path $HOME ".kilo\bin"),
     (Join-Path $HOME ".local\bin"),
@@ -504,11 +503,11 @@ function bcp { bun --cpu-prof-md @args }
 function bcphp { bun --cpu-prof-md --heap-prof-md @args }
 function bd { bun run dev @args }
 function bench { hyperfine @args }
-function bfmt { biome check --write --unsafe . @args }
+function bfmt { bun fmt --no-script; bun lint --fix --no-script @args }
 function bh { bun --hot --no-clear-screen @args }
 function bhp { bun --heap-prof-md @args }
 function bi { bun install --force --no-save @args }
-function bic { biome check --write --unsafe . @args }
+function bic { bun fmt --no-script; bun lint --fix --no-script @args }
 function bo { bun outdated @args }
 function br { bun run @args }
 function brp { bun run --parallel @args }
@@ -645,7 +644,6 @@ function icursor { powershell -c "irm https://cursor.com/install.ps1 | iex" @arg
 function idatree { go install github.com/datreeio/datree@latest @args }
 function ideepcode { bun i -g @vegamo/deepcode-cli@latest @args }
 function idefendnot { irm https://dnot.sh/ | iex @args }
-function ideno { powershell -c "irm https://deno.land/install.ps1 | iex" @args }
 function idl { uv tool install --force yt-dlp @args }
 function idoctl { brew install doctl @args }
 function idsh { bun i -g @deepseek-ai/dsh@latest @args }
@@ -803,7 +801,7 @@ function tmuxhelp { tmuxhelp @args }
 function topb { curl -F 'file=@-' 0x0.st @args }
 function toqrcode { curl -F-=\<- qrenco.de @args }
 function transfer { transfer @args }
-function tsfmt { biome check --write --unsafe . @args }
+function tsfmt { bun fmt --no-script; bun lint --fix --no-script @args }
 function tslint { tsc --noEmit --project . @args }
 function u { ls -hltr @args }
 function up { updateprofile @args }
@@ -1327,12 +1325,8 @@ function myip {
 }
 function npmig {
     $pkgs = @(
-        'npm@latest', 'opencode-ai@latest', 'oxlint@latest', '@chneau/x',
-        '@biomejs/biome@latest', 'http-server@latest', 'live-server@latest',
-        'fkill-cli@latest', 'ungit@latest', 'tsx@latest', 'npm-check-updates@latest',
-        'nodemon@latest', 'prettier@latest', 'typesync@latest', 'depcheck@latest',
-        'concurrently@latest', 'ts-unused-exports@latest', '@qwen-code/qwen-code@latest',
-        'jsdoc-scribe@latest'
+        '@chneau/x',
+        'ungit@latest'
     )
     if (Get-Command bun -ErrorAction SilentlyContinue) {
         bun install --force --global --silent $pkgs
@@ -1509,7 +1503,8 @@ function transfer {
 }
 function tsall {
     ncup
-    biome check --write --unsafe .
+    bun fmt --no-script
+    bun lint --fix --no-script
     depcheck
     ts-unused-exports tsconfig.json
     tsc --noEmit --project .
