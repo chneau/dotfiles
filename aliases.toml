@@ -419,7 +419,7 @@ now = { sh = "date +\"%T\"", ps1 = "Get-Date -Format \"HH:mm:ss\"", cmd = "time 
 nowdate = { sh = "date +\"%d-%m-%Y\"", ps1 = "Get-Date -Format \"dd-MM-yyyy\"", cmd = "date /t" }
 nowtime = { sh = "now", ps1 = "now", cmd = "time /t" }
 npme = "npm exec --yes --"
-npmig = { sh = "x=(npm@latest opencode-ai@latest oxlint@latest @chneau/x @biomejs/biome@latest http-server@latest live-server@latest fkill-cli@latest ungit@latest tsx@latest npm-check-updates@latest nodemon@latest prettier@latest typesync@latest depcheck@latest concurrently@latest ts-unused-exports@latest @qwen-code/qwen-code@latest jsdoc-scribe@latest); bun install --force --global --silent \"${x[@]}\" || npm install --global \"${x[@]}\"; bun update --global --latest --force", cmd = "powershell -NoLogo -Command npmig" }
+npmig = { sh = "x=(@chneau/x ungit@latest); bun install --force --global --silent \"${x[@]}\" || npm install --global \"${x[@]}\"; bun update --global --latest --force", cmd = "powershell -NoLogo -Command npmig" }
 npmup = "npm-check-updates --deep --upgrade --install=always --packageManager=bun"
 nud = "nvm use default"
 nx = { sh = "f(){ nodemon --signal SIGTERM --ext \"$1\" --exec \"${*:2} || false\"; unset -f f; }; f", cmd = "powershell -NoLogo -Command nx" }
